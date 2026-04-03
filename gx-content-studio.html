@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog Admin — Globalucar</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f0f2f5; color: #1a1a2e; }
+
+    /* ── Top Bar ── */
+    .topbar {
+      background: #0d1f3c; color: #fff; padding: 14px 28px;
+      display: flex; align-items: center; justify-content: space-between;
+      position: sticky; top: 0; z-index: 100;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+    }
+    .topbar-brand { display: flex; align-items: center; gap: 12px; }
+    .topbar-brand img { height: 32px; }
+    .topbar-brand h1 { font-size: 1.1rem; font-weight: 700; }
+    .topbar-badge {
+      background: #c8102e; color: #fff; font-size: 0.7rem;
+      padding: 2px 8px; border-radius: 10px; font-weight: 700;
+    }
+    .topbar-actions { display: flex; gap: 10px; }
+
+    /* ── Layout ── */
+    .admin-layout { display: grid; grid-template-columns: 300px 1fr; min-height: calc(100vh - 58px); }
+    .sidebar { background: #fff; border-right: 1px solid #e0e5ee; padding: 20px; overflow-y: auto; }
+    .main-panel { padding: 28px; overflow-y: auto; }
+
+    /* ── Post List ── */
+    .sidebar-title {
+      font-size: 0.8rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 1px; color: #888; margin-bottom: 14px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .post-list { display: flex; flex-direction: column; gap: 8px; }
+    .post-item {
+      padding: 10px 14px; border-radius: 8px; cursor: pointer;
+      border: 1px solid #e8edf5; transition: all 0.15s;
+      background: #fff;
+    }
+    .post-item:hover { border-color: #c8102e; background: #fff5f6; }
+    .post-item.active { border-color: #c8102e; background: #fff0f2; }
+    .post-item-title { font-size: 0.88rem; font-weight: 600; color: #0d1f3c; line-height: 1.3; margin-bottom: 4px; }
+    .post-item-meta { font-size: 0.75rem; color: #999; }
+    .post-item-cat {
+      display: inline-block; font-size: 0.65rem; font-weight: 700;
+      padding: 1px 7px; border-radius: 8px; text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .cat-sourcing { background: #e0f0ff; color: #1a6abf; }
+    .cat-export   { background: #e8f5e9; color: #2a7a3b; }
+    .cat-technical{ background: #fff3e0; color: #b45309; }
+    .cat-market   { background: #f3e8ff; color: #6d28d9; }
+    .cat-shipping { background: #e0f7fa; color: #00838f; }
+
+    /* ── Form ── */
+    .form-card {
+      background: #fff; border-radius: 14px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+      padding: 32px;
+    }
+    .form-title {
+      font-size: 1.3rem; font-weight: 800; color: #0d1f3c;
+      margin-bottom: 24px; display: flex; align-items: center; gap: 10px;
+    }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group.full { grid-column: 1 / -1; }
+    label { font-size: 0.82rem; font-weight: 600; color: #555; }
+    label span { color: #c8102e; }
+    input, select, textarea {
+      padding: 10px 14px; border: 1px solid #dde3ee; border-radius: 8px;
+      font-size: 0.9rem; font-family: inherit; transition: border-color 0.15s;
+      background: #fafbfc;
+    }
+    input:focus, select:focus, textarea:focus {
+      outline: none; border-color: #c8102e; background: #fff;
+      box-shadow: 0 0 0 3px rgba(200,16,46,0.08);
+    }
+    textarea { resize: vertical; min-height: 100px; }
+    textarea.content-editor { min-height: 320px; font-family: 'Courier New', monospace; font-size: 0.85rem; line-height: 1.6; }
+
+    /* ── Buttons ── */
+    .btn { padding: 10px 22px; border-radius: 8px; font-size: 0.88rem; font-weight: 700; cursor: pointer; border: none; transition: all 0.15s; }
+    .btn-primary { background: #c8102e; color: #fff; }
+    .btn-primary:hover { background: #a50d25; }
+    .btn-secondary { background: #0d1f3c; color: #fff; }
+    .btn-secondary:hover { background: #1a3a6e; }
+    .btn-outline { background: transparent; color: #0d1f3c; border: 1px solid #dde3ee; }
+    .btn-outline:hover { border-color: #0d1f3c; background: #f0f2f5; }
+    .btn-danger { background: transparent; color: #c8102e; border: 1px solid #fcc; }
+    .btn-danger:hover { background: #fff5f6; }
+    .btn-sm { padding: 5px 12px; font-size: 0.78rem; }
+    .btn-green { background: #16a34a; color: #fff; }
+    .btn-green:hover { background: #15803d; }
+
+    .form-actions {
+      display: flex; gap: 12px; align-items: center;
+      margin-top: 24px; padding-top: 20px; border-top: 1px solid #eee;
+      flex-wrap: wrap;
+    }
+
+    /* ── Output Panel ── */
+    .output-panel {
+      background: #0d1f3c; border-radius: 12px;
+      padding: 24px; margin-top: 28px;
+    }
+    .output-panel h3 { color: #c5a47e; font-size: 0.95rem; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+    .output-code {
+      background: #0a1628; color: #7dd3fc; font-family: 'Courier New', monospace;
+      font-size: 0.78rem; line-height: 1.6; padding: 16px;
+      border-radius: 8px; overflow-x: auto; white-space: pre-wrap;
+      max-height: 340px; overflow-y: auto; word-break: break-all;
+    }
+    .copy-btn {
+      margin-top: 12px; background: #1e3a5f; color: #fff;
+      border: 1px solid #2d5a8e; padding: 8px 18px;
+      border-radius: 6px; cursor: pointer; font-size: 0.82rem; font-weight: 600;
+    }
+    .copy-btn:hover { background: #2d5a8e; }
+    .copy-btn.copied { background: #16a34a; border-color: #16a34a; }
+
+    /* ── SEO Tips ── */
+    .seo-tips {
+      background: #fffbe6; border: 1px solid #fbbf24;
+      border-radius: 10px; padding: 16px 20px; margin-top: 20px;
+    }
+    .seo-tips h4 { font-size: 0.88rem; color: #b45309; margin-bottom: 10px; }
+    .seo-tips ul { padding-left: 18px; }
+    .seo-tips li { font-size: 0.82rem; color: #78350f; line-height: 1.8; }
+    .char-count { font-size: 0.75rem; color: #888; margin-top: 3px; }
+    .char-count.warn { color: #c8102e; }
+
+    /* ── Image Thumb Preview ── */
+    .img-thumb-preview {
+      background: #f0f2f5; border-radius: 8px; overflow: hidden;
+      border: 1px solid #dde2ee; max-height: 140px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .img-thumb-preview img { width: 100%; max-height: 140px; object-fit: cover; display: block; }
+    .img-thumb-preview .img-err { font-size: 0.78rem; color: #c0392b; padding: 8px 14px; }
+
+    /* ── Instructions ── */
+    .instructions {
+      background: #f0f9ff; border: 1px solid #bae6fd;
+      border-radius: 10px; padding: 20px 24px; margin-bottom: 24px;
+    }
+    .instructions h3 { font-size: 1rem; font-weight: 700; color: #0c4a6e; margin-bottom: 10px; }
+    .instructions ol { padding-left: 20px; }
+    .instructions li { font-size: 0.85rem; color: #0c4a6e; line-height: 2; }
+    .instructions li strong { color: #c8102e; }
+
+    /* ── Tabs ── */
+    .tab-bar { display: flex; gap: 4px; margin-bottom: 22px; }
+    .tab-btn {
+      padding: 8px 18px; border-radius: 8px; font-size: 0.85rem;
+      font-weight: 600; cursor: pointer; border: 1px solid #e0e5ee;
+      background: #fff; color: #555; transition: all 0.15s;
+    }
+    .tab-btn.active { background: #0d1f3c; color: #fff; border-color: #0d1f3c; }
+
+    .alert { padding: 12px 16px; border-radius: 8px; font-size: 0.85rem; margin-top: 10px; }
+    .alert-success { background: #dcfce7; color: #15803d; border: 1px solid #86efac; }
+    .alert-info { background: #dbeafe; color: #1e40af; border: 1px solid #93c5fd; }
+
+    /* ── Preview Card ── */
+    .preview-wrap { margin-top: 24px; }
+    .preview-card {
+      border: 1px solid #e0e5ee; border-radius: 12px; overflow: hidden;
+      max-width: 380px;
+    }
+    .preview-img-placeholder {
+      height: 180px; background: linear-gradient(135deg, #0d1f3c, #1a3a6e);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.5); font-size: 0.85rem;
+    }
+    .preview-body { padding: 16px; }
+    .preview-cat { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; color: #fff; background: #c8102e; padding: 2px 8px; border-radius: 8px; display: inline-block; margin-bottom: 8px; }
+    .preview-meta { font-size: 0.75rem; color: #999; margin-bottom: 6px; }
+    .preview-title { font-size: 1rem; font-weight: 700; color: #0d1f3c; line-height: 1.4; margin-bottom: 8px; }
+    .preview-excerpt { font-size: 0.83rem; color: #666; line-height: 1.6; }
+
+    @media (max-width: 900px) {
+      .admin-layout { grid-template-columns: 1fr; }
+      .sidebar { border-right: none; border-bottom: 1px solid #e0e5ee; }
+      .form-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Top Bar ── -->
+<div class="topbar">
+  <div class="topbar-brand">
+    <img src="assets/VEHICLE-logo.jpg" alt="Globalucar Vehicle" />
+    <h1>Blog Admin <span class="topbar-badge">INTERNAL</span></h1>
+  </div>
+  <div class="topbar-actions">
+    <a href="blog.html" target="_blank" class="btn btn-outline btn-sm" style="color:#fff;border-color:rgba(255,255,255,0.3);">View Blog →</a>
+  </div>
+</div>
+
+<div class="admin-layout">
+
+  <!-- ── Sidebar: Post List ── -->
+  <div class="sidebar">
+    <div class="sidebar-title">
+      <span>All Articles (<span id="post-count">0</span>)</span>
+      <button class="btn btn-primary btn-sm" onclick="newPost()">+ New</button>
+    </div>
+    <div class="post-list" id="post-list"></div>
+  </div>
+
+  <!-- ── Main Panel ── -->
+  <div class="main-panel">
+
+    <!-- Instructions -->
+    <div class="instructions">
+      <h3>📋 How to Publish a New Blog Article</h3>
+      <ol>
+        <li>Click <strong>+ New</strong> in the sidebar to create a new article</li>
+        <li>Fill in the form (Title, Category, Date, Excerpt, Content HTML)</li>
+        <li>Click <strong>Generate Code</strong> to preview the JS object code</li>
+        <li>Copy the generated code and add it to the <strong>BLOG_POSTS array</strong> in <code>blog-post.html</code> (around line 420)</li>
+        <li>Also add a card entry to <strong>blog.html</strong> post grid (follow existing card format)</li>
+        <li>For SEO: fill in meta title (~55 chars), meta description (~155 chars), and keywords</li>
+      </ol>
+    </div>
+
+    <!-- Tab Bar -->
+    <div class="tab-bar">
+      <button class="tab-btn active" onclick="showTab('editor')" id="tab-editor">✏️ Article Editor</button>
+      <button class="tab-btn" onclick="showTab('preview')" id="tab-preview">👁 Preview Card</button>
+      <button class="tab-btn" onclick="showTab('seo')" id="tab-seo">🔍 SEO Guide</button>
+    </div>
+
+    <!-- Editor Tab -->
+    <div id="pane-editor">
+      <div class="form-card">
+        <div class="form-title">
+          <span id="form-mode-badge" style="background:#c8102e;color:#fff;font-size:0.72rem;padding:3px 10px;border-radius:8px;font-weight:700;">NEW ARTICLE</span>
+          <span id="form-heading">New Article</span>
+        </div>
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Article ID <span>*</span></label>
+            <input type="number" id="f-id" placeholder="e.g. 9" min="1" />
+          </div>
+          <div class="form-group">
+            <label>Category <span>*</span></label>
+            <select id="f-cat">
+              <optgroup label="── Auto Parts ──">
+                <option value="parts-sourcing">Parts Sourcing</option>
+                <option value="parts-technical">Technical Guides</option>
+              </optgroup>
+              <optgroup label="── Vehicles ──">
+                <option value="vehicles-new">New Car Export</option>
+                <option value="vehicles-used">Used Car Export</option>
+                <option value="vehicles-shipping">Shipping &amp; Logistics</option>
+                <option value="vehicles-market">Market Trends</option>
+              </optgroup>
+            </select>
+          </div>
+          <div class="form-group full">
+            <label>Article Title <span>*</span> <small style="font-weight:400;">(shown as H1 on the post page)</small></label>
+            <input type="text" id="f-title" placeholder="e.g. How to Source BYD EV Parts from China in 2026" oninput="updateCharCount('f-title','cc-title',80)" />
+            <div class="char-count" id="cc-title">0 / 80 chars</div>
+          </div>
+          <div class="form-group">
+            <label>Author</label>
+            <input type="text" id="f-author" value="Globalucar Editorial" />
+          </div>
+          <div class="form-group">
+            <label>Publish Date <span>*</span></label>
+            <input type="date" id="f-date" />
+          </div>
+          <div class="form-group">
+            <label>Read Time (minutes)</label>
+            <input type="number" id="f-readtime" value="6" min="1" max="60" />
+          </div>
+          <div class="form-group">
+            <label>URL Slug</label>
+            <input type="text" id="f-slug" placeholder="auto-generated from title" />
+          </div>
+          <div class="form-group full">
+            <label>Excerpt <span>*</span> <small style="font-weight:400;">(shown on blog list page, ~120 chars)</small></label>
+            <textarea id="f-excerpt" rows="3" placeholder="Short summary of the article..." oninput="updateCharCount('f-excerpt','cc-excerpt',150)"></textarea>
+            <div class="char-count" id="cc-excerpt">0 / 150 chars</div>
+          </div>
+          <div class="form-group full">
+            <label>Article Content (HTML) <span>*</span></label>
+            <small style="color:#888;font-size:0.78rem;display:block;margin-bottom:4px;">Use &lt;h2&gt;, &lt;h3&gt;, &lt;p&gt;, &lt;ul&gt;&lt;li&gt;, &lt;strong&gt;, &lt;table&gt; etc. HTML tags for rich content.</small>
+            <textarea class="content-editor" id="f-content" placeholder="&lt;h2&gt;Introduction&lt;/h2&gt;&#10;&lt;p&gt;Write your article content here using HTML tags...&lt;/p&gt;&#10;&lt;h2&gt;Section 2&lt;/h2&gt;&#10;&lt;p&gt;More content...&lt;/p&gt;"></textarea>
+          </div>
+
+          <!-- SEO Section -->
+          <div class="form-group full" style="border-top:1px solid #eee;padding-top:18px;margin-top:4px;">
+            <label style="font-size:0.95rem;color:#0d1f3c;">🔍 SEO Meta Tags</label>
+          </div>
+          <div class="form-group full">
+            <label>Meta Title <span>*</span> <small style="font-weight:400;">(ideal: 50–60 chars)</small></label>
+            <input type="text" id="f-meta-title" placeholder="e.g. BYD EV Parts Sourcing Guide 2026 | Globalucar" oninput="updateCharCount('f-meta-title','cc-mt',60)" />
+            <div class="char-count" id="cc-mt">0 / 60 chars</div>
+          </div>
+          <div class="form-group full">
+            <label>Meta Description <span>*</span> <small style="font-weight:400;">(ideal: 145–160 chars)</small></label>
+            <textarea id="f-meta-desc" rows="2" placeholder="Complete guide to sourcing BYD electric vehicle parts from verified Chinese suppliers. Includes pricing, specs, and quality verification steps." oninput="updateCharCount('f-meta-desc','cc-md',160)"></textarea>
+            <div class="char-count" id="cc-md">0 / 160 chars</div>
+          </div>
+          <div class="form-group full">
+            <label>Keywords <small style="font-weight:400;">(comma-separated, 5–8 terms)</small></label>
+            <input type="text" id="f-keywords" placeholder="BYD parts wholesale, EV auto parts China, BYD battery supplier..." />
+          </div>
+          <!-- Images Section -->
+          <div class="form-group full" style="border-top:1px solid #eee;padding-top:18px;margin-top:4px;">
+            <label style="font-size:0.95rem;color:#0d1f3c;">🖼 Article Images (Cover + up to 3 inline images)</label>
+            <small style="color:#888;font-size:0.78rem;display:block;margin-top:4px;">
+              Supported: local path (e.g. <code>assets/parts/part_031.jpg</code>) or full URL (e.g. <code>https://...</code>).
+              Inline images can be auto-inserted into the content editor with the "Insert ↓" button.
+            </small>
+          </div>
+
+          <!-- Cover Image -->
+          <div class="form-group full">
+            <label>🏷 Cover Image <span>*</span> <small style="font-weight:400;">(shown on blog list + hero banner)</small></label>
+            <div style="display:flex;gap:8px;align-items:center;">
+              <input type="text" id="f-img" placeholder="assets/parts/part_031_ignition_coil.jpg" style="flex:1;" oninput="updateImgPreview('f-img','prev-img0')" />
+              <button type="button" class="btn btn-secondary btn-sm" onclick="insertImgToContent(0)" title="Insert into content">Insert ↓</button>
+            </div>
+            <input type="text" id="f-img-alt" placeholder="Alt text for cover image (for SEO)" style="margin-top:6px;" />
+            <div id="prev-img0" class="img-thumb-preview" style="display:none;margin-top:8px;"></div>
+          </div>
+
+          <!-- Inline Image 1 -->
+          <div class="form-group">
+            <label>📷 Inline Image 1</label>
+            <div style="display:flex;gap:8px;align-items:center;">
+              <input type="text" id="f-img1" placeholder="assets/products/product_001.jpg" style="flex:1;" oninput="updateImgPreview('f-img1','prev-img1')" />
+              <button type="button" class="btn btn-secondary btn-sm" onclick="insertImgToContent(1)" title="Insert into content">Insert ↓</button>
+            </div>
+            <input type="text" id="f-img1-alt" placeholder="Alt text for image 1" style="margin-top:6px;" />
+            <div id="prev-img1" class="img-thumb-preview" style="display:none;margin-top:8px;"></div>
+          </div>
+
+          <!-- Inline Image 2 -->
+          <div class="form-group">
+            <label>📷 Inline Image 2</label>
+            <div style="display:flex;gap:8px;align-items:center;">
+              <input type="text" id="f-img2" placeholder="assets/products/product_002.jpg" style="flex:1;" oninput="updateImgPreview('f-img2','prev-img2')" />
+              <button type="button" class="btn btn-secondary btn-sm" onclick="insertImgToContent(2)" title="Insert into content">Insert ↓</button>
+            </div>
+            <input type="text" id="f-img2-alt" placeholder="Alt text for image 2" style="margin-top:6px;" />
+            <div id="prev-img2" class="img-thumb-preview" style="display:none;margin-top:8px;"></div>
+          </div>
+
+          <!-- Inline Image 3 -->
+          <div class="form-group">
+            <label>📷 Inline Image 3</label>
+            <div style="display:flex;gap:8px;align-items:center;">
+              <input type="text" id="f-img3" placeholder="assets/parts/part_046_water_pump.jpg" style="flex:1;" oninput="updateImgPreview('f-img3','prev-img3')" />
+              <button type="button" class="btn btn-secondary btn-sm" onclick="insertImgToContent(3)" title="Insert into content">Insert ↓</button>
+            </div>
+            <input type="text" id="f-img3-alt" placeholder="Alt text for image 3" style="margin-top:6px;" />
+            <div id="prev-img3" class="img-thumb-preview" style="display:none;margin-top:8px;"></div>
+          </div>
+
+          <!-- Image Gallery Toggle -->
+          <div class="form-group full">
+            <label style="display:flex;align-items:center;gap:10px;cursor:pointer;">
+              <input type="checkbox" id="f-show-gallery" style="width:16px;height:16px;" />
+              <span>Show all images as a <strong>photo gallery block</strong> at the end of the article</span>
+            </label>
+            <small style="color:#888;font-size:0.77rem;margin-top:4px;display:block;">
+              If checked, a responsive 2-column image grid will be appended after your article content automatically.
+            </small>
+          </div>
+
+        </div><!-- /.form-grid -->
+
+        <div class="form-actions">
+          <button class="btn btn-primary" onclick="generateCode()">⚡ Generate Code</button>
+          <button class="btn btn-secondary" onclick="showTab('preview')">👁 Preview Card</button>
+          <button class="btn btn-outline" onclick="resetForm()">↺ Reset</button>
+          <button class="btn btn-danger btn-sm" onclick="clearForm()">✕ Clear All</button>
+        </div>
+      </div>
+
+      <!-- Output Code Panel -->
+      <div class="output-panel" id="output-panel" style="display:none;">
+        <h3>⚡ Generated BLOG_POSTS Entry — Copy &amp; Paste to blog-post.html</h3>
+        <div class="output-code" id="output-code"></div>
+        <button class="copy-btn" id="copy-btn" onclick="copyCode()">📋 Copy Code</button>
+        <div class="alert alert-info" style="margin-top:14px;">
+          <strong>Next step:</strong> Open <code>blog-post.html</code>, find the <code>const BLOG_POSTS = [</code> line (around line 420),
+          paste this object into the array. Then add a card to <code>blog.html</code> following the existing post card format.
+        </div>
+        <div id="bloghtml-panel" style="margin-top:18px;">
+          <h3 style="color:#c5a47e;font-size:0.95rem;margin-bottom:14px;">📄 Blog List Card — Copy &amp; Paste to blog.html posts grid</h3>
+          <div class="output-code" id="output-blog-card"></div>
+          <button class="copy-btn" id="copy-btn2" onclick="copyBlogCard()">📋 Copy Card HTML</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Preview Tab -->
+    <div id="pane-preview" style="display:none;">
+      <div class="form-card">
+        <div class="form-title">👁 Article Card Preview</div>
+        <div class="preview-wrap">
+          <div class="preview-card">
+            <div class="preview-img-placeholder" id="prev-img">[ Cover Image ]</div>
+            <div class="preview-body">
+              <span class="preview-cat" id="prev-cat">Category</span>
+              <p class="preview-meta" id="prev-meta">Date · X min read</p>
+              <div class="preview-title" id="prev-title">Article Title</div>
+              <div class="preview-excerpt" id="prev-excerpt">Excerpt preview...</div>
+            </div>
+          </div>
+          <p style="margin-top:16px;font-size:0.82rem;color:#888;">This is how the article card appears on blog.html and the homepage Blog section.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEO Guide Tab -->
+    <div id="pane-seo" style="display:none;">
+      <div class="form-card">
+        <div class="form-title">🔍 SEO Publishing Guide for Blog Posts</div>
+
+        <div class="seo-tips">
+          <h4>✅ Checklist for Each New Article</h4>
+          <ul>
+            <li><strong>Meta Title:</strong> 50–60 characters. Include primary keyword + brand. E.g.: <em>"BYD EV Parts Sourcing Guide 2026 | Globalucar"</em></li>
+            <li><strong>Meta Description:</strong> 145–160 characters. Natural sentence with 2 keywords. No keyword stuffing.</li>
+            <li><strong>URL Slug:</strong> Lowercase, hyphenated, no stop words. E.g.: <em>byd-ev-parts-sourcing-2026</em></li>
+            <li><strong>Content Length:</strong> Minimum 800 words for SEO. 1500+ words for competitive keywords.</li>
+            <li><strong>H2 Headings:</strong> Use 3–5 H2 sections. Include secondary keywords naturally.</li>
+            <li><strong>Internal Links:</strong> Link to relevant product pages (e.g. products.html?cat=parts)</li>
+            <li><strong>Images:</strong> Use descriptive alt text with keywords.</li>
+            <li><strong>Publish Frequency:</strong> 1–2 articles per week for consistent SEO gains.</li>
+          </ul>
+        </div>
+
+        <div style="margin-top:24px;">
+          <h3 style="font-size:1rem;font-weight:700;color:#0d1f3c;margin-bottom:14px;">📈 Recommended Blog Topics for SEO</h3>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+            <div style="background:#f8f9fa;border-radius:8px;padding:14px;">
+              <div style="font-size:0.8rem;font-weight:700;color:#c8102e;margin-bottom:8px;">PARTS SOURCING</div>
+              <ul style="padding-left:16px;font-size:0.82rem;color:#555;line-height:2;">
+                <li>How to verify Chinese auto parts suppliers</li>
+                <li>OEM grade vs aftermarket quality tiers</li>
+                <li>Hyundai/Kia parts sourcing from China 2026</li>
+                <li>Toyota OEM suspension parts wholesale guide</li>
+              </ul>
+            </div>
+            <div style="background:#f8f9fa;border-radius:8px;padding:14px;">
+              <div style="font-size:0.8rem;font-weight:700;color:#2a7a3b;margin-bottom:8px;">CAR EXPORT</div>
+              <ul style="padding-left:16px;font-size:0.82rem;color:#555;line-height:2;">
+                <li>BYD export markets: Africa &amp; Southeast Asia</li>
+                <li>Used car export regulations by country</li>
+                <li>China EV export battery transport rules</li>
+                <li>FOB vs CIF pricing for vehicle export</li>
+              </ul>
+            </div>
+            <div style="background:#f8f9fa;border-radius:8px;padding:14px;">
+              <div style="font-size:0.8rem;font-weight:700;color:#1a6abf;margin-bottom:8px;">SHIPPING &amp; LOGISTICS</div>
+              <ul style="padding-left:16px;font-size:0.82rem;color:#555;line-height:2;">
+                <li>RoRo vs container shipping for cars</li>
+                <li>Nansha Port to Nigeria shipping route 2026</li>
+                <li>How to track your vehicle shipment from China</li>
+                <li>Marine insurance for auto parts cargo</li>
+              </ul>
+            </div>
+            <div style="background:#f8f9fa;border-radius:8px;padding:14px;">
+              <div style="font-size:0.8rem;font-weight:700;color:#6d28d9;margin-bottom:8px;">MARKET TRENDS</div>
+              <ul style="padding-left:16px;font-size:0.82rem;color:#555;line-height:2;">
+                <li>Chinese EV market share in Africa 2026</li>
+                <li>Why importers prefer BYD over Japanese cars</li>
+                <li>Auto parts demand trends: Middle East 2026</li>
+                <li>Used Chinese car export boom explained</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:24px;padding:18px;background:#0d1f3c;border-radius:10px;">
+          <div style="color:#c5a47e;font-size:0.9rem;font-weight:700;margin-bottom:10px;">🗓 Suggested Publishing Schedule</div>
+          <div style="color:rgba(255,255,255,0.8);font-size:0.83rem;line-height:2.2;">
+            <strong style="color:#fff;">Monday:</strong> Technical Guide or Parts Sourcing article<br>
+            <strong style="color:#fff;">Thursday:</strong> Car Export or Market Trends article<br>
+            <strong style="color:#fff;">Target:</strong> 2 articles/week → 8+ articles/month → 100+ indexed pages/year
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /.main-panel -->
+</div><!-- /.admin-layout -->
+
+<script>
+// ── Article Database (mirrors blog-post.html BLOG_POSTS) ──────────────────
+const EXISTING_POSTS = [
+  { id:1, cat:'parts-sourcing',  title:'OEM vs Aftermarket Auto Parts from China: A Practical Buyer\'s Guide for Importers', date:'March 24, 2026', readtime:8 },
+  { id:2, cat:'vehicles-new',    title:'How to Import New Chinese Cars in 2026: Step-by-Step Process & Costs', date:'March 20, 2026', readtime:6 },
+  { id:3, cat:'parts-technical', title:'5 Engine Sensors That Fail Most Often — and How to Source Replacements at Wholesale Price', date:'March 18, 2026', readtime:5 },
+  { id:4, cat:'vehicles-shipping', title:'Nansha Port, Guangzhou: Why It\'s Becoming the #1 Choice for Vehicle Exporters', date:'March 15, 2026', readtime:7 },
+  { id:5, cat:'vehicles-used',    title:'Used Car Export from China in 2026: Which Models Are Selling and Why', date:'March 10, 2026', readtime:6 },
+  { id:6, cat:'parts-sourcing',  title:'Sourcing Cooling System Parts from China: Water Pumps, Radiators & More', date:'March 5, 2026', readtime:5 },
+  { id:7, cat:'parts-technical', title:'Suspension & Steering Parts: What Quality Grades Mean for Your Customers', date:'February 28, 2026', readtime:6 },
+  { id:8, cat:'vehicles-new',    title:'Exporting Chinese Electric Vehicles in 2026: Regulations, Incentives & Logistics', date:'February 22, 2026', readtime:7 },
+];
+
+const CAT_LABELS = {
+  'parts-sourcing':'Parts Sourcing', 'parts-technical':'Technical Guides',
+  'vehicles-new':'New Car Export', 'vehicles-used':'Used Car Export',
+  'vehicles-shipping':'Shipping & Logistics', 'vehicles-market':'Market Trends'
+};
+
+const CAT_SECTION = {
+  'parts-sourcing':'parts', 'parts-technical':'parts',
+  'vehicles-new':'vehicles', 'vehicles-used':'vehicles',
+  'vehicles-shipping':'vehicles', 'vehicles-market':'vehicles'
+};
+
+// ── Render Post List ───────────────────────────────────────────────────────
+function renderPostList() {
+  const list = document.getElementById('post-list');
+  const nextId = Math.max(...EXISTING_POSTS.map(p=>p.id)) + 1;
+  document.getElementById('post-count').textContent = EXISTING_POSTS.length;
+  list.innerHTML = EXISTING_POSTS.map(p => `
+    <div class="post-item" onclick="loadPost(${p.id})">
+      <span class="post-item-cat cat-${p.cat}">${CAT_LABELS[p.cat]}</span>
+      <div class="post-item-title">${p.title}</div>
+      <div class="post-item-meta">${p.date} · ${p.readtime} min</div>
+    </div>
+  `).join('');
+  // Pre-fill next ID
+  document.getElementById('f-id').value = nextId;
+  // Pre-fill today's date
+  const today = new Date().toISOString().split('T')[0];
+  document.getElementById('f-date').value = today;
+}
+
+function loadPost(id) {
+  const p = EXISTING_POSTS.find(x => x.id === id);
+  if (!p) return;
+  document.querySelectorAll('.post-item').forEach(el => el.classList.remove('active'));
+  event.currentTarget.classList.add('active');
+  document.getElementById('form-heading').textContent = `Editing: Post #${p.id}`;
+  document.getElementById('form-mode-badge').textContent = 'EXISTING';
+  document.getElementById('form-mode-badge').style.background = '#1a6abf';
+  document.getElementById('f-id').value = p.id;
+  document.getElementById('f-cat').value = p.cat;
+  document.getElementById('f-title').value = p.title;
+  document.getElementById('f-date').value = '';
+  document.getElementById('f-readtime').value = p.readtime;
+  document.getElementById('f-excerpt').value = '';
+  document.getElementById('f-content').value = '';
+  document.getElementById('output-panel').style.display = 'none';
+  showTab('editor');
+  document.querySelector('.main-panel').scrollTo(0, 0);
+}
+
+function newPost() {
+  document.querySelectorAll('.post-item').forEach(el => el.classList.remove('active'));
+  document.getElementById('form-heading').textContent = 'New Article';
+  document.getElementById('form-mode-badge').textContent = 'NEW ARTICLE';
+  document.getElementById('form-mode-badge').style.background = '#c8102e';
+  resetForm();
+  showTab('editor');
+  document.getElementById('f-title').focus();
+}
+
+// ── Char Count ─────────────────────────────────────────────────────────────
+function updateCharCount(inputId, countId, max) {
+  const val = document.getElementById(inputId).value.length;
+  const el = document.getElementById(countId);
+  el.textContent = `${val} / ${max} chars`;
+  el.className = 'char-count' + (val > max ? ' warn' : '');
+  // Auto-generate slug from title
+  if (inputId === 'f-title') {
+    const slug = document.getElementById('f-title').value
+      .toLowerCase().replace(/[^a-z0-9\s-]/g,'').replace(/\s+/g,'-').replace(/-+/g,'-').slice(0,60);
+    document.getElementById('f-slug').value = slug;
+    // Auto meta title if empty
+    if (!document.getElementById('f-meta-title').value) {
+      const mt = document.getElementById('f-title').value.slice(0,52) + ' | Globalucar';
+      document.getElementById('f-meta-title').value = mt;
+      updateCharCount('f-meta-title','cc-mt',60);
+    }
+  }
+}
+
+// ── Tabs ──────────────────────────────────────────────────────────────────
+function showTab(tab) {
+  ['editor','preview','seo'].forEach(t => {
+    document.getElementById('pane-'+t).style.display = t===tab ? 'block' : 'none';
+    document.getElementById('tab-'+t).classList.toggle('active', t===tab);
+  });
+  if (tab === 'preview') updatePreview();
+}
+
+function updatePreview() {
+  const cat = document.getElementById('f-cat').value;
+  const title = document.getElementById('f-title').value || 'Article Title';
+  const excerpt = document.getElementById('f-excerpt').value || 'Article excerpt preview...';
+  const dateVal = document.getElementById('f-date').value;
+  const rt = document.getElementById('f-readtime').value || '?';
+  const imgUrl = document.getElementById('f-img').value;
+
+  const dateStr = dateVal ? new Date(dateVal).toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'}) : 'Date';
+
+  document.getElementById('prev-cat').textContent = CAT_LABELS[cat];
+  document.getElementById('prev-title').textContent = title;
+  document.getElementById('prev-excerpt').textContent = excerpt;
+  document.getElementById('prev-meta').textContent = `${dateStr} · ${rt} min read`;
+
+  const imgEl = document.getElementById('prev-img');
+  if (imgUrl) {
+    imgEl.innerHTML = `<img src="${imgUrl}" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentElement.innerHTML='[Image not found]'" />`;
+  } else {
+    imgEl.innerHTML = '[ Cover Image ]';
+  }
+}
+
+// ── Image Preview & Insert ────────────────────────────────────────────────
+function updateImgPreview(inputId, previewId) {
+  const url = document.getElementById(inputId).value.trim();
+  const el  = document.getElementById(previewId);
+  if (!url) { el.style.display = 'none'; el.innerHTML = ''; return; }
+  el.style.display = 'flex';
+  el.innerHTML = `<img src="${url}" alt="preview" onerror="this.parentElement.innerHTML='<span class=\\'img-err\\'>⚠ Image not found at this path</span>'" />`;
+}
+
+// Insert image tag into content textarea at cursor position
+function insertImgToContent(idx) {
+  const imgIds  = ['f-img','f-img1','f-img2','f-img3'];
+  const altIds  = ['f-img-alt','f-img1-alt','f-img2-alt','f-img3-alt'];
+  const captions = ['Cover image','Article photo 1','Article photo 2','Article photo 3'];
+  const url  = document.getElementById(imgIds[idx]).value.trim();
+  const alt  = document.getElementById(altIds[idx]).value.trim() || captions[idx];
+  if (!url) { alert('Please enter an image path/URL first in Image ' + (idx === 0 ? 'Cover' : idx) + '.'); return; }
+  const tag  = `\n<figure class="article-figure">\n  <img src="${url}" alt="${alt}" loading="lazy" />\n  <figcaption>${alt}</figcaption>\n</figure>\n`;
+  const ta   = document.getElementById('f-content');
+  const pos  = ta.selectionStart;
+  ta.value   = ta.value.slice(0, pos) + tag + ta.value.slice(pos);
+  ta.focus();
+  ta.selectionStart = ta.selectionEnd = pos + tag.length;
+}
+
+// ── Generate Code ─────────────────────────────────────────────────────────
+function generateCode() {
+  const id       = document.getElementById('f-id').value || '9';
+  const cat      = document.getElementById('f-cat').value;
+  const title    = document.getElementById('f-title').value;
+  const author   = document.getElementById('f-author').value || 'Globalucar Editorial';
+  const dateVal  = document.getElementById('f-date').value;
+  const rt       = document.getElementById('f-readtime').value || '6';
+  const slug     = document.getElementById('f-slug').value;
+  const excerpt  = document.getElementById('f-excerpt').value;
+  const content  = document.getElementById('f-content').value;
+  const metaT    = document.getElementById('f-meta-title').value;
+  const metaD    = document.getElementById('f-meta-desc').value;
+  const keywords = document.getElementById('f-keywords').value;
+
+  // ── Images ──
+  const imgUrl   = document.getElementById('f-img').value.trim();
+  const imgAlt   = document.getElementById('f-img-alt').value.trim();
+  const img1     = document.getElementById('f-img1').value.trim();
+  const img1alt  = document.getElementById('f-img1-alt').value.trim();
+  const img2     = document.getElementById('f-img2').value.trim();
+  const img2alt  = document.getElementById('f-img2-alt').value.trim();
+  const img3     = document.getElementById('f-img3').value.trim();
+  const img3alt  = document.getElementById('f-img3-alt').value.trim();
+  const showGallery = document.getElementById('f-show-gallery').checked;
+
+  if (!title || !content || !excerpt) {
+    alert('Please fill in Title, Excerpt and Content before generating code.');
+    return;
+  }
+
+  const dateStr = dateVal
+    ? new Date(dateVal).toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'})
+    : 'March 31, 2026';
+
+  // Escape content for JS template literal
+  const escapedContent = content.replace(/`/g, '\\`').replace(/\$/g, '\\$');
+  const escapedTitle   = title.replace(/'/g, "\\'");
+  const escapedExcerpt = excerpt.replace(/'/g, "\\'");
+  const escapedMT      = metaT.replace(/'/g, "\\'");
+  const escapedMD      = metaD.replace(/'/g, "\\'");
+
+  // Build images array
+  const imagesArr = [];
+  if (imgUrl)  imagesArr.push({ url: imgUrl,  alt: imgAlt  || title.slice(0,50) });
+  if (img1)    imagesArr.push({ url: img1,    alt: img1alt || 'Article image 1' });
+  if (img2)    imagesArr.push({ url: img2,    alt: img2alt || 'Article image 2' });
+  if (img3)    imagesArr.push({ url: img3,    alt: img3alt || 'Article image 3' });
+
+  const imagesCode = imagesArr.length
+    ? `  images: [\n${imagesArr.map(im => `    { url: '${im.url}', alt: '${im.alt.replace(/'/g,"\\'")}' }`).join(',\n')}\n  ],\n`
+    : '';
+
+  const code = `{
+  id: ${id},
+  slug: '${slug || title.toLowerCase().replace(/[^a-z0-9\s]/g,'').replace(/\s+/g,'-').slice(0,60)}',
+  category: '${cat}',
+  title: '${escapedTitle}',
+  author: '${author}',
+  date: '${dateStr}',
+  readtime: '${rt} min read',
+  excerpt: '${escapedExcerpt}',
+  description: '${escapedMD || escapedExcerpt.slice(0,155)}',
+  keywords: '${keywords}',
+  image: '${imgUrl}',
+  image_alt: '${imgAlt || title.slice(0,50)}',
+${imagesCode}  show_gallery: ${showGallery},
+  content: \`
+${escapedContent}
+  \`
+},`;
+
+  document.getElementById('output-code').textContent = code;
+
+  // Generate blog.html card HTML
+  const catLabel = CAT_LABELS[cat];
+  const cardHtml = `<article class="post-card" data-cat="${cat}">
+  <div class="post-card-img">
+    <img src="${imgUrl}" alt="${imgAlt || title}" loading="lazy" onerror="this.style.display='none'" />
+    <span class="post-cat-label">${catLabel}</span>
+  </div>
+  <div class="post-card-body">
+    <p class="post-meta">${dateStr} &nbsp;·&nbsp; ${rt} min read</p>
+    <h2 class="post-title"><a href="blog-post.html?id=${id}">${title}</a></h2>
+    <p class="post-excerpt">${excerpt}</p>
+    <a href="blog-post.html?id=${id}" class="post-read-more">Read Full Article →</a>
+  </div>
+</article>`;
+
+  document.getElementById('output-blog-card').textContent = cardHtml;
+  document.getElementById('output-panel').style.display = 'block';
+  document.getElementById('output-panel').scrollIntoView({ behavior:'smooth', block:'start' });
+}
+
+// ── Copy Buttons ──────────────────────────────────────────────────────────
+function copyCode() {
+  const code = document.getElementById('output-code').textContent;
+  navigator.clipboard.writeText(code).then(() => {
+    const btn = document.getElementById('copy-btn');
+    btn.textContent = '✅ Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = '📋 Copy Code'; btn.classList.remove('copied'); }, 2500);
+  });
+}
+function copyBlogCard() {
+  const code = document.getElementById('output-blog-card').textContent;
+  navigator.clipboard.writeText(code).then(() => {
+    const btn = document.getElementById('copy-btn2');
+    btn.textContent = '✅ Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = '📋 Copy Card HTML'; btn.classList.remove('copied'); }, 2500);
+  });
+}
+
+// ── Reset / Clear ─────────────────────────────────────────────────────────
+function resetForm() {
+  const nextId = EXISTING_POSTS.length + 1;
+  document.getElementById('f-id').value = nextId;
+  document.getElementById('f-cat').value = 'sourcing';
+  document.getElementById('f-title').value = '';
+  document.getElementById('f-author').value = 'Globalucar Editorial';
+  document.getElementById('f-date').value = new Date().toISOString().split('T')[0];
+  document.getElementById('f-readtime').value = '6';
+  document.getElementById('f-slug').value = '';
+  document.getElementById('f-excerpt').value = '';
+  document.getElementById('f-content').value = '';
+  document.getElementById('f-meta-title').value = '';
+  document.getElementById('f-meta-desc').value = '';
+  document.getElementById('f-keywords').value = '';
+  // Images
+  ['f-img','f-img-alt','f-img1','f-img1-alt','f-img2','f-img2-alt','f-img3','f-img3-alt'].forEach(id => {
+    document.getElementById(id).value = '';
+  });
+  ['prev-img0','prev-img1','prev-img2','prev-img3'].forEach(id => {
+    document.getElementById(id).style.display = 'none';
+    document.getElementById(id).innerHTML = '';
+  });
+  document.getElementById('f-show-gallery').checked = false;
+  document.getElementById('output-panel').style.display = 'none';
+  ['cc-title','cc-excerpt','cc-mt','cc-md'].forEach(id => {
+    document.getElementById(id).textContent = '0 chars';
+    document.getElementById(id).className = 'char-count';
+  });
+}
+function clearForm() {
+  if (confirm('Clear all fields?')) resetForm();
+}
+
+// ── Init ──────────────────────────────────────────────────────────────────
+renderPostList();
+</script>
+</body>
+</html>

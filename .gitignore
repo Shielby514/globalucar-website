@@ -1,0 +1,87 @@
+# ============================================================
+# Globalucar Website — .gitignore
+# 只上传网站必要文件，过滤所有开发脚本和临时文件
+# ============================================================
+
+# Python 开发脚本（仅用于本地数据处理，不上传）
+*.py
+__pycache__/
+*.pyc
+*.pyo
+
+# 文本日志 / 分析输出
+*.txt
+*.log
+excel_output.txt
+excel2_output.txt
+generation_log.txt
+remaining_generation_log.txt
+cars_summary.txt
+jetta_brochure_content.txt
+jetta_config_content.txt
+server.log
+server_err.log
+gen_batch_*.log
+
+# 备份文件
+*.backup
+*.backup3
+*.bak
+*.seo_backup
+*.seo_backup2
+*.security_backup
+products-data.json.backup
+products-data.json.seo_backup
+products-data.json.seo_backup2
+products-data.json.security_backup
+
+# 开发临时 HTML（预览/测试用）
+hero-preview.html
+hero-preview2.html
+hero-preview3.html
+_cards_new.html
+_cards_parts.html
+_cards_used.html
+parts_listing_electrical.html
+parts_listing_engine.html
+parts_listing_suspension.html
+
+# 源数据文件（产品数据已内嵌 products-inline.js，无需公开 JSON）
+products-data.json
+source_cars.json
+
+# 零散图片原料（非产品图）
+b7.png
+bingyue01.png
+fcb003.png
+haisi001.png
+jeda03.png
+Jevda01.png
+jt001.png
+jt002.png
+mazida01.png
+pld001.png
+logo.svg
+rox01.png
+rox02.png
+x9.png
+
+# 安全审计报告（内部文件，不公开）
+security_audit_report.md
+security_fix_report.md
+final_security_verification.md
+
+# 脚本备份目录
+scripts_backup/
+
+# WorkBuddy 开发工具目录（绝对不上传！）
+.workbuddy/
+
+# 系统文件
+.DS_Store
+Thumbs.db
+desktop.ini
+ehthumbs.db
+
+# 其他
+jida005

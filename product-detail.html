@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO Meta Tags — dynamically filled by JS -->
+  <title id="page-title">Vehicle Detail | Guangzhou Vehicle External Trade Co., Ltd.</title>
+  <meta id="meta-description" name="description" content="Detailed specifications and pricing for export vehicles from Guangzhou Vehicle External Trade Co., Ltd. — your one-stop car export partner." />
+  <meta id="meta-keywords" name="keywords" content="China car export, used car export China, new car export, Guangzhou vehicle export, BYD export, Toyota used car" />
+  <link rel="canonical" id="canonical-url" href="https://www.global-ucars.com/product-detail.html" />
+
+  <!-- Open Graph -->
+  <meta id="og-title" property="og:title" content="Vehicle Detail | Globalucar" />
+  <meta id="og-description" property="og:description" content="Quality vehicles for export from Guangzhou, China." />
+  <meta id="og-image" property="og:image" content="https://www.global-ucars.com/assets/products/product_001.jpg" />
+  <meta property="og:type" content="product" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content="Vehicle Detail | Globalucar" />
+  <meta name="twitter:description" content="Quality vehicles for export from Guangzhou, China." />
+  <meta name="twitter:image"       content="https://www.global-ucars.com/assets/products/product_001.jpg" />
+
+  <!-- Schema.org Product — injected by JS -->
+  <script type="application/ld+json" id="schema-product">{}</script>
+
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* ── Product Detail Page Styles ────────────────────────── */
+    .pd-breadcrumb {
+      background: #f8f8f8;
+      padding: 12px 0;
+      font-size: 0.85rem;
+      color: #666;
+    }
+    .pd-breadcrumb a { color: #c8102e; text-decoration: none; }
+    .pd-breadcrumb a:hover { text-decoration: underline; }
+    .pd-breadcrumb span { margin: 0 6px; }
+
+    .pd-main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px 60px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+    }
+
+    @media (max-width: 768px) {
+      .pd-main { grid-template-columns: 1fr; gap: 24px; padding: 20px 16px 40px; }
+    }
+
+    /* Gallery */
+    .pd-gallery { position: sticky; top: 80px; }
+    .pd-main-img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+      cursor: zoom-in;
+      transition: transform 0.2s;
+    }
+    .pd-main-img:hover { transform: scale(1.01); }
+    .pd-thumbs {
+      display: flex;
+      gap: 10px;
+      margin-top: 12px;
+      flex-wrap: wrap;
+    }
+    .pd-thumb {
+      width: 70px;
+      height: 55px;
+      object-fit: cover;
+      border-radius: 6px;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: border-color 0.2s;
+    }
+    .pd-thumb.active, .pd-thumb:hover { border-color: #c8102e; }
+
+    /* Info Panel */
+    .pd-info {}
+    .pd-category-badge {
+      display: inline-block;
+      background: #c8102e;
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+    }
+    .pd-category-badge.used { background: #0d1f3c; }
+    .pd-category-badge.parts { background: #555; }
+
+    .pd-title {
+      font-size: 1.7rem;
+      font-weight: 800;
+      color: #0d1f3c;
+      line-height: 1.3;
+      margin-bottom: 16px;
+    }
+    @media (max-width: 768px) { .pd-title { font-size: 1.3rem; } }
+
+    .pd-price-box {
+      background: #fff8f8;
+      border: 1.5px solid #f5d0d6;
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin-bottom: 20px;
+    }
+    .pd-price-label { font-size: 0.8rem; color: #888; text-transform: uppercase; letter-spacing: 0.05em; }
+    .pd-price-value {
+      font-size: 2rem;
+      font-weight: 900;
+      color: #c8102e;
+      margin-top: 4px;
+    }
+    .pd-price-note { font-size: 0.8rem; color: #666; margin-top: 4px; }
+
+    .pd-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+    .pd-tag {
+      background: #f0f0f0;
+      color: #444;
+      font-size: 0.78rem;
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+
+    .pd-desc {
+      color: #444;
+      line-height: 1.7;
+      font-size: 0.95rem;
+      margin-bottom: 24px;
+    }
+
+    .pd-moq {
+      background: #f5f7ff;
+      border-left: 3px solid #0d1f3c;
+      padding: 10px 16px;
+      border-radius: 0 6px 6px 0;
+      font-size: 0.9rem;
+      color: #333;
+      margin-bottom: 24px;
+    }
+    .pd-moq strong { color: #0d1f3c; }
+
+    .pd-cta-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+    .pd-cta-primary {
+      flex: 1;
+      min-width: 160px;
+      background: #c8102e;
+      color: #fff;
+      border: none;
+      padding: 14px 24px;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: background 0.2s;
+    }
+    .pd-cta-primary:hover { background: #a50d24; }
+    .pd-cta-secondary {
+      flex: 1;
+      min-width: 140px;
+      background: #0d1f3c;
+      color: #fff;
+      border: none;
+      padding: 14px 24px;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: background 0.2s;
+    }
+    .pd-cta-secondary:hover { background: #162d56; }
+
+    .pd-trust-row {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      padding: 16px 0;
+      border-top: 1px solid #eee;
+      border-bottom: 1px solid #eee;
+      margin-bottom: 24px;
+    }
+    .pd-trust-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.82rem;
+      color: #555;
+    }
+    .pd-trust-icon { font-size: 1.1rem; }
+
+    /* Specs Table */
+    .pd-specs-section { margin-top: 48px; max-width: 1200px; margin-left: auto; margin-right: auto; padding: 0 20px 60px; }
+    .pd-specs-title {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #0d1f3c;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #c8102e;
+    }
+    .pd-specs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 0;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .pd-spec-row {
+      display: flex;
+      border-bottom: 1px solid #e8e8e8;
+      border-right: 1px solid #e8e8e8;
+    }
+    .pd-spec-row:last-child { border-bottom: none; }
+    .pd-spec-key {
+      background: #f5f5f5;
+      padding: 10px 14px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #333;
+      width: 45%;
+      border-right: 1px solid #e0e0e0;
+    }
+    .pd-spec-val {
+      padding: 10px 14px;
+      font-size: 0.85rem;
+      color: #555;
+      width: 55%;
+    }
+
+    /* Related Products */
+    .pd-related { background: #f8f8f8; padding: 48px 20px; margin-top: 20px; }
+    .pd-related-inner { max-width: 1200px; margin: 0 auto; }
+    .pd-related-title { font-size: 1.3rem; font-weight: 800; color: #0d1f3c; margin-bottom: 24px; }
+    .pd-related-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 20px;
+    }
+    .pd-related-card {
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+      transition: transform 0.2s, box-shadow 0.2s;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+    .pd-related-card:hover { transform: translateY(-4px); box-shadow: 0 6px 24px rgba(0,0,0,0.12); }
+    .pd-related-img { width: 100%; height: 140px; object-fit: cover; }
+    .pd-related-info { padding: 12px; }
+    .pd-related-name { font-size: 0.88rem; font-weight: 600; color: #0d1f3c; line-height: 1.4; margin-bottom: 6px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .pd-related-price { font-size: 0.9rem; font-weight: 700; color: #c8102e; }
+
+    /* ── Parts-only sections ── */
+    .pd-parts-extra {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px 40px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+    @media (max-width: 768px) { .pd-parts-extra { grid-template-columns: 1fr; } }
+
+    .pd-section-box {
+      background: #f8f9fa;
+      border-radius: 12px;
+      padding: 24px;
+    }
+    .pd-section-box h3 {
+      font-size: 1rem;
+      font-weight: 800;
+      color: #0d1f3c;
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #c8102e;
+    }
+    .oem-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+    }
+    .oem-table th {
+      background: #0d1f3c;
+      color: #fff;
+      padding: 8px 12px;
+      text-align: left;
+      font-weight: 600;
+    }
+    .oem-table td {
+      padding: 8px 12px;
+      border-bottom: 1px solid #e8e8e8;
+      color: #2d3748;
+      font-family: monospace;
+      letter-spacing: 0.03em;
+    }
+    .oem-table tr:last-child td { border-bottom: none; }
+    .oem-table tr:nth-child(even) td { background: #f0f2f5; }
+
+    .compat-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .compat-tag {
+      background: #fff;
+      border: 2px solid #e2e8f0;
+      border-radius: 20px;
+      padding: 5px 14px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #2d3748;
+    }
+    .compat-tag.primary { border-color: #0d1f3c; color: #0d1f3c; }
+
+    .features-list { list-style: none; padding: 0; }
+    .features-list li {
+      padding: 8px 0 8px 24px;
+      position: relative;
+      font-size: 0.88rem;
+      color: #2d3748;
+      border-bottom: 1px solid #eee;
+      line-height: 1.5;
+    }
+    .features-list li:last-child { border-bottom: none; }
+    .features-list li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: #c8102e;
+      font-weight: 700;
+      font-size: 1rem;
+    }
+
+    /* System nav links */
+    .sys-nav-strip {
+      background: #f0f2f5;
+      padding: 14px 0;
+      border-top: 1px solid #e2e8f0;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .sys-nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .sys-nav-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #718096;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-right: 4px;
+    }
+    .sys-nav-link {
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #2d3748;
+      background: #fff;
+      border: 2px solid #e2e8f0;
+      text-decoration: none;
+      transition: all 0.18s;
+    }
+    .sys-nav-link:hover, .sys-nav-link.active {
+      background: #0d1f3c;
+      border-color: #0d1f3c;
+      color: #fff;
+    }
+
+    /* Image Lightbox */
+    .pd-lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.92);
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+    .pd-lightbox.active { display: flex; }
+    .pd-lightbox img { max-width: 90vw; max-height: 90vh; object-fit: contain; border-radius: 4px; }
+    .pd-lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 28px;
+      color: #fff;
+      font-size: 2rem;
+      cursor: pointer;
+      line-height: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Navigation ──────────────────────────────────── -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-brand" aria-label="Globalucar Home">
+        <img src="assets/VEHICLE-logo-nav.jpg" alt="Globalucar Vehicle" class="nav-logo" />
+        <span class="nav-tagline">Car &amp; Auto Parts One-Stop Solution</span>
+      </a>
+      <ul class="nav-menu" role="menubar">
+        <li role="none"><a href="index.html" role="menuitem">Home</a></li>
+        <li role="none"><a href="products.html" role="menuitem" class="active">Products</a></li>
+        <li role="none"><a href="parts-finder.html" role="menuitem">Parts Finder</a></li>
+        <li role="none"><a href="kingmay.html"      role="menuitem">Kingmay Parts</a></li>
+        <li role="none"><a href="services.html" role="menuitem">Services</a></li>
+        <li role="none"><a href="about.html" role="menuitem">About Us</a></li>
+        <li role="none"><a href="blog.html" role="menuitem">Blog</a></li>
+        <li role="none"><a href="contact.html" role="menuitem">Contact</a></li>
+      </ul>
+      <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ── Breadcrumb ───────────────────────────────────── -->
+  <div class="pd-breadcrumb">
+    <div class="container">
+      <a href="index.html">Home</a>
+      <span>›</span>
+      <a href="products.html">Products</a>
+      <span>›</span>
+      <span id="breadcrumb-name">Vehicle Detail</span>
+    </div>
+  </div>
+
+  <!-- ── Main Product Layout ──────────────────────────── -->
+  <div class="pd-main" id="pd-main">
+
+    <!-- Gallery -->
+    <div class="pd-gallery">
+      <img id="pd-main-img" class="pd-main-img" src="" alt="Product Image" />
+      <div class="pd-thumbs" id="pd-thumbs"></div>
+    </div>
+
+    <!-- Info -->
+    <div class="pd-info">
+      <div id="pd-badge" class="pd-category-badge">New Car</div>
+      <h1 class="pd-title" id="pd-title">Loading...</h1>
+
+      <div class="pd-price-box">
+        <div class="pd-price-label">Export Price (FOB Guangzhou)</div>
+        <div class="pd-price-value" id="pd-price">—</div>
+        <div class="pd-price-note">Price varies by order quantity. Contact us for bulk pricing.</div>
+      </div>
+
+      <div class="pd-tags" id="pd-tags"></div>
+      <div class="pd-desc" id="pd-desc"></div>
+
+      <div class="pd-moq" id="pd-moq">
+        <strong>Min. Order:</strong> <span id="pd-moq-val">1 Piece</span>
+      </div>
+
+      <div class="pd-cta-row">
+        <a href="contact.html?inquiry=1" class="pd-cta-primary" id="pd-inquiry-btn">
+          ✉ Get a Quote
+        </a>
+        <a href="https://wa.me/8613800000000?text=Hello%2C+I%27m+interested+in+this+vehicle" 
+           target="_blank" class="pd-cta-secondary">
+          💬 WhatsApp Us
+        </a>
+      </div>
+
+      <div class="pd-trust-row">
+        <div class="pd-trust-item"><span class="pd-trust-icon">⛴</span> Ships from Nansha Port, Guangzhou</div>
+        <div class="pd-trust-item"><span class="pd-trust-icon">📋</span> Export License Certified</div>
+        <div class="pd-trust-item"><span class="pd-trust-icon">🔒</span> Secure Payment</div>
+        <div class="pd-trust-item"><span class="pd-trust-icon">🌍</span> Worldwide Delivery</div>
+      </div>
+
+      <div class="pd-moq" style="background:#f0fff4;border-left-color:#2ea06e;">
+        <strong>📱 WeChat:</strong> Globalucar &nbsp;|&nbsp; <strong>🏭 Port:</strong> Nansha Port, South China's Largest Terminal
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Specifications Table ─────────────────────────── -->
+  <div class="pd-specs-section">
+    <h2 class="pd-specs-title">Technical Specifications</h2>
+    <div class="pd-specs-grid" id="pd-specs-grid">
+      <div class="pd-spec-row"><div class="pd-spec-key">Loading...</div><div class="pd-spec-val"></div></div>
+    </div>
+  </div>
+
+  <!-- ── Parts Extra: OEM + Compat + Features ─── -->
+  <div class="pd-parts-extra" id="pd-parts-extra" style="display:none;">
+    <div class="pd-section-box">
+      <h3>🔢 OEM Reference Numbers</h3>
+      <table class="oem-table" id="oem-table">
+        <thead><tr><th>#</th><th>OEM Part Number</th></tr></thead>
+        <tbody id="oem-tbody"></tbody>
+      </table>
+      <p style="font-size:0.75rem;color:#a0aec0;margin-top:10px;">* For cross-reference only. Not OEM-branded parts.</p>
+    </div>
+    <div class="pd-section-box">
+      <h3>🚗 Compatible Vehicles</h3>
+      <div class="compat-grid" id="compat-grid"></div>
+      <p style="font-size:0.78rem;color:#718096;margin-top:14px;">
+        Not sure if this part fits your vehicle?
+        <a href="parts-finder.html" style="color:#c8102e;font-weight:600;">Use the Parts Finder →</a>
+      </p>
+    </div>
+    <div class="pd-section-box">
+      <h3>✅ Product Features &amp; Benefits</h3>
+      <ul class="features-list" id="features-list"></ul>
+    </div>
+    <div class="pd-section-box" style="background:#fff8f8;border:2px solid #f5d0d6;">
+      <h3>📩 Request a Bulk Quote</h3>
+      <p style="font-size:0.88rem;color:#4a5568;margin-bottom:16px;line-height:1.7;">
+        Tell us your target quantity, destination port and any OEM cross-reference requirements.
+        We'll reply within 24 business hours with FOB pricing, packing details and lead time.
+      </p>
+      <a href="contact.html" class="pd-cta-primary" style="display:block;text-align:center;text-decoration:none;border-radius:8px;">
+        ✉ Send Inquiry Now
+      </a>
+      <div style="margin-top:12px;font-size:0.8rem;color:#718096;text-align:center;">
+        💬 WeChat: Globalucar &nbsp;|&nbsp; ⚓ FOB Nansha Port
+      </div>
+    </div>
+  </div>
+
+  <!-- ── System Nav Strip ──────────────────────── -->
+  <div class="sys-nav-strip" id="sys-nav-strip" style="display:none;">
+    <div class="sys-nav-inner">
+      <span class="sys-nav-label">Browse System:</span>
+      <a href="parts-engine.html"     class="sys-nav-link" id="snav-engine">🔧 Engine</a>
+      <a href="parts-cooling.html"    class="sys-nav-link" id="snav-cooling">🌡️ Cooling</a>
+      <a href="parts-suspension.html" class="sys-nav-link" id="snav-suspension">🛞 Suspension</a>
+      <a href="parts-electrical.html" class="sys-nav-link" id="snav-electrical">⚡ Electrical</a>
+      <a href="parts-finder.html"     class="sys-nav-link" style="margin-left:auto;">🔍 Parts Finder</a>
+    </div>
+  </div>
+
+  <!-- ── Related Products ─────────────────────────────── -->
+  <section class="pd-related">
+    <div class="pd-related-inner">
+      <h2 class="pd-related-title">You May Also Like</h2>
+      <div class="pd-related-grid" id="pd-related-grid"></div>
+    </div>
+  </section>
+
+  <!-- ── Lightbox ──────────────────────────────────────── -->
+  <div class="pd-lightbox" id="pd-lightbox">
+    <span class="pd-lightbox-close" id="pd-lightbox-close">✕</span>
+    <img id="pd-lightbox-img" src="" alt="Full size" />
+  </div>
+
+  <!-- ── Footer ───────────────────────────────────────── -->
+  <footer class="footer" role="contentinfo">
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <div class="footer-brand-logos">
+          <img src="assets/VEHICLE-logo.jpg" alt="Globalucar Vehicle" onerror="this.style.display='none';this.nextElementSibling&&(this.nextElementSibling.style.display=this.nextElementSibling.nextElementSibling?'none':'block')" />
+          <span class="brand-divider"></span>
+          <img src="assets/logo-Kingmay.png" alt="Kingmay Auto Parts" onerror="this.style.display='none';this.previousElementSibling&&(this.previousElementSibling.style.display='block')" />
+        </div>
+        <p>Guangzhou Vehicle External Trade Co., Ltd</p>
+        <p class="footer-tag-line">New &amp; Used Cars · Auto Parts · Export Solutions</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Product Categories</h4>
+        <ul>
+          <li><a href="products.html?cat=new_car">New Cars</a></li>
+          <li><a href="products.html?cat=used_car">Used Cars</a></li>
+          <li><a href="products.html?cat=parts">Auto Parts</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p>🚗 <a href="mailto:ucars@global-ucars.com" style="color:inherit;">ucars@global-ucars.com</a></p>
+        <p>📍 Guangzhou, China</p>
+        <p>⚓ Nansha Port Terminal</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Guangzhou Vehicle External Trade Co., Ltd. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="products-inline.js"></script>
+  <script>
+  /**
+   * Product Detail Page Logic
+   * Reads ?id=XX from URL, renders from PRODUCTS_INLINE_DATA
+   */
+  (function () {
+    const params = new URLSearchParams(window.location.search);
+    const productId = parseInt(params.get('id'), 10) || 1;
+
+    function loadData() {
+      if (window.PRODUCTS_INLINE_DATA) {
+        const all = window.PRODUCTS_INLINE_DATA.products || [];
+        const product = all.find(p => p.id === productId);
+        if (!product) {
+          document.getElementById('pd-title').textContent = 'Product not found (id=' + productId + ')';
+          return;
+        }
+        renderProduct(product, all);
+      } else {
+        // Fallback: retry once after 100ms (handles edge-case script ordering)
+        setTimeout(function() {
+          if (window.PRODUCTS_INLINE_DATA) {
+            const all = window.PRODUCTS_INLINE_DATA.products || [];
+            const product = all.find(p => p.id === productId);
+            if (product) { renderProduct(product, all); return; }
+          }
+          document.getElementById('pd-title').textContent = 'Error: product data not loaded';
+        }, 100);
+      }
+    }
+
+    // Run after DOM is ready (scripts are at bottom, so DOM is ready)
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', loadData);
+    } else {
+      loadData();
+    }
+
+    function renderProduct(p, all) {
+      // ── SEO Meta ── (auto-parts optimised)
+      const sysNames = { engine: 'Engine System', cooling: 'Cooling System', suspension: 'Suspension & Steering', electrical: 'Electrical System' };
+      const sysKws   = { engine: 'engine parts China, OEM engine components wholesale',
+                         cooling: 'cooling system parts China, radiator parts wholesale',
+                         suspension: 'suspension parts China, steering components wholesale',
+                         electrical: 'electrical parts China, auto sensors wholesale' };
+      const isPartPage = p.category === 'parts';
+      const sysLabel   = sysNames[p.part_system] || '';
+      const sysKw      = sysKws[p.part_system] || '';
+
+      // SEO tags: use data fields if present, otherwise generate
+      const title = p.meta_title || (isPartPage
+        ? `${p.name} Wholesale Supplier China | ${sysLabel} — Globalucar`
+        : `${p.name} | Globalucar — China Vehicle Export`);
+
+      const metaDesc = p.meta_description || (isPartPage
+        ? `Buy ${p.name} wholesale from China. ${p.description ? p.description.substring(0,160) + '...' : ''} FOB Guangzhou. MOQ: ${p.moq}. Request quote in 24 hrs.`
+        : `${p.name} for export from Guangzhou, China. Price: ${p.price}. Min order: ${p.moq}. Ships via Nansha Port.`);
+
+      const metaKws = p.meta_keywords || (isPartPage
+        ? `${p.name}, ${p.name} wholesale China, ${p.name} supplier, ${sysKw}, ${(p.tags||[]).join(', ')}, OEM auto parts export`
+        : `${p.name}, China car export, ${p.category === 'used_car' ? 'used car export' : 'new car export'}, Guangzhou vehicle export, ${(p.tags||[]).join(', ')}`);
+
+      document.getElementById('page-title').textContent = title;
+      document.getElementById('meta-description').content = metaDesc;
+      document.getElementById('meta-keywords').content = metaKws;
+      document.getElementById('og-title').content = title;
+      document.getElementById('og-description').content = metaDesc;
+
+      const imgSrc = (typeof p.local_image === 'string' ? p.local_image : null) || p.image || (p.images && p.images[0]) || '';
+      if (imgSrc) {
+        document.getElementById('og-image').content = imgSrc.startsWith('http') ? imgSrc : 'https://www.global-ucars.com/' + imgSrc;
+        // Canonical URL with id
+        document.getElementById('canonical-url').href = `https://www.global-ucars.com/product-detail.html?id=${p.id}`;
+      }
+
+      // Schema.org Product (full structured data)
+      const priceVal = (p.price || '').match(/[\d.]+/);
+      const schema = {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": p.name,
+        "description": p.description || '',
+        "image": imgSrc ? [imgSrc] : [],
+        "sku": `Globalucar-${p.id}`,
+        "brand": { "@type": "Brand", "name": "Globalucar" },
+        "manufacturer": { "@type": "Organization", "name": "Guangzhou Vehicle External Trade Co., Ltd.", "url": "https://www.global-ucars.com" },
+        "offers": {
+          "@type": "Offer",
+          "url": `https://www.global-ucars.com/product-detail.html?id=${p.id}`,
+          "priceCurrency": "USD",
+          "price": priceVal ? priceVal[0] : "0",
+          "priceSpecification": { "@type": "PriceSpecification", "description": p.price || "Contact for Price" },
+          "availability": "https://schema.org/InStock",
+          "seller": { "@type": "Organization", "name": "Globalucar", "url": "https://www.global-ucars.com" }
+        },
+        "additionalProperty": Object.entries(p.specs || {}).map(([k, v]) => ({
+          "@type": "PropertyValue", "name": k, "value": v
+        }))
+      };
+      if (isPartPage && p.sub_category) {
+        schema.category = sysLabel + ' / ' + p.sub_category;
+      }
+      document.getElementById('schema-product').textContent = JSON.stringify(schema, null, 2);
+
+      // ── Breadcrumb JSON-LD ──
+      const catMap = { new_car: 'New Cars', used_car: 'Used Cars', parts: 'Auto Parts' };
+      const sysPageMap = { engine: 'parts-engine.html', cooling: 'parts-cooling.html', suspension: 'parts-suspension.html', electrical: 'parts-electrical.html' };
+      const sysNameMap = { engine: 'Engine Parts', cooling: 'Cooling Parts', suspension: 'Suspension Parts', electrical: 'Electrical Parts' };
+      const catLabel = catMap[p.category] || 'Products';
+      let crumbs = [
+        {"@type":"ListItem","position":1,"name":"Home","item":"https://www.global-ucars.com/"},
+        {"@type":"ListItem","position":2,"name":catLabel,"item":"https://www.global-ucars.com/products.html?cat=" + p.category}
+      ];
+      if (p.category === 'parts' && p.part_system && sysPageMap[p.part_system]) {
+        crumbs.push({"@type":"ListItem","position":3,"name":sysNameMap[p.part_system],"item":"https://www.global-ucars.com/" + sysPageMap[p.part_system]});
+        crumbs.push({"@type":"ListItem","position":4,"name":p.name,"item":"https://www.global-ucars.com/product-detail.html?id=" + p.id});
+      } else {
+        crumbs.push({"@type":"ListItem","position":3,"name":p.name,"item":"https://www.global-ucars.com/product-detail.html?id=" + p.id});
+      }
+      var bcSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":crumbs};
+      var bcScript = document.createElement('script');
+      bcScript.type = 'application/ld+json';
+      bcScript.textContent = JSON.stringify(bcSchema);
+      document.head.appendChild(bcScript);
+
+      // ── Breadcrumb ──
+      document.getElementById('breadcrumb-name').textContent = p.name;
+
+      // ── Badge ──
+      const badge = document.getElementById('pd-badge');
+      const sysColors    = { engine: '#e67e22', cooling: '#2980b9', suspension: '#27ae60', electrical: '#8e44ad' };
+      const sysNamesDisp = { engine: 'Engine System', cooling: 'Cooling System', suspension: 'Suspension & Steering', electrical: 'Electrical System' };
+      if (p.category === 'parts' && p.part_system) {
+        badge.textContent = sysNamesDisp[p.part_system] || 'Auto Parts';
+        badge.style.background = sysColors[p.part_system] || '#555';
+      } else if (p.category === 'used_car') {
+        badge.textContent = 'Used Car';
+        badge.classList.add('used');
+      } else if (p.category === 'new_car') {
+        badge.textContent = 'New Car';
+      } else {
+        badge.textContent = 'Auto Parts';
+        badge.classList.add('parts');
+      }
+
+      // ── Sub-category label (parts only) ──
+      if (p.sub_category) {
+        const titleEl = document.getElementById('pd-title');
+        const subLabel = document.createElement('p');
+        subLabel.style.cssText = 'font-size:0.88rem;color:#777;margin-bottom:8px;font-weight:500;';
+        subLabel.textContent = p.part_system_label ? p.part_system_label + ' › ' + p.sub_category : p.sub_category;
+        titleEl.parentNode.insertBefore(subLabel, titleEl);
+      }
+
+      // ── Title ──
+      document.getElementById('pd-title').textContent = p.name;
+
+      // ── Price ──
+      document.getElementById('pd-price').textContent = p.price || 'Contact for Price';
+
+      // ── Tags ──
+      const tagsEl = document.getElementById('pd-tags');
+      tagsEl.innerHTML = (p.tags || []).map(t => `<span class="pd-tag">${t}</span>`).join('');
+
+      // ── Description (SEO-structured with table for parts) ──
+      const descEl = document.getElementById('pd-desc');
+      const rawDesc = p.description || '';
+      if (p.category === 'parts' && rawDesc.length > 50) {
+        // Build a professional, SEO-rich description with specs table inline
+        const specEntries = Object.entries(p.specs || {});
+        const specTableHTML = specEntries.length > 0 ? `
+          <div style="margin:18px 0;">
+            <table style="width:100%;border-collapse:collapse;font-size:0.88rem;">
+              <thead>
+                <tr style="background:#0d1f3c;color:#fff;">
+                  <th style="padding:9px 14px;text-align:left;width:40%;">Specification</th>
+                  <th style="padding:9px 14px;text-align:left;">Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${specEntries.map(([k,v],i) => `
+                <tr style="background:${i%2===0?'#fff':'#f5f7fa'};">
+                  <td style="padding:8px 14px;border-bottom:1px solid #e8e8e8;font-weight:600;color:#2d3748;">${escHtml(k)}</td>
+                  <td style="padding:8px 14px;border-bottom:1px solid #e8e8e8;color:#4a5568;">${escHtml(v)}</td>
+                </tr>`).join('')}
+              </tbody>
+            </table>
+          </div>` : '';
+
+        // OEM refs table (if available)
+        const oemRefs = p.oem_refs || p.oem_numbers || [];
+        const oemTableHTML = oemRefs.length > 0 ? `
+          <div style="margin:14px 0;">
+            <p style="font-weight:700;color:#0d1f3c;margin-bottom:6px;">OEM Cross-Reference Numbers:</p>
+            <table style="width:100%;border-collapse:collapse;font-size:0.85rem;">
+              <thead>
+                <tr style="background:#555;color:#fff;">
+                  <th style="padding:7px 12px;text-align:left;">#</th>
+                  <th style="padding:7px 12px;text-align:left;">OEM Part Number</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${oemRefs.map((ref,i) => `
+                <tr style="background:${i%2===0?'#fff':'#f5f7fa'};">
+                  <td style="padding:7px 12px;border-bottom:1px solid #e8e8e8;color:#718096;">${i+1}</td>
+                  <td style="padding:7px 12px;border-bottom:1px solid #e8e8e8;font-family:monospace;color:#2d3748;">${escHtml(ref)}</td>
+                </tr>`).join('')}
+              </tbody>
+            </table>
+            <p style="font-size:0.75rem;color:#a0aec0;margin-top:6px;">* Cross-reference only. Not OEM-branded.</p>
+          </div>` : '';
+
+        // Check if description already contains HTML markup (e.g. chassis parts with rich HTML)
+        const descHasHtml = /<h[1-6]|<p[\s>]|<li|<table|<strong|<em|<ul|<ol|<div/i.test(rawDesc);
+
+        let descParas;
+        if (descHasHtml) {
+          // HTML description: render as-is, strip duplicate spec/oem tables already embedded
+          // to avoid double-rendering (the data already contains full HTML including its own tables)
+          descParas = rawDesc;
+          // If the HTML description already has its own spec/oem tables, don't append extras
+          const htmlHasTable = /<table/i.test(rawDesc);
+          descEl.innerHTML = descParas + (htmlHasTable ? '' : specTableHTML + oemTableHTML);
+        } else {
+          // Plain-text description: split into paragraphs and append spec/oem tables
+          const sentences = rawDesc.match(/[^.!?]+[.!?](\s|$)/g) || [rawDesc];
+          const paras = [];
+          let para = '';
+          sentences.forEach(s => {
+            para += s;
+            if (para.length > 250) { paras.push(para.trim()); para = ''; }
+          });
+          if (para.trim()) paras.push(para.trim());
+
+          descParas = paras.map(pp => `<p style="margin-bottom:12px;line-height:1.75;">${escHtml(pp)}</p>`).join('');
+          descEl.innerHTML = descParas + specTableHTML + oemTableHTML;
+        }
+      } else if (rawDesc.length > 300) {
+        // Check if description contains HTML tags (common for new cars/parts)
+        if (/<h[1-6]|<p|<li|<table|<strong|<em/i.test(rawDesc)) {
+          // Description is HTML, render directly without escaping
+          descEl.innerHTML = rawDesc;
+        } else {
+          // Plain text, break into paragraphs
+          const sentences = rawDesc.match(/[^.!?]+[.!?](\s|$)/g) || [rawDesc];
+          const paras = [];
+          let para = '';
+          sentences.forEach(s => {
+            para += s;
+            if (para.length > 220) { paras.push(para.trim()); para = ''; }
+          });
+          if (para.trim()) paras.push(para.trim());
+          descEl.innerHTML = paras.map(pp => `<p style="margin-bottom:14px">${escHtml(pp)}</p>`).join('');
+        }
+      } else {
+        descEl.innerHTML = `<p>${escHtml(rawDesc)}</p>`;
+      }
+
+      // ── MOQ ──
+      document.getElementById('pd-moq-val').textContent = p.moq || '1 Piece';
+
+      // ── Gallery ──
+      const imgSources = [];
+      // Priority: local_image (string path) first, then image field, then images[]
+      const localImgPath = typeof p.local_image === 'string' ? p.local_image : null;
+      if (localImgPath) imgSources.push(localImgPath);
+      if (p.image && p.image !== localImgPath) imgSources.push(p.image);
+      (p.images || []).forEach(img => {
+        if (img && img !== localImgPath && img !== p.image && !img.includes('cowtotal') && !img.includes('placeholder')) {
+          imgSources.push(img);
+        }
+      });
+      // Fallback placeholder
+      if (imgSources.length === 0) imgSources.push('assets/products/placeholder.jpg');
+
+      const mainImg = document.getElementById('pd-main-img');
+      const thumbsEl = document.getElementById('pd-thumbs');
+
+      if (imgSources.length > 0) {
+        mainImg.src = imgSources[0];
+        // SEO: use alt_text field for meaningful image description
+        mainImg.alt = p.alt_text || `${p.name} wholesale export China`;
+        mainImg.title = p.name;
+        mainImg.onclick = () => openLightbox(imgSources[0]);
+      }
+
+      const altBase = p.alt_text || `${p.name} wholesale export China`;
+      thumbsEl.innerHTML = imgSources.slice(0, 5).map((src, i) =>
+        `<img src="${src}" alt="${escHtml(altBase + (i > 0 ? ' - view ' + (i+1) : ''))}" 
+              class="pd-thumb ${i === 0 ? 'active' : ''}" 
+              loading="lazy"
+              onclick="switchImage(this, '${src}')" />`
+      ).join('');
+
+      // ── Specs ──
+      const specsEl = document.getElementById('pd-specs-grid');
+      const specEntries = Object.entries(p.specs || {});
+      if (specEntries.length > 0) {
+        specsEl.innerHTML = specEntries.map(([k, v]) =>
+          `<div class="pd-spec-row">
+            <div class="pd-spec-key">${escHtml(k)}</div>
+            <div class="pd-spec-val">${escHtml(v)}</div>
+          </div>`
+        ).join('');
+      } else {
+        specsEl.innerHTML = `<div class="pd-spec-row"><div class="pd-spec-key">Specifications</div><div class="pd-spec-val">Please contact us for detailed specifications.</div></div>`;
+      }
+
+      // ── Related Products (same system/category, different ID) ──
+      let related = [];
+      if (p.category === 'parts' && p.part_system) {
+        // Same system first
+        related = all.filter(q => q.part_system === p.part_system && q.id !== p.id).slice(0, 4);
+        if (related.length < 4) {
+          const more = all.filter(q => q.category === 'parts' && q.id !== p.id && !related.includes(q));
+          related = related.concat(more).slice(0, 4);
+        }
+      } else {
+        related = all.filter(q => q.category === p.category && q.id !== p.id).slice(0, 4);
+      }
+
+      const relatedEl = document.getElementById('pd-related-grid');
+      if (related.length > 0) {
+        relatedEl.innerHTML = related.map(r => {
+          const imgSrc = (typeof r.local_image === 'string' ? r.local_image : null) || r.image || (r.images && r.images[0]) || 'assets/products/placeholder.jpg';
+          return `<a href="product-detail.html?id=${r.id}" class="pd-related-card">
+            <img src="${imgSrc}" alt="${escHtml(r.name)}" class="pd-related-img"
+                 onerror="this.src='assets/products/placeholder.jpg'" />
+            <div class="pd-related-info">
+              <div class="pd-related-name">${escHtml(r.name)}</div>
+              <div class="pd-related-price">${escHtml(r.price || 'Contact')}</div>
+            </div>
+          </a>`;
+        }).join('');
+      }
+
+      // ── Inquiry button URL ──
+      document.getElementById('pd-inquiry-btn').href =
+        `contact.html?product=${encodeURIComponent(p.name)}&id=${p.id}`;
+
+      // ── Parts-only extra sections ──
+      if (p.category === 'parts') {
+        document.getElementById('pd-parts-extra').style.display = 'grid';
+        document.getElementById('sys-nav-strip').style.display = 'block';
+
+        // Highlight active system nav link
+        const sysNavId = 'snav-' + (p.part_system || '');
+        const snavEl = document.getElementById(sysNavId);
+        if (snavEl) snavEl.classList.add('active');
+
+        // OEM refs
+        const oemRefs = p.oem_refs || p.oem_numbers || [];
+        const oemTbody = document.getElementById('oem-tbody');
+        if (oemRefs.length > 0) {
+          oemTbody.innerHTML = oemRefs.map((ref, i) =>
+            `<tr><td>${i + 1}</td><td>${escHtml(ref)}</td></tr>`
+          ).join('');
+        } else {
+          oemTbody.innerHTML = '<tr><td>—</td><td>Available on request. Contact us with your vehicle info.</td></tr>';
+        }
+
+        // Compatible makes/models
+        const compatMakes = p.compatible_makes || [];
+        const compatGrid = document.getElementById('compat-grid');
+        if (compatMakes.length > 0) {
+          const topMakes = ['Toyota', 'Honda', 'Nissan', 'Hyundai', 'Kia'];
+          compatGrid.innerHTML = compatMakes.map(m =>
+            `<span class="compat-tag ${topMakes.includes(m) ? 'primary' : ''}">${escHtml(m)}</span>`
+          ).join('');
+        } else {
+          compatGrid.innerHTML = '<span class="compat-tag">Contact us for compatibility info</span>';
+        }
+
+        // Features
+        const features = p.features || [];
+        const featList = document.getElementById('features-list');
+        if (features.length > 0) {
+          featList.innerHTML = features.map(f => `<li>${escHtml(f)}</li>`).join('');
+        } else {
+          featList.innerHTML = '<li>OEM-equivalent quality</li><li>ISO/TS 16949 compliant</li><li>FOB Guangzhou — Nansha Port</li>';
+        }
+      }
+    }
+
+    // Lightbox
+    function openLightbox(src) {
+      const lb = document.getElementById('pd-lightbox');
+      document.getElementById('pd-lightbox-img').src = src;
+      lb.classList.add('active');
+    }
+    document.getElementById('pd-lightbox-close').onclick = () => {
+      document.getElementById('pd-lightbox').classList.remove('active');
+    };
+    document.getElementById('pd-lightbox').onclick = function (e) {
+      if (e.target === this) this.classList.remove('active');
+    };
+
+    // Thumbnail switch
+    window.switchImage = function (thumb, src) {
+      document.getElementById('pd-main-img').src = src;
+      document.getElementById('pd-main-img').onclick = () => openLightbox(src);
+      document.querySelectorAll('.pd-thumb').forEach(t => t.classList.remove('active'));
+      thumb.classList.add('active');
+    };
+
+    function escHtml(s) {
+      return String(s || '')
+        .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+  })();
+  </script>
+</body>
+</html>

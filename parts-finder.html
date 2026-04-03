@@ -1,0 +1,1618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Auto Parts Finder — Search by Make, Model, Year | Globalucar China Auto Parts</title>
+  <meta name="description" content="Find the right OEM and aftermarket auto parts for your vehicle. Search by Make, Model, Year and system — engine, cooling, suspension, electrical. Fast B2B sourcing from Guangzhou, China." />
+  <meta name="keywords" content="auto parts finder, find parts by make model year, OEM parts search, engine parts, cooling parts, suspension parts, electrical parts, China auto parts supplier" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.global-ucars.com/parts-finder.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:title"       content="Auto Parts Finder — Search by Make, Model, Year | Globalucar" />
+  <meta property="og:description" content="Find the right OEM and aftermarket auto parts for your vehicle. Search by Make, Model, Year and system. Fast B2B sourcing from Guangzhou." />
+  <meta property="og:url"         content="https://www.global-ucars.com/parts-finder.html" />
+  <meta property="og:image"       content="https://www.global-ucars.com/logo.png" />
+  <meta property="og:site_name"   content="Globalucar — China Vehicle &amp; Parts Export" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content="Auto Parts Finder — Search by Make, Model, Year | Globalucar" />
+  <meta name="twitter:description" content="Find the right OEM and aftermarket auto parts for your vehicle. Search by Make, Model, Year and system. Fast B2B sourcing from Guangzhou." />
+  <meta name="twitter:image"       content="https://www.global-ucars.com/logo.png" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Auto Parts Finder",
+    "url": "https://www.global-ucars.com/parts-finder.html",
+    "description": "Search auto parts by vehicle Make, Model, Year and system category.",
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type":"ListItem","position":1,"name":"Home","item":"https://www.global-ucars.com/"},
+        {"@type":"ListItem","position":2,"name":"Auto Parts","item":"https://www.global-ucars.com/products.html?cat=parts"},
+        {"@type":"ListItem","position":3,"name":"Parts Finder","item":"https://www.global-ucars.com/parts-finder.html"}
+      ]
+    }
+  }
+  </script>
+
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* ── Parts Finder Page ──────────────────────────── */
+    .finder-hero {
+      background: linear-gradient(135deg, #0d1f3c 0%, #1a3560 60%, #c8102e 100%);
+      padding: 90px 20px 70px;
+      text-align: center;
+      color: #fff;
+    }
+    .finder-hero h1 {
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      font-weight: 900;
+      margin-bottom: 14px;
+      line-height: 1.2;
+    }
+    .finder-hero p {
+      font-size: 1.1rem;
+      opacity: 0.88;
+      max-width: 600px;
+      margin: 0 auto 32px;
+    }
+
+    /* ── Finder Box ── */
+    .finder-box-wrap {
+      background: #fff;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.15);
+      border-radius: 16px;
+      padding: 36px 40px;
+      max-width: 860px;
+      margin: -40px auto 0;
+      position: relative;
+      z-index: 10;
+    }
+    .finder-box-wrap h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 24px;
+      color: #0d1f3c;
+      border-left: 4px solid #c8102e;
+      padding-left: 12px;
+    }
+    .finder-selects {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    @media (max-width: 900px) {
+      .finder-selects { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .finder-selects { grid-template-columns: 1fr 1fr; }
+      .finder-box-wrap { padding: 24px 16px; }
+      .finder-hero h1 { font-size: 1.8rem; }
+    }
+
+    .finder-select-group { display: flex; flex-direction: column; gap: 6px; }
+    .finder-select-group label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #718096;
+    }
+    .finder-select-group select {
+      width: 100%;
+      padding: 10px 14px;
+      border: 2px solid #e2e8f0;
+      border-radius: 8px;
+      font-size: 0.92rem;
+      background: #f8f9fa;
+      color: #2d3748;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23718096' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      cursor: pointer;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .finder-select-group select:focus {
+      outline: none;
+      border-color: #c8102e;
+      box-shadow: 0 0 0 3px rgba(200,16,46,0.12);
+    }
+    .finder-select-group select:disabled { opacity: 0.45; cursor: not-allowed; }
+
+    .finder-go-btn {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      background: #c8102e;
+      color: #fff;
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+      margin-top: 8px;
+    }
+    .finder-go-btn:hover { background: #a50d26; }
+    .finder-go-btn:active { transform: scale(0.99); }
+
+    /* ── Tips ── */
+    .finder-tips {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+      padding-top: 18px;
+      border-top: 1px solid #eee;
+    }
+    .finder-tip {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      color: #718096;
+    }
+    .finder-tip .tip-icon { font-size: 1.1rem; }
+
+    /* ── Results Section ── */
+    .finder-results-wrap {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    .results-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .results-count {
+      font-size: 1.05rem;
+      color: #2d3748;
+    }
+    .results-count strong { color: #c8102e; }
+
+    /* ── Product Cards (same as products.html) ── */
+    .parts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 24px;
+    }
+    .part-card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+      position: relative;
+    }
+    .part-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 28px rgba(0,0,0,0.14);
+    }
+    .part-card-img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      background: #f5f5f5;
+    }
+    .part-card-img-ph {
+      width: 100%;
+      aspect-ratio: 1;
+      background: linear-gradient(135deg,#f0f2f5,#e2e8f0);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+    }
+    .part-card-body { padding: 16px; }
+    .part-card-system {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #c8102e;
+      margin-bottom: 6px;
+    }
+    .part-card-name {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #0d1f3c;
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+    .part-card-compat {
+      font-size: 0.8rem;
+      color: #718096;
+      margin-bottom: 10px;
+    }
+    .part-card-price {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #2d3748;
+    }
+    .part-card-cta {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 7px 18px;
+      background: #0d1f3c;
+      color: #fff;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+    .part-card:hover .part-card-cta { background: #c8102e; }
+
+    /* ── System category cards ── */
+    .system-cats {
+      max-width: 1200px;
+      margin: 56px auto 0;
+      padding: 0 20px 60px;
+    }
+    .system-cats h2 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #0d1f3c;
+      margin-bottom: 8px;
+    }
+    .system-cats p { color: #718096; margin-bottom: 32px; }
+    .sys-cat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 24px;
+    }
+    .sys-cat-card {
+      border-radius: 14px;
+      overflow: hidden;
+      position: relative;
+      min-height: 180px;
+      display: flex;
+      align-items: flex-end;
+      cursor: pointer;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.12);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .sys-cat-card:hover { transform: translateY(-5px); box-shadow: 0 10px 32px rgba(0,0,0,0.18); }
+    .sys-cat-bg {
+      position: absolute; inset: 0;
+      background-size: cover;
+      background-position: center;
+      transition: transform 0.4s;
+    }
+    .sys-cat-card:hover .sys-cat-bg { transform: scale(1.05); }
+    .sys-cat-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(13,31,60,0.88) 0%, rgba(13,31,60,0.2) 70%);
+    }
+    .sys-cat-body {
+      position: relative;
+      z-index: 1;
+      padding: 20px 22px;
+      width: 100%;
+      color: #fff;
+    }
+    .sys-cat-icon { font-size: 2rem; margin-bottom: 8px; }
+    .sys-cat-body h3 { font-size: 1.25rem; font-weight: 800; margin-bottom: 4px; }
+    .sys-cat-body p { font-size: 0.83rem; opacity: 0.85; margin-bottom: 12px; }
+    .sys-cat-count {
+      display: inline-block;
+      background: rgba(200,16,46,0.85);
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    /* ── No results ── */
+    .finder-empty {
+      text-align: center;
+      padding: 60px 20px;
+      color: #718096;
+    }
+    .finder-empty .empty-icon { font-size: 3rem; margin-bottom: 16px; }
+    .finder-empty h3 { font-size: 1.2rem; font-weight: 700; color: #2d3748; margin-bottom: 8px; }
+
+    /* ── Popular Makes ── */
+    .popular-makes {
+      max-width: 1200px;
+      margin: 0 auto 48px;
+      padding: 0 20px;
+    }
+    .popular-makes h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #0d1f3c;
+      margin-bottom: 14px;
+    }
+    .make-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .make-tag {
+      padding: 7px 16px;
+      border: 2px solid #e2e8f0;
+      border-radius: 24px;
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: #2d3748;
+      cursor: pointer;
+      transition: all 0.18s;
+      background: #fff;
+    }
+    .make-tag:hover, .make-tag.active {
+      background: #0d1f3c;
+      border-color: #0d1f3c;
+      color: #fff;
+    }
+
+    /* ── Featured Parts Grid ── */
+    .featured-parts-section {
+      max-width: 1200px;
+      margin: 48px auto 0;
+      padding: 0 20px;
+    }
+    .featured-parts-section h2 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #0d1f3c;
+      margin-bottom: 6px;
+      text-align: center;
+    }
+    .featured-parts-section > p {
+      text-align: center;
+      color: #718096;
+      margin-bottom: 28px;
+      font-size: 0.95rem;
+    }
+    .fp-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+    }
+    @media (max-width: 900px) {
+      .fp-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .fp-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    .fp-card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 14px rgba(0,0,0,0.07);
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+    }
+    .fp-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 28px rgba(0,0,0,0.13);
+    }
+    .fp-card-img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      background: #f5f5f5;
+    }
+    .fp-card-badge {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-bottom: 6px;
+    }
+    .fp-card-badge.engine    { background: #fef3e2; color: #c2410c; }
+    .fp-card-badge.cooling   { background: #e0f2fe; color: #0369a1; }
+    .fp-card-badge.suspension{ background: #ecfdf5; color: #047857; }
+    .fp-card-badge.electrical{ background: #f3e8ff; color: #7e22ce; }
+    .fp-card-body { padding: 14px 16px 16px; }
+    .fp-card-name {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #0d1f3c;
+      line-height: 1.35;
+      margin-bottom: 6px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .fp-card-compat {
+      font-size: 0.76rem;
+      color: #718096;
+      margin-bottom: 8px;
+    }
+    .fp-card-price {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #c8102e;
+    }
+    .fp-card-cta {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 5px 14px;
+      background: #0d1f3c;
+      color: #fff;
+      border-radius: 5px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+    .fp-card:hover .fp-card-cta { background: #c8102e; }
+
+    /* ── Global Brands Wall ── */
+    .brands-wall {
+      max-width: 1200px;
+      margin: 0 auto 20px;
+      padding: 0 20px;
+    }
+    .brands-wall-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+    .brands-wall-header h2 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #0d1f3c;
+      margin: 0;
+    }
+    .brands-wall-header .brands-line {
+      flex: 1;
+      height: 2px;
+      background: linear-gradient(to right, #c8102e, transparent);
+    }
+    .brands-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: flex-start;
+      margin-bottom: 10px;
+    }
+    .brand-chip {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 18px;
+      background: #fff;
+      border: 1.5px solid #e8ecf1;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.22s ease;
+      text-decoration: none;
+      color: #2d3748;
+    }
+    .brand-chip:hover {
+      border-color: #c8102e;
+      box-shadow: 0 4px 16px rgba(200,16,46,0.12);
+      transform: translateY(-2px);
+      color: #c8102e;
+    }
+    .brand-chip img {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+      border-radius: 6px;
+      flex-shrink: 0;
+    }
+    .brand-chip .brand-label {
+      font-size: 0.92rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .brand-section-label {
+      width: 100%;
+      text-align: left;
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: #718096;
+      margin: 18px 0 10px;
+      padding-bottom: 6px;
+      border-bottom: 1.5px solid #e2e8f0;
+    }
+    @media (max-width: 768px) {
+      .brand-chip { padding: 8px 12px; }
+      .brand-chip img { width: 36px; height: 36px; }
+      .brand-chip .brand-label { font-size: 0.82rem; }
+      .brands-wall-header h2 { font-size: 1.3rem; }
+    }
+
+    /* ── Featured Parts Section (new position) ── */
+    .featured-wall {
+      max-width: 1200px;
+      margin: 0 auto 40px;
+      padding: 0 20px;
+    }
+    .featured-wall-header {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+    .featured-wall-header h2 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #0d1f3c;
+      margin-bottom: 6px;
+    }
+    .featured-wall-header p {
+      color: #718096;
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-brand" aria-label="Globalucar Home">
+        <img src="assets/VEHICLE-logo-nav.jpg" alt="Globalucar Vehicle" class="nav-logo" />
+        <span class="nav-tagline">Car &amp; Auto Parts One-Stop Solution</span>
+      </a>
+      <ul class="nav-menu" role="menubar">
+        <li role="none"><a href="index.html" role="menuitem">Home</a></li>
+        <li role="none"><a href="products.html" role="menuitem">Products</a></li>
+        <li role="none"><a href="parts-finder.html" role="menuitem" class="active">Parts Finder</a></li>
+        <li role="none"><a href="kingmay.html"      role="menuitem">Kingmay Parts</a></li>
+        <li role="none"><a href="services.html" role="menuitem">Services</a></li>
+        <li role="none"><a href="about.html" role="menuitem">About Us</a></li>
+        <li role="none"><a href="contact.html" role="menuitem">Contact</a></li>
+      </ul>
+      <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section class="finder-hero">
+    <div class="container">
+      <p style="font-size:0.85rem;opacity:0.7;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:10px;">⚙️ Vehicle Compatibility Search</p>
+      <h1>Find the Right Part<br/>for Your Vehicle</h1>
+      <p>Select your vehicle details below to instantly match compatible OEM &amp; aftermarket parts from our wholesale catalog. Serving importers across 50+ countries.</p>
+    </div>
+  </section>
+
+  <!-- ===== GLOBAL BRANDS WALL ===== -->
+  <div class="brands-wall">
+    <div class="brands-wall-header">
+      <span style="font-size:1.3rem;">🌐</span>
+      <h2>Global Brands</h2>
+      <div class="brands-line"></div>
+    </div>
+
+    <!-- Korean -->
+    <div class="brand-section-label">Korean</div>
+    <div class="brands-row">
+      <div class="brand-chip" onclick="selectBrand('Hyundai')">
+        <img src="assets/brands/hyundai.jpg" alt="Hyundai" onerror="this.style.display='none'" />
+        <span class="brand-label">Hyundai</span>
+      </div>
+      <div class="brand-chip" onclick="selectBrand('Kia')">
+        <img src="assets/brands/kia.jpg" alt="Kia" onerror="this.style.display='none'" />
+        <span class="brand-label">Kia</span>
+      </div>
+      <div class="brand-chip" onclick="selectBrand('Genesis')">
+        <img src="assets/brands/genesis.jpg" alt="Genesis" onerror="this.style.display='none'" />
+        <span class="brand-label">Genesis</span>
+      </div>
+      <div class="brand-chip" onclick="selectBrand('SsangYong')">
+        <img src="assets/brands/kgm.jpg" alt="KGM" onerror="this.style.display='none'" />
+        <span class="brand-label">KGM</span>
+      </div>
+      <div class="brand-chip" onclick="selectBrand('Daewoo')">
+        <img src="assets/brands/gm_korea.jpg" alt="GM Korea" onerror="this.style.display='none'" />
+        <span class="brand-label">GM Korea</span>
+      </div>
+    </div>
+
+    <!-- Japanese -->
+    <div class="brand-section-label">Japanese</div>
+    <div class="brands-row">
+      <div class="brand-chip" onclick="selectBrand('Toyota')">
+        <img src="assets/brands/toyota.jpg" alt="Toyota" onerror="this.style.display='none'" />
+        <span class="brand-label">Toyota</span>
+      </div>
+      <div class="brand-chip" onclick="selectBrand('Honda')">
+        <img src="assets/brands/honda.jpg" alt="Honda" onerror="this.style.display='none'" />
+        <span class="brand-label">Honda</span>
+      </div>
+      <div class="brand-chip" onclick="selectBrand('Nissan')">
+        <img src="assets/brands/nissan.jpg" alt="Nissan" onerror="this.style.display='none'" />
+        <span class="brand-label">Nissan</span>
+      </div>
+      <div class="brand-chip" onclick="selectBrand('Mazda')">
+        <img src="assets/brands/mazda.jpg" alt="Mazda" onerror="this.style.display='none'" />
+        <span class="brand-label">Mazda</span>
+      </div>
+      <div class="brand-chip" onclick="selectBrand('Mitsubishi')">
+        <img src="assets/brands/mitsubishi.jpg" alt="Mitsubishi" onerror="this.style.display='none'" />
+        <span class="brand-label">Mitsubishi</span>
+      </div>
+      <div class="brand-chip" onclick="selectBrand('Suzuki')">
+        <img src="assets/brands/suzuki.jpg" alt="Suzuki" onerror="this.style.display='none'" />
+        <span class="brand-label">Suzuki</span>
+      </div>
+      <div class="brand-chip" onclick="selectBrand('Subaru')">
+        <img src="assets/brands/subaru.jpg" alt="Subaru" onerror="this.style.display='none'" />
+        <span class="brand-label">Subaru</span>
+      </div>
+      <div class="brand-chip" onclick="selectBrand('Isuzu')">
+        <img src="assets/brands/isuzu.jpg" alt="Isuzu" onerror="this.style.display='none'" />
+        <span class="brand-label">Isuzu</span>
+      </div>
+    </div>
+
+    <!-- Chinese Domestic + EV Startups -->
+    <div class="brand-section-label">Chinese Domestic &amp; EV Startups</div>
+    <div class="brands-row">
+      <div class="brand-chip" onclick="selectBrand('BYD')">
+        <img src="assets/brands/byd.jpg" alt="BYD" onerror="this.style.display='none'" />
+        <span class="brand-label">BYD</span>
+      </div>
+      <div class="brand-chip" onclick="selectBrand('Geely')">
+        <img src="assets/brands/geely.jpg" alt="Geely" onerror="this.style.display='none'" />
+        <span class="brand-label">Geely</span>
+      </div>
+      <div class="brand-chip" onclick="selectBrand('Changan')">
+        <img src="assets/brands/changan.jpg" alt="Changan" onerror="this.style.display='none'" />
+        <span class="brand-label">Changan</span>
+      </div>
+      <div class="brand-chip" onclick="selectBrand('Chery')">
+        <img src="assets/brands/chery.jpg" alt="Chery" onerror="this.style.display='none'" />
+        <span class="brand-label">Chery</span>
+      </div>
+      <div class="brand-chip" onclick="selectBrand('GAC')">
+        <img src="assets/brands/gac.jpg" alt="GAC" onerror="this.style.display='none'" />
+        <span class="brand-label">GAC</span>
+      </div>
+      <div class="brand-chip" onclick="selectBrand('FAW')">
+        <img src="assets/brands/faw.jpg" alt="FAW" onerror="this.style.display='none'" />
+        <span class="brand-label">FAW / Hongqi</span>
+      </div>
+      <div class="brand-chip" onclick="selectBrand('Dongfeng')">
+        <img src="assets/brands/dongfeng.jpg" alt="Dongfeng" onerror="this.style.display='none'" />
+        <span class="brand-label">Dongfeng</span>
+      </div>
+      <div class="brand-chip" onclick="selectBrand('Great Wall')">
+        <img src="assets/brands/great_wall.jpg" alt="Great Wall" onerror="this.style.display='none'" />
+        <span class="brand-label">Great Wall / Haval</span>
+      </div>
+      <div class="brand-chip" onclick="selectBrand('Jetta')">
+        <img src="assets/brands/jetta.jpg" alt="Jetta" onerror="this.style.display='none'" />
+        <span class="brand-label">Jetta</span>
+      </div>
+      <div class="brand-chip" onclick="selectBrand('MG')">
+        <img src="assets/brands/mg.jpg" alt="MG" onerror="this.style.display='none'" />
+        <span class="brand-label">MG</span>
+      </div>
+      <div class="brand-chip" onclick="selectBrand('XPENG')">
+        <img src="assets/brands/xpeng.jpg" alt="XPENG" onerror="this.style.display='none'" />
+        <span class="brand-label">XPENG</span>
+      </div>
+      <div class="brand-chip" onclick="selectBrand('NIO')">
+        <img src="assets/brands/nio.jpg" alt="NIO" onerror="this.style.display='none'" />
+        <span class="brand-label">NIO</span>
+      </div>
+      <div class="brand-chip" onclick="selectBrand('Li Auto')">
+        <img src="assets/brands/li_auto.jpg" alt="Li Auto" onerror="this.style.display='none'" />
+        <span class="brand-label">Li Auto</span>
+      </div>
+      <div class="brand-chip" onclick="selectBrand('Zeekr')">
+        <img src="assets/brands/zeekr.jpg" alt="Zeekr" onerror="this.style.display='none'" />
+        <span class="brand-label">Zeekr</span>
+      </div>
+      <div class="brand-chip" onclick="selectBrand('Xiaomi')">
+        <img src="assets/brands/xiaomi.jpg" alt="Xiaomi" onerror="this.style.display='none'" />
+        <span class="brand-label">Xiaomi Auto</span>
+      </div>
+      <div class="brand-chip" onclick="selectBrand('AITO')">
+        <img src="assets/brands/aito.jpg" alt="AITO" onerror="this.style.display='none'" />
+        <span class="brand-label">AITO</span>
+      </div>
+      <div class="brand-chip" onclick="selectBrand('AVATR')">
+        <img src="assets/brands/avatr.jpg" alt="AVATR" onerror="this.style.display='none'" />
+        <span class="brand-label">AVATR</span>
+      </div>
+      <div class="brand-chip" onclick="selectBrand('LINK & CO')">
+        <img src="assets/brands/lynk_co.jpg" alt="Lynk & Co" onerror="this.style.display='none'" />
+        <span class="brand-label">Lynk &amp; Co</span>
+      </div>
+      <div class="brand-chip" onclick="selectBrand('Leapmotor')">
+        <img src="assets/brands/leapmotor.jpg" alt="Leapmotor" onerror="this.style.display='none'" />
+        <span class="brand-label">Leapmotor</span>
+      </div>
+      <div class="brand-chip" onclick="selectBrand('Foton')">
+        <img src="assets/brands/foton.jpg" alt="Foton" onerror="this.style.display='none'" />
+        <span class="brand-label">Foton</span>
+      </div>
+      <div class="brand-chip" onclick="selectBrand('Jetour')">
+        <img src="assets/brands/jetour.jpg" alt="Jetour" onerror="this.style.display='none'" />
+        <span class="brand-label">Jetour</span>
+      </div>
+      <div class="brand-chip" onclick="selectBrand('Tank')">
+        <img src="assets/brands/tank.jpg" alt="Tank" onerror="this.style.display='none'" />
+        <span class="brand-label">Tank</span>
+      </div>
+    </div>
+
+    <!-- European & American -->
+    <div class="brand-section-label">European &amp; American</div>
+    <div class="brands-row">
+      <div class="brand-chip" onclick="selectBrand('Mercedes-Benz')">
+        <img src="assets/brands/mercedes.jpg" alt="Mercedes-Benz" onerror="this.style.display='none'" />
+        <span class="brand-label">Mercedes-Benz</span>
+      </div>
+      <div class="brand-chip" onclick="selectBrand('BMW')">
+        <img src="assets/brands/bmw.jpg" alt="BMW" onerror="this.style.display='none'" />
+        <span class="brand-label">BMW</span>
+      </div>
+      <div class="brand-chip" onclick="selectBrand('Volkswagen')">
+        <img src="assets/brands/volkswagen.jpg" alt="Volkswagen" onerror="this.style.display='none'" />
+        <span class="brand-label">Volkswagen</span>
+      </div>
+      <div class="brand-chip" onclick="selectBrand('Audi')">
+        <img src="assets/brands/audi.jpg" alt="Audi" onerror="this.style.display='none'" />
+        <span class="brand-label">Audi</span>
+      </div>
+      <div class="brand-chip" onclick="selectBrand('Ford')">
+        <img src="assets/brands/ford.jpg" alt="Ford" onerror="this.style.display='none'" />
+        <span class="brand-label">Ford</span>
+      </div>
+      <div class="brand-chip" onclick="selectBrand('Land Rover')">
+        <img src="assets/brands/land_rover.jpg" alt="Land Rover" onerror="this.style.display='none'" />
+        <span class="brand-label">Land Rover</span>
+      </div>
+      <div class="brand-chip" onclick="selectBrand('Volvo')">
+        <img src="assets/brands/volvo.jpg" alt="Volvo" onerror="this.style.display='none'" />
+        <span class="brand-label">Volvo</span>
+      </div>
+      <div class="brand-chip" onclick="selectBrand('Porsche')">
+        <img src="assets/brands/porsche.jpg" alt="Porsche" onerror="this.style.display='none'" />
+        <span class="brand-label">Porsche</span>
+      </div>
+      <div class="brand-chip" onclick="selectBrand('GM / Chevrolet')">
+        <img src="assets/brands/chevrolet.jpg" alt="Chevrolet" onerror="this.style.display='none'" />
+        <span class="brand-label">Chevrolet</span>
+      </div>
+      <div class="brand-chip" onclick="selectBrand('Tesla')">
+        <img src="assets/brands/tesla.jpg" alt="Tesla" onerror="this.style.display='none'" />
+        <span class="brand-label">Tesla</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== FEATURED AUTO PARTS ===== -->
+  <div class="featured-wall">
+    <div class="featured-wall-header">
+      <h2>⚙️ Featured Auto Parts</h2>
+      <p>Top-selling parts across all systems — click to view full specs &amp; compatibility</p>
+    </div>
+  </div>
+
+  <!-- ===== FINDER BOX ===== -->
+  <div class="container">
+    <div class="finder-box-wrap">
+      <h2>🔍 Search by Vehicle</h2>
+      <div class="finder-selects">
+        <div class="finder-select-group">
+          <label for="sel-make">Select Make</label>
+          <select id="sel-make">
+            <option value="">-- Make --</option>
+          </select>
+        </div>
+        <div class="finder-select-group">
+          <label for="sel-model">Select Model</label>
+          <select id="sel-model" disabled>
+            <option value="">-- Model --</option>
+          </select>
+        </div>
+        <div class="finder-select-group">
+          <label for="sel-year">Select Year</label>
+          <select id="sel-year" disabled>
+            <option value="">-- Year --</option>
+          </select>
+        </div>
+        <div class="finder-select-group">
+          <label for="sel-system">System</label>
+          <select id="sel-system">
+            <option value="">All Systems</option>
+            <option value="engine">Engine System</option>
+            <option value="cooling">Cooling System</option>
+            <option value="suspension">Suspension &amp; Chassis</option>
+            <option value="electrical">Electrical System</option>
+          </select>
+        </div>
+        <div class="finder-select-group">
+          <label for="sel-part">Part Type</label>
+          <select id="sel-part" disabled>
+            <option value="">All Parts</option>
+          </select>
+        </div>
+      </div>
+      <button class="finder-go-btn" id="btn-search" onclick="runSearch()">
+        🔎 FIND PARTS — GO
+      </button>
+      <div class="finder-tips">
+        <div class="finder-tip"><span class="tip-icon">✅</span> OEM cross-reference available</div>
+        <div class="finder-tip"><span class="tip-icon">📦</span> MOQ from 10 pcs/SKU</div>
+        <div class="finder-tip"><span class="tip-icon">🚢</span> FOB Nansha Port, Guangzhou</div>
+        <div class="finder-tip"><span class="tip-icon">💬</span> Quote within 24 hrs</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== FEATURED PARTS (3 rows x 4 cols) ===== -->
+  <div class="featured-parts-section" style="margin-top:0;">
+    <div class="fp-grid">
+
+      <!-- Row 1: Engine -->
+      <div class="fp-card" onclick="location.href='product-detail.html?id=31'">
+        <img class="fp-card-img" src="assets/parts/part_031_ignition_coil.jpg" alt="Ignition Coil" loading="lazy" onerror="this.style.background='#eee'" />
+        <div class="fp-card-body">
+          <span class="fp-card-badge engine">Engine</span>
+          <div class="fp-card-name">Ignition Coil</div>
+          <div class="fp-card-compat">Fits: Toyota, Honda, Nissan</div>
+          <div class="fp-card-price">$8.50 - $45.00</div>
+          <span class="fp-card-cta">View Details</span>
+        </div>
+      </div>
+      <div class="fp-card" onclick="location.href='product-detail.html?id=43'">
+        <img class="fp-card-img" src="assets/parts/part_43.jpg" alt="Ignition Wire Set" loading="lazy" onerror="this.style.background='#eee'" />
+        <div class="fp-card-body">
+          <span class="fp-card-badge engine">Engine</span>
+          <div class="fp-card-name">Ignition Wire Set</div>
+          <div class="fp-card-compat">Fits: Toyota, Nissan, Honda</div>
+          <div class="fp-card-price">$15.00 - $55.00</div>
+          <span class="fp-card-cta">View Details</span>
+        </div>
+      </div>
+      <div class="fp-card" onclick="location.href='product-detail.html?id=40'">
+        <img class="fp-card-img" src="assets/parts/part_040_vvt_solenoid.jpg" alt="VVT Solenoid" loading="lazy" onerror="this.style.background='#eee'" />
+        <div class="fp-card-body">
+          <span class="fp-card-badge engine">Engine</span>
+          <div class="fp-card-name">VVT Solenoid (Oil Control Valve)</div>
+          <div class="fp-card-compat">Fits: Toyota, Honda, Nissan</div>
+          <div class="fp-card-price">$45.00 - $180.00</div>
+          <span class="fp-card-cta">View Details</span>
+        </div>
+      </div>
+
+      <!-- Cooling -->
+      <div class="fp-card" onclick="location.href='product-detail.html?id=46'">
+        <img class="fp-card-img" src="assets/parts/part_46.jpg" alt="Water Pump" loading="lazy" onerror="this.style.background='#eee'" />
+        <div class="fp-card-body">
+          <span class="fp-card-badge cooling">Cooling</span>
+          <div class="fp-card-name">Water Pump</div>
+          <div class="fp-card-compat">Fits: Toyota, Honda, Nissan</div>
+          <div class="fp-card-price">$25.00 - $95.00</div>
+          <span class="fp-card-cta">View Details</span>
+        </div>
+      </div>
+
+      <!-- Row 2: Cooling + Suspension -->
+      <div class="fp-card" onclick="location.href='product-detail.html?id=51'">
+        <img class="fp-card-img" src="assets/parts/part_051_coolant_thermostat.jpg" alt="Coolant Thermostat" loading="lazy" onerror="this.style.background='#eee'" />
+        <div class="fp-card-body">
+          <span class="fp-card-badge cooling">Cooling</span>
+          <div class="fp-card-name">Coolant Thermostat</div>
+          <div class="fp-card-compat">Fits: Toyota, Honda, Nissan</div>
+          <div class="fp-card-price">$8.00 - $35.00</div>
+          <span class="fp-card-cta">View Details</span>
+        </div>
+      </div>
+      <div class="fp-card" onclick="location.href='product-detail.html?id=54'">
+        <img class="fp-card-img" src="assets/parts/part_054_car_radiators.jpg" alt="Radiator" loading="lazy" onerror="this.style.background='#eee'" />
+        <div class="fp-card-body">
+          <span class="fp-card-badge cooling">Cooling</span>
+          <div class="fp-card-name">Radiator</div>
+          <div class="fp-card-compat">Fits: Toyota, Honda, Nissan</div>
+          <div class="fp-card-price">$55.00 - $250.00</div>
+          <span class="fp-card-cta">View Details</span>
+        </div>
+      </div>
+      <div class="fp-card" onclick="location.href='product-detail.html?id=188'">
+        <img class="fp-card-img" src="assets/parts/part_188_wheel_bearing_tucson.jpg" alt="Wheel Hub Bearing" loading="lazy" onerror="this.style.background='#eee'" />
+        <div class="fp-card-body">
+          <span class="fp-card-badge suspension">Suspension</span>
+          <div class="fp-card-name">Front Wheel Hub Bearing – Tucson / Sportage</div>
+          <div class="fp-card-compat">Fits: Hyundai Tucson, Kia Sportage</div>
+          <div class="fp-card-price">$15.00 - $38.00</div>
+          <span class="fp-card-cta">View Details</span>
+        </div>
+      </div>
+      <div class="fp-card" onclick="location.href='product-detail.html?id=189'">
+        <img class="fp-card-img" src="assets/parts/part_189_steering_knuckle_elantra.jpg" alt="Steering Knuckle" loading="lazy" onerror="this.style.background='#eee'" />
+        <div class="fp-card-body">
+          <span class="fp-card-badge suspension">Suspension</span>
+          <div class="fp-card-name">Front Steering Knuckle – Elantra / Cerato</div>
+          <div class="fp-card-compat">Fits: Hyundai Elantra, Kia Cerato</div>
+          <div class="fp-card-price">$30.00 - $70.00</div>
+          <span class="fp-card-cta">View Details</span>
+        </div>
+      </div>
+
+      <!-- Row 3: Suspension -->
+      <div class="fp-card" onclick="location.href='product-detail.html?id=190'">
+        <img class="fp-card-img" src="assets/parts/part_190_suspension_kit_hyundai.jpg" alt="Suspension Kit" loading="lazy" onerror="this.style.background='#eee'" />
+        <div class="fp-card-body">
+          <span class="fp-card-badge suspension">Suspension</span>
+          <div class="fp-card-name">Front Suspension Kit – Elantra / Cerato</div>
+          <div class="fp-card-compat">Fits: Hyundai Elantra, Kia Cerato</div>
+          <div class="fp-card-price">$35.00 - $75.00</div>
+          <span class="fp-card-cta">View Details</span>
+        </div>
+      </div>
+      <div class="fp-card" onclick="location.href='product-detail.html?id=192'">
+        <img class="fp-card-img" src="assets/parts/part_192_trailing_arm_elantra.jpg" alt="Rear Trailing Arm" loading="lazy" onerror="this.style.background='#eee'" />
+        <div class="fp-card-body">
+          <span class="fp-card-badge suspension">Suspension</span>
+          <div class="fp-card-name">Rear Trailing Arm – Elantra / Cerato</div>
+          <div class="fp-card-compat">Fits: Hyundai Elantra, Kia Cerato</div>
+          <div class="fp-card-price">$18.00 - $45.00</div>
+          <span class="fp-card-cta">View Details</span>
+        </div>
+      </div>
+      <div class="fp-card" onclick="location.href='product-detail.html?id=194'">
+        <img class="fp-card-img" src="assets/parts/part_194_control_arm_accent.jpg" alt="Lower Control Arm" loading="lazy" onerror="this.style.background='#eee'" />
+        <div class="fp-card-body">
+          <span class="fp-card-badge suspension">Suspension</span>
+          <div class="fp-card-name">Front Lower Control Arm – Accent / Rio</div>
+          <div class="fp-card-compat">Fits: Hyundai Accent, Kia Rio</div>
+          <div class="fp-card-price">$10.00 - $24.00</div>
+          <span class="fp-card-cta">View Details</span>
+        </div>
+      </div>
+      <div class="fp-card" onclick="location.href='product-detail.html?id=196'">
+        <img class="fp-card-img" src="assets/parts/part_196_ball_joint_accent.jpg" alt="Ball Joint" loading="lazy" onerror="this.style.background='#eee'" />
+        <div class="fp-card-body">
+          <span class="fp-card-badge suspension">Suspension</span>
+          <div class="fp-card-name">Front Lower Ball Joint – Accent / Rio</div>
+          <div class="fp-card-compat">Fits: Hyundai Accent, Kia Rio</div>
+          <div class="fp-card-price">$5.00 - $13.00</div>
+          <span class="fp-card-cta">View Details</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== POPULAR MAKES ===== -->
+  <div class="popular-makes" id="popularMakes" style="margin-top:40px;">
+    <h3>Popular Makes</h3>
+    <div class="make-tags" id="makeTagsRow"></div>
+  </div>
+
+  <!-- ===== RESULTS ===== -->
+  <div class="finder-results-wrap" id="resultsWrap" style="display:none;">
+    <div class="results-header">
+      <div class="results-count" id="resultsCount"></div>
+      <a href="contact.html" class="btn btn-primary" style="padding:10px 24px;font-size:0.9rem;">Request Bulk Quote</a>
+    </div>
+    <div class="parts-grid" id="partsGrid"></div>
+  </div>
+
+  <!-- ===== OEM MATCHING METHODS ===== -->
+  <section style="background:#f8f9fa;padding:70px 0;" aria-labelledby="matching-heading">
+    <div class="container">
+      <h2 class="sec-title" id="matching-heading" style="text-align:center;">How to Find the Exact Part You Need</h2>
+      <p class="sec-sub" style="text-align:center;">We support multiple identification methods — send us whatever information you have, and our team will pinpoint the right component.</p>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:28px;margin-top:40px;">
+        <!-- Card 1: By Part Number -->
+        <div style="background:#fff;border-radius:14px;padding:32px 26px;box-shadow:0 4px 18px rgba(0,0,0,.07);border-top:4px solid #c8102e;">
+          <div style="font-size:2.2rem;margin-bottom:14px;">🔢</div>
+          <h3 style="font-size:1.1rem;color:#0d1f3c;margin-bottom:8px;">Match by OEM / Part Number</h3>
+          <p style="font-size:.88rem;color:#6b7280;line-height:1.7;margin-bottom:16px;">Send us the original equipment number, aftermarket cross-reference, or interchange code. We cross-check against our database covering 50+ brands to verify fitment and supply compatible alternatives when available.</p>
+          <a href="contact.html" class="btn btn-primary" style="font-size:.82rem;padding:8px 22px;">Send Part Number</a>
+        </div>
+        <!-- Card 2: By Vehicle Info -->
+        <div style="background:#fff;border-radius:14px;padding:32px 26px;box-shadow:0 4px 18px rgba(0,0,0,.07);border-top:4px solid #0d1f3c;">
+          <div style="font-size:2.2rem;margin-bottom:14px;">🚗</div>
+          <h3 style="font-size:1.1rem;color:#0d1f3c;margin-bottom:8px;">Match by Vehicle Details</h3>
+          <p style="font-size:.88rem;color:#6b7280;line-height:1.7;margin-bottom:16px;">No part number on hand? No problem. Provide the make, model, year and engine code — or send a clear photo of the component. Our engineering team will identify the correct replacement and confirm compatibility before you commit.</p>
+          <a href="contact.html" class="btn btn-primary" style="font-size:.82rem;padding:8px 22px;background:#0d1f3c;border-color:#0d1f3c;">Send Vehicle Info</a>
+        </div>
+        <!-- Card 3: Bulk / Custom -->
+        <div style="background:#fff;border-radius:14px;padding:32px 26px;box-shadow:0 4px 18px rgba(0,0,0,.07);border-top:4px solid #16a34a;">
+          <div style="font-size:2.2rem;margin-bottom:14px;">📦</div>
+          <h3 style="font-size:1.1rem;color:#0d1f3c;margin-bottom:8px;">Bulk Sourcing &amp; Custom Requests</h3>
+          <p style="font-size:.88rem;color:#6b7280;line-height:1.7;margin-bottom:16px;">For larger orders or mixed-product shipments, share your stock list or purchasing requirement sheet. We will prepare a consolidated quotation with volume pricing, packing options and shipping logistics for your review.</p>
+          <a href="contact.html" class="btn btn-primary" style="font-size:.82rem;padding:8px 22px;background:#16a34a;border-color:#16a34a;">Upload Your List</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ACCORDION (45+ Q&A, Show 6 + Load More) ===== -->
+  <section style="padding:70px 0;" aria-labelledby="faq-heading">
+    <div class="container">
+      <h2 class="sec-title" id="faq-heading" style="text-align:center;">Frequently Asked Questions</h2>
+      <p class="sec-sub" style="text-align:center;">Quick answers to common concerns about our auto parts sourcing service</p>
+
+      <div id="faqAccordion" style="max-width:860px;margin:36px auto 0;"></div>
+      <div id="faqShowMoreWrap" style="text-align:center;margin-top:24px;">
+        <button id="faqShowMoreBtn" onclick="showMoreFaqs()" style="display:inline-flex;align-items:center;gap:8px;padding:12px 32px;background:#0d1f3c;color:#fff;border:none;border-radius:8px;font-size:.92rem;font-weight:700;cursor:pointer;transition:background .2s;">
+          Show All Questions <span id="faqMoreIcon" style="transition:transform .3s;">&#9662;</span>
+          <span id="faqMoreCount" style="background:#c8102e;font-size:.72rem;padding:2px 8px;border-radius:12px;margin-left:4px;"></span>
+        </button>
+      </div>
+
+      <style>
+        .faq-item { border:1px solid #e2e8f0; border-radius:10px; margin-bottom:12px; overflow:hidden; transition: box-shadow .2s; }
+        .faq-item:hover { box-shadow: 0 2px 12px rgba(0,0,0,.06); }
+        .faq-toggle { width:100%; display:flex; align-items:center; justify-content:space-between; padding:18px 22px; background:#fff; border:none; cursor:pointer; font-size:.95rem; font-weight:700; color:#0d1f3c; text-align:left; transition: background .15s; }
+        .faq-toggle:hover { background:#f8f9fa; }
+        .faq-toggle .faq-arrow { font-size:1.2rem; color:#a0aec0; transition:transform .25s; flex-shrink:0; margin-left:12px; }
+        .faq-body { max-height:0; overflow:hidden; transition:max-height .35s ease; }
+        .faq-body-inner { padding:0 22px 18px; font-size:.9rem; color:#4a5568; line-height:1.75; }
+        .faq-item.open .faq-body { max-height:500px; }
+        .faq-item.open .faq-toggle .faq-arrow { transform:rotate(45deg); }
+        .faq-item.open .faq-toggle { background:#f8fafc; }
+        #faqShowMoreBtn:hover { background:#1a3a6e; }
+        .faq-hidden { display:none; }
+      </style>
+    </div>
+  </section>
+
+  <!-- ===== SYSTEM CATEGORY CARDS ===== -->
+  <div class="system-cats" id="sysCatsSection">
+    <h2>Browse by System</h2>
+    <p>Select a product system to see all compatible parts in that category</p>
+    <div class="sys-cat-grid">
+      <div class="sys-cat-card" onclick="filterBySystem('engine')">
+        <div class="sys-cat-bg" style="background:linear-gradient(135deg,#1a3060,#0d1f3c);"></div>
+        <div class="sys-cat-overlay"></div>
+        <div class="sys-cat-body">
+          <div class="sys-cat-icon">🔧</div>
+          <h3>Engine System</h3>
+          <p>Fuel injection, ignition, exhaust &amp; engine management components</p>
+          <span class="sys-cat-count" id="cnt-engine">— parts</span>
+        </div>
+      </div>
+      <div class="sys-cat-card" onclick="filterBySystem('cooling')">
+        <div class="sys-cat-bg" style="background:linear-gradient(135deg,#0d3060,#1a5080);"></div>
+        <div class="sys-cat-overlay"></div>
+        <div class="sys-cat-body">
+          <div class="sys-cat-icon">🌡️</div>
+          <h3>Cooling System</h3>
+          <p>Radiators, water pumps, thermostats &amp; coolant hoses</p>
+          <span class="sys-cat-count" id="cnt-cooling">— parts</span>
+        </div>
+      </div>
+      <div class="sys-cat-card" onclick="filterBySystem('suspension')">
+        <div class="sys-cat-bg" style="background:linear-gradient(135deg,#2a2060,#1a1040);"></div>
+        <div class="sys-cat-overlay"></div>
+        <div class="sys-cat-body">
+          <div class="sys-cat-icon">🛞</div>
+          <h3>Suspension &amp; Chassis</h3>
+          <p>Control arms, bushings, ball joints, stabilizer links &amp; brake parts</p>
+          <span class="sys-cat-count" id="cnt-suspension">— parts</span>
+        </div>
+      </div>
+      <div class="sys-cat-card" onclick="filterBySystem('electrical')">
+        <div class="sys-cat-bg" style="background:linear-gradient(135deg,#400d1a,#7a1020);"></div>
+        <div class="sys-cat-overlay"></div>
+        <div class="sys-cat-body">
+          <div class="sys-cat-icon">⚡</div>
+          <h3>Electrical System</h3>
+          <p>Alternators, starters, sensors, switches &amp; lighting modules</p>
+          <span class="sys-cat-count" id="cnt-electrical">— parts</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== CTA STRIP ===== -->
+  <section style="background:#0d1f3c;padding:56px 20px;text-align:center;color:#fff;">
+    <div class="container">
+      <h2 style="font-size:1.8rem;font-weight:800;margin-bottom:12px;">Can't Find Your Part?</h2>
+      <p style="opacity:0.85;max-width:500px;margin:0 auto 28px;">Send us the OEM number, make/model/year and we'll source it within 48 hours. MOQ 1 unit.</p>
+      <a href="contact.html" class="btn btn-primary" style="font-size:1.05rem;padding:14px 36px;">
+        📩 Request a Custom Quote
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer" role="contentinfo">
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <div class="footer-brand-logos">
+          <img src="assets/VEHICLE-logo.jpg" alt="Globalucar Vehicle" onerror="this.style.display='none';this.nextElementSibling&&(this.nextElementSibling.style.display=this.nextElementSibling.nextElementSibling?'none':'block')" />
+          <span class="brand-divider"></span>
+          <img src="assets/logo-Kingmay.png" alt="Kingmay Auto Parts" onerror="this.style.display='none';this.previousElementSibling&&(this.previousElementSibling.style.display='block')" />
+        </div>
+        <p>Guangzhou Vehicle External Trade Co., Ltd</p>
+        <p class="footer-tag-line">New &amp; Used Cars · Auto Parts · Export Solutions</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Product Categories</h4>
+        <ul>
+          <li><a href="products.html?cat=new_car">New Cars</a></li>
+          <li><a href="products.html?cat=used_car">Used Cars</a></li>
+          <li><a href="products.html?cat=parts">Auto Parts</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p>🚗 <a href="mailto:ucars@global-ucars.com" style="color:inherit;">ucars@global-ucars.com</a></p>
+        <p>📍 Guangzhou, China</p>
+        <p>⚓ Nansha Port Terminal</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Guangzhou Vehicle External Trade Co., Ltd. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- ===== DATA + LOGIC ===== -->
+  <script src="products-inline.js"></script>
+  <script>
+  // ── Vehicle database ─────────────────────────────────────────────
+  const VEHICLE_DB = {
+    "Toyota": {
+      "Camry":     [2018,2019,2020,2021,2022,2023,2024],
+      "Corolla":   [2016,2017,2018,2019,2020,2021,2022,2023],
+      "RAV4":      [2018,2019,2020,2021,2022,2023,2024],
+      "Highlander":[2019,2020,2021,2022,2023,2024],
+      "Land Cruiser":[2018,2019,2020,2021,2022,2023],
+      "Hilux":     [2015,2016,2017,2018,2019,2020,2021,2022,2023],
+      "Fortuner":  [2016,2017,2018,2019,2020,2021,2022,2023],
+      "Prado":     [2013,2014,2015,2016,2017,2018,2019,2020,2021],
+      "Yaris":     [2018,2019,2020,2021,2022,2023],
+    },
+    "Honda": {
+      "Accord":    [2017,2018,2019,2020,2021,2022,2023],
+      "Civic":     [2016,2017,2018,2019,2020,2021,2022,2023],
+      "CR-V":      [2017,2018,2019,2020,2021,2022,2023],
+      "HR-V":      [2016,2017,2018,2019,2020,2021,2022],
+      "Pilot":     [2016,2017,2018,2019,2020,2021,2022,2023],
+      "Odyssey":   [2018,2019,2020,2021,2022,2023],
+    },
+    "Nissan": {
+      "Sunny":     [2015,2016,2017,2018,2019,2020,2021],
+      "Sentra":    [2016,2017,2018,2019,2020,2021,2022],
+      "Altima":    [2017,2018,2019,2020,2021,2022,2023],
+      "X-Trail":   [2017,2018,2019,2020,2021,2022,2023],
+      "Navara":    [2015,2016,2017,2018,2019,2020,2021,2022],
+      "Patrol":    [2016,2017,2018,2019,2020,2021,2022],
+      "Frontier":  [2018,2019,2020,2021,2022],
+    },
+    "Hyundai": {
+      "Elantra":   [2017,2018,2019,2020,2021,2022,2023],
+      "Sonata":    [2018,2019,2020,2021,2022,2023],
+      "Tucson":    [2016,2017,2018,2019,2020,2021,2022,2023],
+      "Santa Fe":  [2018,2019,2020,2021,2022,2023],
+      "i30":       [2017,2018,2019,2020,2021,2022],
+      "Creta":     [2018,2019,2020,2021,2022,2023],
+    },
+    "Kia": {
+      "Sportage":  [2017,2018,2019,2020,2021,2022,2023],
+      "Sorento":   [2018,2019,2020,2021,2022,2023],
+      "Cerato":    [2016,2017,2018,2019,2020,2021,2022],
+      "Seltos":    [2020,2021,2022,2023],
+      "Carnival":  [2020,2021,2022,2023],
+    },
+    "Ford": {
+      "Focus":     [2015,2016,2017,2018,2019],
+      "Explorer":  [2018,2019,2020,2021,2022,2023],
+      "Ranger":    [2016,2017,2018,2019,2020,2021,2022,2023],
+      "F-150":     [2018,2019,2020,2021,2022,2023],
+      "EcoSport":  [2018,2019,2020,2021],
+    },
+    "Volkswagen": {
+      "Golf":      [2017,2018,2019,2020,2021,2022,2023],
+      "Passat":    [2017,2018,2019,2020,2021,2022],
+      "Tiguan":    [2017,2018,2019,2020,2021,2022,2023],
+      "Polo":      [2018,2019,2020,2021,2022],
+      "Amarok":    [2017,2018,2019,2020,2021,2022],
+    },
+    "BMW": {
+      "3 Series":  [2018,2019,2020,2021,2022,2023],
+      "5 Series":  [2017,2018,2019,2020,2021,2022,2023],
+      "X5":        [2018,2019,2020,2021,2022,2023],
+      "X3":        [2018,2019,2020,2021,2022,2023],
+    },
+    "Mercedes-Benz": {
+      "C-Class":   [2018,2019,2020,2021,2022,2023],
+      "E-Class":   [2017,2018,2019,2020,2021,2022,2023],
+      "GLC":       [2018,2019,2020,2021,2022,2023],
+      "Sprinter":  [2018,2019,2020,2021,2022,2023],
+    },
+    "Mitsubishi": {
+      "Outlander": [2017,2018,2019,2020,2021,2022],
+      "Pajero":    [2015,2016,2017,2018,2019,2020],
+      "L200":      [2015,2016,2017,2018,2019,2020,2021,2022],
+      "Eclipse Cross":[2018,2019,2020,2021,2022],
+    },
+    "GM / Chevrolet": {
+      "Malibu":    [2016,2017,2018,2019,2020,2021],
+      "Trailblazer":[2020,2021,2022,2023],
+      "Colorado":  [2018,2019,2020,2021,2022,2023],
+      "Silverado": [2018,2019,2020,2021,2022,2023],
+      "Equinox":   [2018,2019,2020,2021,2022,2023],
+    },
+    "Isuzu": {
+      "D-Max":     [2016,2017,2018,2019,2020,2021,2022,2023],
+      "MU-X":      [2018,2019,2020,2021,2022],
+      "Trooper":   [2015,2016,2017,2018],
+    },
+    "Suzuki": {
+      "Swift":     [2018,2019,2020,2021,2022,2023],
+      "Vitara":    [2017,2018,2019,2020,2021,2022],
+      "Jimny":     [2018,2019,2020,2021,2022,2023],
+      "Carry":     [2018,2019,2020,2021,2022],
+    },
+  };
+
+  // Part types by system (for the 5th dropdown)
+  const PART_TYPES = {
+    "engine":     ["Ignition Coil","Spark Plug","Fuel Injector","Fuel Pump","Camshaft","Crankshaft","Engine Mount","Valve Cover","Oil Filter","Timing Belt","Timing Chain","Exhaust Manifold","Turbocharger"],
+    "cooling":    ["Radiator","Water Pump","Thermostat","Cooling Fan","Radiator Hose","Coolant Reservoir","Intercooler"],
+    "suspension": ["Shock Absorber","Control Arm","Ball Joint","Tie Rod End","Stabilizer Bar Link","Wheel Bearing","Brake Caliper","Brake Rotor","Brake Pad","CV Axle","Drive Shaft"],
+    "electrical": ["Alternator","Starter Motor","Mass Air Flow Sensor","Oxygen Sensor","ABS Sensor","Crankshaft Sensor","Throttle Body","Headlight Assembly","Tail Light","Wiper Motor","Power Window Motor"],
+  };
+
+  // ── Brand chip click handler ───────────────────────────────────────
+  function selectBrand(makeName) {
+    const makeEl = document.getElementById('sel-make');
+    makeEl.value = makeName;
+    onMakeChange();
+    document.querySelector('.finder-box-wrap').scrollIntoView({behavior:'smooth', block:'center'});
+  }
+
+  // ── Init ──────────────────────────────────────────────────────────
+  const allParts = (window.PRODUCTS_INLINE_DATA && window.PRODUCTS_INLINE_DATA.products
+    ? window.PRODUCTS_INLINE_DATA.products
+    : []).filter(p => p.category === 'parts');
+
+  function init() {
+    // Populate make selector
+    const makeEl = document.getElementById('sel-make');
+    Object.keys(VEHICLE_DB).sort().forEach(make => {
+      const opt = document.createElement('option');
+      opt.value = make; opt.textContent = make;
+      makeEl.appendChild(opt);
+    });
+
+    // Make tag shortcuts
+    const popularMakes = ["Toyota","Honda","Nissan","Hyundai","Kia","Ford","Volkswagen","Mitsubishi"];
+    const tagsRow = document.getElementById('makeTagsRow');
+    popularMakes.forEach(m => {
+      const tag = document.createElement('button');
+      tag.className = 'make-tag';
+      tag.textContent = m;
+      tag.onclick = () => {
+        makeEl.value = m;
+        onMakeChange();
+        // scroll to box
+        document.querySelector('.finder-box-wrap').scrollIntoView({behavior:'smooth'});
+      };
+      tagsRow.appendChild(tag);
+    });
+
+    // System counts
+    const sysCounts = {};
+    allParts.forEach(p => {
+      const s = p.part_system || 'other';
+      sysCounts[s] = (sysCounts[s] || 0) + 1;
+    });
+    ['engine','cooling','suspension','electrical'].forEach(s => {
+      const el = document.getElementById('cnt-' + s);
+      if (el) el.textContent = (sysCounts[s] || 0) + ' parts';
+    });
+
+    // Event bindings
+    makeEl.addEventListener('change', onMakeChange);
+    document.getElementById('sel-model').addEventListener('change', onModelChange);
+    document.getElementById('sel-system').addEventListener('change', onSystemChange);
+    document.getElementById('sel-year').addEventListener('change', () => {});
+  }
+
+  function onMakeChange() {
+    const make = document.getElementById('sel-make').value;
+    const modelEl = document.getElementById('sel-model');
+    const yearEl = document.getElementById('sel-year');
+    modelEl.innerHTML = '<option value="">-- Model --</option>';
+    yearEl.innerHTML = '<option value="">-- Year --</option>';
+    yearEl.disabled = true;
+    if (!make) { modelEl.disabled = true; return; }
+    const models = Object.keys(VEHICLE_DB[make] || {}).sort();
+    models.forEach(m => {
+      const opt = document.createElement('option');
+      opt.value = m; opt.textContent = m;
+      modelEl.appendChild(opt);
+    });
+    modelEl.disabled = false;
+    // update make-tags highlight
+    document.querySelectorAll('.make-tag').forEach(t => {
+      t.classList.toggle('active', t.textContent === make);
+    });
+  }
+
+  function onModelChange() {
+    const make  = document.getElementById('sel-make').value;
+    const model = document.getElementById('sel-model').value;
+    const yearEl = document.getElementById('sel-year');
+    yearEl.innerHTML = '<option value="">-- Year --</option>';
+    if (!make || !model) { yearEl.disabled = true; return; }
+    const years = (VEHICLE_DB[make] && VEHICLE_DB[make][model]) || [];
+    years.slice().reverse().forEach(y => {
+      const opt = document.createElement('option');
+      opt.value = y; opt.textContent = y;
+      yearEl.appendChild(opt);
+    });
+    yearEl.disabled = false;
+  }
+
+  function onSystemChange() {
+    const sys = document.getElementById('sel-system').value;
+    const partEl = document.getElementById('sel-part');
+    partEl.innerHTML = '<option value="">All Parts</option>';
+    if (!sys) { partEl.disabled = true; return; }
+    (PART_TYPES[sys] || []).forEach(pt => {
+      const opt = document.createElement('option');
+      opt.value = pt; opt.textContent = pt;
+      partEl.appendChild(opt);
+    });
+    partEl.disabled = false;
+  }
+
+  function filterBySystem(sys) {
+    document.getElementById('sel-system').value = sys;
+    onSystemChange();
+    runSearch();
+    document.getElementById('resultsWrap').scrollIntoView({behavior:'smooth'});
+  }
+
+  function runSearch() {
+    const make    = document.getElementById('sel-make').value.trim();
+    const model   = document.getElementById('sel-model').value.trim();
+    const year    = document.getElementById('sel-year').value.trim();
+    const sys     = document.getElementById('sel-system').value.trim();
+    const partType= document.getElementById('sel-part').value.trim().toLowerCase();
+
+    let results = allParts.slice();
+
+    // Filter by make compatibility
+    if (make) {
+      results = results.filter(p => {
+        const compat = (p.compatible_makes || []).map(m => m.toLowerCase());
+        // Also match "GM" when "GM / Chevrolet" selected
+        const makeNorm = make.toLowerCase();
+        return compat.some(cm => makeNorm.includes(cm) || cm.includes(makeNorm.split(' ')[0]));
+      });
+    }
+
+    // Filter by system
+    if (sys) {
+      results = results.filter(p => (p.part_system || '') === sys);
+    }
+
+    // Filter by part type keyword
+    if (partType) {
+      results = results.filter(p => (p.name || '').toLowerCase().includes(partType.split(' ')[0]));
+    }
+
+    renderResults(results, { make, model, year, sys });
+  }
+
+  function renderResults(results, ctx) {
+    const wrap  = document.getElementById('resultsWrap');
+    const grid  = document.getElementById('partsGrid');
+    const count = document.getElementById('resultsCount');
+    const sysSec= document.getElementById('sysCatsSection');
+    const popMakes= document.getElementById('popularMakes');
+
+    sysSec.style.display = results.length > 0 ? 'none' : 'block';
+    popMakes.style.display = 'none';
+
+    let label = '';
+    if (ctx.make) label += ctx.make;
+    if (ctx.model) label += ' ' + ctx.model;
+    if (ctx.year)  label += ' ' + ctx.year;
+
+    if (results.length === 0) {
+      wrap.style.display = 'block';
+      count.innerHTML = `<strong>0 parts</strong> found${label ? ' for ' + label : ''}`;
+      grid.innerHTML = `<div class="finder-empty" style="grid-column:1/-1">
+        <div class="empty-icon">🔍</div>
+        <h3>No exact match found</h3>
+        <p>Try selecting a different make or system, or <a href="contact.html" style="color:#c8102e;font-weight:600;">contact us</a> with your OEM number for a custom quote.</p>
+      </div>`;
+      return;
+    }
+
+    wrap.style.display = 'block';
+    count.innerHTML = `Found <strong>${results.length} compatible parts</strong>${label ? ' for <em>' + label + '</em>' : ''}`;
+
+    grid.innerHTML = results.map(p => {
+      const imgSrc = p.local_image || null;
+      const imgHtml = imgSrc
+        ? `<img class="part-card-img" src="${imgSrc}" alt="${p.name}" loading="lazy" onerror="this.parentNode.innerHTML='<div class=part-card-img-ph>⚙️</div>'" />`
+        : `<div class="part-card-img-ph">⚙️</div>`;
+      const compat = (p.compatible_makes || []).slice(0,4).join(', ');
+      const sysLabel = {engine:'Engine',cooling:'Cooling',suspension:'Suspension',electrical:'Electrical'}[p.part_system] || p.part_system || '';
+      return `<div class="part-card" onclick="location.href='product-detail.html?id=${p.id}'">
+        ${imgHtml}
+        <div class="part-card-body">
+          <div class="part-card-system">${sysLabel}</div>
+          <div class="part-card-name">${p.name}</div>
+          ${compat ? `<div class="part-card-compat">✅ Fits: ${compat}${(p.compatible_makes||[]).length > 4 ? ' &amp; more' : ''}</div>` : ''}
+          <div class="part-card-price">FOB Price: Request Quote</div>
+          <span class="part-card-cta">View Details →</span>
+        </div>
+      </div>`;
+    }).join('');
+
+    wrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  // ── FAQ Data (48 Q&A) ──────────────────────────────────────────
+  const FAQ_DATA = [
+    // ── Brand & Compatibility ──
+    {q:"Which vehicle brands do your parts cover?",a:"We supply replacement components for 45+ vehicle brands spanning Korean (Hyundai, Kia, Genesis), Japanese (Toyota, Honda, Nissan, Mazda), Chinese domestic and EV makers (BYD, Geely, XPENG, NIO, Changan), plus European and American marques (Mercedes-Benz, BMW, VW, Ford, Tesla). Our online Parts Finder lets you search by make, model and year for instant fitment results."},
+    {q:"Do you supply parts for Chinese domestic vehicles?",a:"Yes. We cover major Chinese brands including BYD, Geely, Changan, Chery, GAC, FAW/Hongqi, Dongfeng, Great Wall/Haval, MG, XPENG, NIO, Li Auto, Zeekr, Jetour, Leapmotor and more. Many of these brands are now exported to Southeast Asia, the Middle East, South America and Africa — and we can source both OEM and aftermarket parts for them."},
+    {q:"Do you supply parts for electric and hybrid vehicles?",a:"Absolutely. We stock components for EVs and hybrids including thermal management parts, cooling pumps, battery cooling plates, high-voltage contactors, electric motor sensors, regenerative braking components and charging-system parts. These are available for BYD, Tesla, XPENG, NIO, Toyota hybrid, Honda hybrid and other electrified platforms."},
+    {q:"Can you match parts if I only have an OEM number?",a:"Absolutely. OEM number cross-referencing is one of our core capabilities. Send us the original part number or any aftermarket interchange code, and our team will verify fitment against vehicle compatibility data, suggest equivalent alternatives where available, and confirm everything before you place an order to eliminate mismatch risk."},
+    {q:"What if I don't have the OEM number — can you still identify the part?",a:"Yes. If you can provide the vehicle make, model, year and engine code, or a clear photo of the component showing its shape and mounting points, our engineering team will identify the correct replacement. We handle this kind of identification request daily and typically respond within 24 hours."},
+    {q:"Are your parts compatible with left-hand drive and right-hand drive vehicles?",a:"Yes. Most mechanical and electrical components (engine, cooling, suspension, electrical systems) are identical for LHD and RHD configurations. For steering-related parts (rack, tie rods, steering column) or dashboard-mounted electrical components, we will verify the drive-side orientation before confirming your order."},
+    {q:"Do you carry parts for commercial vehicles and trucks?",a:"Yes. We supply components for light commercial vehicles, pickup trucks and medium-duty trucks including the Toyota Hilux, Ford Ranger, Isuzu D-Max, Mitsubishi L200, Foton and Dongfeng commercial series. Product categories cover engine parts, brake components, suspension and clutch assemblies."},
+    {q:"Can you supply parts for European vehicles such as Mercedes-Benz, BMW and Audi?",a:"Yes. We cover European marques including Mercedes-Benz, BMW, Audi, VW, Volvo, Porsche, Land Rover and Fiat. Our catalogue includes engine management parts, braking components, suspension arms, electrical sensors and cooling system parts. For premium brands, we offer both OEM-grade and quality aftermarket alternatives."},
+
+    // ── OEM Matching & Quality ──
+    {q:"What quality checks do you perform before shipping?",a:"Every batch undergoes dimensional verification, visual inspection and material traceability checks before dispatch. For critical safety components such as braking and suspension parts, we also perform functional testing. Material certifications (SGS/TUV) and full QC reports are available on request with each shipment."},
+    {q:"Do your parts meet IATF 16949 or ISO 9001 standards?",a:"Our manufacturing partners hold IATF 16949 and ISO 9001 certifications. Every production run is traceable to batch and material origin. We can provide certification documentation and third-party inspection reports upon request."},
+    {q:"What is the difference between OEM and aftermarket parts?",a:"OEM (Original Equipment Manufacturer) parts are produced to the exact specifications of the vehicle's original brand. Aftermarket parts are manufactured by independent factories to match or exceed OEM specifications at a lower price point. Our range includes both — we clearly label each product and can advise which option best suits your market and budget."},
+    {q:"Can you provide material test reports and certifications?",a:"Yes. For every order we can supply material certificates (mill test reports), dimensional inspection reports, SGS/TUV testing reports and production batch records. These documents are included with the shipping package at no extra charge. For special certification requirements, let us know in advance."},
+    {q:"How do you ensure consistency across large volume orders?",a:"We implement first-article inspection (FAI) before mass production begins. During production, we perform statistical process control sampling at defined intervals. A final random inspection (AQL 1.0/2.5) is conducted before packing. Photos and reports are shared with the buyer for transparency."},
+    {q:"Do you offer warranty on your auto parts?",a:"Yes. Standard warranty is 12 months or 20,000 km from the date of delivery, whichever comes first. Extended warranty terms (18–24 months) are available for bulk orders upon negotiation. Warranty claims are handled promptly — we typically ship replacement units within 7 working days after receiving photos and evidence of the defect."},
+
+    // ── Ordering & Pricing ──
+    {q:"What is the minimum order quantity (MOQ)?",a:"MOQ varies by product type and manufacturing process. Standard catalogue items typically start from 50 to 100 pieces per SKU. For semi-customised or fully bespoke components, higher minimums apply. Volume discounts kick in at 1,000, 5,000 and 10,000+ pieces. Contact us with your specific requirements for an accurate quotation."},
+    {q:"Do you offer samples before placing a bulk order?",a:"Yes. We provide samples for most catalogue items. Sample cost is typically 1.5–2x the unit price and shipping is at the buyer's expense. If you proceed with a bulk order exceeding our standard MOQ, the sample cost can be deducted from the total order value."},
+    {q:"How are your prices structured?",a:"Our pricing is FOB Nansha Port, Guangzhou, in USD unless otherwise agreed. Unit prices decrease with volume — typical tiers are 50–99 pcs, 100–499 pcs, 500–999 pcs and 1,000+ pcs. Prices include standard export packaging. Freight, insurance and destination charges are quoted separately based on your preferred Incoterm."},
+    {q:"Can you offer customised or private-label packaging?",a:"Yes. We offer custom packaging with your brand logo, product labels and barcode printing. Neutral (unbranded) packaging is also available. Custom packaging options include colour boxes, blister packs, shrink-wrapped multi-packs and hang-sell display boxes. MOQ for custom packaging is typically 500+ units per design."},
+    {q:"Do you provide product images and marketing materials for distributors?",a:"Yes. We supply high-resolution product photos (white background, lifestyle and installation shots), technical specification sheets and compatibility charts. For volume distributors, we can also create custom catalogues and point-of-sale materials featuring your branding alongside our products."},
+    {q:"Can you develop new products based on our samples or drawings?",a:"Yes. We work with engineering teams that can reverse-engineer or develop new components from your samples, technical drawings (CAD/STEP files) or specifications. Development lead time is typically 20–40 days depending on complexity. Tooling costs (if applicable) are quoted upfront and amortised across production volumes."},
+    {q:"How do I request a quotation?",a:"You can send your enquiry via our contact page, email (ucars@global-ucars.com or ku@kingmay-autoparts.com), or WhatsApp. Please include the OEM number, vehicle details (make/model/year), required quantity and your delivery destination. We respond with a detailed quotation within 24 working hours."},
+
+    // ── Payment & Shipping ──
+    {q:"What payment methods do you accept?",a:"We accept T/T bank transfer (typically 50% deposit, balance before shipment), irrevocable Letter of Credit at sight, and documents-against-payment (DP). USD, EUR and CNY are all accepted. For established partners with a proven order history, extended payment terms (Net 30–60 days) can be negotiated."},
+    {q:"What shipping terms do you offer?",a:"We ship FOB Nansha Port (Guangzhou) as standard. Other Incoterms are available including CIF, CFR, DAP and DDP. For smaller orders, we also offer air freight (FOB Guangzhou Baiyun Airport) and international courier (DHL, FedEx, UPS). We can handle LCL (less-than-container-load) consolidation for mixed-product orders."},
+    {q:"How long does shipping take?",a:"By sea: Southeast Asia 5–10 days, Middle East 15–20 days, Africa 25–35 days, South America 30–40 days, Europe 30–40 days. By air: 3–7 working days worldwide. Production lead time (before shipping) is typically 7–15 working days for stock items and 20–35 working days for made-to-order parts."},
+    {q:"Can you combine different products in one shipment?",a:"Yes — consolidated shipping is one of our key strengths. Whether you are mixing engine parts with suspension components, or combining orders from different vehicle systems, we can pack everything into a single container or consolidated shipment. This significantly reduces your per-unit freight cost and simplifies customs documentation."},
+    {q:"Which ports do you ship from?",a:"Our primary export hub is Nansha Port (Guangzhou), one of the largest and most efficient container terminals in South China. For air freight, we use Guangzhou Baiyun International Airport. We can also arrange shipments from Shenzhen, Shanghai or Ningbo ports depending on routing and vessel schedules."},
+    {q:"Can you arrange shipping to my country?",a:"We have exported to 50+ countries across Southeast Asia, the Middle East, Africa, South America, Central Asia and the Pacific Islands. Our logistics partners handle sea freight, air freight and door-to-door delivery. If your country has specific import restrictions, we will advise on compliance and documentation requirements before you place an order."},
+    {q:"Do you handle customs clearance and export documentation?",a:"Yes. We prepare all export documentation including commercial invoice, packing list, bill of lading, certificate of origin, and customs declaration. For certain destinations we can also provide import licence support, fumigation certificates and phytosanitary documents. Import clearance at the destination port is typically handled by your local customs broker."},
+
+    // ── Packaging & Logistics ──
+    {q:"How are auto parts packaged for export?",a:"Each part is individually wrapped in protective film or poly-bag, then packed in inner cartons with foam or cardboard dividers to prevent movement. Inner cartons are stacked in export-grade corrugated outer cartons. For fragile items (sensors, glass headlights, electronics), we add corner protectors, bubble wrap and reinforced cartons. Palletisation and stretch-wrap are available on request."},
+    {q:"Can you load a full 20ft or 40ft container?",a:"Yes. We regularly load both 20-foot (20GP) and 40-foot (40HQ) containers. For mixed-product orders, our warehouse team optimises pallet layout to maximise container utilisation. We also offer LCL consolidation — combining your order with other shipments to fill a container when your volume does not require a full container."},
+    {q:"What if parts arrive damaged during shipping?",a:"We take preventive measures with robust packaging, but if damage occurs, document it immediately with photos upon receipt and notify us within 7 days. We will investigate with the shipping carrier and, once confirmed, ship replacements at our expense or issue a credit note against your next order. All shipments include basic marine insurance coverage."},
+    {q:"Can you provide a packing list with product images for each carton?",a:"Yes. For large orders we provide a detailed packing manifest that includes product photos, OEM numbers, quantities and carton weights. This makes receiving inspection faster and reduces sorting time at your warehouse."},
+
+    // ── After-Sales & Support ──
+    {q:"What happens if I receive incorrect or defective parts?",a:"Contact us within 7 days of receipt with photos showing the issue. We will investigate and, if confirmed, ship the correct replacement parts within 7–10 working days at no charge. For defective items, we cover replacement shipping costs. Returns of non-defective items are accepted within 30 days in original packaging, subject to a restocking fee."},
+    {q:"Do you offer technical support for installation?",a:"While we are a parts supplier rather than a workshop, we can provide installation guidance documents, torque specifications and reference diagrams for most mechanical components. For complex electrical modules (ECUs, sensors), we can connect you with our engineering partners for diagnostic support."},
+    {q:"Can you set up a standing order or scheduled replenishment?",a:"Yes. For regular buyers we offer scheduled replenishment plans — monthly, quarterly or biannual shipments based on your sales forecast. This ensures stock continuity and locks in pricing for the contract period. We send production progress updates and pre-shipment photos before each dispatch."},
+    {q:"Do you attend trade shows where I can meet your team?",a:"Yes. We regularly exhibit at major international auto parts trade shows including the Canton Fair (Guangzhou), Automechanika Frankfurt/Shanghai, AAPEX (Las Vegas) and regional shows in the Middle East and Southeast Asia. Follow our website or contact us for the latest exhibition schedule — we would be glad to meet you in person."},
+
+    // ── Parts-Specific ──
+    {q:"Do you supply complete engine overhaul kits?",a:"Yes. We can assemble complete engine overhaul kits including piston rings, bearings, gaskets, oil seals, timing chain/belt kit and water pump — tailored to specific engine codes. Kits are available for Toyota, Honda, Nissan, Hyundai, Kia and Mitsubishi engines. Typical kit MOQ is 10 sets per engine family."},
+    {q:"Do you supply brake components (pads, rotors, calipers)?",a:"Yes. Our brake range includes semi-metallic and ceramic brake pads, ventilated and solid brake rotors (discs), remanufactured brake calipers, brake drums and wheel cylinders. Products are tested to FMVSS 135 or ECE R90 standards. Packaging options include box sets (pads + rotors) for retail distribution."},
+    {q:"Can you supply suspension components for commercial trucks?",a:"Yes. We carry leaf springs, shock absorbers, coil springs, bushings, ball joints and stabiliser bar links for light and medium commercial trucks including Toyota Hilux, Ford Ranger, Isuzu D-Max, Mitsubishi L200, Foton and Dongfeng series. Heavy-duty options are available for high-payload applications."},
+    {q:"Do you supply oil filters and air filters?",a:"Yes. We stock a wide range of oil filters, air filters, fuel filters and cabin (pollen) filters for Japanese, Korean, Chinese, European and American vehicles. Filters are produced with high-efficiency filtration media and tested for flow rate and dirt-holding capacity. Both OEM-spec and aftermarket options are available."},
+    {q:"Do you supply turbocharger components?",a:"Yes. We offer complete turbocharger assemblies and turbo repair kits (gasket kits, bearing cartridges, actuator wastegate) for turbo-diesel and turbo-petrol engines. Applications cover Toyota, Nissan, Hyundai, Kia and selected European marques. Each unit undergoes dynamic balancing and pressure testing before shipment."},
+    {q:"Do you carry body parts and panels?",a:"Our primary focus is mechanical and electrical components (engine, cooling, suspension, braking and electrical systems). For body panels (fenders, doors, bumpers, headlamps, tail lamps), we can source on request through our partner network in Guangzhou. Lead time and MOQ may vary — please enquire with specific part numbers."},
+    {q:"Do you supply clutch kits and transmission parts?",a:"Yes. Our range includes clutch cover (pressure plate) assemblies, clutch discs (friction plates), release bearings and complete clutch kits for manual transmissions. For automatic transmissions, we supply filter kits, valve body gaskets and solenoid packs. Applications cover popular Japanese, Korean and Chinese models."},
+    {q:"Can you supply parts for older or discontinued vehicle models?",a:"In many cases yes. Our supplier network maintains tooling for legacy applications. Even if a part is no longer in active production, we can often locate NOS (new old stock) or arrange a small production run. Send us the OEM number and we will check availability — typically within 24 hours."},
+  ];
+
+  const FAQ_INIT_SHOW = 6;
+  let faqExpanded = false;
+
+  function renderFaqs() {
+    const container = document.getElementById('faqAccordion');
+    const countEl = document.getElementById('faqMoreCount');
+    const hiddenCount = FAQ_DATA.length - FAQ_INIT_SHOW;
+    if (countEl) countEl.textContent = '+' + hiddenCount;
+
+    let html = '';
+    FAQ_DATA.forEach((item, i) => {
+      const isHidden = i >= FAQ_INIT_SHOW;
+      html += '<div class="faq-item' + (isHidden ? ' faq-hidden' : '') + '" data-faq-idx="' + i + '">' +
+        '<button class="faq-toggle" onclick="this.parentElement.classList.toggle(\'open\')">' +
+        item.q +
+        '<span class="faq-arrow">+</span>' +
+        '</button>' +
+        '<div class="faq-body"><div class="faq-body-inner">' + item.a + '</div></div>' +
+        '</div>';
+    });
+    container.innerHTML = html;
+  }
+
+  function showMoreFaqs() {
+    const hiddenItems = document.querySelectorAll('.faq-hidden');
+    const btn = document.getElementById('faqShowMoreBtn');
+    const icon = document.getElementById('faqMoreIcon');
+
+    if (!faqExpanded) {
+      hiddenItems.forEach(el => el.classList.remove('faq-hidden'));
+      faqExpanded = true;
+      btn.innerHTML = 'Show Less <span style="transition:transform .3s;">&#9652;</span>';
+      document.getElementById('faqMoreCount').style.display = 'none';
+    } else {
+      hiddenItems.forEach(el => el.classList.add('faq-hidden'));
+      faqExpanded = false;
+      btn.innerHTML = 'Show All Questions <span id="faqMoreIcon" style="transition:transform .3s;">&#9662;</span><span id="faqMoreCount" style="background:#c8102e;font-size:.72rem;padding:2px 8px;border-radius:12px;margin-left:4px;">+' + (FAQ_DATA.length - FAQ_INIT_SHOW) + '</span>';
+    }
+  }
+
+  // ── Run ──────────────────────────────────────────────────────────
+  document.addEventListener('DOMContentLoaded', function() {
+    init();
+    renderFaqs();
+    // Inject FAQPage JSON-LD schema
+    var faqSchema = {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": FAQ_DATA.map(function(item) {
+        return {
+          "@type": "Question",
+          "name": item.q,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": item.a
+          }
+        };
+      })
+    };
+    var s = document.createElement('script');
+    s.type = 'application/ld+json';
+    s.textContent = JSON.stringify(faqSchema);
+    document.head.appendChild(s);
+  });
+
+  // Mobile menu
+  const mBtn = document.querySelector('.mobile-menu-btn');
+  if (mBtn) mBtn.addEventListener('click', function() {
+    const menu = document.querySelector('.nav-menu');
+    const exp  = this.getAttribute('aria-expanded') === 'true';
+    this.setAttribute('aria-expanded', String(!exp));
+    if (menu) menu.classList.toggle('open', !exp);
+  });
+  </script>
+
+</body>
+</html>
