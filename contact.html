@@ -368,7 +368,11 @@
             </label>
           </div>
 
-          <button type="submit" class="btn btn-primary btn-full">Submit Inquiry</button>
+          <button type="submit" class="btn btn-primary btn-full" id="submitBtn">
+            <span class="btn-text">Submit Inquiry</span>
+            <span class="btn-loading" style="display:none;">Sending...</span>
+          </button>
+          <div id="formStatus" style="margin-top:16px;display:none;"></div>
         </form>
       </div>
 
@@ -510,6 +514,129 @@
         fileList.appendChild(div);
       });
     }
+
+    // Form submission handling
+    var form = document.getElementById('contactForm');
+    var submitBtn = document.getElementById('submitBtn');
+    var btnText = submitBtn.querySelector('.btn-text');
+    var btnLoading = submitBtn.querySelector('.btn-loading');
+    var formStatus = document.getElementById('formStatus');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Validate form
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      // Show loading state
+      submitBtn.disabled = true;
+      btnText.style.display = 'none';
+      btnLoading.style.display = 'inline';
+      formStatus.style.display = 'none';
+
+      // Collect form data
+      var formData = new FormData(form);
+      var data = {};
+      formData.forEach(function(value, key) {
+        if (data[key]) {
+          if (Array.isArray(data[key])) {
+            data[key].push(value);
+          } else {
+            data[key] = [data[key], value];
+          }
+        } else {
+          data[key] = value;
+        }
+      });
+
+      // Prepare email content
+      var inquiryType = data.service || 'General Inquiry';
+      var typeLabels = {
+        'new_car': 'New Car Purchase',
+        'used_car': 'Used Car Purchase',
+        'auto_parts': 'Auto Parts Order',
+        'export_agency': 'Export Agency / Logistics',
+        'other': 'Other'
+      };
+
+      var emailSubject = 'Inquiry from ' + (data.fname || '') + ' ' + (data.lname || '') + ' - ' + (typeLabels[inquiryType] || inquiryType);
+      var emailBody = 'New Inquiry from Globalucar Website\n';
+      emailBody += '================================\n\n';
+      emailBody += 'Name: ' + (data.fname || '') + ' ' + (data.lname || '') + '\n';
+      emailBody += 'Email: ' + (data.email || '') + '\n';
+      emailBody += 'Phone/WhatsApp: ' + (data.phone || '') + '\n';
+      emailBody += 'Company: ' + (data.company || 'N/A') + '\n';
+      emailBody += 'Country: ' + (data.country || '') + '\n';
+      emailBody += 'Inquiry Type: ' + (typeLabels[inquiryType] || inquiryType) + '\n\n';
+
+      // Add vehicle details if applicable
+      if ((inquiryType === 'new_car' || inquiryType === 'used_car') && data.car_brand) {
+        emailBody += '--- Vehicle Details ---\n';
+        emailBody += 'Brand: ' + (data.car_brand || 'N/A') + '\n';
+        emailBody += 'Type: ' + (data.car_body || 'N/A') + '\n';
+        emailBody += 'Energy: ' + (data.car_energy || 'N/A') + '\n';
+        emailBody += 'Quantity: ' + (data.car_qty || 'N/A') + '\n';
+        emailBody += 'Destination Port: ' + (data.dest_port || 'N/A') + '\n';
+        emailBody += 'Import Experience: ' + (data.import_exp || 'N/A') + '\n\n';
+      }
+
+      // Add parts details if applicable
+      if (inquiryType === 'auto_parts') {
+        emailBody += '--- Auto Parts Details ---\n';
+        emailBody += 'VIN: ' + (data.parts_vin || 'N/A') + '\n';
+        emailBody += 'Part System: ' + (data.parts_system || 'N/A') + '\n';
+        emailBody += 'Quantity: ' + (data.parts_qty || 'N/A') + '\n';
+        emailBody += 'Expected Delivery: ' + (data.parts_eta || 'N/A') + '\n\n';
+      }
+
+      emailBody += '--- Message ---\n';
+      emailBody += (data.message || '') + '\n\n';
+      emailBody += '================================\n';
+      emailBody += 'Submitted: ' + new Date().toLocaleString() + '\n';
+      emailBody += 'Source: https://www.global-ucars.com/contact.html';
+
+      // Determine recipient based on inquiry type
+      var recipientEmail = (inquiryType === 'auto_parts') ? 'ku@kingmay-autoparts.com' : 'ucars@global-ucars.com';
+
+      // Simulate submission delay for better UX
+      setTimeout(function() {
+        // Create mailto link
+        var mailtoLink = 'mailto:' + recipientEmail + 
+                         '?subject=' + encodeURIComponent(emailSubject) + 
+                         '&body=' + encodeURIComponent(emailBody);
+        
+        // Open email client
+        window.location.href = mailtoLink;
+
+        // Show success message on page
+        formStatus.innerHTML = '<div style="background:#dcfce7;border:1px solid #86efac;border-radius:8px;padding:16px;color:#166534;">' +
+          '<strong style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">' +
+          '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>' +
+          'Inquiry Submitted Successfully!</strong>' +
+          '<p style="margin:0;font-size:.9rem;">Your email client should have opened with a pre-filled message. If not, please email us directly at:<br>' +
+          '<strong>Vehicle inquiries:</strong> <a href="mailto:ucars@global-ucars.com" style="color:#166534;">ucars@global-ucars.com</a><br>' +
+          '<strong>Parts inquiries:</strong> <a href="mailto:ku@kingmay-autoparts.com" style="color:#166534;">ku@kingmay-autoparts.com</a></p>' +
+          '</div>';
+        formStatus.style.display = 'block';
+
+        // Reset button state
+        submitBtn.disabled = false;
+        btnText.style.display = 'inline';
+        btnLoading.style.display = 'none';
+
+        // Reset form after successful submission
+        form.reset();
+        attached = [];
+        renderFiles();
+        toggle();
+
+        // Scroll to success message
+        formStatus.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }, 800);
+    });
   })();
   </script>
 </body>
