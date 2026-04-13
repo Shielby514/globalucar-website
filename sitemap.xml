@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-
-  <!-- Main Pages -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.global-ucars.com/</loc>
     <lastmod>2026-04-01</lastmod>
@@ -47,8 +42,6 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
-  <!-- Parts System Category Pages -->
   <url>
     <loc>https://www.global-ucars.com/parts-engine.html</loc>
     <lastmod>2026-04-01</lastmod>
@@ -73,8 +66,6 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
-  <!-- Blog -->
   <url>
     <loc>https://www.global-ucars.com/blog.html</loc>
     <lastmod>2026-04-01</lastmod>
@@ -129,13 +120,10 @@
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
-
-  <!-- Product Detail Pages (representative sample — 202 products indexed via internal links) -->
   <url>
     <loc>https://www.global-ucars.com/product-detail.html</loc>
     <lastmod>2026-04-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
-
 </urlset>
