@@ -364,6 +364,70 @@
     .view-all-row {
       text-align: center; margin-top: 36px;
     }
+
+    /* ===== BEHIND THE SCENES ===== */
+    .bts-section { background: #0d1f3c; color: #fff; }
+    .bts-tab-bar { display:flex; gap:8px; justify-content:center; margin:24px 0 28px; }
+    .bts-tab {
+      padding:10px 28px; border-radius:30px; font-weight:700; font-size:.9rem;
+      cursor:pointer; border:2px solid rgba(255,255,255,.2); color:rgba(255,255,255,.7);
+      background:transparent; transition:var(--trans);
+    }
+    .bts-tab:hover { border-color:#c8102e; color:#fff; }
+    .bts-tab.active { background:#c8102e; color:#fff; border-color:#c8102e; }
+    .bts-grid {
+      display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:24px;
+    }
+    @media(max-width:900px){ .bts-grid{grid-template-columns:repeat(2,1fr);} }
+    @media(max-width:500px){ .bts-grid{grid-template-columns:1fr;} }
+    .bts-card {
+      position:relative; border-radius:12px; overflow:hidden;
+      aspect-ratio:4/3; cursor:pointer; background:#1a3a5c;
+      transition: transform .3s, box-shadow .3s;
+    }
+    .bts-card:hover { transform:translateY(-4px); box-shadow:0 12px 40px rgba(0,0,0,.4); }
+    .bts-card img {
+      width:100%; height:100%; object-fit:cover; position:absolute; inset:0;
+      transition:transform .5s;
+    }
+    .bts-card:hover img { transform:scale(1.08); }
+    .bts-card-overlay {
+      position:absolute; inset:0;
+      background:linear-gradient(to top,rgba(0,0,0,.75) 0%,rgba(0,0,0,.1) 60%,transparent 100%);
+      display:flex; flex-direction:column; justify-content:flex-end; padding:16px;
+    }
+    .bts-card-label {
+      font-size:.78rem; font-weight:700; color:#c8102e;
+      text-transform:uppercase; letter-spacing:.05em; margin-bottom:4px;
+    }
+    .bts-card-title { font-size:.95rem; font-weight:700; color:#fff; line-height:1.3; }
+    .bts-card-desc { font-size:.78rem; color:rgba(255,255,255,.7); margin-top:4px; line-height:1.4; }
+    .bts-panel { display:none; }
+    .bts-panel.active { display:block; }
+
+    /* Lightbox */
+    .bts-lightbox {
+      display:none; position:fixed; inset:0; background:rgba(0,0,0,.92);
+      z-index:9999; align-items:center; justify-content:center; cursor:zoom-out;
+    }
+    .bts-lightbox.active { display:flex; }
+    .bts-lightbox img {
+      max-width:90vw; max-height:85vh; border-radius:12px; object-fit:contain;
+      box-shadow:0 20px 80px rgba(0,0,0,.6);
+    }
+    .bts-lightbox-caption {
+      position:absolute; bottom:28px; left:50%; transform:translateX(-50%);
+      color:#fff; font-size:.9rem; font-weight:600; text-align:center;
+      background:rgba(0,0,0,.6); padding:8px 24px; border-radius:30px;
+      white-space:nowrap; max-width:90vw; overflow:hidden; text-overflow:ellipsis;
+    }
+    .bts-lightbox-close {
+      position:absolute; top:20px; right:24px; color:#fff; font-size:2rem;
+      cursor:pointer; background:rgba(255,255,255,.1); border:none;
+      width:48px; height:48px; border-radius:50%; display:flex; align-items:center;
+      justify-content:center; transition:background .2s;
+    }
+    .bts-lightbox-close:hover { background:rgba(255,255,255,.25); }
   </style>
 </head>
 <body>
@@ -1348,6 +1412,107 @@
     </div>
   </section>
 
+  <!-- ===== BEHIND THE SCENES ===== -->
+  <section class="bts-section home-section" aria-labelledby="bts-heading">
+    <div class="container">
+      <p class="sec-eyebrow" style="color:#c5a47e;">Behind the Scenes</p>
+      <h2 class="sec-title-lg light" id="bts-heading">Real Operations. Real Facilities. Real Trust.</h2>
+      <p class="sec-desc light">From our Guangzhou showroom to Nansha Port — see how we prepare and ship your orders.</p>
+
+      <div class="bts-tab-bar" role="tablist">
+        <button class="bts-tab active" role="tab" data-bts="vehicle" aria-selected="true">🚗 Vehicle Operations</button>
+        <button class="bts-tab" role="tab" data-bts="parts" aria-selected="false">⚙️ Parts Operations</button>
+      </div>
+
+      <!-- Vehicle Operations Panel -->
+      <div class="bts-panel active" id="bts-vehicle" role="tabpanel">
+        <div class="bts-grid">
+          <div class="bts-card" onclick="btsLightbox(this)">
+            <img src="assets/gallery/vehicle-showroom.jpg" alt="Globalucar vehicle showroom Guangzhou new car display" loading="lazy" onerror="this.style.display='none'" />
+            <div class="bts-card-overlay">
+              <span class="bts-card-label">Showroom</span>
+              <span class="bts-card-title">Vehicle Display Hall</span>
+              <span class="bts-card-desc">New &amp; certified used cars ready for inspection</span>
+            </div>
+          </div>
+          <div class="bts-card" onclick="btsLightbox(this)">
+            <img src="assets/gallery/vehicle-inspection.jpg" alt="Car pre-delivery inspection PDI Guangzhou" loading="lazy" onerror="this.style.display='none'" />
+            <div class="bts-card-overlay">
+              <span class="bts-card-label">Quality Control</span>
+              <span class="bts-card-title">Pre-Delivery Inspection</span>
+              <span class="bts-card-desc">100-point PDI on every vehicle before shipment</span>
+            </div>
+          </div>
+          <div class="bts-card" onclick="btsLightbox(this)">
+            <img src="assets/gallery/vehicle-roro-loading.jpg" alt="Nansha Port RoRo vehicle loading Guangzhou" loading="lazy" onerror="this.style.display='none'" />
+            <div class="bts-card-overlay">
+              <span class="bts-card-label">Nansha Port</span>
+              <span class="bts-card-title">RoRo Loading</span>
+              <span class="bts-card-desc">South China's largest RoRo terminal</span>
+            </div>
+          </div>
+          <div class="bts-card" onclick="btsLightbox(this)">
+            <img src="assets/gallery/vehicle-container.jpg" alt="Container vehicle securing and lashing for export" loading="lazy" onerror="this.style.display='none'" />
+            <div class="bts-card-overlay">
+              <span class="bts-card-label">Logistics</span>
+              <span class="bts-card-title">Container Securing</span>
+              <span class="bts-card-desc">Professional lashing and cargo protection</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Parts Operations Panel -->
+      <div class="bts-panel" id="bts-parts" role="tabpanel">
+        <div class="bts-grid">
+          <div class="bts-card" onclick="btsLightbox(this)">
+            <img src="assets/gallery/parts-warehouse.jpg" alt="Kingmay auto parts warehouse Guangzhou OEM parts inventory" loading="lazy" onerror="this.style.display='none'" />
+            <div class="bts-card-overlay">
+              <span class="bts-card-label">Warehouse</span>
+              <span class="bts-card-title">Parts Storage Facility</span>
+              <span class="bts-card-desc">30,000+ SKUs organized by system &amp; brand</span>
+            </div>
+          </div>
+          <div class="bts-card" onclick="btsLightbox(this)">
+            <img src="assets/gallery/parts-qa-testing.jpg" alt="Auto parts quality assurance testing and inspection" loading="lazy" onerror="this.style.display='none'" />
+            <div class="bts-card-overlay">
+              <span class="bts-card-label">Quality Control</span>
+              <span class="bts-card-title">QA Testing Station</span>
+              <span class="bts-card-desc">IATF 16949 certified inspection process</span>
+            </div>
+          </div>
+          <div class="bts-card" onclick="btsLightbox(this)">
+            <img src="assets/gallery/parts-packaging.jpg" alt="Auto parts packaging and labeling for export" loading="lazy" onerror="this.style.display='none'" />
+            <div class="bts-card-overlay">
+              <span class="bts-card-label">Packing</span>
+              <span class="bts-card-title">Export Packaging</span>
+              <span class="bts-card-desc">Custom packaging to prevent transit damage</span>
+            </div>
+          </div>
+          <div class="bts-card" onclick="btsLightbox(this)">
+            <img src="assets/gallery/parts-container-loading.jpg" alt="Auto parts container loading at Nansha Port" loading="lazy" onerror="this.style.display='none'" />
+            <div class="bts-card-overlay">
+              <span class="bts-card-label">Logistics</span>
+              <span class="bts-card-title">Container Loading</span>
+              <span class="bts-card-desc">Efficient space utilization for bulk orders</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align:center;margin-top:32px;">
+        <a href="about.html#operations" class="btn btn-outline" style="border-color:rgba(255,255,255,.3);color:#fff;padding:10px 32px;">See Our Full Operations &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- BTS Lightbox -->
+  <div class="bts-lightbox" id="btsLightbox" onclick="this.classList.remove('active')">
+    <button class="bts-lightbox-close" aria-label="Close">&times;</button>
+    <img id="btsLightboxImg" src="" alt="" />
+    <div class="bts-lightbox-caption" id="btsLightboxCaption"></div>
+  </div>
+
   <!-- ===== EXPORT PROCESS ===== -->
   <section class="home-section bg-dark" aria-labelledby="process-heading">
     <div class="container">
@@ -1608,6 +1773,51 @@
     function reset(){ clearInterval(timer); timer = setInterval(next, 6000); }
     window.heroGo = function(n){ go(n); reset(); };
     reset();
+  })();
+
+  // Behind the Scenes: Tab switching + Lightbox
+  (function(){
+    var btsTabs = document.querySelectorAll('.bts-tab');
+    var btsPanels = document.querySelectorAll('.bts-panel');
+    btsTabs.forEach(function(tab){
+      tab.addEventListener('click', function(){
+        var target = tab.dataset.bts;
+        btsTabs.forEach(function(t){
+          t.classList.remove('active');
+          t.setAttribute('aria-selected','false');
+        });
+        btsPanels.forEach(function(p){ p.classList.remove('active'); });
+        tab.classList.add('active');
+        tab.setAttribute('aria-selected','true');
+        var panel = document.getElementById('bts-' + target);
+        if(panel) panel.classList.add('active');
+      });
+    });
+
+    window.btsLightbox = function(card){
+      var img = card.querySelector('img');
+      var title = card.querySelector('.bts-card-title');
+      var desc = card.querySelector('.bts-card-desc');
+      if(!img) return;
+      var lb = document.getElementById('btsLightbox');
+      var lbImg = document.getElementById('btsLightboxImg');
+      var lbCap = document.getElementById('btsLightboxCaption');
+      lbImg.src = img.src;
+      lbImg.alt = img.alt;
+      lbCap.textContent = (title ? title.textContent : '') + (desc ? ' — ' + desc.textContent : '');
+      lb.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    };
+    document.getElementById('btsLightbox').addEventListener('click', function(){
+      this.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape'){
+        document.getElementById('btsLightbox').classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
   })();
   </script>
 </body>

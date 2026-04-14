@@ -51,6 +51,92 @@
   </script>
 
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* ===== OUR OPERATIONS ===== */
+    .ops-section { padding:64px 0; }
+    .ops-grid {
+      display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:36px;
+    }
+    @media(max-width:768px){ .ops-grid{grid-template-columns:1fr 1fr;} }
+    @media(max-width:500px){ .ops-grid{grid-template-columns:1fr;} }
+    .ops-card {
+      background:#fff; border-radius:14px; overflow:hidden;
+      border:1px solid #e5e7eb; box-shadow:0 2px 12px rgba(0,0,0,.06);
+      transition:transform .3s, box-shadow .3s;
+    }
+    .ops-card:hover { transform:translateY(-5px); box-shadow:0 12px 40px rgba(0,0,0,.12); }
+    .ops-card-img {
+      width:100%; aspect-ratio:16/10; background:#0d1f3c; position:relative; overflow:hidden;
+    }
+    .ops-card-img img {
+      width:100%; height:100%; object-fit:cover; position:absolute; inset:0;
+      transition:transform .4s;
+    }
+    .ops-card:hover .ops-card-img img { transform:scale(1.06); }
+    .ops-card-tag {
+      position:absolute; top:10px; left:10px; background:#c8102e; color:#fff;
+      font-size:.7rem; font-weight:700; padding:3px 10px; border-radius:20px;
+      text-transform:uppercase; letter-spacing:.04em;
+    }
+    .ops-card-body { padding:18px 20px 20px; }
+    .ops-card-body h3 { font-size:1.05rem; font-weight:700; color:#0d1f3c; margin-bottom:6px; }
+    .ops-card-body p { font-size:.85rem; color:#5a6a7e; line-height:1.65; margin:0; }
+
+    /* ===== CLIENT VISITS & EVENTS ===== */
+    .visits-section { padding:64px 0; background:#f8fafc; }
+    .visits-grid {
+      display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:36px;
+    }
+    @media(max-width:900px){ .visits-grid{grid-template-columns:repeat(3,1fr);} }
+    @media(max-width:600px){ .visits-grid{grid-template-columns:repeat(2,1fr);} }
+    @media(max-width:400px){ .visits-grid{grid-template-columns:1fr;} }
+    .visits-card {
+      position:relative; border-radius:12px; overflow:hidden;
+      aspect-ratio:4/5; background:#e5e7eb; cursor:pointer;
+      transition:transform .3s, box-shadow .3s;
+    }
+    .visits-card:hover { transform:translateY(-4px); box-shadow:0 10px 30px rgba(0,0,0,.15); }
+    .visits-card img {
+      width:100%; height:100%; object-fit:cover; position:absolute; inset:0;
+      transition:transform .4s;
+    }
+    .visits-card:hover img { transform:scale(1.05); }
+    .visits-card-overlay {
+      position:absolute; inset:0;
+      background:linear-gradient(to top,rgba(0,0,0,.7) 0%,transparent 55%);
+      display:flex; flex-direction:column; justify-content:flex-end; padding:14px;
+    }
+    .visits-card-label {
+      font-size:.72rem; font-weight:700; color:#c8102e;
+      text-transform:uppercase; letter-spacing:.04em; margin-bottom:3px;
+    }
+    .visits-card-title { font-size:.85rem; font-weight:700; color:#fff; line-height:1.3; }
+    .visits-card-desc { font-size:.73rem; color:rgba(255,255,255,.7); margin-top:3px; line-height:1.35; }
+
+    /* Shared lightbox (same as index.html BTS) */
+    .ops-lightbox {
+      display:none; position:fixed; inset:0; background:rgba(0,0,0,.92);
+      z-index:9999; align-items:center; justify-content:center; cursor:zoom-out;
+    }
+    .ops-lightbox.active { display:flex; }
+    .ops-lightbox img {
+      max-width:90vw; max-height:85vh; border-radius:12px; object-fit:contain;
+      box-shadow:0 20px 80px rgba(0,0,0,.6);
+    }
+    .ops-lightbox-caption {
+      position:absolute; bottom:28px; left:50%; transform:translateX(-50%);
+      color:#fff; font-size:.9rem; font-weight:600; text-align:center;
+      background:rgba(0,0,0,.6); padding:8px 24px; border-radius:30px;
+      white-space:nowrap; max-width:90vw;
+    }
+    .ops-lightbox-close {
+      position:absolute; top:20px; right:24px; color:#fff; font-size:2rem;
+      cursor:pointer; background:rgba(255,255,255,.1); border:none;
+      width:48px; height:48px; border-radius:50%; display:flex; align-items:center;
+      justify-content:center; transition:background .2s;
+    }
+    .ops-lightbox-close:hover { background:rgba(255,255,255,.25); }
+  </style>
 </head>
 <body>
 
@@ -130,6 +216,165 @@
       </div>
     </div>
   </section>
+
+  <!-- ===== OUR OPERATIONS ===== -->
+  <section class="ops-section" id="operations" aria-labelledby="ops-heading">
+    <div class="container">
+      <p class="sec-eyebrow" style="display:block;text-align:center;font-size:.78rem;font-weight:700;color:#c8102e;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px;">Our Operations</p>
+      <h2 class="sec-title" id="ops-heading" style="text-align:center;font-size:1.8rem;font-weight:800;color:#0d1f3c;margin-bottom:6px;">Facilities &amp; Infrastructure</h2>
+      <p style="text-align:center;color:#5a6a7e;font-size:.95rem;max-width:640px;margin:0 auto;">From our Guangzhou headquarters to Nansha Port — a complete end-to-end export operation.</p>
+
+      <div class="ops-grid">
+        <div class="ops-card" onclick="opsLightbox(this)">
+          <div class="ops-card-img">
+            <img src="assets/gallery/office-panoramic.jpg" alt="Globalucar office Guangzhou Baiyun Jianhua Center headquarters" loading="lazy" onerror="this.style.display='none'" />
+            <span class="ops-card-tag">Office</span>
+          </div>
+          <div class="ops-card-body">
+            <h3>Corporate Headquarters</h3>
+            <p>28F, Guangzhou Jianhua Center, Baiyun District. Sales, documentation and logistics coordination hub.</p>
+          </div>
+        </div>
+        <div class="ops-card" onclick="opsLightbox(this)">
+          <div class="ops-card-img">
+            <img src="assets/gallery/vehicle-inspection.jpg" alt="Vehicle pre-delivery inspection center Guangzhou 100-point PDI" loading="lazy" onerror="this.style.display='none'" />
+            <span class="ops-card-tag">Quality Control</span>
+          </div>
+          <div class="ops-card-body">
+            <h3>Vehicle Inspection Center</h3>
+            <p>Every vehicle undergoes our 100-point certified PDI — exterior, engine, electronics and roadworthiness.</p>
+          </div>
+        </div>
+        <div class="ops-card" onclick="opsLightbox(this)">
+          <div class="ops-card-img">
+            <img src="assets/gallery/parts-warehouse.jpg" alt="Kingmay auto parts warehouse Guangzhou Yuexiu 30000 SKUs" loading="lazy" onerror="this.style.display='none'" />
+            <span class="ops-card-tag">Warehouse</span>
+          </div>
+          <div class="ops-card-body">
+            <h3>Parts Warehouse</h3>
+            <p>30,000+ SKUs across engine, cooling, suspension and electrical systems. Organized by brand and OEM reference.</p>
+          </div>
+        </div>
+        <div class="ops-card" onclick="opsLightbox(this)">
+          <div class="ops-card-img">
+            <img src="assets/gallery/nansha-port.jpg" alt="Nansha Port Guangzhou RoRo terminal vehicle export" loading="lazy" onerror="this.style.display='none'" />
+            <span class="ops-card-tag">Port</span>
+          </div>
+          <div class="ops-card-body">
+            <h3>Nansha Port Terminal</h3>
+            <p>Direct access to South China's largest RoRo terminal. 40+ containers per month shipped to 50+ countries.</p>
+          </div>
+        </div>
+        <div class="ops-card" onclick="opsLightbox(this)">
+          <div class="ops-card-img">
+            <img src="assets/gallery/docs-office.jpg" alt="Export documentation and customs declaration office" loading="lazy" onerror="this.style.display='none'" />
+            <span class="ops-card-tag">Documentation</span>
+          </div>
+          <div class="ops-card-body">
+            <h3>Export Documentation</h3>
+            <p>Dedicated team handling Bill of Lading, Certificate of Origin, customs clearance and marine insurance.</p>
+          </div>
+        </div>
+        <div class="ops-card" onclick="opsLightbox(this)">
+          <div class="ops-card-img">
+            <img src="assets/gallery/vehicle-container.jpg" alt="Container loading and securing for international export" loading="lazy" onerror="this.style.display='none'" />
+            <span class="ops-card-tag">Logistics</span>
+          </div>
+          <div class="ops-card-body">
+            <h3>Container Loading</h3>
+            <p>Professional lashing, cargo securing and container optimization for both RoRo and container shipments.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CLIENT VISITS & EVENTS ===== -->
+  <section class="visits-section" aria-labelledby="visits-heading">
+    <div class="container">
+      <p class="sec-eyebrow" style="display:block;text-align:center;font-size:.78rem;font-weight:700;color:#c8102e;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px;">Client Visits &amp; Events</p>
+      <h2 class="sec-title" id="visits-heading" style="text-align:center;font-size:1.8rem;font-weight:800;color:#0d1f3c;margin-bottom:6px;">Building Trust Face to Face</h2>
+      <p style="text-align:center;color:#5a6a7e;font-size:.95rem;max-width:640px;margin:0 auto;">We welcome clients from around the world to visit our facilities, inspect products in person and build long-lasting partnerships.</p>
+
+      <div class="visits-grid">
+        <div class="visits-card" onclick="opsLightbox(this)">
+          <img src="assets/gallery/client-meeting-01.jpg" alt="Client meeting at Globalucar office Guangzhou" loading="lazy" onerror="this.style.display='none'" />
+          <div class="visits-card-overlay">
+            <span class="visits-card-label">Client Visit</span>
+            <span class="visits-card-title">Business Negotiation</span>
+            <span class="visits-card-desc">Discussing fleet order details at our HQ</span>
+          </div>
+        </div>
+        <div class="visits-card" onclick="opsLightbox(this)">
+          <img src="assets/gallery/client-tour-01.jpg" alt="Client facility tour inspecting vehicles Guangzhou" loading="lazy" onerror="this.style.display='none'" />
+          <div class="visits-card-overlay">
+            <span class="visits-card-label">Facility Tour</span>
+            <span class="visits-card-title">Showroom Walkthrough</span>
+            <span class="visits-card-desc">Client inspecting vehicles on-site</span>
+          </div>
+        </div>
+        <div class="visits-card" onclick="opsLightbox(this)">
+          <img src="assets/gallery/client-group-photo-01.jpg" alt="Globalucar team photo with visiting clients" loading="lazy" onerror="this.style.display='none'" />
+          <div class="visits-card-overlay">
+            <span class="visits-card-label">Partnership</span>
+            <span class="visits-card-title">Group Photo</span>
+            <span class="visits-card-desc">Celebrating a new partnership</span>
+          </div>
+        </div>
+        <div class="visits-card" onclick="opsLightbox(this)">
+          <img src="assets/gallery/client-dinner-01.jpg" alt="Hosting clients for business dinner Guangzhou" loading="lazy" onerror="this.style.display='none'" />
+          <div class="visits-card-overlay">
+            <span class="visits-card-label">Hospitality</span>
+            <span class="visits-card-title">Business Dinner</span>
+            <span class="visits-card-desc">Traditional Cantonese dinner with clients</span>
+          </div>
+        </div>
+        <div class="visits-card" onclick="opsLightbox(this)">
+          <img src="assets/gallery/client-inspection-01.jpg" alt="Client inspecting auto parts quality on-site" loading="lazy" onerror="this.style.display='none'" />
+          <div class="visits-card-overlay">
+            <span class="visits-card-label">Quality Check</span>
+            <span class="visits-card-title">Parts Inspection</span>
+            <span class="visits-card-desc">Client verifying OEM parts quality</span>
+          </div>
+        </div>
+        <div class="visits-card" onclick="opsLightbox(this)">
+          <img src="assets/gallery/client-warehouse-01.jpg" alt="Client visiting Kingmay warehouse" loading="lazy" onerror="this.style.display='none'" />
+          <div class="visits-card-overlay">
+            <span class="visits-card-label">Warehouse Visit</span>
+            <span class="visits-card-title">Inventory Review</span>
+            <span class="visits-card-desc">Client touring our parts warehouse</span>
+          </div>
+        </div>
+        <div class="visits-card" onclick="opsLightbox(this)">
+          <img src="assets/gallery/exhibition-01.jpg" alt="Globalucar at international auto exhibition" loading="lazy" onerror="this.style.display='none'" />
+          <div class="visits-card-overlay">
+            <span class="visits-card-label">Exhibition</span>
+            <span class="visits-card-title">Auto Show</span>
+            <span class="visits-card-desc">Showcasing our export lineup at a trade fair</span>
+          </div>
+        </div>
+        <div class="visits-card" onclick="opsLightbox(this)">
+          <img src="assets/gallery/exhibition-02.jpg" alt="Globalucar booth at trade exhibition meeting international buyers" loading="lazy" onerror="this.style.display='none'" />
+          <div class="visits-card-overlay">
+            <span class="visits-card-label">Exhibition</span>
+            <span class="visits-card-title">Trade Fair Booth</span>
+            <span class="visits-card-desc">Meeting international buyers at our booth</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align:center;margin-top:36px;">
+        <a href="contact.html" class="btn btn-primary" style="padding:12px 36px;font-size:.95rem;">Schedule a Visit &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Page Lightbox -->
+  <div class="ops-lightbox" id="opsLightbox" onclick="this.classList.remove('active')">
+    <button class="ops-lightbox-close" aria-label="Close">&times;</button>
+    <img id="opsLightboxImg" src="" alt="" />
+    <div class="ops-lightbox-caption" id="opsLightboxCaption"></div>
+  </div>
 
   <!-- CORE VALUES -->
   <section class="section-values bg-light" aria-labelledby="values-heading">
@@ -213,6 +458,36 @@
       <p>&copy; 2026 Guangzhou Vehicle External Trade Co., Ltd. All Rights Reserved.</p>
     </div>
   </footer>
+
+  <!-- About Page Lightbox JS -->
+  <script>
+  (function(){
+    window.opsLightbox = function(card){
+      var img = card.querySelector('img');
+      var title = card.querySelector('.ops-card-title, .visits-card-title');
+      var desc = card.querySelector('.ops-card-body p, .visits-card-desc');
+      if(!img) return;
+      var lb = document.getElementById('opsLightbox');
+      var lbImg = document.getElementById('opsLightboxImg');
+      var lbCap = document.getElementById('opsLightboxCaption');
+      lbImg.src = img.src;
+      lbImg.alt = img.alt;
+      lbCap.textContent = (title ? title.textContent : '') + (desc ? ' — ' + desc.textContent : '');
+      lb.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    };
+    document.getElementById('opsLightbox').addEventListener('click', function(){
+      this.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape'){
+        document.getElementById('opsLightbox').classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+  })();
+  </script>
 
   <script src="script.js"></script>
 </body>
