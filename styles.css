@@ -1088,3 +1088,20 @@ section { padding: 80px 0; }
 @media (max-width: 500px) {
   .process-steps { grid-template-columns: 1fr; }
 }
+
+/* ── Footer Social Icons ──────────────────── */
+.footer-social {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 0 0;
+}
+.footer-social a {
+  color: rgba(255,255,255,0.55);
+  transition: color .25s, transform .25s;
+}
+.footer-social a:hover {
+  color: #fff;
+  transform: translateY(-2px);
+}
