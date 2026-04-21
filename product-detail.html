@@ -709,8 +709,8 @@
   <section class="pd-delivery" id="pd-delivery" style="display:none;">
     <div class="pd-delivery-inner">
       <p class="pd-delivery-eyebrow">Delivery &amp; Inspection</p>
-      <h2 class="pd-delivery-title">How We Ensure Your Vehicle Arrives Safely</h2>
-      <p class="pd-delivery-desc">Every vehicle shipped by Globalucar goes through a rigorous quality assurance process — from factory gate to your destination port.</p>
+      <h2 class="pd-delivery-title">How We Ensure Your Order Arrives Safely</h2>
+      <p class="pd-delivery-desc">Every vehicle and auto parts order shipped by Globalucar goes through a rigorous quality assurance process — from factory gate to your destination port.</p>
       <div class="pd-delivery-groups" id="pd-delivery-groups">
         <!-- JS renders all delivery groups as grid layout -->
       </div>
@@ -1339,6 +1339,11 @@
             { src: 'assets/gallery/factory-container-loading-02.jpg', label: 'Loading', caption: '40ft container optimization for maximum space utilization' },
             { src: 'assets/gallery/factory-container-loading-03.png', label: 'Loading', caption: 'Wooden chocks and tension belts for ocean transit protection' }
           ],
+          parts_loading: [
+            { src: 'assets/gallery/factory-container-loading-04.jpg', label: 'Parts Loading', caption: 'Auto parts palletized and stacked in 40ft container for bulk export' },
+            { src: 'assets/gallery/factory-container-loading-05.jpg', label: 'Parts Loading', caption: 'OEM-grade engine and suspension parts organized by brand for shipment' },
+            { src: 'assets/gallery/factory-container-loading-06.jpg', label: 'Parts Loading', caption: 'Mixed-system parts order sealed and ready for ocean freight departure' }
+          ],
           inspection: [
             { src: 'assets/gallery/factory-inspection-01.jpg', label: 'Inspection', caption: 'Pre-shipment exterior bodywork and paint quality check' },
             { src: 'assets/gallery/factory-inspection-02.jpg', label: 'Inspection', caption: 'Engine compartment and under-hood verification process' },
@@ -1360,10 +1365,11 @@
           var groupNames = {
             transport: 'Transport & Logistics',
             loading: 'Container Loading',
+            parts_loading: 'Auto Parts Container Loading',
             inspection: 'Quality Inspection',
             reception: 'Client Visits & Events'
           };
-          var groups = ['transport', 'loading', 'inspection', 'reception'];
+          var groups = ['transport', 'loading', 'parts_loading', 'inspection', 'reception'];
           var html = '';
           groups.forEach(function(key) {
             if (!deliveryData[key] || deliveryData[key].length === 0) return;
