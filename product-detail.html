@@ -406,6 +406,147 @@
       color: #fff;
     }
 
+    /* ── Delivery Proof Section ── */
+    .pd-delivery {
+      background: #f8f9fa;
+      padding: 56px 20px;
+      max-width: 100%;
+    }
+    .pd-delivery-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .pd-delivery-eyebrow {
+      font-size: .78rem;
+      font-weight: 700;
+      color: #c8102e;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      margin-bottom: 6px;
+    }
+    .pd-delivery-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #0d1f3c;
+      margin-bottom: 8px;
+    }
+    .pd-delivery-desc {
+      font-size: .92rem;
+      color: #5a6a7e;
+      max-width: 640px;
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+    .pd-delivery-tabs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+    .pd-delivery-tab {
+      padding: 10px 22px;
+      border-radius: 28px;
+      font-size: .85rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: 2px solid #e2e8f0;
+      background: #fff;
+      color: #4a5568;
+      transition: all .2s;
+    }
+    .pd-delivery-tab:hover { border-color: #c8102e; color: #c8102e; }
+    .pd-delivery-tab.active { background: #c8102e; color: #fff; border-color: #c8102e; }
+    .pd-delivery-panel { display: none; }
+    .pd-delivery-panel.active { display: block; }
+    .pd-delivery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    @media(max-width:768px){ .pd-delivery-grid{grid-template-columns:repeat(2,1fr);} }
+    @media(max-width:480px){ .pd-delivery-grid{grid-template-columns:1fr;} }
+    .pd-delivery-card {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      aspect-ratio: 16/10;
+      cursor: pointer;
+      background: #e5e7eb;
+      transition: transform .3s, box-shadow .3s;
+    }
+    .pd-delivery-card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(0,0,0,.15); }
+    .pd-delivery-card img {
+      width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0;
+      transition: transform .4s;
+    }
+    .pd-delivery-card:hover img { transform: scale(1.05); }
+    .pd-delivery-card-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,.7) 0%, rgba(0,0,0,.05) 55%, transparent 100%);
+      display: flex; flex-direction: column; justify-content: flex-end; padding: 14px;
+    }
+    .pd-delivery-card-label {
+      font-size: .72rem; font-weight: 700; color: #c8102e;
+      text-transform: uppercase; letter-spacing: .05em; margin-bottom: 3px;
+    }
+    .pd-delivery-card-caption {
+      font-size: .82rem; font-weight: 600; color: #fff; line-height: 1.3;
+    }
+
+    /* ── Trust & Internal Links ── */
+    .pd-trust-section {
+      padding: 48px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .pd-trust-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 28px;
+    }
+    @media(max-width:768px){ .pd-trust-grid{grid-template-columns:1fr;} }
+    .pd-trust-link-card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 14px;
+      padding: 24px;
+      text-decoration: none;
+      color: inherit;
+      transition: transform .2s, box-shadow .2s, border-color .2s;
+      display: block;
+    }
+    .pd-trust-link-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0,0,0,.1);
+      border-color: #c8102e;
+    }
+    .pd-trust-link-icon {
+      font-size: 1.8rem;
+      margin-bottom: 12px;
+      display: block;
+    }
+    .pd-trust-link-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #0d1f3c;
+      margin-bottom: 6px;
+    }
+    .pd-trust-link-desc {
+      font-size: .84rem;
+      color: #5a6a7e;
+      line-height: 1.6;
+    }
+    .pd-trust-link-arrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: .82rem;
+      font-weight: 700;
+      color: #c8102e;
+      margin-top: 10px;
+    }
+
     /* Image Lightbox */
     .pd-lightbox {
       display: none;
@@ -523,6 +664,57 @@
       <div class="pd-spec-row"><div class="pd-spec-key">Loading...</div><div class="pd-spec-val"></div></div>
     </div>
   </div>
+
+  <!-- ── Delivery Proof Section ─────────────────────── -->
+  <section class="pd-delivery" id="pd-delivery" style="display:none;">
+    <div class="pd-delivery-inner">
+      <p class="pd-delivery-eyebrow">Delivery &amp; Inspection</p>
+      <h2 class="pd-delivery-title">How We Ensure Your Vehicle Arrives Safely</h2>
+      <p class="pd-delivery-desc">Every vehicle shipped by Globalucar goes through a rigorous quality assurance process — from factory gate to your destination port.</p>
+
+      <div class="pd-delivery-tabs" role="tablist">
+        <button class="pd-delivery-tab active" data-dtab="transport" role="tab" aria-selected="true">🏭 Factory to Port</button>
+        <button class="pd-delivery-tab" data-dtab="loading" role="tab" aria-selected="false">📦 Container Loading</button>
+        <button class="pd-delivery-tab" data-dtab="inspection" role="tab" aria-selected="false">🔍 Quality Inspection</button>
+        <button class="pd-delivery-tab" data-dtab="reception" role="tab" aria-selected="false">🤝 Client Visits</button>
+      </div>
+
+      <!-- Transport Panel -->
+      <div class="pd-delivery-panel active" id="dp-transport" role="tabpanel"></div>
+      <!-- Loading Panel -->
+      <div class="pd-delivery-panel" id="dp-loading" role="tabpanel"></div>
+      <!-- Inspection Panel -->
+      <div class="pd-delivery-panel" id="dp-inspection" role="tabpanel"></div>
+      <!-- Reception Panel -->
+      <div class="pd-delivery-panel" id="dp-reception" role="tabpanel"></div>
+    </div>
+  </section>
+
+  <!-- ── Trust & Internal Links ─────────────────────── -->
+  <section class="pd-trust-section" id="pd-trust-section" style="display:none;">
+    <h2 class="pd-delivery-title">Why Globalucar Buyers Trust Us</h2>
+    <p class="pd-delivery-desc">Licensed exporter. 10+ years. 50+ countries. Full-service from order to delivery.</p>
+    <div class="pd-trust-grid">
+      <a href="about.html#operations" class="pd-trust-link-card">
+        <span class="pd-trust-link-icon">🏢</span>
+        <div class="pd-trust-link-title">Our Operations</div>
+        <div class="pd-trust-link-desc">Corporate HQ, inspection center, parts warehouse and Nansha Port terminal — see the full infrastructure.</div>
+        <span class="pd-trust-link-arrow">View Facilities →</span>
+      </a>
+      <a href="services.html" class="pd-trust-link-card">
+        <span class="pd-trust-link-icon">📋</span>
+        <div class="pd-trust-link-title">Export Services</div>
+        <div class="pd-trust-link-desc">Complete logistics: customs clearance, marine insurance, documentation and real-time shipment tracking.</div>
+        <span class="pd-trust-link-arrow">Learn More →</span>
+      </a>
+      <a href="about.html#visits-heading" class="pd-trust-link-card">
+        <span class="pd-trust-link-icon">🤝</span>
+        <div class="pd-trust-link-title">Client Visits</div>
+        <div class="pd-trust-link-desc">Join 500+ international buyers who have visited our facilities. Schedule a factory tour and live vehicle inspection.</div>
+        <span class="pd-trust-link-arrow">Schedule a Visit →</span>
+      </a>
+    </div>
+  </section>
 
   <!-- ── Parts Extra: OEM + Compat + Features ─── -->
   <div class="pd-parts-extra" id="pd-parts-extra" style="display:none;">
@@ -1030,6 +1222,102 @@
         } else {
           featList.innerHTML = '<li>OEM-equivalent quality</li><li>ISO/TS 16949 compliant</li><li>FOB Guangzhou — Nansha Port</li>';
         }
+      }
+
+      // ── Delivery Proof Section (new_car & used_car only) ──
+      if (p.category === 'new_car' || p.category === 'used_car') {
+        document.getElementById('pd-delivery').style.display = 'block';
+        document.getElementById('pd-trust-section').style.display = 'block';
+
+        var pName = escHtml(p.name);
+        var deliveryData = {
+          transport: [
+            { src: 'assets/gallery/factory-cage-transport-04.jpg', label: 'Transport', caption: 'Vehicle loaded on specialized cage carrier at factory yard' },
+            { src: 'assets/gallery/factory-cage-transport-05.jpg', label: 'Transport', caption: 'Cage convoy departing factory for port terminal' },
+            { src: 'assets/gallery/factory-cage-transport-06.jpg', label: 'Transport', caption: 'Damage-free transfer via steel cage frame system' }
+          ],
+          loading: [
+            { src: 'assets/gallery/factory-container-loading-01.jpg', label: 'Loading', caption: 'On-site container stuffing — ' + pName + ' secured with steel lashing' },
+            { src: 'assets/gallery/factory-container-loading-02.jpg', label: 'Loading', caption: '40ft container optimization for maximum space utilization' },
+            { src: 'assets/gallery/factory-container-loading-03.png', label: 'Loading', caption: 'Wooden chocks and tension belts for ocean transit protection' }
+          ],
+          inspection: [
+            { src: 'assets/gallery/factory-inspection-01.jpg', label: 'Inspection', caption: 'Pre-shipment exterior bodywork and paint quality check' },
+            { src: 'assets/gallery/factory-inspection-02.jpg', label: 'Inspection', caption: 'Engine compartment and under-hood verification process' },
+            { src: 'assets/gallery/factory-inspection-03.jpg', label: 'Inspection', caption: 'Interior electronics and dashboard function testing' }
+          ],
+          reception: [
+            { src: 'assets/gallery/factory-client-reception-01.jpg', label: 'Client Visit', caption: 'Welcoming international buyers at the factory gate' },
+            { src: 'assets/gallery/factory-client-reception-02.jpg', label: 'Factory Tour', caption: 'Client touring the vehicle production and staging area' },
+            { src: 'assets/gallery/factory-client-reception-03.jpg', label: 'Negotiation', caption: 'Face-to-face order discussion and contract signing' },
+            { src: 'assets/gallery/factory-client-reception-04.jpg', label: 'Partnership', caption: 'Group photo celebrating new business partnership' }
+          ]
+        };
+
+        // Render panels
+        ['transport', 'loading', 'inspection', 'reception'].forEach(function(key) {
+          var panel = document.getElementById('dp-' + key);
+          if (panel) {
+            var cards = deliveryData[key].map(function(item) {
+              return '<div class="pd-delivery-card" onclick="openLightbox(\'' + item.src + '\')">' +
+                '<img src="' + item.src + '" alt="' + item.caption + ' — ' + pName + ' export from China" loading="lazy" onerror="this.style.display=\'none\'" />' +
+                '<div class="pd-delivery-card-overlay">' +
+                  '<span class="pd-delivery-card-label">' + item.label + '</span>' +
+                  '<span class="pd-delivery-card-caption">' + item.caption + '</span>' +
+                '</div></div>';
+            }).join('');
+            panel.innerHTML = '<div class="pd-delivery-grid">' + cards + '</div>';
+          }
+        });
+
+        // Tab switching
+        document.querySelectorAll('.pd-delivery-tab').forEach(function(tab) {
+          tab.addEventListener('click', function() {
+            document.querySelectorAll('.pd-delivery-tab').forEach(function(t) { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
+            document.querySelectorAll('.pd-delivery-panel').forEach(function(pn) { pn.classList.remove('active'); });
+            tab.classList.add('active');
+            tab.setAttribute('aria-selected', 'true');
+            var targetPanel = document.getElementById('dp-' + tab.dataset.dtab);
+            if (targetPanel) targetPanel.classList.add('active');
+          });
+        });
+
+        // ── FAQPage JSON-LD ──
+        var vehicleType = p.category === 'new_car' ? 'new vehicle' : 'certified used vehicle';
+        var faqSchema = {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "How is the " + p.name + " shipped from China?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "The " + p.name + " is shipped FOB Nansha Port, Guangzhou. We offer both RoRo (roll-on/roll-off) and 40ft container shipping options. Lead time is typically 2-4 weeks depending on your destination port. All vehicles are professionally secured with steel lashing and wooden chocks before loading."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What quality checks does Globalucar perform before shipping the " + p.name + "?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Every " + p.name + " undergoes a comprehensive pre-shipment inspection covering exterior bodywork, paint quality, engine compartment, electronics, interior condition and tire tread. We document the condition with photos and provide a full condition report to the buyer before loading."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can I visit your showroom to inspect the " + p.name + " before ordering?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes, we welcome international buyers to visit our Guangzhou office and showroom. We arrange factory tours, live vehicle inspections and face-to-face order discussions. Contact us at ucars@global-ucars.com to schedule your visit."
+              }
+            }
+          ]
+        };
+        var faqScript = document.createElement('script');
+        faqScript.type = 'application/ld+json';
+        faqScript.textContent = JSON.stringify(faqSchema);
+        document.head.appendChild(faqScript);
       }
     }
 
