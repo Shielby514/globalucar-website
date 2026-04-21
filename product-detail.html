@@ -9,6 +9,7 @@
   <meta id="meta-description" name="description" content="Detailed specifications and pricing for export vehicles from Guangzhou Vehicle External Trade Co., Ltd. — your one-stop car export partner." />
   <meta id="meta-keywords" name="keywords" content="China car export, used car export China, new car export, Guangzhou vehicle export, BYD export, Toyota used car" />
   <link rel="canonical" id="canonical-url" href="https://www.global-ucars.com/product-detail.html" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
 
   <!-- Open Graph -->
   <meta id="og-title" property="og:title" content="Vehicle Detail | Globalucar" />
@@ -18,9 +19,9 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card"        content="summary_large_image" />
-  <meta name="twitter:title"       content="Vehicle Detail | Globalucar" />
-  <meta name="twitter:description" content="Quality vehicles for export from Guangzhou, China." />
-  <meta name="twitter:image"       content="https://www.global-ucars.com/assets/products/product_001.jpg" />
+  <meta id="twitter-title" name="twitter:title"       content="Vehicle Detail | Globalucar" />
+  <meta id="twitter-description" name="twitter:description" content="Quality vehicles for export from Guangzhou, China." />
+  <meta id="twitter-image" name="twitter:image"       content="https://www.global-ucars.com/assets/products/product_001.jpg" />
 
   <!-- Schema.org Product — injected by JS -->
   <script type="application/ld+json" id="schema-product">{}</script>
@@ -144,24 +145,42 @@
       position: relative;
       overflow: hidden;
     }
+    .pd-desc-wrapper { position: relative; margin-bottom: 16px; }
     .pd-desc.collapsed {
       display: -webkit-box;
-      -webkit-line-clamp: 4;
+      -webkit-line-clamp: 3;
       -webkit-box-orient: vertical;
-      max-height: calc(1.7em * 4 + 0.95rem * 0.3);
+      max-height: calc(1.7em * 3);
+      overflow: hidden;
     }
+    .pd-desc-fade {
+      display: none;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 60%;
+      background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, #fff 100%);
+      pointer-events: none;
+      z-index: 1;
+    }
+    .pd-desc.collapsed ~ .pd-desc-fade { display: block; }
     .pd-desc-toggle {
       display: none;
-      background: none;
+      background: #c8102e;
+      color: #fff;
       border: none;
-      color: #c8102e;
-      font-size: 0.85rem;
-      font-weight: 700;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      font-weight: 600;
       cursor: pointer;
-      padding: 4px 0;
+      padding: 8px 18px;
       margin-bottom: 16px;
+      transition: background 0.2s;
+      position: relative;
+      z-index: 2;
     }
-    .pd-desc-toggle:hover { text-decoration: underline; }
+    .pd-desc-toggle:hover { background: #a00d24; }
     .pd-desc.collapsed ~ .pd-desc-toggle,
     .pd-desc-toggle.visible { display: inline-block; }
 
@@ -251,22 +270,6 @@
       padding-bottom: 10px;
       border-bottom: 2px solid #c8102e;
     }
-    .pd-specs-toggle {
-      display: none;
-      background: #0d1f3c;
-      color: #fff;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 6px;
-      font-size: 0.85rem;
-      font-weight: 700;
-      cursor: pointer;
-      margin-top: 16px;
-      transition: background 0.2s;
-    }
-    .pd-specs-toggle:hover { background: #162d56; }
-    .pd-specs-toggle.visible { display: inline-block; }
-    .pd-spec-row.hidden-spec { display: none; }
     .pd-specs-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -476,36 +479,34 @@
       line-height: 1.7;
       margin-bottom: 24px;
     }
-    /* Scrolling photo wall */
-    .pd-delivery-scroll {
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: thin;
-      scrollbar-color: #c8102e #e5e7eb;
-      padding-bottom: 12px;
+    /* Grid photo wall — all visible at once */
+    .pd-delivery-groups { display: flex; flex-direction: column; gap: 28px; }
+    .pd-delivery-group-header {
+      font-size: .85rem;
+      font-weight: 700;
+      color: #0d1f3c;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #c8102e;
+      margin-bottom: 4px;
     }
-    .pd-delivery-scroll::-webkit-scrollbar { height: 6px; }
-    .pd-delivery-scroll::-webkit-scrollbar-track { background: #e5e7eb; border-radius: 3px; }
-    .pd-delivery-scroll::-webkit-scrollbar-thumb { background: #c8102e; border-radius: 3px; }
-    .pd-delivery-track {
-      display: flex;
-      gap: 16px;
-      width: max-content;
+    .pd-delivery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
     }
+    @media(max-width:768px){ .pd-delivery-grid{ grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); } }
     .pd-delivery-card {
       position: relative;
-      border-radius: 12px;
+      border-radius: 10px;
       overflow: hidden;
-      width: 280px;
-      min-width: 280px;
       aspect-ratio: 16/10;
       cursor: pointer;
       background: #e5e7eb;
       transition: transform .3s, box-shadow .3s;
-      flex-shrink: 0;
     }
-    @media(max-width:768px){ .pd-delivery-card{width:240px;min-width:240px;} }
-    .pd-delivery-card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(0,0,0,.15); }
+    .pd-delivery-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,.12); }
     .pd-delivery-card img {
       width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0;
       transition: transform .4s;
@@ -514,23 +515,14 @@
     .pd-delivery-card-overlay {
       position: absolute; inset: 0;
       background: linear-gradient(to top, rgba(0,0,0,.7) 0%, rgba(0,0,0,.05) 55%, transparent 100%);
-      display: flex; flex-direction: column; justify-content: flex-end; padding: 14px;
+      display: flex; flex-direction: column; justify-content: flex-end; padding: 12px;
     }
     .pd-delivery-card-label {
-      font-size: .68rem; font-weight: 700; color: #c8102e;
-      text-transform: uppercase; letter-spacing: .05em; margin-bottom: 3px;
+      font-size: .65rem; font-weight: 700; color: #c8102e;
+      text-transform: uppercase; letter-spacing: .05em; margin-bottom: 2px;
     }
     .pd-delivery-card-caption {
-      font-size: .78rem; font-weight: 600; color: #fff; line-height: 1.3;
-    }
-    /* Category divider dots between groups */
-    .pd-delivery-divider {
-      width: 4px;
-      min-width: 4px;
-      border-radius: 2px;
-      background: #c8102e;
-      align-self: stretch;
-      opacity: 0.4;
+      font-size: .75rem; font-weight: 600; color: #fff; line-height: 1.3;
     }
 
     /* ── Trust & Internal Links ── */
@@ -642,7 +634,11 @@
       <a href="index.html">Home</a>
       <span>›</span>
       <a href="products.html">Products</a>
-      <span>›</span>
+      <span id="bc-cat-sep">›</span>
+      <a href="products.html" id="bc-cat-link">New Cars</a>
+      <span id="bc-brand-sep" style="display:none;">›</span>
+      <a href="products.html" id="bc-brand-link" style="display:none;"></a>
+      <span id="bc-name-sep" style="display:none;">›</span>
       <span id="breadcrumb-name">Vehicle Detail</span>
     </div>
   </div>
@@ -654,6 +650,18 @@
     <div class="pd-gallery">
       <img id="pd-main-img" class="pd-main-img" src="" alt="Product Image" />
       <div class="pd-thumbs" id="pd-thumbs"></div>
+
+      <!-- MOQ, Trust & Contact info — moved below image for balanced layout -->
+      <div class="pd-moq" id="pd-moq" style="margin-top:20px;">
+        <strong>Min. Order:</strong> <span id="pd-moq-val">1 Piece</span>
+      </div>
+
+      <div class="pd-trust-row" style="margin-bottom:0;">
+        <div class="pd-trust-item"><span class="pd-trust-icon">⛴</span> Ships from Nansha Port, Guangzhou</div>
+        <div class="pd-trust-item"><span class="pd-trust-icon">📋</span> Export License Certified</div>
+        <div class="pd-trust-item"><span class="pd-trust-icon">🔒</span> Secure Payment</div>
+        <div class="pd-trust-item"><span class="pd-trust-icon">🌍</span> Worldwide Delivery</div>
+      </div>
     </div>
 
     <!-- Info -->
@@ -668,27 +676,19 @@
       </div>
 
       <div class="pd-tags" id="pd-tags"></div>
-      <div class="pd-desc" id="pd-desc"></div>
-
-      <div class="pd-moq" id="pd-moq">
-        <strong>Min. Order:</strong> <span id="pd-moq-val">1 Piece</span>
+      <div class="pd-desc-wrapper" id="pd-desc-wrapper">
+        <div class="pd-desc" id="pd-desc"></div>
+        <div class="pd-desc-fade"></div>
       </div>
 
       <div class="pd-cta-row">
         <a href="contact.html?inquiry=1" class="pd-cta-primary" id="pd-inquiry-btn">
           ✉ Get a Quote
         </a>
-        <a href="https://wa.me/8613800000000?text=Hello%2C+I%27m+interested+in+this+vehicle" 
+        <a href="https://wa.me/8613800000000?text=Hello%2C+I%27m+interested+in+this+vehicle"
            target="_blank" class="pd-cta-secondary">
           💬 WhatsApp Us
         </a>
-      </div>
-
-      <div class="pd-trust-row">
-        <div class="pd-trust-item"><span class="pd-trust-icon">⛴</span> Ships from Nansha Port, Guangzhou</div>
-        <div class="pd-trust-item"><span class="pd-trust-icon">📋</span> Export License Certified</div>
-        <div class="pd-trust-item"><span class="pd-trust-icon">🔒</span> Secure Payment</div>
-        <div class="pd-trust-item"><span class="pd-trust-icon">🌍</span> Worldwide Delivery</div>
       </div>
 
       <div class="pd-moq" style="background:#f0fff4;border-left-color:#2ea06e;">
@@ -711,10 +711,8 @@
       <p class="pd-delivery-eyebrow">Delivery &amp; Inspection</p>
       <h2 class="pd-delivery-title">How We Ensure Your Vehicle Arrives Safely</h2>
       <p class="pd-delivery-desc">Every vehicle shipped by Globalucar goes through a rigorous quality assurance process — from factory gate to your destination port.</p>
-      <div class="pd-delivery-scroll">
-        <div class="pd-delivery-track" id="pd-delivery-track">
-          <!-- JS renders all delivery cards as a horizontal scrolling gallery -->
-        </div>
+      <div class="pd-delivery-groups" id="pd-delivery-groups">
+        <!-- JS renders all delivery groups as grid layout -->
       </div>
     </div>
   </section>
@@ -937,10 +935,14 @@
       document.getElementById('meta-keywords').content = metaKws;
       document.getElementById('og-title').content = title;
       document.getElementById('og-description').content = metaDesc;
+      document.getElementById('twitter-title').content = title;
+      document.getElementById('twitter-description').content = metaDesc;
 
       const imgSrc = (typeof p.local_image === 'string' ? p.local_image : null) || p.image || (p.images && p.images[0]) || '';
       if (imgSrc) {
-        document.getElementById('og-image').content = imgSrc.startsWith('http') ? imgSrc : 'https://www.global-ucars.com/' + imgSrc;
+        var fullImgUrl = imgSrc.startsWith('http') ? imgSrc : 'https://www.global-ucars.com/' + imgSrc;
+        document.getElementById('og-image').content = fullImgUrl;
+        document.getElementById('twitter-image').content = fullImgUrl;
         // Canonical URL with id
         document.getElementById('canonical-url').href = `https://www.global-ucars.com/product-detail.html?id=${p.id}`;
       }
@@ -975,16 +977,20 @@
       document.getElementById('schema-product').textContent = JSON.stringify(schema, null, 2);
 
       // ── Breadcrumb JSON-LD ──
-      const catMap = { new_car: 'New Cars', used_car: 'Used Cars', parts: 'Auto Parts' };
-      const sysPageMap = { engine: 'parts-engine.html', cooling: 'parts-cooling.html', suspension: 'parts-suspension.html', electrical: 'parts-electrical.html' };
-      const sysNameMap = { engine: 'Engine Parts', cooling: 'Cooling Parts', suspension: 'Suspension Parts', electrical: 'Electrical Parts' };
-      const catLabel = catMap[p.category] || 'Products';
+      const catMapLD = { new_car: 'New Cars', used_car: 'Used Cars', parts: 'Auto Parts' };
+      const sysPageMapLD = { engine: 'parts-engine.html', cooling: 'parts-cooling.html', suspension: 'parts-suspension.html', electrical: 'parts-electrical.html' };
+      const sysNameMapLD = { engine: 'Engine Parts', cooling: 'Cooling Parts', suspension: 'Suspension Parts', electrical: 'Electrical Parts' };
+      const catLabelLD = catMapLD[p.category] || 'Products';
       let crumbs = [
         {"@type":"ListItem","position":1,"name":"Home","item":"https://www.global-ucars.com/"},
-        {"@type":"ListItem","position":2,"name":catLabel,"item":"https://www.global-ucars.com/products.html?cat=" + p.category}
+        {"@type":"ListItem","position":2,"name":catLabelLD,"item":"https://www.global-ucars.com/products.html?cat=" + p.category}
       ];
-      if (p.category === 'parts' && p.part_system && sysPageMap[p.part_system]) {
-        crumbs.push({"@type":"ListItem","position":3,"name":sysNameMap[p.part_system],"item":"https://www.global-ucars.com/" + sysPageMap[p.part_system]});
+      if (p.category === 'parts' && p.part_system && sysPageMapLD[p.part_system]) {
+        crumbs.push({"@type":"ListItem","position":3,"name":sysNameMapLD[p.part_system],"item":"https://www.global-ucars.com/" + sysPageMapLD[p.part_system]});
+        crumbs.push({"@type":"ListItem","position":4,"name":p.name,"item":"https://www.global-ucars.com/product-detail.html?id=" + p.id});
+      } else if ((p.category === 'new_car' || p.category === 'used_car') && p.brand) {
+        var brandNameLD = p.brand.split('(')[0].split('/')[0].trim();
+        crumbs.push({"@type":"ListItem","position":3,"name":brandNameLD,"item":"https://www.global-ucars.com/products.html?cat=" + p.category + "&brand=" + encodeURIComponent(p.brand)});
         crumbs.push({"@type":"ListItem","position":4,"name":p.name,"item":"https://www.global-ucars.com/product-detail.html?id=" + p.id});
       } else {
         crumbs.push({"@type":"ListItem","position":3,"name":p.name,"item":"https://www.global-ucars.com/product-detail.html?id=" + p.id});
@@ -997,6 +1003,38 @@
 
       // ── Breadcrumb ──
       document.getElementById('breadcrumb-name').textContent = p.name;
+      // Category link
+      var catLinkEl = document.getElementById('bc-cat-link');
+      var catMap = { new_car: 'New Cars', used_car: 'Used Cars', parts: 'Auto Parts' };
+      var catLabel = catMap[p.category] || 'Products';
+      catLinkEl.textContent = catLabel;
+      catLinkEl.href = 'products.html?cat=' + p.category;
+      // Brand link (vehicles only)
+      var bcBrandSep = document.getElementById('bc-brand-sep');
+      var bcBrandLink = document.getElementById('bc-brand-link');
+      var bcNameSep = document.getElementById('bc-name-sep');
+      if ((p.category === 'new_car' || p.category === 'used_car') && p.brand) {
+        // Extract brand name: take first word or short form
+        var brandName = p.brand.split('(')[0].split('/')[0].trim();
+        bcBrandLink.textContent = brandName;
+        bcBrandLink.href = 'products.html?cat=' + p.category + '&brand=' + encodeURIComponent(p.brand);
+        bcBrandSep.style.display = '';
+        bcBrandLink.style.display = '';
+        bcNameSep.style.display = '';
+      } else if (p.category === 'parts' && p.part_system) {
+        // Parts: show system category
+        var sysNameMap = { engine: 'Engine Parts', cooling: 'Cooling Parts', suspension: 'Suspension Parts', electrical: 'Electrical Parts' };
+        var sysPageMap = { engine: 'parts-engine.html', cooling: 'parts-cooling.html', suspension: 'parts-suspension.html', electrical: 'parts-electrical.html' };
+        bcBrandLink.textContent = sysNameMap[p.part_system] || '';
+        bcBrandLink.href = sysPageMap[p.part_system] || 'parts-finder.html';
+        bcBrandSep.style.display = '';
+        bcBrandLink.style.display = '';
+        bcNameSep.style.display = '';
+      } else {
+        bcBrandSep.style.display = 'none';
+        bcBrandLink.style.display = 'none';
+        bcNameSep.style.display = 'none';
+      }
 
       // ── Badge ──
       const badge = document.getElementById('pd-badge');
@@ -1180,10 +1218,11 @@
 
       // ── Description collapse (long text) ──
       // descEl already declared above in description rendering section
-      // After rendering desc, check height and add toggle
+      var descWrapper = document.getElementById('pd-desc-wrapper');
+      var descFade = descWrapper.querySelector('.pd-desc-fade');
       setTimeout(function() {
         const rawH = descEl.scrollHeight;
-        const clampH = parseFloat(getComputedStyle(descEl).lineHeight) * 4;
+        const clampH = parseFloat(getComputedStyle(descEl).lineHeight) * 3;
         if (rawH > clampH + 10) {
           descEl.classList.add('collapsed');
           const toggleBtn = document.createElement('button');
@@ -1192,41 +1231,21 @@
           toggleBtn.onclick = function() {
             if (descEl.classList.contains('collapsed')) {
               descEl.classList.remove('collapsed');
+              descFade.style.display = 'none';
               toggleBtn.textContent = 'Show Less \u2191';
             } else {
               descEl.classList.add('collapsed');
+              descFade.style.display = '';
               toggleBtn.textContent = 'Read Full Description \u2193';
             }
           };
-          descEl.parentNode.insertBefore(toggleBtn, descEl.nextSibling);
+          descWrapper.parentNode.insertBefore(toggleBtn, descWrapper.nextSibling);
         }
       }, 50);
 
-      // ── Specs collapse (many rows) ──
-      const specRows = specsEl.querySelectorAll('.pd-spec-row');
-      const specToggleThreshold = 8;
-      if (specRows.length > specToggleThreshold) {
-        for (var si = specToggleThreshold; si < specRows.length; si++) {
-          specRows[si].classList.add('hidden-spec');
-        }
-        const specToggleBtn = document.createElement('button');
-        specToggleBtn.className = 'pd-specs-toggle visible';
-        var remainingSpecs = specRows.length - specToggleThreshold;
-        specToggleBtn.textContent = 'Show All ' + specRows.length + ' Specifications (+' + remainingSpecs + ' more)';
-        specToggleBtn.onclick = function() {
-          var allHidden = specsEl.querySelectorAll('.hidden-spec');
-          if (allHidden.length > 0) {
-            allHidden.forEach(function(r) { r.classList.remove('hidden-spec'); });
-            specToggleBtn.textContent = 'Show Less Specifications';
-          } else {
-            for (var si2 = specToggleThreshold; si2 < specRows.length; si2++) {
-              specRows[si2].classList.add('hidden-spec');
-            }
-            specToggleBtn.textContent = 'Show All ' + specRows.length + ' Specifications (+' + remainingSpecs + ' more)';
-          }
-        };
-        specsEl.parentNode.insertBefore(specToggleBtn, specsEl.nextSibling);
-      }
+
+
+
 
       // ── Related Products (same system/category, different ID) ──
       let related = [];
@@ -1335,13 +1354,22 @@
           ]
         };
 
-        // Render horizontal scrolling photo wall with category dividers
-        var track = document.getElementById('pd-delivery-track');
-        if (track) {
+        // Render grid photo wall grouped by category
+        var groupsContainer = document.getElementById('pd-delivery-groups');
+        if (groupsContainer) {
+          var groupNames = {
+            transport: 'Transport & Logistics',
+            loading: 'Container Loading',
+            inspection: 'Quality Inspection',
+            reception: 'Client Visits & Events'
+          };
           var groups = ['transport', 'loading', 'inspection', 'reception'];
           var html = '';
-          groups.forEach(function(key, gi) {
-            if (gi > 0) html += '<div class="pd-delivery-divider"></div>';
+          groups.forEach(function(key) {
+            if (!deliveryData[key] || deliveryData[key].length === 0) return;
+            html += '<div>';
+            html += '<div class="pd-delivery-group-header">' + groupNames[key] + '</div>';
+            html += '<div class="pd-delivery-grid">';
             deliveryData[key].forEach(function(item) {
               html += '<div class="pd-delivery-card" onclick="openLightbox(\'' + item.src + '\')">' +
                 '<img src="' + item.src + '" alt="' + item.caption + ' — ' + pName + ' export from China" loading="lazy" onerror="this.style.display=\'none\'" />' +
@@ -1350,8 +1378,9 @@
                   '<span class="pd-delivery-card-caption">' + item.caption + '</span>' +
                 '</div></div>';
             });
+            html += '</div></div>';
           });
-          track.innerHTML = html;
+          groupsContainer.innerHTML = html;
         }
 
         // ── FAQPage JSON-LD ──
