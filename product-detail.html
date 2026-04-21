@@ -141,7 +141,29 @@
       line-height: 1.7;
       font-size: 0.95rem;
       margin-bottom: 24px;
+      position: relative;
+      overflow: hidden;
     }
+    .pd-desc.collapsed {
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+      max-height: calc(1.7em * 4 + 0.95rem * 0.3);
+    }
+    .pd-desc-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: #c8102e;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      padding: 4px 0;
+      margin-bottom: 16px;
+    }
+    .pd-desc-toggle:hover { text-decoration: underline; }
+    .pd-desc.collapsed ~ .pd-desc-toggle,
+    .pd-desc-toggle.visible { display: inline-block; }
 
     .pd-moq {
       background: #f5f7ff;
@@ -229,6 +251,22 @@
       padding-bottom: 10px;
       border-bottom: 2px solid #c8102e;
     }
+    .pd-specs-toggle {
+      display: none;
+      background: #0d1f3c;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 16px;
+      transition: background 0.2s;
+    }
+    .pd-specs-toggle:hover { background: #162d56; }
+    .pd-specs-toggle.visible { display: inline-block; }
+    .pd-spec-row.hidden-spec { display: none; }
     .pd-specs-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -409,12 +447,13 @@
     /* ── Delivery Proof Section ── */
     .pd-delivery {
       background: #f8f9fa;
-      padding: 56px 20px;
+      padding: 56px 0;
       max-width: 100%;
     }
     .pd-delivery-inner {
       max-width: 1200px;
       margin: 0 auto;
+      padding: 0 20px;
     }
     .pd-delivery-eyebrow {
       font-size: .78rem;
@@ -437,43 +476,35 @@
       line-height: 1.7;
       margin-bottom: 24px;
     }
-    .pd-delivery-tabs {
+    /* Scrolling photo wall */
+    .pd-delivery-scroll {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin;
+      scrollbar-color: #c8102e #e5e7eb;
+      padding-bottom: 12px;
+    }
+    .pd-delivery-scroll::-webkit-scrollbar { height: 6px; }
+    .pd-delivery-scroll::-webkit-scrollbar-track { background: #e5e7eb; border-radius: 3px; }
+    .pd-delivery-scroll::-webkit-scrollbar-thumb { background: #c8102e; border-radius: 3px; }
+    .pd-delivery-track {
       display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-bottom: 24px;
-    }
-    .pd-delivery-tab {
-      padding: 10px 22px;
-      border-radius: 28px;
-      font-size: .85rem;
-      font-weight: 700;
-      cursor: pointer;
-      border: 2px solid #e2e8f0;
-      background: #fff;
-      color: #4a5568;
-      transition: all .2s;
-    }
-    .pd-delivery-tab:hover { border-color: #c8102e; color: #c8102e; }
-    .pd-delivery-tab.active { background: #c8102e; color: #fff; border-color: #c8102e; }
-    .pd-delivery-panel { display: none; }
-    .pd-delivery-panel.active { display: block; }
-    .pd-delivery-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
       gap: 16px;
+      width: max-content;
     }
-    @media(max-width:768px){ .pd-delivery-grid{grid-template-columns:repeat(2,1fr);} }
-    @media(max-width:480px){ .pd-delivery-grid{grid-template-columns:1fr;} }
     .pd-delivery-card {
       position: relative;
       border-radius: 12px;
       overflow: hidden;
+      width: 280px;
+      min-width: 280px;
       aspect-ratio: 16/10;
       cursor: pointer;
       background: #e5e7eb;
       transition: transform .3s, box-shadow .3s;
+      flex-shrink: 0;
     }
+    @media(max-width:768px){ .pd-delivery-card{width:240px;min-width:240px;} }
     .pd-delivery-card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(0,0,0,.15); }
     .pd-delivery-card img {
       width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0;
@@ -486,11 +517,20 @@
       display: flex; flex-direction: column; justify-content: flex-end; padding: 14px;
     }
     .pd-delivery-card-label {
-      font-size: .72rem; font-weight: 700; color: #c8102e;
+      font-size: .68rem; font-weight: 700; color: #c8102e;
       text-transform: uppercase; letter-spacing: .05em; margin-bottom: 3px;
     }
     .pd-delivery-card-caption {
-      font-size: .82rem; font-weight: 600; color: #fff; line-height: 1.3;
+      font-size: .78rem; font-weight: 600; color: #fff; line-height: 1.3;
+    }
+    /* Category divider dots between groups */
+    .pd-delivery-divider {
+      width: 4px;
+      min-width: 4px;
+      border-radius: 2px;
+      background: #c8102e;
+      align-self: stretch;
+      opacity: 0.4;
     }
 
     /* ── Trust & Internal Links ── */
@@ -671,22 +711,11 @@
       <p class="pd-delivery-eyebrow">Delivery &amp; Inspection</p>
       <h2 class="pd-delivery-title">How We Ensure Your Vehicle Arrives Safely</h2>
       <p class="pd-delivery-desc">Every vehicle shipped by Globalucar goes through a rigorous quality assurance process — from factory gate to your destination port.</p>
-
-      <div class="pd-delivery-tabs" role="tablist">
-        <button class="pd-delivery-tab active" data-dtab="transport" role="tab" aria-selected="true">🏭 Factory to Port</button>
-        <button class="pd-delivery-tab" data-dtab="loading" role="tab" aria-selected="false">📦 Container Loading</button>
-        <button class="pd-delivery-tab" data-dtab="inspection" role="tab" aria-selected="false">🔍 Quality Inspection</button>
-        <button class="pd-delivery-tab" data-dtab="reception" role="tab" aria-selected="false">🤝 Client Visits</button>
+      <div class="pd-delivery-scroll">
+        <div class="pd-delivery-track" id="pd-delivery-track">
+          <!-- JS renders all delivery cards as a horizontal scrolling gallery -->
+        </div>
       </div>
-
-      <!-- Transport Panel -->
-      <div class="pd-delivery-panel active" id="dp-transport" role="tabpanel"></div>
-      <!-- Loading Panel -->
-      <div class="pd-delivery-panel" id="dp-loading" role="tabpanel"></div>
-      <!-- Inspection Panel -->
-      <div class="pd-delivery-panel" id="dp-inspection" role="tabpanel"></div>
-      <!-- Reception Panel -->
-      <div class="pd-delivery-panel" id="dp-reception" role="tabpanel"></div>
     </div>
   </section>
 
@@ -1137,9 +1166,9 @@
 
       // ── Specs ──
       const specsEl = document.getElementById('pd-specs-grid');
-      const specEntries = Object.entries(p.specs || {});
-      if (specEntries.length > 0) {
-        specsEl.innerHTML = specEntries.map(([k, v]) =>
+      const allSpecEntries = Object.entries(p.specs || {});
+      if (allSpecEntries.length > 0) {
+        specsEl.innerHTML = allSpecEntries.map(([k, v]) =>
           `<div class="pd-spec-row">
             <div class="pd-spec-key">${escHtml(k)}</div>
             <div class="pd-spec-val">${escHtml(v)}</div>
@@ -1147,6 +1176,56 @@
         ).join('');
       } else {
         specsEl.innerHTML = `<div class="pd-spec-row"><div class="pd-spec-key">Specifications</div><div class="pd-spec-val">Please contact us for detailed specifications.</div></div>`;
+      }
+
+      // ── Description collapse (long text) ──
+      // descEl already declared above in description rendering section
+      // After rendering desc, check height and add toggle
+      setTimeout(function() {
+        const rawH = descEl.scrollHeight;
+        const clampH = parseFloat(getComputedStyle(descEl).lineHeight) * 4;
+        if (rawH > clampH + 10) {
+          descEl.classList.add('collapsed');
+          const toggleBtn = document.createElement('button');
+          toggleBtn.className = 'pd-desc-toggle visible';
+          toggleBtn.textContent = 'Read Full Description \u2193';
+          toggleBtn.onclick = function() {
+            if (descEl.classList.contains('collapsed')) {
+              descEl.classList.remove('collapsed');
+              toggleBtn.textContent = 'Show Less \u2191';
+            } else {
+              descEl.classList.add('collapsed');
+              toggleBtn.textContent = 'Read Full Description \u2193';
+            }
+          };
+          descEl.parentNode.insertBefore(toggleBtn, descEl.nextSibling);
+        }
+      }, 50);
+
+      // ── Specs collapse (many rows) ──
+      const specRows = specsEl.querySelectorAll('.pd-spec-row');
+      const specToggleThreshold = 8;
+      if (specRows.length > specToggleThreshold) {
+        for (var si = specToggleThreshold; si < specRows.length; si++) {
+          specRows[si].classList.add('hidden-spec');
+        }
+        const specToggleBtn = document.createElement('button');
+        specToggleBtn.className = 'pd-specs-toggle visible';
+        var remainingSpecs = specRows.length - specToggleThreshold;
+        specToggleBtn.textContent = 'Show All ' + specRows.length + ' Specifications (+' + remainingSpecs + ' more)';
+        specToggleBtn.onclick = function() {
+          var allHidden = specsEl.querySelectorAll('.hidden-spec');
+          if (allHidden.length > 0) {
+            allHidden.forEach(function(r) { r.classList.remove('hidden-spec'); });
+            specToggleBtn.textContent = 'Show Less Specifications';
+          } else {
+            for (var si2 = specToggleThreshold; si2 < specRows.length; si2++) {
+              specRows[si2].classList.add('hidden-spec');
+            }
+            specToggleBtn.textContent = 'Show All ' + specRows.length + ' Specifications (+' + remainingSpecs + ' more)';
+          }
+        };
+        specsEl.parentNode.insertBefore(specToggleBtn, specsEl.nextSibling);
       }
 
       // ── Related Products (same system/category, different ID) ──
@@ -1250,37 +1329,30 @@
             { src: 'assets/gallery/factory-client-reception-01.jpg', label: 'Client Visit', caption: 'Welcoming international buyers at the factory gate' },
             { src: 'assets/gallery/factory-client-reception-02.jpg', label: 'Factory Tour', caption: 'Client touring the vehicle production and staging area' },
             { src: 'assets/gallery/factory-client-reception-03.jpg', label: 'Negotiation', caption: 'Face-to-face order discussion and contract signing' },
-            { src: 'assets/gallery/factory-client-reception-04.jpg', label: 'Partnership', caption: 'Group photo celebrating new business partnership' }
+            { src: 'assets/gallery/factory-client-reception-04.jpg', label: 'Partnership', caption: 'Group photo celebrating new business partnership' },
+            { src: 'assets/gallery/client-group-photo-01.jpg', label: 'Team Photo', caption: 'Group photo with international buyer delegation at Guangzhou office' },
+            { src: 'assets/gallery/client-dinner-01.jpg', label: 'Hospitality', caption: 'Business dinner hosting overseas clients in Guangzhou' }
           ]
         };
 
-        // Render panels
-        ['transport', 'loading', 'inspection', 'reception'].forEach(function(key) {
-          var panel = document.getElementById('dp-' + key);
-          if (panel) {
-            var cards = deliveryData[key].map(function(item) {
-              return '<div class="pd-delivery-card" onclick="openLightbox(\'' + item.src + '\')">' +
+        // Render horizontal scrolling photo wall with category dividers
+        var track = document.getElementById('pd-delivery-track');
+        if (track) {
+          var groups = ['transport', 'loading', 'inspection', 'reception'];
+          var html = '';
+          groups.forEach(function(key, gi) {
+            if (gi > 0) html += '<div class="pd-delivery-divider"></div>';
+            deliveryData[key].forEach(function(item) {
+              html += '<div class="pd-delivery-card" onclick="openLightbox(\'' + item.src + '\')">' +
                 '<img src="' + item.src + '" alt="' + item.caption + ' — ' + pName + ' export from China" loading="lazy" onerror="this.style.display=\'none\'" />' +
                 '<div class="pd-delivery-card-overlay">' +
                   '<span class="pd-delivery-card-label">' + item.label + '</span>' +
                   '<span class="pd-delivery-card-caption">' + item.caption + '</span>' +
                 '</div></div>';
-            }).join('');
-            panel.innerHTML = '<div class="pd-delivery-grid">' + cards + '</div>';
-          }
-        });
-
-        // Tab switching
-        document.querySelectorAll('.pd-delivery-tab').forEach(function(tab) {
-          tab.addEventListener('click', function() {
-            document.querySelectorAll('.pd-delivery-tab').forEach(function(t) { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
-            document.querySelectorAll('.pd-delivery-panel').forEach(function(pn) { pn.classList.remove('active'); });
-            tab.classList.add('active');
-            tab.setAttribute('aria-selected', 'true');
-            var targetPanel = document.getElementById('dp-' + tab.dataset.dtab);
-            if (targetPanel) targetPanel.classList.add('active');
+            });
           });
-        });
+          track.innerHTML = html;
+        }
 
         // ── FAQPage JSON-LD ──
         var vehicleType = p.category === 'new_car' ? 'new vehicle' : 'certified used vehicle';
