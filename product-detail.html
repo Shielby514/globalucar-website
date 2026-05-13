@@ -1322,8 +1322,8 @@
         }
       }
 
-      // ── Delivery Proof Section (new_car & used_car only) ──
-      if (p.category === 'new_car' || p.category === 'used_car') {
+      // ── Delivery Proof Section (new_car, used_car & parts) ──
+      if (p.category === 'new_car' || p.category === 'used_car' || p.category === 'parts') {
         document.getElementById('pd-delivery').style.display = 'block';
         document.getElementById('pd-trust-section').style.display = 'block';
 
@@ -1369,7 +1369,9 @@
             inspection: 'Quality Inspection',
             reception: 'Client Visits & Events'
           };
-          var groups = ['transport', 'loading', 'parts_loading', 'inspection', 'reception'];
+          var groups = (p.category === 'parts')
+            ? ['parts_loading', 'inspection', 'reception']
+            : ['transport', 'loading', 'parts_loading', 'inspection', 'reception'];
           var html = '';
           groups.forEach(function(key) {
             if (!deliveryData[key] || deliveryData[key].length === 0) return;
@@ -1390,37 +1392,73 @@
         }
 
         // ── FAQPage JSON-LD ──
-        var vehicleType = p.category === 'new_car' ? 'new vehicle' : 'certified used vehicle';
-        var faqSchema = {
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          "mainEntity": [
-            {
-              "@type": "Question",
-              "name": "How is the " + p.name + " shipped from China?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "The " + p.name + " is shipped FOB Nansha Port, Guangzhou. We offer both RoRo (roll-on/roll-off) and 40ft container shipping options. Lead time is typically 2-4 weeks depending on your destination port. All vehicles are professionally secured with steel lashing and wooden chocks before loading."
+        var faqSchema;
+        if (p.category === 'parts') {
+          var pName = escHtml(p.name);
+          faqSchema = {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "How are " + pName + " and other auto parts shipped from China?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Auto parts orders are shipped FOB Nansha Port, Guangzhou via 40ft container. Parts are palletized, shrink-wrapped and professionally stacked to maximize container space and prevent transit damage. Lead time is typically 2-4 weeks depending on your destination port. Mixed-system orders (engine, cooling, suspension, electrical) are accepted."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What quality checks does Globalucar perform before shipping " + pName + "?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Every auto parts order undergoes OEM-grade verification before dispatch. We check part number matching, material quality, surface finish, dimensional accuracy and packaging integrity. Photos are taken at the warehouse before container loading. A full packing list with part numbers and quantities is provided to the buyer."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Can I visit your warehouse to inspect " + pName + " before placing a bulk order?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes, we welcome international buyers to visit our Guangzhou office and parts warehouse. We arrange facility tours, live parts inspection and face-to-face order discussions. You can verify OEM quality firsthand and meet our sourcing team. Contact us at ku@kingmay-autoparts.com to schedule your visit."
+                }
               }
-            },
-            {
-              "@type": "Question",
-              "name": "What quality checks does Globalucar perform before shipping the " + p.name + "?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Every " + p.name + " undergoes a comprehensive pre-shipment inspection covering exterior bodywork, paint quality, engine compartment, electronics, interior condition and tire tread. We document the condition with photos and provide a full condition report to the buyer before loading."
+            ]
+          };
+        } else {
+          var vehicleType = p.category === 'new_car' ? 'new vehicle' : 'certified used vehicle';
+          var pN = escHtml(p.name);
+          faqSchema = {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "How is the " + pN + " shipped from China?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "The " + pN + " is shipped FOB Nansha Port, Guangzhou. We offer both RoRo (roll-on/roll-off) and 40ft container shipping options. Lead time is typically 2-4 weeks depending on your destination port. All vehicles are professionally secured with steel lashing and wooden chocks before loading."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What quality checks does Globalucar perform before shipping the " + pN + "?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Every " + pN + " undergoes a comprehensive pre-shipment inspection covering exterior bodywork, paint quality, engine compartment, electronics, interior condition and tire tread. We document the condition with photos and provide a full condition report to the buyer before loading."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Can I visit your showroom to inspect the " + pN + " before ordering?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes, we welcome international buyers to visit our Guangzhou office and showroom. We arrange factory tours, live vehicle inspections and face-to-face order discussions. Contact us at ucars@global-ucars.com to schedule your visit."
+                }
               }
-            },
-            {
-              "@type": "Question",
-              "name": "Can I visit your showroom to inspect the " + p.name + " before ordering?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Yes, we welcome international buyers to visit our Guangzhou office and showroom. We arrange factory tours, live vehicle inspections and face-to-face order discussions. Contact us at ucars@global-ucars.com to schedule your visit."
-              }
-            }
-          ]
-        };
+            ]
+          };
+        }
         var faqScript = document.createElement('script');
         faqScript.type = 'application/ld+json';
         faqScript.textContent = JSON.stringify(faqSchema);
