@@ -1359,6 +1359,22 @@
           ]
         };
 
+        // ── Parts-specific overrides: replace vehicle inspection/reception with parts warehouse & client visit content ──
+        if (p.category === 'parts') {
+          deliveryData.inspection = [
+            { src: 'assets/gallery/parts-warehouse.jpg', label: 'Parts Warehouse', caption: '30,000+ SKUs across engine, cooling, suspension and electrical systems. Organized by brand and OEM reference.' },
+            { src: 'assets/gallery/client-inspection-01.jpg', label: 'Parts Inspection', caption: 'Client verifying OEM parts quality — on-site dimensional and material checks before shipment' }
+          ];
+          deliveryData.reception = [
+            { src: 'assets/gallery/client-warehouse-01.jpg', label: 'Warehouse Visit', caption: 'Inventory Review — Client touring our parts warehouse and verifying stock availability' },
+            { src: 'assets/gallery/factory-client-reception-01.jpg', label: 'Client Visit', caption: 'Welcoming international buyers at our Guangzhou office' },
+            { src: 'assets/gallery/factory-client-reception-03.jpg', label: 'Negotiation', caption: 'Face-to-face order discussion and contract signing' },
+            { src: 'assets/gallery/factory-client-reception-04.jpg', label: 'Partnership', caption: 'Group photo celebrating new business partnership' },
+            { src: 'assets/gallery/client-group-photo-01.jpg', label: 'Team Photo', caption: 'Group photo with international buyer delegation at Guangzhou office' },
+            { src: 'assets/gallery/client-dinner-01.jpg', label: 'Hospitality', caption: 'Business dinner hosting overseas clients in Guangzhou' }
+          ];
+        }
+
         // Render grid photo wall grouped by category
         var groupsContainer = document.getElementById('pd-delivery-groups');
         if (groupsContainer) {
@@ -1369,6 +1385,12 @@
             inspection: 'Quality Inspection',
             reception: 'Client Visits & Events'
           };
+          var partsGroupNames = {
+            parts_loading: 'Auto Parts Container Loading',
+            inspection: 'Parts Warehouse & Quality Check',
+            reception: 'Client Visits & Events'
+          };
+          var gn = (p.category === 'parts') ? partsGroupNames : groupNames;
           var groups = (p.category === 'parts')
             ? ['parts_loading', 'inspection', 'reception']
             : ['transport', 'loading', 'parts_loading', 'inspection', 'reception'];
@@ -1376,7 +1398,7 @@
           groups.forEach(function(key) {
             if (!deliveryData[key] || deliveryData[key].length === 0) return;
             html += '<div>';
-            html += '<div class="pd-delivery-group-header">' + groupNames[key] + '</div>';
+            html += '<div class="pd-delivery-group-header">' + (gn[key] || groupNames[key]) + '</div>';
             html += '<div class="pd-delivery-grid">';
             deliveryData[key].forEach(function(item) {
               html += '<div class="pd-delivery-card" onclick="openLightbox(\'' + item.src + '\')">' +
