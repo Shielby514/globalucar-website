@@ -601,6 +601,199 @@
       cursor: pointer;
       line-height: 1;
     }
+
+    /* ── 5-Tab Content Area (Parts Only) ── */
+    .pd-tabs-wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px 48px;
+    }
+    .pd-tabs-bar {
+      display: flex;
+      gap: 0;
+      border-bottom: 2px solid #e2e8f0;
+      margin-bottom: 0;
+      overflow-x: auto;
+    }
+    .pd-tab-btn {
+      padding: 14px 24px;
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #718096;
+      background: none;
+      border: none;
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      margin-bottom: -2px;
+      white-space: nowrap;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .pd-tab-btn:hover { color: #0d1f3c; }
+    .pd-tab-btn.active { color: #c8102e; border-bottom-color: #c8102e; }
+    @media (max-width: 768px) {
+      .pd-tab-btn { padding: 12px 16px; font-size: 0.82rem; }
+    }
+    .pd-tab-panel { display: none; padding: 28px 0 0; }
+    .pd-tab-panel.active { display: block; }
+    .pd-tab-panel h3 {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #0d1f3c;
+      margin-bottom: 16px;
+    }
+    .pd-tab-panel h2 {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: #0d1f3c;
+      margin-bottom: 14px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #c8102e;
+    }
+    .pd-tab-panel p {
+      color: #2d3748;
+      line-height: 1.75;
+      font-size: 0.92rem;
+      margin-bottom: 12px;
+    }
+    .pd-tab-panel ul { padding-left: 0; list-style: none; }
+    .pd-tab-panel ul li {
+      padding: 8px 0 8px 24px;
+      position: relative;
+      font-size: 0.88rem;
+      color: #2d3748;
+      border-bottom: 1px solid #eee;
+      line-height: 1.5;
+    }
+    .pd-tab-panel ul li::before {
+      content: '\2713';
+      position: absolute;
+      left: 0;
+      color: #c8102e;
+      font-weight: 700;
+    }
+
+    /* Tab 4 & 5: Gallery grid inside tab */
+    .pd-tab-gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    @media (max-width: 768px) {
+      .pd-tab-gallery { grid-template-columns: repeat(2, 1fr); }
+    }
+    .pd-tab-gallery-item {
+      border-radius: 10px;
+      overflow: hidden;
+      aspect-ratio: 16/10;
+      cursor: pointer;
+      background: #e5e7eb;
+    }
+    .pd-tab-gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* OEM Spec table inside tab */
+    .pd-oem-spec-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+      margin-bottom: 16px;
+    }
+    .pd-oem-spec-table th {
+      background: #0d1f3c;
+      color: #fff;
+      padding: 10px 16px;
+      text-align: left;
+      font-weight: 600;
+    }
+    .pd-oem-spec-table td {
+      padding: 10px 16px;
+      border-bottom: 1px solid #e8e8e8;
+      color: #2d3748;
+    }
+    .pd-oem-spec-table tr:nth-child(even) td { background: #f8f9fa; }
+    .pd-oem-spec-table tr:last-child td { border-bottom: none; }
+
+    /* ── Social Share Buttons ── */
+    .pd-share-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 0 0;
+      margin-bottom: 20px;
+    }
+    .pd-share-label {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #718096;
+      margin-right: 4px;
+    }
+    .pd-share-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #f0f2f5;
+      color: #4a5568;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: background 0.2s, color 0.2s, transform 0.2s;
+    }
+    .pd-share-btn:hover { transform: translateY(-2px); }
+    .pd-share-btn.whatsapp:hover { background: #25D366; color: #fff; }
+    .pd-share-btn.facebook:hover { background: #1877F2; color: #fff; }
+    .pd-share-btn.twitter:hover { background: #1DA1F2; color: #fff; }
+    .pd-share-btn.linkedin:hover { background: #0A66C2; color: #fff; }
+    .pd-share-btn.pinterest:hover { background: #E60023; color: #fff; }
+
+    /* ── Enhanced Trust Badges (Parts) ── */
+    .pd-parts-trust {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      padding: 14px 0;
+      margin-bottom: 20px;
+    }
+    @media (max-width: 768px) {
+      .pd-parts-trust { grid-template-columns: 1fr; }
+    }
+    .pd-parts-trust-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      color: #4a5568;
+    }
+    .pd-parts-trust-icon {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #e6f7ed;
+      color: #27ae60;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      flex-shrink: 0;
+    }
+
+    /* ── Related Product Brand Tag ── */
+    .pd-related-brand-tag {
+      display: inline-block;
+      background: #f0f2f5;
+      color: #4a5568;
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 10px;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
   </style>
 </head>
 <body>
@@ -691,6 +884,24 @@
         </a>
       </div>
 
+      <!-- Parts-only: Enhanced Trust Badges -->
+      <div class="pd-parts-trust" id="pd-parts-trust" style="display:none;">
+        <div class="pd-parts-trust-item"><div class="pd-parts-trust-icon">&#10003;</div> Worldwide Shipping from Guangzhou</div>
+        <div class="pd-parts-trust-item"><div class="pd-parts-trust-icon">&#10003;</div> Competitive Wholesale Pricing</div>
+        <div class="pd-parts-trust-item"><div class="pd-parts-trust-icon">&#10003;</div> 30,000+ SKUs in Stock</div>
+        <div class="pd-parts-trust-item"><div class="pd-parts-trust-icon">&#10003;</div> IATF 16949 Certified Quality</div>
+      </div>
+
+      <!-- Social Share Buttons -->
+      <div class="pd-share-row" id="pd-share-row" style="display:none;">
+        <span class="pd-share-label">Share:</span>
+        <a class="pd-share-btn whatsapp" id="share-whatsapp" href="#" target="_blank" title="Share on WhatsApp">&#128172;</a>
+        <a class="pd-share-btn facebook" id="share-facebook" href="#" target="_blank" title="Share on Facebook">&#102;</a>
+        <a class="pd-share-btn twitter" id="share-twitter" href="#" target="_blank" title="Share on X (Twitter)">&#120143;</a>
+        <a class="pd-share-btn linkedin" id="share-linkedin" href="#" target="_blank" title="Share on LinkedIn">in</a>
+        <a class="pd-share-btn pinterest" id="share-pinterest" href="#" target="_blank" title="Share on Pinterest">&#10022;</a>
+      </div>
+
       <div class="pd-moq" style="background:#f0fff4;border-left-color:#2ea06e;">
         <strong>📱 WeChat:</strong> Globalucar &nbsp;|&nbsp; <strong>🏭 Port:</strong> Nansha Port, South China's Largest Terminal
       </div>
@@ -777,6 +988,48 @@
       <div style="margin-top:12px;font-size:0.8rem;color:#718096;text-align:center;">
         💬 WeChat: Globalucar &nbsp;|&nbsp; ⚓ FOB Nansha Port
       </div>
+    </div>
+  </div>
+
+  <!-- ── 5-Tab Content Area (Parts Only) ─── -->
+  <div class="pd-tabs-wrapper" id="pd-tabs-wrapper" style="display:none;">
+    <div class="pd-tabs-bar" id="pd-tabs-bar">
+      <button class="pd-tab-btn active" data-tab="description">Product Description</button>
+      <button class="pd-tab-btn" data-tab="oem-specs">OEM Specifications</button>
+      <button class="pd-tab-btn" data-tab="compatibility">Vehicle Compatibility</button>
+      <button class="pd-tab-btn" data-tab="packaging">Packaging &amp; Delivery</button>
+      <button class="pd-tab-btn" data-tab="quality">Quality &amp; Inspection</button>
+    </div>
+    <div class="pd-tab-panel active" id="tab-description">
+      <div id="tab-desc-content"></div>
+    </div>
+    <div class="pd-tab-panel" id="tab-oem-specs">
+      <h2>OEM Reference Numbers</h2>
+      <table class="pd-oem-spec-table" id="tab-oem-table">
+        <thead><tr><th>#</th><th>OEM Part Number</th></tr></thead>
+        <tbody id="tab-oem-tbody"></tbody>
+      </table>
+      <p style="font-size:0.75rem;color:#a0aec0;margin-top:10px;">* For cross-reference only. Not OEM-branded parts.</p>
+      <h3 style="margin-top:28px;">Technical Specifications</h3>
+      <div class="pd-specs-grid" id="tab-specs-grid" style="margin-top:12px;"></div>
+    </div>
+    <div class="pd-tab-panel" id="tab-compatibility">
+      <h2>Compatible Vehicles</h2>
+      <div class="compat-grid" id="tab-compat-grid" style="margin-top:12px;"></div>
+      <p style="font-size:0.78rem;color:#718096;margin-top:14px;">
+        Not sure if this part fits your vehicle?
+        <a href="parts-finder.html" style="color:#c8102e;font-weight:600;">Use the Parts Finder &#x2192;</a>
+      </p>
+    </div>
+    <div class="pd-tab-panel" id="tab-packaging">
+      <h2>Packaging &amp; Delivery</h2>
+      <p>Every auto parts order shipped by Globalucar goes through a rigorous quality assurance process &mdash; from factory gate to your destination port.</p>
+      <div class="pd-tab-gallery" id="tab-packaging-gallery"></div>
+    </div>
+    <div class="pd-tab-panel" id="tab-quality">
+      <h2>Parts Warehouse &amp; Quality Check</h2>
+      <p>Our 30,000+ SKU warehouse and pre-shipment inspection process ensure every order meets your quality standards.</p>
+      <div class="pd-tab-gallery" id="tab-quality-gallery"></div>
     </div>
   </div>
 
@@ -1195,7 +1448,8 @@
       }
 
       const altBase = p.alt_text || `${p.name} wholesale export China`;
-      thumbsEl.innerHTML = imgSources.slice(0, 5).map((src, i) =>
+      const maxThumbs = (p.category === 'parts') ? 6 : 5;
+      thumbsEl.innerHTML = imgSources.slice(0, maxThumbs).map((src, i) =>
         `<img src="${src}" alt="${escHtml(altBase + (i > 0 ? ' - view ' + (i+1) : ''))}" 
               class="pd-thumb ${i === 0 ? 'active' : ''}" 
               loading="lazy"
@@ -1284,48 +1538,155 @@
         document.getElementById('pd-parts-extra').style.display = 'grid';
         document.getElementById('sys-nav-strip').style.display = 'block';
 
-        // Highlight active system nav link
-        const sysNavId = 'snav-' + (p.part_system || '');
-        const snavEl = document.getElementById(sysNavId);
-        if (snavEl) snavEl.classList.add('active');
-
-        // OEM refs
-        const oemRefs = p.oem_refs || p.oem_numbers || [];
-        const oemTbody = document.getElementById('oem-tbody');
-        if (oemRefs.length > 0) {
-          oemTbody.innerHTML = oemRefs.map((ref, i) =>
-            `<tr><td>${i + 1}</td><td>${escHtml(ref)}</td></tr>`
-          ).join('');
-        } else {
-          oemTbody.innerHTML = '<tr><td>—</td><td>Available on request. Contact us with your vehicle info.</td></tr>';
+        // Show 5-Tab wrapper instead of flat layout
+        document.getElementById('pd-tabs-wrapper').style.display = 'block';
+        // Hide old flat parts-extra for parts with rich description
+        if (p.description && p.description.length > 100) {
+          document.getElementById('pd-parts-extra').style.display = 'none';
         }
 
-        // Compatible makes/models
-        const compatMakes = p.compatible_makes || [];
-        const compatGrid = document.getElementById('compat-grid');
+        // Show parts trust badges and social share
+        document.getElementById('pd-parts-trust').style.display = 'grid';
+        document.getElementById('pd-share-row').style.display = 'flex';
+
+        // Tab switching logic
+        var tabBtns = document.querySelectorAll('.pd-tab-btn');
+        var tabPanels = document.querySelectorAll('.pd-tab-panel');
+        tabBtns.forEach(function(btn) {
+          btn.addEventListener('click', function() {
+            tabBtns.forEach(function(b) { b.classList.remove('active'); });
+            tabPanels.forEach(function(p) { p.classList.remove('active'); });
+            btn.classList.add('active');
+            document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+          });
+        });
+
+        // Populate Tab 1: Description
+        var tabDescContent = document.getElementById('tab-desc-content');
+        if (p.description && p.description.length > 100) {
+          tabDescContent.innerHTML = p.description;
+        } else {
+          tabDescContent.innerHTML = '<p>' + escHtml(p.description || 'Contact us for detailed product information.') + '</p>';
+          if (p.features && p.features.length > 0) {
+            tabDescContent.innerHTML += '<h3>Key Features</h3><ul>' +
+              p.features.map(function(f) { return '<li>' + escHtml(f) + '</li>'; }).join('') + '</ul>';
+          }
+        }
+
+        // Populate Tab 2: OEM Specs
+        var oemRefs = p.oem_refs || p.oem_numbers || [];
+        var tabOemTbody = document.getElementById('tab-oem-tbody');
+        if (oemRefs.length > 0) {
+          tabOemTbody.innerHTML = oemRefs.map(function(ref, i) {
+            return '<tr><td>' + (i+1) + '</td><td>' + escHtml(ref) + '</td></tr>';
+          }).join('');
+        } else {
+          tabOemTbody.innerHTML = '<tr><td>&mdash;</td><td>Available on request. Contact us with your vehicle info.</td></tr>';
+        }
+        // Specs grid in tab
+        var tabSpecsGrid = document.getElementById('tab-specs-grid');
+        var allSpecEntries = Object.entries(p.specs || {});
+        if (allSpecEntries.length > 0) {
+          tabSpecsGrid.innerHTML = allSpecEntries.map(function(entry) {
+            return '<div class="pd-spec-row"><div class="pd-spec-key">' + escHtml(entry[0]) + '</div><div class="pd-spec-val">' + escHtml(entry[1]) + '</div></div>';
+          }).join('');
+        }
+
+        // Populate Tab 3: Compatibility
+        var compatMakes = p.compatible_makes || [];
+        var tabCompatGrid = document.getElementById('tab-compat-grid');
         if (compatMakes.length > 0) {
-          const topMakes = ['Toyota', 'Honda', 'Nissan', 'Hyundai', 'Kia'];
-          compatGrid.innerHTML = compatMakes.map(m =>
-            `<span class="compat-tag ${topMakes.includes(m) ? 'primary' : ''}">${escHtml(m)}</span>`
-          ).join('');
+          var topMakes = ['Toyota', 'Honda', 'Nissan', 'Hyundai', 'Kia'];
+          tabCompatGrid.innerHTML = compatMakes.map(function(m) {
+            var parts = m.split(' ');
+            var brand = parts[0];
+            return '<span class="compat-tag ' + (topMakes.indexOf(brand) >= 0 ? 'primary' : '') + '">' + escHtml(m) + '</span>';
+          }).join('');
+        }
+
+        // Populate Tab 4: Packaging gallery
+        var packagingPhotos = [
+          { src: 'assets/gallery/factory-container-loading-04.jpg', caption: 'Auto parts palletized for bulk export' },
+          { src: 'assets/gallery/factory-container-loading-05.jpg', caption: 'OEM-grade parts organized by brand' },
+          { src: 'assets/gallery/factory-container-loading-06.jpg', caption: 'Mixed-system order sealed for ocean freight' }
+        ];
+        var tabPkgGallery = document.getElementById('tab-packaging-gallery');
+        tabPkgGallery.innerHTML = packagingPhotos.map(function(item) {
+          return '<div class="pd-tab-gallery-item" onclick="openLightbox(\'' + item.src + '\')">' +
+            '<img src="' + item.src + '" alt="' + item.caption + ' — ' + pName + '" loading="lazy" onerror="this.style.display=\'none\'" />' +
+            '</div>';
+        }).join('');
+
+        // Populate Tab 5: Quality gallery
+        var qualityPhotos = [
+          { src: 'assets/gallery/parts-warehouse.jpg', caption: '30,000+ SKUs across 4 systems' },
+          { src: 'assets/gallery/parts-warehouse02.jpg', caption: 'OEM-grade parts warehouse' },
+          { src: 'assets/gallery/client-inspection-01.jpg', caption: 'Client verifying parts quality' }
+        ];
+        var tabQualGallery = document.getElementById('tab-quality-gallery');
+        tabQualGallery.innerHTML = qualityPhotos.map(function(item) {
+          return '<div class="pd-tab-gallery-item" onclick="openLightbox(\'' + item.src + '\')">' +
+            '<img src="' + item.src + '" alt="' + item.caption + ' — ' + pName + '" loading="lazy" onerror="this.style.display=\'none\'" />' +
+            '</div>';
+        }).join('');
+
+        // Social share URLs
+        var shareUrl = 'https://www.global-ucars.com/product-detail.html?id=' + p.id;
+        var shareTitle = p.name + ' | Globalucar Auto Parts';
+        document.getElementById('share-whatsapp').href = 'https://wa.me/?text=' + encodeURIComponent(shareTitle + ' ' + shareUrl);
+        document.getElementById('share-facebook').href = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(shareUrl);
+        document.getElementById('share-twitter').href = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(shareTitle) + '&url=' + encodeURIComponent(shareUrl);
+        document.getElementById('share-linkedin').href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(shareUrl);
+        document.getElementById('share-pinterest').href = 'https://pinterest.com/pin/create/button/?url=' + encodeURIComponent(shareUrl) + '&description=' + encodeURIComponent(shareTitle);
+
+        // Highlight active system nav link
+        var sysNavId = 'snav-' + (p.part_system || '');
+        var snavEl = document.getElementById(sysNavId);
+        if (snavEl) snavEl.classList.add('active');
+
+        // OEM refs (old flat layout fallback)
+        var oemTbody = document.getElementById('oem-tbody');
+        if (oemRefs.length > 0) {
+          oemTbody.innerHTML = oemRefs.map(function(ref, i) {
+            return '<tr><td>' + (i+1) + '</td><td>' + escHtml(ref) + '</td></tr>';
+          }).join('');
+        } else {
+          oemTbody.innerHTML = '<tr><td>&mdash;</td><td>Available on request. Contact us with your vehicle info.</td></tr>';
+        }
+
+        // Compatible makes/models (old flat layout fallback)
+        var compatGrid = document.getElementById('compat-grid');
+        if (compatMakes.length > 0) {
+          var topMakes = ['Toyota', 'Honda', 'Nissan', 'Hyundai', 'Kia'];
+          compatGrid.innerHTML = compatMakes.map(function(m) {
+            var parts = m.split(' ');
+            var brand = parts[0];
+            return '<span class="compat-tag ' + (topMakes.indexOf(brand) >= 0 ? 'primary' : '') + '">' + escHtml(m) + '</span>';
+          }).join('');
         } else {
           compatGrid.innerHTML = '<span class="compat-tag">Contact us for compatibility info</span>';
         }
 
-        // Features
-        const features = p.features || [];
-        const featList = document.getElementById('features-list');
+        // Features (old flat layout fallback)
+        var features = p.features || [];
+        var featList = document.getElementById('features-list');
         if (features.length > 0) {
-          featList.innerHTML = features.map(f => `<li>${escHtml(f)}</li>`).join('');
+          featList.innerHTML = features.map(function(f) { return '<li>' + escHtml(f) + '</li>'; }).join('');
         } else {
-          featList.innerHTML = '<li>OEM-equivalent quality</li><li>ISO/TS 16949 compliant</li><li>FOB Guangzhou — Nansha Port</li>';
+          featList.innerHTML = '<li>OEM-equivalent quality</li><li>ISO/TS 16949 compliant</li><li>FOB Guangzhou &mdash; Nansha Port</li>';
         }
       }
 
       // ── Delivery Proof Section (new_car, used_car & parts) ──
       if (p.category === 'new_car' || p.category === 'used_car' || p.category === 'parts') {
-        document.getElementById('pd-delivery').style.display = 'block';
-        document.getElementById('pd-trust-section').style.display = 'block';
+        // For parts: delivery photos now shown in Tab 4 & 5; hide the old flat delivery section
+        if (p.category === 'parts') {
+          document.getElementById('pd-delivery').style.display = 'none';
+          document.getElementById('pd-trust-section').style.display = 'block';
+        } else {
+          document.getElementById('pd-delivery').style.display = 'block';
+          document.getElementById('pd-trust-section').style.display = 'block';
+        }
 
         var pName = escHtml(p.name);
         var deliveryData = {
