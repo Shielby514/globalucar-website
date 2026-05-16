@@ -1585,9 +1585,9 @@
         }
         // Specs grid in tab
         var tabSpecsGrid = document.getElementById('tab-specs-grid');
-        var allSpecEntries = Object.entries(p.specs || {});
-        if (allSpecEntries.length > 0) {
-          tabSpecsGrid.innerHTML = allSpecEntries.map(function(entry) {
+        var allTabSpecEntries = Object.entries(p.specs || {});
+        if (allTabSpecEntries.length > 0) {
+          tabSpecsGrid.innerHTML = allTabSpecEntries.map(function(entry) {
             return '<div class="pd-spec-row"><div class="pd-spec-key">' + escHtml(entry[0]) + '</div><div class="pd-spec-val">' + escHtml(entry[1]) + '</div></div>';
           }).join('');
         }
