@@ -2,7 +2,19 @@
 
 ## 执行历史
 
-### 2026-04-21 (本次)
+### 2026-05-08 (本次)
+- **文章 id**: 16
+- **主题**: Exhaust System & Catalytic Converter Parts from China: A Wholesale Sourcing Guide for Global Buyers
+- **分类**: 🔧 Auto Parts · Technical Guide
+- **主题方向**: Exhaust/Catalytic Converter China sourcing (排气系统/三元催化器采购)
+- **字数**: ~1,500词正文，6个h2章节（含3个表格、3个tip-box、1个checklist）
+- **SEO**: title 83字符，description ~160字符，keywords含exhaust system/catalytic converter/Euro 6/China VI/OEM quality
+- **图片**: assets/parts/part_039_oxygen_sensor.jpg（已存在于仓库，氧传感器与排气系统相关）
+- **featured**: 是（最新文章）
+- **git commit**: de49b12
+- **推送**: github.com/Shielby514/globalucar-website ✓
+
+### 2026-04-21 (上一次)
 - **文章 id**: 14
 - **主题**: China Used Car Exports to Africa in 2026: Kenya, Nigeria & Ghana — A Complete Market Guide
 - **分类**: 🚗 Vehicles · Market Analysis
