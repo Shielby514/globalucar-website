@@ -557,6 +557,91 @@
       color: #718096;
       font-size: 0.95rem;
     }
+
+    /* ── OEM Quick Search in Finder ── */
+    .oem-quick-search {
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 2px dashed #e2e8f0;
+    }
+    .oem-quick-search-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #0d1f3c;
+      margin-bottom: 12px;
+    }
+    .oem-quick-search-label .oem-badge {
+      background: #c8102e;
+      color: #fff;
+      font-size: 0.68rem;
+      padding: 3px 10px;
+      border-radius: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .oem-quick-row {
+      display: flex;
+      gap: 0;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 2px solid #e2e8f0;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .oem-quick-row:focus-within {
+      border-color: #c8102e;
+      box-shadow: 0 0 0 3px rgba(200,16,46,0.1);
+    }
+    .oem-quick-input {
+      flex: 1;
+      padding: 12px 16px;
+      border: none;
+      font-size: 0.92rem;
+      color: #2d3748;
+      background: #f8f9fa;
+      outline: none;
+      font-family: 'Courier New', monospace;
+    }
+    .oem-quick-input::placeholder {
+      font-family: inherit;
+      color: #a0aec0;
+    }
+    .oem-quick-btn {
+      padding: 12px 20px;
+      background: #c8102e;
+      color: #fff;
+      border: none;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .oem-quick-btn:hover { background: #a50d26; }
+    .oem-quick-stats {
+      display: flex;
+      gap: 14px;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
+    .oem-quick-stat {
+      font-size: 0.78rem;
+      color: #718096;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .oem-quick-stat strong { color: #4a5568; }
+    @media (max-width: 480px) {
+      .oem-quick-row { flex-direction: column; border-radius: 10px; }
+      .oem-quick-btn { justify-content: center; }
+    }
   </style>
 </head>
 <body>
@@ -857,6 +942,30 @@
         <div class="finder-tip"><span class="tip-icon">📦</span> MOQ from 10 pcs/SKU</div>
         <div class="finder-tip"><span class="tip-icon">🚢</span> FOB Nansha Port, Guangzhou</div>
         <div class="finder-tip"><span class="tip-icon">💬</span> Quote within 24 hrs</div>
+      </div>
+
+      <!-- OEM Quick Search -->
+      <div class="oem-quick-search">
+        <div class="oem-quick-search-label">
+          🔢 Search by OE Part Number
+          <span class="oem-badge">743+ OE Numbers</span>
+        </div>
+        <form class="oem-quick-row" onsubmit="return handleOemQuickSearch(event)">
+          <input type="text" class="oem-quick-input" id="finderOemInput"
+                 placeholder="Enter OE number (e.g. 54501-2H000)"
+                 autocomplete="off" spellcheck="false" />
+          <button type="submit" class="oem-quick-btn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+            Search OE
+          </button>
+        </form>
+        <div class="oem-quick-stats">
+          <div class="oem-quick-stat">✅ <strong>100+ Parts Matched</strong></div>
+          <div class="oem-quick-stat">🌐 <strong>25+ Brands</strong></div>
+          <div class="oem-quick-stat">🔍 <strong>+ Google Images Fallback</strong></div>
+        </div>
       </div>
     </div>
   </div>
@@ -1194,7 +1303,7 @@
   </footer>
 
   <!-- ===== DATA + LOGIC ===== -->
-  <script src="products-inline.js"></script>
+  <script src="products-inline.js?v=20260520"></script>
   <script>
   // ── Vehicle database ─────────────────────────────────────────────
   const VEHICLE_DB = {
@@ -1630,7 +1739,14 @@
     this.setAttribute('aria-expanded', String(!exp));
     if (menu) menu.classList.toggle('open', !exp);
   });
-  </script>
+  
+// ── OEM Quick Search Handler (Parts Finder) ──
+function handleOemQuickSearch(e) {
+  e.preventDefault();
+  var q = document.getElementById('finderOemInput').value.trim();
+  if (!q) return false;
+  window.location.href = 'oem-parts-lookup.html?q=' + encodeURIComponent(q);
+  return false;
+}
 
-</body>
-</html>
+</script>

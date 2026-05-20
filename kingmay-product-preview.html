@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KingMay 49-1001 | Oil Cooler Assembly — KingMay Auto Parts</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg-primary: #0a0e17;
+      --bg-secondary: #111827;
+      --bg-card: #1a2234;
+      --bg-card-hover: #1f2b42;
+      --border: #2a3550;
+      --border-light: #334166;
+      --text-primary: #f1f5f9;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+      --accent: #c8102e;
+      --accent-light: #e63950;
+      --accent-dark: #9b0c23;
+      --gold: #f59e0b;
+      --gold-light: #fbbf24;
+      --green: #10b981;
+      --blue: #3b82f6;
+      --radius: 12px;
+      --radius-lg: 16px;
+      --shadow: 0 4px 24px rgba(0,0,0,.4);
+      /* Published site variables */
+      --brand-red: #c8102e;
+      --brand-black: #0d1f3c;
+      --brand-navy: #162d50;
+      --white: #ffffff;
+      --dark-grey: #333;
+      --mid-grey: #999;
+      --trans: all .25s ease;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* ══════════════════════════════════════════════
+       NAVBAR — mirrors published site exactly
+       ══════════════════════════════════════════════ */
+    .navbar {
+      position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+      background: var(--white);
+      border-bottom: 2px solid var(--brand-red);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+    .nav-inner {
+      display: flex; align-items: center;
+      justify-content: space-between;
+      max-width: 1200px; margin: 0 auto;
+      padding: 8px 24px;
+      gap: 20px;
+    }
+    .nav-brand { display: flex; flex-direction: column; align-items: flex-start; text-decoration: none; gap: 0; }
+    .nav-logo { height: 60px; width: auto; display: block; }
+    .nav-tagline {
+      font-size: 0.72rem;
+      color: rgba(0,0,0,0.45);
+      letter-spacing: 0.04em;
+      line-height: 1;
+      margin-top: 4px;
+      white-space: nowrap;
+    }
+    .nav-menu { display: flex; gap: 6px; list-style: none; }
+    .nav-menu a {
+      color: var(--dark-grey);
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-weight: 500;
+      font-size: 0.95rem;
+      letter-spacing: 0.02em;
+      text-decoration: none;
+      transition: var(--trans);
+    }
+    .nav-menu a:hover,
+    .nav-menu a.active {
+      color: var(--white);
+      background: var(--brand-red);
+    }
+    .mobile-menu-btn { display: none; flex-direction: column; gap: 5px; padding: 6px; background: none; border: none; cursor: pointer; }
+    .mobile-menu-btn span { display: block; width: 26px; height: 2px; background: var(--dark-grey); border-radius: 2px; }
+
+    /* ── Container ── */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    /* ── Breadcrumb ── */
+    .pd-breadcrumb {
+      background: #f8f8f8;
+      padding: 12px 0;
+      font-size: 0.85rem;
+      color: #666;
+    }
+    .pd-breadcrumb a { color: #c8102e; text-decoration: none; }
+    .pd-breadcrumb a:hover { text-decoration: underline; }
+    .pd-breadcrumb span { margin: 0 6px; }
+
+    /* ── Product Hero ── */
+    .product-hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      padding: 100px 0 48px 0;
+    }
+
+    /* Image Gallery */
+    .gallery { display: flex; flex-direction: column; gap: 16px; }
+    .gallery-main {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      aspect-ratio: 1 / 1;
+      display: grid; place-items: center;
+      position: relative;
+    }
+    .gallery-main img {
+      width: 90%; height: 90%;
+      object-fit: contain;
+      transition: transform .4s ease;
+    }
+    .gallery-main:hover img { transform: scale(1.05); }
+    .gallery-main .badge-cert {
+      position: absolute; top: 16px; left: 16px;
+      background: var(--green);
+      color: #fff; font-size: .72rem; font-weight: 700;
+      padding: 4px 12px; border-radius: 20px;
+      text-transform: uppercase; letter-spacing: .06em;
+    }
+    .gallery-main .badge-cat {
+      position: absolute; top: 16px; right: 16px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      color: var(--text-secondary); font-size: .75rem; font-weight: 600;
+      padding: 4px 12px; border-radius: 20px;
+    }
+    .gallery-thumbs { display: flex; gap: 12px; }
+    .gallery-thumbs img {
+      width: 80px; height: 80px;
+      object-fit: contain;
+      background: var(--bg-card);
+      border: 2px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      padding: 8px;
+      transition: border-color .2s;
+    }
+    .gallery-thumbs img:hover,
+    .gallery-thumbs img.active { border-color: var(--accent); }
+
+    /* Product Info */
+    .product-info { display: flex; flex-direction: column; gap: 20px; }
+    .product-info .part-no {
+      font-size: .82rem; font-weight: 600;
+      color: var(--accent-light);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .product-info h1 {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 800;
+      line-height: 1.25;
+      color: var(--text-primary);
+    }
+    .product-info .subtitle {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* OE Cross Ref */
+    .oe-section {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+    }
+    .oe-section h3 {
+      font-size: .8rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .08em;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .oe-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .oe-tag {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      color: var(--text-primary);
+      font-family: 'Courier New', monospace;
+      font-size: .88rem; font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all .2s;
+    }
+    .oe-tag:hover {
+      border-color: var(--accent);
+      background: rgba(200,16,46,.1);
+    }
+    .oe-tag .copy-hint {
+      font-family: 'Inter', sans-serif;
+      font-size: .65rem; font-weight: 400;
+      color: var(--text-muted); margin-left: 6px;
+    }
+
+    /* Compatible Makes */
+    .compat-section {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+    }
+    .compat-section h3 {
+      font-size: .8rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .08em;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+    .compat-makes { display: flex; gap: 10px; flex-wrap: wrap; }
+    .make-badge {
+      background: linear-gradient(135deg, var(--bg-secondary), var(--bg-card));
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+      font-size: .82rem; font-weight: 600;
+      padding: 8px 16px;
+      border-radius: 8px;
+    }
+
+    /* Price & Action */
+    .price-box {
+      background: linear-gradient(135deg, rgba(200,16,46,.12), rgba(200,16,46,.04));
+      border: 1px solid rgba(200,16,46,.3);
+      border-radius: var(--radius);
+      padding: 24px;
+      display: flex; flex-direction: column; gap: 12px;
+    }
+    .price-box .label {
+      font-size: .78rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: .08em;
+      color: var(--text-muted);
+    }
+    .price-box .price { font-size: 2rem; font-weight: 800; color: var(--accent-light); }
+    .price-box .price-note { font-size: .82rem; color: var(--text-secondary); }
+    .price-box .moq {
+      display: flex; align-items: center; gap: 8px;
+      font-size: .88rem; color: var(--text-secondary);
+    }
+    .price-box .moq strong { color: var(--text-primary); }
+
+    /* Trust Badges */
+    .pd-parts-trust {
+      display: flex; flex-wrap: wrap; gap: 10px;
+      padding: 16px 0;
+    }
+    .pd-parts-trust-item {
+      display: flex; align-items: center; gap: 6px;
+      font-size: .8rem; color: var(--text-secondary);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 8px 14px;
+      border-radius: 8px;
+    }
+    .pd-parts-trust-icon {
+      color: var(--green);
+      font-weight: 700;
+      font-size: .85rem;
+    }
+
+    .btn-row { display: flex; gap: 12px; margin-top: 8px; }
+    .btn {
+      flex: 1; padding: 14px 24px;
+      border-radius: 10px; border: none;
+      font-size: .92rem; font-weight: 700;
+      cursor: pointer; text-align: center;
+      transition: all .2s; text-decoration: none;
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    }
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-primary:hover { background: var(--accent-light); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(200,16,46,.35); }
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid var(--border);
+      color: var(--text-primary);
+    }
+    .btn-outline:hover { border-color: var(--text-secondary); background: var(--bg-card); }
+
+    /* ══════════════════════════════════════════════
+       TAB NAVIGATION — pill buttons
+       ══════════════════════════════════════════════ */
+    .detail-section {
+      padding: 48px 0;
+    }
+    .tab-nav {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 32px;
+      padding: 6px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+    }
+    .tab-btn {
+      flex: 1;
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: .88rem;
+      font-weight: 700;
+      padding: 14px 20px;
+      cursor: pointer;
+      border-radius: 10px;
+      transition: all .25s ease;
+      position: relative;
+      text-align: center;
+    }
+    .tab-btn:hover {
+      color: var(--text-secondary);
+      background: rgba(255,255,255,.04);
+    }
+    .tab-btn.active {
+      background: var(--accent);
+      color: #ffffff;
+      box-shadow: 0 4px 16px rgba(200,16,46,.35);
+    }
+    .tab-btn .tab-icon {
+      display: inline-block;
+      margin-right: 6px;
+      font-size: 1rem;
+      vertical-align: middle;
+    }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; animation: tabFadeIn .3s ease; }
+    @keyframes tabFadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Tab Panel Card ── */
+    .tab-panel-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+    }
+    .tab-panel-card h3 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--accent);
+      display: inline-block;
+    }
+    .tab-panel-card > p {
+      color: var(--text-secondary);
+      line-height: 1.8;
+      font-size: .93rem;
+      margin-bottom: 16px;
+    }
+    .tab-panel-card ul {
+      list-style: none; padding: 0;
+      margin-bottom: 20px;
+    }
+    .tab-panel-card li {
+      padding: 10px 0 10px 28px;
+      position: relative;
+      font-size: .9rem;
+      color: var(--text-secondary);
+      border-bottom: 1px solid var(--border);
+      line-height: 1.6;
+    }
+    .tab-panel-card li:last-child { border-bottom: none; }
+    .tab-panel-card li::before {
+      content: '\2713';
+      position: absolute; left: 0; top: 10px;
+      width: 20px; height: 20px;
+      background: rgba(16,185,129,.15);
+      color: var(--green);
+      font-size: .75rem; font-weight: 800;
+      border-radius: 50%;
+      display: grid; place-items: center;
+    }
+
+    /* Specs Table */
+    .specs-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .spec-row { display: contents; }
+    .spec-label {
+      padding: 14px 20px;
+      font-size: .84rem; font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase; letter-spacing: .04em;
+      background: var(--bg-secondary);
+      border-bottom: 1px solid var(--border);
+    }
+    .spec-value {
+      padding: 14px 20px;
+      font-size: .92rem;
+      color: var(--text-primary);
+      border-bottom: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+    }
+
+    /* ══════════════════════════════════════════════
+       DELIVERY PROOF SECTION — mirrors published site
+       ══════════════════════════════════════════════ */
+    .pd-delivery {
+      padding: 48px 0 0;
+    }
+    .pd-delivery-inner {
+      text-align: center;
+    }
+    .pd-delivery-eyebrow {
+      font-size: .78rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .1em;
+      color: var(--accent-light);
+      margin-bottom: 8px;
+    }
+    .pd-delivery-title {
+      font-size: 1.5rem; font-weight: 800;
+      color: var(--text-primary);
+      margin-bottom: 10px;
+    }
+    .pd-delivery-desc {
+      color: var(--text-secondary);
+      max-width: 720px;
+      margin: 0 auto 32px;
+      line-height: 1.7;
+      font-size: .93rem;
+    }
+
+    /* Delivery groups */
+    .pd-delivery-groups {
+      text-align: left;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .pd-delivery-group-header {
+      font-size: 1rem; font-weight: 800;
+      color: var(--text-primary);
+      margin: 28px 0 14px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent);
+      display: inline-block;
+    }
+    .pd-delivery-group-header:first-child { margin-top: 0; }
+
+    .pd-delivery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .pd-delivery-card {
+      position: relative;
+      aspect-ratio: 4/3;
+      border-radius: var(--radius);
+      overflow: hidden;
+      cursor: pointer;
+      border: 1px solid var(--border);
+    }
+    .pd-delivery-card img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform .4s ease;
+    }
+    .pd-delivery-card:hover img { transform: scale(1.08); }
+    .pd-delivery-card-overlay {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: linear-gradient(to top, rgba(0,0,0,.75) 0%, transparent 100%);
+      padding: 32px 14px 12px;
+    }
+    .pd-delivery-card-label {
+      display: inline-block;
+      font-size: .68rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .06em;
+      color: #fff;
+      background: var(--accent);
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-bottom: 4px;
+    }
+    .pd-delivery-card-caption {
+      font-size: .76rem;
+      color: rgba(255,255,255,.9);
+      line-height: 1.4;
+      display: block;
+    }
+
+    /* Quality Feature Grid */
+    .quality-features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 20px;
+    }
+    .quality-feature {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+    }
+    .quality-feature .qf-icon {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      display: block;
+    }
+    .quality-feature .qf-title {
+      font-size: .9rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+    }
+    .quality-feature .qf-desc {
+      font-size: .8rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* Related Parts */
+    .related-section {
+      padding: 48px 0 80px;
+      border-top: 1px solid var(--border);
+    }
+    .related-section h2 {
+      font-size: 1.4rem; font-weight: 700;
+      margin-bottom: 24px;
+    }
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    .related-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: all .3s;
+      cursor: pointer;
+    }
+    .related-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0,0,0,.3);
+    }
+    .related-card .img-wrap {
+      aspect-ratio: 1; background: var(--bg-secondary);
+      display: grid; place-items: center;
+      padding: 16px;
+    }
+    .related-card img { width: 80%; height: 80%; object-fit: contain; }
+    .related-card .info { padding: 14px 16px; }
+    .related-card .part-n {
+      font-size: .72rem; font-weight: 700; color: var(--accent-light);
+      letter-spacing: .06em; text-transform: uppercase;
+    }
+    .related-card .name {
+      font-size: .88rem; font-weight: 600;
+      color: var(--text-primary); margin-top: 4px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .related-card .oe-preview {
+      font-size: .75rem; color: var(--text-muted);
+      font-family: 'Courier New', monospace;
+      margin-top: 4px;
+    }
+
+    /* ══════════════════════════════════════════════
+       FOOTER — mirrors published site exactly
+       ══════════════════════════════════════════════ */
+    .footer { background: var(--brand-black); color: rgba(255,255,255,0.8); padding: 60px 0 0; }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr 1fr;
+      gap: 32px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      padding-bottom: 40px;
+    }
+    .footer-brand-logos {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      margin-bottom: 16px;
+    }
+    .footer-brand-logos img {
+      height: 52px; width: auto;
+    }
+    .footer-brand-logos .brand-divider {
+      width: 1px; height: 36px;
+      background: rgba(255,255,255,0.2);
+    }
+    .footer-col p { font-size: 0.9rem; margin-bottom: 6px; white-space: nowrap; }
+    .footer-tag-line { color: var(--mid-grey); font-size: 0.85rem !important; }
+    .footer-col h4 { color: var(--white); font-size: 1rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; padding: 0; }
+    .footer-col ul li { margin-bottom: 10px; }
+    .footer-col ul a { color: rgba(255,255,255,0.7); font-size: 0.9rem; text-decoration: none; transition: var(--trans); }
+    .footer-col ul a:hover { color: var(--brand-red); }
+    .footer-col strong { color: var(--white); }
+
+    .footer-social {
+      display: flex; gap: 14px;
+      align-items: center; justify-content: center;
+      padding: 16px 0 0;
+    }
+    .footer-social a {
+      color: rgba(255,255,255,0.55);
+      transition: color .25s, transform .25s;
+      text-decoration: none;
+    }
+    .footer-social a:hover {
+      color: #fff;
+      transform: translateY(-2px);
+    }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      text-align: center; padding: 20px 24px;
+      font-size: 0.85rem; color: var(--mid-grey);
+    }
+
+    /* ── Lightbox ── */
+    .lightbox-overlay {
+      display: none;
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,.9);
+      z-index: 9999;
+      cursor: pointer;
+      place-items: center;
+    }
+    .lightbox-overlay.open { display: grid; }
+    .lightbox-overlay img {
+      max-width: 90%; max-height: 90%;
+      border-radius: 8px;
+      box-shadow: 0 0 60px rgba(0,0,0,.5);
+    }
+    .lightbox-close {
+      position: fixed; top: 20px; right: 24px;
+      color: #fff; font-size: 2rem;
+      cursor: pointer; z-index: 10000;
+      background: none; border: none;
+      width: 44px; height: 44px;
+      display: grid; place-items: center;
+      border-radius: 50%;
+      transition: background .2s;
+    }
+    .lightbox-close:hover { background: rgba(255,255,255,.15); }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .product-hero { grid-template-columns: 1fr; gap: 24px; }
+      .specs-grid { grid-template-columns: 1fr; }
+      .related-grid { grid-template-columns: repeat(2, 1fr); }
+      .nav-menu { display: none; }
+      .mobile-menu-btn { display: flex; }
+      .tab-nav { flex-wrap: wrap; gap: 4px; padding: 4px; }
+      .tab-btn { font-size: .78rem; padding: 10px 14px; flex: 1 1 calc(50% - 4px); }
+      .pd-delivery-grid { grid-template-columns: 1fr; }
+      .quality-features { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .nav-logo { height: 44px; }
+      .nav-tagline { font-size: 0.6rem; }
+    }
+    @media (max-width: 480px) {
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══ NAVBAR (White + Red border — mirrors published site) ═══ -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand" aria-label="Globalucar Home">
+        <img src="assets/VEHICLE-logo-nav.jpg" alt="Globalucar Vehicle" class="nav-logo" />
+        <span class="nav-tagline">Car &amp; Auto Parts One-Stop Solution</span>
+      </a>
+      <ul class="nav-menu" role="menubar">
+        <li role="none"><a href="index.html" role="menuitem">Home</a></li>
+        <li role="none"><a href="products.html" role="menuitem" class="active">Products</a></li>
+        <li role="none"><a href="parts-finder.html" role="menuitem">Parts Finder</a></li>
+        <li role="none"><a href="kingmay.html" role="menuitem">Kingmay Parts</a></li>
+        <li role="none"><a href="services.html" role="menuitem">Services</a></li>
+        <li role="none"><a href="about.html" role="menuitem">About Us</a></li>
+        <li role="none"><a href="blog.html" role="menuitem">Blog</a></li>
+        <li role="none"><a href="contact.html" role="menuitem">Contact</a></li>
+      </ul>
+      <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ═══ Breadcrumb ═══ -->
+  <div class="pd-breadcrumb" style="margin-top:72px;">
+    <div class="container">
+      <a href="index.html">Home</a>
+      <span>&#8250;</span>
+      <a href="products.html?cat=parts">Auto Parts</a>
+      <span>&#8250;</span>
+      <a href="products.html?system=cooling">Oil Coolers</a>
+      <span>&#8250;</span>
+      <span style="color:#333;">49-1001</span>
+    </div>
+  </div>
+
+  <!-- ═══ Product Hero ═══ -->
+  <div class="container">
+    <div class="product-hero">
+      <div class="gallery">
+        <div class="gallery-main">
+          <span class="badge-cert">In Stock</span>
+          <span class="badge-cat">Oil Cooler</span>
+          <img id="mainImage" src="assets/parts/xlsx_49-1001_0.png" alt="KingMay 49-1001 Oil Cooler Assembly">
+        </div>
+        <div class="gallery-thumbs">
+          <img class="active" src="assets/parts/xlsx_49-1001_0.png" alt="View 1" onclick="switchImage(this, 'assets/parts/xlsx_49-1001_0.png')">
+          <img src="assets/parts/xlsx_49-1001_1.png" alt="View 2" onclick="switchImage(this, 'assets/parts/xlsx_49-1001_1.png')">
+        </div>
+      </div>
+      <div class="product-info">
+        <div class="part-no">KingMay Part No. 49-1001</div>
+        <h1>Oil Cooler Assembly</h1>
+        <p class="subtitle">High-quality aftermarket engine oil cooler for VW &amp; Audi vehicles. Manufactured to meet OEM specifications for reliable thermal management and long service life.</p>
+
+        <div class="oe-section">
+          <h3>&#128270; OE Cross Reference</h3>
+          <div class="oe-tags">
+            <span class="oe-tag" onclick="copyOE(this)">028 117 021E<span class="copy-hint">click to copy</span></span>
+            <span class="oe-tag" onclick="copyOE(this)">028 117 021H<span class="copy-hint">click to copy</span></span>
+          </div>
+        </div>
+
+        <div class="compat-section">
+          <h3>&#128663; Compatible Vehicles</h3>
+          <div class="compat-makes">
+            <span class="make-badge">Volkswagen</span>
+            <span class="make-badge">Audi</span>
+          </div>
+        </div>
+
+        <div class="price-box">
+          <div class="label">Wholesale Price (FOB Guangzhou)</div>
+          <div class="price">Contact for Quote</div>
+          <div class="price-note">Price varies by order quantity. Volume discounts available for orders 50+ units.</div>
+          <div class="moq">&#128230; MOQ: <strong>10 pieces</strong></div>
+          <div class="btn-row">
+            <a href="mailto:ku@kingmay-autoparts.com?subject=Inquiry: KingMay 49-1001 Oil Cooler" class="btn btn-primary">&#128172; Request Quote</a>
+            <a href="https://wa.me/8613302408528?text=Hello%2C%20I%27m%20interested%20in%20KingMay%2049-1001%20Oil%20Cooler" target="_blank" class="btn btn-outline">&#128172; WhatsApp Us</a>
+          </div>
+        </div>
+
+        <!-- Trust Badges (mirrors published site) -->
+        <div class="pd-parts-trust">
+          <div class="pd-parts-trust-item"><div class="pd-parts-trust-icon">&#10003;</div> Worldwide Shipping from Guangzhou</div>
+          <div class="pd-parts-trust-item"><div class="pd-parts-trust-icon">&#10003;</div> Competitive Wholesale Pricing</div>
+          <div class="pd-parts-trust-item"><div class="pd-parts-trust-icon">&#10003;</div> 30,000+ SKUs in Stock</div>
+          <div class="pd-parts-trust-item"><div class="pd-parts-trust-icon">&#10003;</div> IATF 16949 Certified Quality</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ Detail Tabs (4 Tabs) ═══ -->
+  <div class="container">
+    <div class="detail-section">
+      <div class="tab-nav">
+        <button class="tab-btn active" onclick="showTab(this, 'tab-specs')"><span class="tab-icon">&#9881;</span> Specifications</button>
+        <button class="tab-btn" onclick="showTab(this, 'tab-desc')"><span class="tab-icon">&#128196;</span> Description</button>
+        <button class="tab-btn" onclick="showTab(this, 'tab-pkg')"><span class="tab-icon">&#128230;</span> Packaging &amp; Delivery</button>
+        <button class="tab-btn" onclick="showTab(this, 'tab-quality')"><span class="tab-icon">&#9989;</span> Quality &amp; Inspection</button>
+      </div>
+
+      <!-- Tab 1: Specifications -->
+      <div id="tab-specs" class="tab-content active">
+        <div class="specs-grid">
+          <div class="spec-row"><div class="spec-label">KingMay Part No.</div><div class="spec-value">49-1001</div></div>
+          <div class="spec-row"><div class="spec-label">Category</div><div class="spec-value">Oil Cooler Assembly</div></div>
+          <div class="spec-row"><div class="spec-label">OE Reference</div><div class="spec-value">028 117 021E / 028 117 021H</div></div>
+          <div class="spec-row"><div class="spec-label">Compatible Makes</div><div class="spec-value">Volkswagen, Audi</div></div>
+          <div class="spec-row"><div class="spec-label">Material</div><div class="spec-value">Aluminum Alloy</div></div>
+          <div class="spec-row"><div class="spec-label">Origin</div><div class="spec-value">Guangzhou, China</div></div>
+          <div class="spec-row"><div class="spec-label">MOQ</div><div class="spec-value">10 pieces</div></div>
+          <div class="spec-row"><div class="spec-label">Availability</div><div class="spec-value">&#10003; In Stock</div></div>
+          <div class="spec-row"><div class="spec-label">Quality Standard</div><div class="spec-value">ISO 9001 / IATF 16949</div></div>
+          <div class="spec-row"><div class="spec-label">Packaging</div><div class="spec-value">Neutral Box / Custom Branding</div></div>
+        </div>
+      </div>
+
+      <!-- Tab 2: Description -->
+      <div id="tab-desc" class="tab-content">
+        <div class="tab-panel-card">
+          <h3>About This Part</h3>
+          <p>The KingMay 49-1001 is a premium aftermarket engine oil cooler designed as a direct replacement for VW and Audi vehicles. Built from high-grade aluminum alloy, it delivers efficient heat dissipation to maintain optimal engine oil temperature under all operating conditions.</p>
+          <ul>
+            <li>Direct bolt-on replacement &mdash; no modifications required</li>
+            <li>Manufactured to OEM dimensional specifications</li>
+            <li>Rigorous quality testing including pressure and thermal cycling</li>
+            <li>Compatible with both gasoline and diesel engine applications</li>
+            <li>Suitable for passenger cars and light commercial vehicles</li>
+            <li>Neutral packaging with optional custom branding for bulk orders</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Tab 3: Packaging & Delivery -->
+      <div id="tab-pkg" class="tab-content">
+        <div class="tab-panel-card">
+          <h3>&#128230; Packaging &amp; Delivery</h3>
+          <p>Every KingMay order goes through a rigorous quality assurance process &mdash; from our warehouse in Guangzhou to your destination port worldwide.</p>
+          <ul>
+            <li><strong>Packaging Type:</strong> Neutral box or custom branded box (MOQ 200+ for custom logo)</li>
+            <li><strong>Inner Protection:</strong> Bubble wrap + foam inserts to prevent transit damage</li>
+            <li><strong>Outer Carton:</strong> Standard export carton with moisture barrier</li>
+            <li><strong>Palletizing:</strong> Optional &mdash; wooden or plastic pallets for container loading</li>
+            <li><strong>Shipping Port:</strong> Guangzhou Nansha Port (FOB / CIF / CFR available)</li>
+            <li><strong>Transit Time:</strong> 7&ndash;15 business days by sea; 3&ndash;7 days by air</li>
+            <li><strong>Container Options:</strong> LCL (less than container) and FCL (full container) both supported</li>
+            <li><strong>Sample Orders:</strong> Available via DHL / FedEx / UPS express (3&ndash;5 days)</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Tab 4: Quality & Inspection -->
+      <div id="tab-quality" class="tab-content">
+        <div class="tab-panel-card">
+          <h3>&#9989; Quality &amp; Inspection</h3>
+          <p>Our 30,000+ SKU warehouse and pre-shipment inspection process ensure every order meets your quality standards. KingMay is certified under ISO 9001 and IATF 16949 quality management systems.</p>
+          <div class="quality-features">
+            <div class="quality-feature">
+              <span class="qf-icon">&#127919;</span>
+              <div class="qf-title">Part Number Matching</div>
+              <div class="qf-desc">Every part is cross-referenced against OE numbers to ensure exact fitment compatibility.</div>
+            </div>
+            <div class="quality-feature">
+              <span class="qf-icon">&#128170;</span>
+              <div class="qf-title">Material Verification</div>
+              <div class="qf-desc">Raw material inspection ensures aluminum alloy and rubber components meet OEM-grade standards.</div>
+            </div>
+            <div class="quality-feature">
+              <span class="qf-icon">&#128270;</span>
+              <div class="qf-title">Dimensional Accuracy</div>
+              <div class="qf-desc">Critical dimensions measured against OEM specifications with calibrated instruments.</div>
+            </div>
+            <div class="quality-feature">
+              <span class="qf-icon">&#128247;</span>
+              <div class="qf-title">Pre-Shipment Photos</div>
+              <div class="qf-desc">Photos of your actual order taken at warehouse before container loading for review.</div>
+            </div>
+            <div class="quality-feature">
+              <span class="qf-icon">&#128736;</span>
+              <div class="qf-title">Pressure Testing</div>
+              <div class="qf-desc">Oil coolers undergo pressure and thermal cycling tests to verify sealing integrity.</div>
+            </div>
+            <div class="quality-feature">
+              <span class="qf-icon">&#128203;</span>
+              <div class="qf-title">Full Packing List</div>
+              <div class="qf-desc">Detailed packing list with part numbers, quantities, and box weights for every shipment.</div>
+            </div>
+          </div>
+          <ul style="margin-top: 24px;">
+            <li><strong>Warranty:</strong> 12 months from date of shipment (manufacturing defects)</li>
+            <li><strong>Replacement Policy:</strong> Free replacement for defective parts with photo/video evidence</li>
+            <li><strong>Quality Certification:</strong> ISO 9001:2015 / IATF 16949:2016 certified facility</li>
+            <li><strong>Client Inspection:</strong> On-site inspection at our Guangzhou warehouse is welcome</li>
+            <li><strong>Third-Party Testing:</strong> SGS / TUV inspection available upon request (buyer's account)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ DELIVERY PROOF SECTION (3 photo groups from published site) ═══ -->
+  <section class="pd-delivery">
+    <div class="container">
+      <div class="pd-delivery-inner">
+        <p class="pd-delivery-eyebrow">Delivery &amp; Inspection</p>
+        <h2 class="pd-delivery-title">How We Ensure Your Order Arrives Safely</h2>
+        <p class="pd-delivery-desc">Every auto parts order shipped by Globalucar goes through a rigorous quality assurance process — from factory gate to your destination port.</p>
+      </div>
+      <div class="pd-delivery-groups">
+
+        <!-- Group 1: Auto Parts Container Loading -->
+        <div class="pd-delivery-group-header">Auto Parts Container Loading</div>
+        <div class="pd-delivery-grid">
+          <div class="pd-delivery-card" onclick="openLightbox('assets/gallery/factory-container-loading-04.jpg')">
+            <img src="assets/gallery/factory-container-loading-04.jpg" alt="Auto parts palletized and stacked in 40ft container for bulk export" onerror="this.style.display='none'" />
+            <div class="pd-delivery-card-overlay">
+              <span class="pd-delivery-card-label">Parts Loading</span>
+              <span class="pd-delivery-card-caption">Auto parts palletized and stacked in 40ft container for bulk export</span>
+            </div>
+          </div>
+          <div class="pd-delivery-card" onclick="openLightbox('assets/gallery/factory-container-loading-05.jpg')">
+            <img src="assets/gallery/factory-container-loading-05.jpg" alt="OEM-grade engine and suspension parts organized by brand for shipment" onerror="this.style.display='none'" />
+            <div class="pd-delivery-card-overlay">
+              <span class="pd-delivery-card-label">Parts Loading</span>
+              <span class="pd-delivery-card-caption">OEM-grade engine and suspension parts organized by brand for shipment</span>
+            </div>
+          </div>
+          <div class="pd-delivery-card" onclick="openLightbox('assets/gallery/factory-container-loading-06.jpg')">
+            <img src="assets/gallery/factory-container-loading-06.jpg" alt="Mixed-system parts order sealed and ready for ocean freight departure" onerror="this.style.display='none'" />
+            <div class="pd-delivery-card-overlay">
+              <span class="pd-delivery-card-label">Parts Loading</span>
+              <span class="pd-delivery-card-caption">Mixed-system parts order sealed and ready for ocean freight departure</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Group 2: Parts Warehouse & Quality Check -->
+        <div class="pd-delivery-group-header">Parts Warehouse &amp; Quality Check</div>
+        <div class="pd-delivery-grid">
+          <div class="pd-delivery-card" onclick="openLightbox('assets/gallery/parts-warehouse.jpg')">
+            <img src="assets/gallery/parts-warehouse.jpg" alt="30,000+ SKUs across engine, cooling, suspension and electrical systems" onerror="this.style.display='none'" />
+            <div class="pd-delivery-card-overlay">
+              <span class="pd-delivery-card-label">Parts Warehouse</span>
+              <span class="pd-delivery-card-caption">30,000+ SKUs across engine, cooling, suspension and electrical systems. Organized by brand and OEM reference.</span>
+            </div>
+          </div>
+          <div class="pd-delivery-card" onclick="openLightbox('assets/gallery/parts-warehouse02.jpg')">
+            <img src="assets/gallery/parts-warehouse02.jpg" alt="OEM-grade parts warehouse" onerror="this.style.display='none'" />
+            <div class="pd-delivery-card-overlay">
+              <span class="pd-delivery-card-label">Parts Warehouse</span>
+              <span class="pd-delivery-card-caption">Shelves stocked with OEM-grade parts sorted by system category and vehicle model for fast order fulfillment</span>
+            </div>
+          </div>
+          <div class="pd-delivery-card" onclick="openLightbox('assets/gallery/client-inspection-01.jpg')">
+            <img src="assets/gallery/client-inspection-01.jpg" alt="Client verifying parts quality" onerror="this.style.display='none'" />
+            <div class="pd-delivery-card-overlay">
+              <span class="pd-delivery-card-label">Parts Inspection</span>
+              <span class="pd-delivery-card-caption">Client verifying OEM parts quality — on-site dimensional and material checks before shipment</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Group 3: Client Visits & Events -->
+        <div class="pd-delivery-group-header">Client Visits &amp; Events</div>
+        <div class="pd-delivery-grid">
+          <div class="pd-delivery-card" onclick="openLightbox('assets/gallery/factory-client-reception-01.jpg')">
+            <img src="assets/gallery/factory-client-reception-01.jpg" alt="Welcoming international buyers" onerror="this.style.display='none'" />
+            <div class="pd-delivery-card-overlay">
+              <span class="pd-delivery-card-label">Client Visit</span>
+              <span class="pd-delivery-card-caption">Welcoming international buyers at our Guangzhou office</span>
+            </div>
+          </div>
+          <div class="pd-delivery-card" onclick="openLightbox('assets/gallery/factory-client-reception-03.jpg')">
+            <img src="assets/gallery/factory-client-reception-03.jpg" alt="Face-to-face negotiation" onerror="this.style.display='none'" />
+            <div class="pd-delivery-card-overlay">
+              <span class="pd-delivery-card-label">Negotiation</span>
+              <span class="pd-delivery-card-caption">Face-to-face order discussion and contract signing</span>
+            </div>
+          </div>
+          <div class="pd-delivery-card" onclick="openLightbox('assets/gallery/client-group-photo-01.jpg')">
+            <img src="assets/gallery/client-group-photo-01.jpg" alt="Group photo with international buyer delegation" onerror="this.style.display='none'" />
+            <div class="pd-delivery-card-overlay">
+              <span class="pd-delivery-card-label">Team Photo</span>
+              <span class="pd-delivery-card-caption">Group photo with international buyer delegation at Guangzhou office</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Related Parts ═══ -->
+  <div class="container">
+    <div class="related-section">
+      <h2>Related Parts</h2>
+      <div class="related-grid">
+        <div class="related-card" onclick="alert('Navigate to 49-1002')">
+          <div class="img-wrap"><img src="assets/parts/xlsx_49-1002_0.png" alt="49-1002"></div>
+          <div class="info">
+            <div class="part-n">49-1002</div>
+            <div class="name">Oil Cooler Assembly</div>
+            <div class="oe-preview">059 117 021B</div>
+          </div>
+        </div>
+        <div class="related-card" onclick="alert('Navigate to 49-1002-1')">
+          <div class="img-wrap"><img src="assets/parts/xlsx_49-1002-1_0.png" alt="49-1002-1"></div>
+          <div class="info">
+            <div class="part-n">49-1002-1</div>
+            <div class="name">Oil Cooler Assembly</div>
+            <div class="oe-preview">059 117 021C</div>
+          </div>
+        </div>
+        <div class="related-card" onclick="alert('Navigate to 49-1003')">
+          <div class="img-wrap"><img src="assets/parts/xlsx_49-1003_0.jpg" alt="49-1003"></div>
+          <div class="info">
+            <div class="part-n">49-1003</div>
+            <div class="name">Oil Cooler Assembly</div>
+            <div class="oe-preview">06D 117 021C</div>
+          </div>
+        </div>
+        <div class="related-card" onclick="alert('Navigate to 49-1003W')">
+          <div class="img-wrap"><img src="assets/parts/xlsx_49-1003W_0.png" alt="49-1003W"></div>
+          <div class="info">
+            <div class="part-n">49-1003W</div>
+            <div class="name">Oil Cooler Assembly</div>
+            <div class="oe-preview">06F115397F</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ FOOTER (Dark — mirrors published site exactly) ═══ -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-brand-logos">
+          <img src="assets/VEHICLE-logo.jpg" alt="Globalucar Vehicle" onerror="this.style.display='none';this.nextElementSibling&&(this.nextElementSibling.style.display=this.nextElementSibling.nextElementSibling?'none':'block')" />
+          <span class="brand-divider"></span>
+          <img src="assets/logo-Kingmay.png" alt="Kingmay Auto Parts" onerror="this.style.display='none';this.previousElementSibling&&(this.previousElementSibling.style.display='block')" />
+        </div>
+        <p>Guangzhou Vehicle External Trade Co., Ltd</p>
+        <p class="footer-tag-line">New &amp; Used Cars &middot; Auto Parts &middot; Export Solutions</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Product Categories</h4>
+        <ul>
+          <li><a href="products.html?cat=new_car">New Cars</a></li>
+          <li><a href="products.html?cat=used_car">Used Cars</a></li>
+          <li><a href="products.html?cat=parts">Auto Parts</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p>&#128663; <a href="mailto:ucars@global-ucars.com" style="color:inherit;">ucars@global-ucars.com</a></p>
+        <p>&#128737; <a href="mailto:ku@kingmay-autoparts.com" style="color:inherit;">ku@kingmay-autoparts.com</a></p>
+        <p>&#128205; Guangzhou, China</p>
+        <p>&#9872; Nansha Port Terminal</p>
+      </div>
+    </div>
+    <div class="footer-social">
+      <a href="https://www.facebook.com/profile.php?id=61574434590217" target="_blank" rel="noopener" aria-label="Kingmay Auto Parts on Facebook">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      </a>
+      <a href="https://www.tiktok.com/@aaijo64" target="_blank" rel="noopener" aria-label="Kingmay Auto Parts on TikTok">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+      </a>
+      <a href="https://www.instagram.com/kingmay_auto_partss" target="_blank" rel="noopener" aria-label="Kingmay Auto Parts on Instagram">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+      </a>
+      <span style="color:rgba(255,255,255,.25);margin:0 4px;">|</span>
+      <a href="https://www.tiktok.com/@globalucar_cc" target="_blank" rel="noopener" aria-label="Globalucar on TikTok">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+      </a>
+      <a href="https://www.tiktok.com/@newbaydidi" target="_blank" rel="noopener" aria-label="Newbay-didi on TikTok">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+      </a>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Guangzhou Vehicle External Trade Co., Ltd. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- ═══ Lightbox ═══ -->
+  <div class="lightbox-overlay" id="lightbox" onclick="closeLightbox()">
+    <button class="lightbox-close" onclick="closeLightbox()">&#10005;</button>
+    <img id="lightbox-img" src="" alt="Full size photo" />
+  </div>
+
+  <script>
+    // Image gallery switch
+    function switchImage(thumb, src) {
+      document.getElementById('mainImage').src = src;
+      document.querySelectorAll('.gallery-thumbs img').forEach(t => t.classList.remove('active'));
+      thumb.classList.add('active');
+    }
+
+    // OE copy to clipboard
+    function copyOE(el) {
+      const text = el.textContent.replace('click to copy', '').trim();
+      navigator.clipboard.writeText(text).then(() => {
+        const hint = el.querySelector('.copy-hint');
+        hint.textContent = 'copied!';
+        setTimeout(() => hint.textContent = 'click to copy', 1500);
+      });
+    }
+
+    // Tab switching
+    function showTab(btn, tabId) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(tabId).classList.add('active');
+    }
+
+    // Lightbox
+    function openLightbox(src) {
+      document.getElementById('lightbox-img').src = src;
+      document.getElementById('lightbox').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeLightbox(); });
+  </script>
+
+</body>
+</html>
