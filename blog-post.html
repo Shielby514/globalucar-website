@@ -239,8 +239,86 @@
     .related-card-body { padding: 14px; }
     .related-cat { font-size: 0.72rem; font-weight: 700; color: #c8102e; text-transform: uppercase; margin-bottom: 6px; }
     .related-title { font-size: 0.9rem; font-weight: 700; color: #0d1f3c; line-height: 1.4; }
-    .related-title a { color: inherit; text-decoration: none; }
-    .related-title a:hover { color: #c8102e; }
+    /* ── Related Products ────────────────────── */
+    .bp-related-products {
+      margin-top: 48px;
+      padding-top: 40px;
+      border-top: 2px solid #e8edf5;
+    }
+    .bp-related-products h2 { font-size: 1.3rem; font-weight: 800; color: #0d1f3c; margin-bottom: 6px; }
+    .bp-related-products .section-sub {
+      font-size: 0.85rem;
+      color: #888;
+      margin-bottom: 20px;
+    }
+    .products-mini-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+    @media (max-width: 900px) { .products-mini-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 500px) { .products-mini-grid { grid-template-columns: 1fr; } }
+    .product-mini-card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
+    }
+    .product-mini-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 28px rgba(0,0,0,0.13);
+    }
+    .product-mini-card .p-img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      display: block;
+      background: linear-gradient(135deg, #0d1f3c, #1a3a6e);
+    }
+    .product-mini-card .p-body {
+      padding: 14px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .product-mini-card .p-cat {
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: #c8102e;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 5px;
+    }
+    .product-mini-card .p-name {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #0d1f3c;
+      line-height: 1.4;
+      flex: 1;
+      margin-bottom: 8px;
+    }
+    .product-mini-card .p-price {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #0d1f3c;
+      margin-bottom: 10px;
+    }
+    .product-mini-card .p-btn {
+      display: block;
+      background: #c8102e;
+      color: #fff;
+      text-align: center;
+      padding: 7px;
+      border-radius: 5px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .product-mini-card .p-btn:hover { background: #a00d24; }
 
     /* ── Sidebar ─────────────────────────────── */
     .bp-sidebar { display: flex; flex-direction: column; gap: 24px; position: sticky; top: 80px; align-self: start; }
@@ -399,6 +477,16 @@
         <h2>Related Articles</h2>
         <div class="related-grid" id="related-grid"></div>
       </section>
+
+      <!-- RELATED PRODUCTS -->
+      <section class="bp-related-products" id="bp-related-products">
+        <h2>Related Products</h2>
+        <p class="section-sub" id="bp-products-sub"></p>
+        <div class="products-mini-grid" id="products-mini-grid"></div>
+        <div style="text-align:center;margin-top:20px">
+          <a href="products.html" class="p-btn" style="display:inline-block;background:#0d1f3c;color:#fff;padding:10px 28px;border-radius:6px;font-size:0.9rem;font-weight:700;text-decoration:none;">View All Products →</a>
+        </div>
+      </section>
     </article>
 
     <!-- SIDEBAR -->
@@ -487,6 +575,7 @@
   </footer>
 
   <script src="script.js"></script>
+  <script src="products-inline.js"></script>
   <script>
   /**
    * Blog Post Engine — loads article content by ?id= URL param
@@ -6521,6 +6610,89 @@
         </div>
       </div>`;
     }).join('');
+
+    // ── Related Products (smart match by category + keywords) ──
+    (function renderRelatedProducts() {
+      if (typeof PRODUCTS === 'undefined') {
+        document.getElementById('bp-related-products').style.display = 'none';
+        return;
+      }
+
+      const isPartsArticle = post.category && post.category.includes('Parts');
+      const isVehicleArticle = post.category && post.category.includes('Vehicles');
+      const allTags = (post.tags || []).concat(post.keywords ? post.keywords.split(',').map(k => k.trim()) : []);
+
+      // Keyword → system mapping
+      const KEYWORD_MAP = {
+        engine: ['engine', 'cylinder', 'piston', 'gasket', 'valve', 'sensor', 'oil pump', 'fuel pump', 'intake', 'exhaust', 'turbo', 'catalytic', 'oxygen sensor', 'oxygen'],
+        cooling: ['cooling', 'radiator', 'water pump', 'thermostat', 'fan', 'coolant', 'heater'],
+        suspension: ['suspension', 'control arm', 'ball joint', 'sway bar', 'stabilizer', 'strut', 'shock', 'coil spring', 'leaf spring'],
+        electrical: ['electrical', 'alternator', 'starter', 'wiring', 'battery', 'ignition', 'spark', 'ecu', 'sensor', 'switch', 'lock cylinder']
+      };
+
+      let selectedProducts = [];
+      let sectionLabel = '';
+
+      if (isPartsArticle) {
+        // Detect system from article tags
+        const matchSystem = (keywords) => {
+          for (const kw of keywords) {
+            const lower = kw.toLowerCase();
+            if (KEYWORD_MAP.engine.some(k => lower.includes(k))) return 'engine';
+            if (KEYWORD_MAP.cooling.some(k => lower.includes(k))) return 'cooling';
+            if (KEYWORD_MAP.suspension.some(k => lower.includes(k))) return 'suspension';
+            if (KEYWORD_MAP.electrical.some(k => lower.includes(k))) return 'electrical';
+          }
+          return null;
+        };
+        const detected = matchSystem(allTags);
+        const systemLabel = { engine: 'Engine System', cooling: 'Cooling System', suspension: 'Suspension System', electrical: 'Electrical System' };
+
+        if (detected) {
+          selectedProducts = PRODUCTS.filter(p => p.category === 'parts' && p.system === detected).slice(0, 4);
+          sectionLabel = `From our ${systemLabel[detected]} catalog — ${selectedProducts.length} products ready for export`;
+        } else {
+          selectedProducts = PRODUCTS.filter(p => p.category === 'parts').slice(0, 4);
+          sectionLabel = `From our Auto Parts catalog — ${selectedProducts.length} export-ready products`;
+        }
+      } else if (isVehicleArticle) {
+        const newCars = PRODUCTS.filter(p => p.category === 'new_car').slice(0, 2);
+        const usedCars = PRODUCTS.filter(p => p.category === 'used_car').slice(0, 2);
+        selectedProducts = [...newCars, ...usedCars];
+        sectionLabel = `From our Vehicle Export catalog — new &amp; used cars ready for international delivery`;
+      } else {
+        // Fallback: first 4 parts
+        selectedProducts = PRODUCTS.filter(p => p.category === 'parts').slice(0, 4);
+        sectionLabel = `Popular auto parts from our export catalog`;
+      }
+
+      document.getElementById('bp-products-sub').textContent = sectionLabel;
+      const grid = document.getElementById('products-mini-grid');
+
+      if (selectedProducts.length === 0) {
+        grid.innerHTML = '<p style="color:#999;font-size:0.85rem;grid-column:1/-1">No matching products found. <a href="products.html" style="color:#c8102e">Browse full catalog →</a></p>';
+        return;
+      }
+
+      grid.innerHTML = selectedProducts.map(p => {
+        const img = (p.local_image && p.local_image.startsWith('assets'))
+          ? p.local_image
+          : (p.images && p.images[0]) || '';
+        const catLabel = p.part_system_label || (p.category === 'new_car' ? 'New Car' : p.category === 'used_car' ? 'Used Car' : 'Auto Part');
+        const nameShort = p.name.length > 55 ? p.name.substring(0, 52) + '…' : p.name;
+        const priceText = p.price ? p.price.replace(/US \$/i, 'US$') : 'FOB Price on Request';
+        const detailUrl = p.slug ? `product-detail.html?id=${p.id}` : `products.html`;
+        return `<div class="product-mini-card">
+          <img class="p-img" src="${img}" alt="${p.name}" onerror="this.style.display='none'" loading="lazy" />
+          <div class="p-body">
+            <p class="p-cat">${catLabel}</p>
+            <p class="p-name">${nameShort}</p>
+            <p class="p-price">${priceText}</p>
+            <a href="${detailUrl}" class="p-btn">View Details</a>
+          </div>
+        </div>`;
+      }).join('');
+    })();
 
   })();
   </script>

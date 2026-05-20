@@ -1169,7 +1169,7 @@
 
   <script src="script.js"></script>
   <script>
-    // Blog category filter
+    // ── Blog category filter with alternating V/P layout ──
     document.querySelectorAll('.blog-cat-btn').forEach(btn => {
       btn.addEventListener('click', e => {
         e.preventDefault();
@@ -1177,13 +1177,35 @@
         document.querySelectorAll('.blog-cat-btn').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
 
-        document.querySelectorAll('#posts-grid .post-card').forEach(card => {
-          if (cat === 'all' || card.dataset.cat === cat) {
-            card.style.display = '';
-          } else {
-            card.style.display = 'none';
+        const grid = document.getElementById('posts-grid');
+        const allCards = Array.from(grid.querySelectorAll('.post-card'));
+
+        if (cat === 'all') {
+          // Show all cards with alternating Vehicle / Auto Parts per row
+          const featured = allCards.filter(c => c.classList.contains('featured'));
+          const nonFeatured = allCards.filter(c => !c.classList.contains('featured'));
+
+          const vehicles = nonFeatured.filter(c => c.dataset.cat === 'vehicles');
+          const parts = nonFeatured.filter(c => c.dataset.cat === 'parts');
+
+          // Interleave: V, P, V, P ... (row by row)
+          const interleaved = [];
+          const maxLen = Math.max(vehicles.length, parts.length);
+          for (let i = 0; i < maxLen; i++) {
+            if (i < vehicles.length) interleaved.push(vehicles[i]);
+            if (i < parts.length) interleaved.push(parts[i]);
           }
-        });
+
+          // Detach all, re-attach in new order
+          allCards.forEach(c => { c.style.display = 'none'; grid.removeChild(c); });
+          featured.forEach(c => { c.style.display = ''; grid.appendChild(c); });
+          interleaved.forEach(c => { c.style.display = ''; grid.appendChild(c); });
+        } else {
+          // Single category: show matching, hide rest
+          allCards.forEach(card => {
+            card.style.display = (card.dataset.cat === cat) ? '' : 'none';
+          });
+        }
       });
     });
 
