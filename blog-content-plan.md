@@ -129,35 +129,46 @@
 
 ---
 
-## 五、内容发布方向（2026年4月-6月）
+## 五、内容发布方向（2026年5月-9月）
 
 > ⚠️ **重要更新（2026-05-21）**：根据业务方向调整，取消二手车文章计划，聚焦**新车出口**和**汽配采购**两条主线。
+>
+> ⚠️ **SEO方向调整（2026-05-22）**：基于 KingMay 月度策略报告，**韩系车配件（Hyundai/Kia）+ KSA中东市场**上升为汽配内容核心支柱。Amazon汽配搜索SOV暴跌41%，独立站SEO迎来黄金窗口期。
 
-### 🚗 新车出口方向（目标：每月1篇，聚焦整车出海）
+### 🔧 汽配方向 — SEO流量优先级最高（每月1-2篇）
 
-| 周次 | 选题方向 | 建议标题关键词 | 融入品牌 |
-|------|---------|--------------|---------|
-| W1 Jun | 中东EV充电基础设施 | 中东EV充电标准, BYD, 极氪, GCC认证 | BYD/极氪 |
-| W2 Jun | 国产新能源SUV出口东南亚 | 奇瑞瑞虎/长安CS75/BYD宋Plus, 东南亚进口 | 奇瑞/长安/BYD |
-| W3 Jun | 中国品牌轿车出口非洲 | MG/吉利帝豪/长安逸动, 非洲出租车/家用 | MG/吉利/长安 |
-| W1 Jul | 墨西哥/巴西汽车市场中国品牌准入 | 拉美认证, INMETRO, NOM, BYD墨西哥 | BYD/奇瑞/名爵 |
+> **核心理由**：策略报告显示 "Hyundai spare parts wholesale" 月搜索量 3,500+、"aftermarket Hyundai brake pads" 4,500+、"Hyundai Elantra parts online" 6,000+、"Hyundai Tucson spare parts price" 5,000+——这些都是B2B交易型高价值关键词，当前独立站竞品少、排名机会大。
 
-### 🔧 汽配采购方向（目标：每月1篇，聚焦OEM汽配出口）
+| 优先级 | 周次 | 选题方向 | 核心SEO关键词（预估月搜索量） | 目标客户 | 融入品牌 |
+|--------|------|---------|---------------------------|---------|---------|
+| 🔥🔥🔥 | W4 May | **Hyundai/Kia刹车片采购指南：OEM vs Aftermarket** | aftermarket Hyundai brake pads (4.5K) / Kia Sportage brake pads (3K) | 维修店/批发商/渠道商 | Hyundai/Kia |
+| 🔥🔥🔥 | W2 Jun | **Hyundai Tucson/Santa Fe配件价格指南** | Hyundai Tucson spare parts price (5K) / Santa Fe parts online (2K) | 批发商/中间商 | Hyundai |
+| 🔥🔥🔥 | W4 Jun | **中国汽配发货沙特：物流、关税与清关指南** | auto spare parts China to Saudi Arabia (1.2K) / shipping auto parts KSA (800) | 批发商/中间商 | 多品牌 |
+| 🔥🔥 | W1 Jul | **Hyundai/Kia夏季高更换配件清单（中东高温适配）** | summer car maintenance Middle East (800) / Hyundai AC parts Dubai (1.5K) | 维修店/渠道商 | Hyundai/Kia |
+| 🔥🔥 | W2 Jul | **Hyundai Elantra配件全目录：进口商采购手册** | Hyundai Elantra parts online (6K) / Elantra spare parts wholesale (2K) | 批发商/维修店 | Hyundai |
+| 🔥🔥 | W3 Jul | **悬挂系统年度采购指南** | control arm replacement cost / suspension parts wholesale | 批发商/维修店 | 丰田/本田/Hyundai |
+| 🔥🔥 | W1 Aug | **Kia Sportage/Seltos配件批发商完整指南** | Kia Sportage parts wholesale (2.5K) / Kia Seltos parts (1.5K) | 批发商/渠道商 | Kia |
+| 🔥🔥 | W2 Aug | **OEM-Grade中国汽配品质认证与验货指南** | Chinese auto parts quality (1.5K) / OEM grade parts China (800) | 所有B2B | 多品牌 |
+| 🔥 | W3 Aug | **发电机/起动机/电气系统：B2B采购指南** | alternator wholesale China / starter motor supplier | 批发商/维修店 | 丰田/本田/Hyundai |
+| 🔥 | W1 Sep | **中国汽配出口沙特：2026进口法规与SABER认证** | Saudi Arabia auto parts import / SABER certification (1K) | 大型批发商 | 多品牌 |
 
-| 周次 | 选题方向 | 建议标题关键词 | 融入品牌 |
-|------|---------|--------------|---------|
-| W4 Jun | 刹车系统全套件采购指南 | 刹车片/刹车盘/刹车卡钳, ECE R90, 制动安全 | 多品牌 |
-| W1 Jul | 悬挂系统年度采购指南 | 控制臂/减震器/球头/防倾杆, 更换周期 | 丰田/本田/大众 |
-| W3 Jul | 发动机传感器深度解析 | O2传感器/曲轴位置传感器/进气压力传感器, 故障码 | 丰田/日产/现代 |
-| W1 Aug | 电气系统：发电机/起动机/线束 | 发电机, 起动机, 蓄电池, 接线端子 | 宝马/奔驰/大众 |
+### 🚗 新车出口方向（每月1篇）
 
-### 📅 发布节奏
+| 优先级 | 周次 | 选题方向 | 核心SEO关键词 | 融入品牌 |
+|--------|------|---------|-------------|---------|
+| 🔥 | W1 Jun | 中东EV充电基础设施 | 中东EV充电标准, BYD, 充电桩 | BYD/极氪 |
+| 🔥 | W3 Jun | 国产新能源SUV出口东南亚 | 奇瑞瑞虎, 长安CS75, 东南亚进口 | 奇瑞/长安/BYD |
+| 🔥 | W3 Jul | 墨西哥/巴西市场中国品牌准入 | INMETRO, NOM, 拉美认证 | BYD/奇瑞/名爵 |
+| 🔥 | W2 Aug | 拉美市场整车进口关税指南 | 拉美关税, CIF价格, 清关 | 多品牌 |
+
+### 📅 发布节奏（自动化任务）
 
 - **每周一**：定时提醒选题
 - **每周三前**：完成初稿
 - **每周四**：审核发布
 - **每周五**：git push 部署
-- 整车间周与汽配周交替（周四整车 → 周四汽配 → 周四整车 …）
+- **频率**：每两周1篇（整车与汽配交替）或两周连续汽配（当汽配优先级更高时）
+- **SEO优先原则**：当月如果发现新的高搜索量关键词缺口，优先安排汽配文章
 
 ---
 
@@ -232,29 +243,71 @@
 
 ---
 
-## 八、内容双线长期规划（2026年Q2-Q3）
+## 八、内容双线长期规划（2026年Q2-Q4）
 
-> ⚠️ **调整说明（2026-05-21）**：取消二手车文章线，专注**新车出口**和**汽配采购**两大内容方向。
+> ⚠️ **调整说明（2026-05-22）**：基于 KingMay 月度策略报告和 Google 搜索数据分析，**韩系车配件（Hyundai/Kia）作为汽配内容核心支柱**，以 KSA/中东市场为主要流量目标。同时抓住 Amazon SOV 暴跌 41% 的独立站 SEO 黄金窗口期。
+
+### SEO关键词分级策略
+
+| 级别 | 关键词举例 | 预估月搜索量 | 竞争度 | 内容策略 |
+|------|-----------|-------------|--------|---------|
+| **Tier 1 — 核心交易词** | Hyundai Elantra parts online | 6,000+ | 中等 | 专题文章 + 产品页内链 |
+| **Tier 1 — 核心交易词** | Hyundai Tucson spare parts price | 5,000+ | 中等 | 价格对比文章 + FAQ Schema |
+| **Tier 1 — 核心交易词** | aftermarket Hyundai brake pads | 4,500+ | 中高 | 刹车片专题 + 产品页 |
+| **Tier 1 — 核心交易词** | OEM Hyundai parts catalog | 2,800+ | 低 | 产品目录页 + 博客引导 |
+| **Tier 1 — 核心交易词** | Hyundai spare parts wholesale | 3,500+ | 低-中 | B2B专题 + 联系表单 |
+| **Tier 2 — 品牌批发词** | Kia auto parts supplier China | 2,200+ | 低 | 供应商介绍 + 案例文章 |
+| **Tier 2 — 品牌批发词** | Korean car parts Dubai | 1,800+ | 低 | 迪拜市场文章 |
+| **Tier 2 — 品牌批发词** | wholesale auto parts Middle East | 2,000+ | 中 | 批发指南文章 |
+| **Tier 3 — 物流交易词** | auto spare parts China to KSA | 1,200+ | 低 | 物流指南文章 |
+| **Tier 3 — 物流交易词** | shipping auto parts to Saudi Arabia | 800+ | 低 | 物流+清关文章 |
+
+### 🔧 汽配方向 — 韩系配件专题序列（每月1-2篇）
+
+> **策略逻辑**：围绕 Hyundai/Kia 热门车型（Tucson/Elantra/Santa Fe/Sportage/Seltos），以配件品类为主线，每个品类一篇深度文章，形成**车型×品类**的内容矩阵。
+
+| 月份 | 选题 | 核心SEO关键词 | 车型覆盖 | 文章ID |
+|------|------|-----------|---------|--------|
+| 2026 May | ~~发动机大修件全套采购~~ → ✅ id=45 已发布 | 活塞/曲轴/气缸垫/大修包 | 通用 | 45 |
+| 2026 Jun | **Hyundai/Kia刹车片采购：OEM vs Aftermarket** | aftermarket brake pads Hyundai/Kia (7.5K) | Tucson/Sportage/Elantra/Seltos | 50 |
+| 2026 Jun | **Hyundai Tucson/Santa Fe配件价格对比** | Tucson parts price (5K) | Tucson/Santa Fe | 51 |
+| 2026 Jul | **中国汽配发货沙特物流清关指南** | China to KSA auto parts (1.2K) | 全品牌 | 52 |
+| 2026 Jul | **Hyundai Elantra配件进口商采购手册** | Elantra parts online (6K) | Elantra/Sonata | 53 |
+| 2026 Jul | **悬挂系统年度采购指南** | suspension parts wholesale | 丰田/Hyundai/Honda | 54 |
+| 2026 Aug | **Kia Sportage/Seltos配件批发指南** | Kia Sportage wholesale (2.5K) | Sportage/Seltos | 55 |
+| 2026 Aug | **OEM-Grade中国汽配品质认证与验货** | Chinese parts quality (1.5K) | 全品牌 | 56 |
+| 2026 Aug | **发电机/起动机电气系统采购** | alternator/starter wholesale | 丰田/Hyundai | 57 |
+| 2026 Sep | **沙特汽配进口法规与SABER认证** | Saudi auto parts import (1K) | 全品牌 | 58 |
+| 2026 Sep | **Hyundai/Kia滤清器全套采购指南** | Hyundai oil filter/OEM parts (2K) | 全系 | 59 |
 
 ### 🚗 新车出口方向（每月1篇）
 
-| 月份 | 选题 | 核心关键词 | 品牌融入 |
-|------|------|-----------|---------|
-| 2026 May | ~~俄罗斯市场中国新车准入~~ → ✅ 已发布（id=49） | GOST认证, EAC, 俄罗斯进口 | 奇瑞/长城/吉利 |
-| 2026 Jun | 中东新能源车充电基础设施 | 中东EV充电, BYD, 充电标准 | BYD/极氪 |
-| 2026 Jun | 国产新能源SUV出口东南亚 | 奇瑞瑞虎, 长安CS75, 东南亚进口 | 奇瑞/长安 |
-| 2026 Jul | 墨西哥/巴西市场中国品牌准入 | INMETRO, NOM, 拉美认证 | BYD/奇瑞/名爵 |
-| 2026 Jul | 拉美市场整车进口关税指南 | 拉美关税, CIF价格, 清关 | 多品牌 |
+| 月份 | 选题 | 核心关键词 | 品牌融入 | 文章ID |
+|------|------|-----------|---------|--------|
+| 2026 May | ~~俄罗斯市场准入~~ → ✅ id=49 已发布 | GOST/EAC/俄罗斯 | 奇瑞/长城/吉利 | 49 |
+| 2026 Jun | 中东EV充电基础设施 | 中东EV充电/BYD/充电标准 | BYD/极氪 | 60 |
+| 2026 Jul | 国产新能源SUV出口东南亚 | 奇瑞瑞虎/长安CS75/东南亚 | 奇瑞/长安 | 61 |
+| 2026 Aug | 墨西哥/巴西市场准入 | INMETRO/NOM/拉美认证 | BYD/奇瑞/名爵 | 62 |
+| 2026 Sep | 中国品牌轿车出口非洲 | MG/吉利/长安/非洲 | MG/吉利/长安 | 63 |
 
-### 🔧 汽配方向（每月1篇）
+### 已有文章对照（避免重复）
 
-| 月份 | 选题 | 核心关键词 | 品牌融入 |
-|------|------|-----------|---------|
-| 2026 Jun | 刹车系统全套件采购指南 | 刹车片, 刹车盘, ECE R90, 安全标准 | 多品牌 |
-| 2026 Jul | 悬挂系统年度采购指南 | 控制臂, 减震器, 球头, 更换周期 | 多品牌 |
-| 2026 Jul | 汽车电气系统诊断 | 传感器, 线束, ECU, 故障码 | 丰田/本田 |
-| 2026 Aug | 冷却系统维护与配件选择 | 水泵, 散热器, 防冻液, 保养周期 | 日系/欧系 |
-| 2026 Aug | 制动系统安全标准 | 刹车片, 刹车盘, ECE R90, 安全 | 多品牌 |
+| 已覆盖选题 | 文章ID | 状态 |
+|-----------|--------|------|
+| OEM vs Aftermarket综合 | id=1 | ✅ 已有 |
+| 刹车件采购（通用） | id=10 | ✅ 已有（但**缺少Hyundai/Kia车型聚焦**，可写Korean Car Brake Pads专题） |
+| 悬挂件（通用） | id=7 | ✅ 已有 |
+| 电气系统（通用） | id=12 | ✅ 已有 |
+| 冷却系统（通用） | id=6 | ✅ 已有 |
+| 传感器（通用） | id=3 | ✅ 已有 |
+| 排气系统 | id=16 | ✅ 已有 |
+| 传动系统 | id=19 | ✅ 已有 |
+| Hyundai Tucson vs Chery Tiggo 8 | id=29 | ✅ 已有 |
+| Hyundai & Kia OEM Parts eBay | id=29 | ✅ 已有 |
+| Auto Parts Import Duty (KSA已覆盖) | id=26 | ✅ 已有（但**缺少物流实操细节**，可写Shipping Guide专题） |
+| Filter Wholesale（通用） | id=48 | ✅ 已有 |
+
+> **关键发现**：现有汽配文章都是**通用多品牌**写法（"丰田/本田/日产/大众"），缺少**单一品牌深度聚焦**的专题。策略报告显示 "Hyundai Tucson spare parts price" 月搜索 5K+、"Hyundai Elantra parts online" 6K+——这些都是精准高转化关键词。**将通用文章升级为品牌深度专题，是最大的SEO流量增长机会。**
 
 ### 📅 发布节奏（自动化任务）
 
@@ -282,4 +335,94 @@
 ---
 
 *本文档将作为后续内容创作的永久参考标准。每次写新文章/新产品前，对照本文档检查。*
-*最后更新：2026-04-14*
+*最后更新：2026-05-22*
+
+---
+
+## 十、SEO 关键词研究附录（2026-05-22 更新）
+
+> 基于 KingMay 策略报告 + Google 搜索分析 + 竞品对标，以下为汽配博客的**核心关键词库**。
+
+### 🔥 高价值B2B交易型关键词（独立站流量目标）
+
+| 关键词 | 预估月搜索量 | 搜索意图 | 竞争度 | 建议文章/页面 |
+|--------|-------------|---------|--------|-------------|
+| Hyundai Elantra parts online | 6,000+ | 交易型 | 中 | Elantra配件采购手册 |
+| Hyundai Tucson spare parts price | 5,000+ | 交易型 | 中 | Tucson配件价格对比 |
+| aftermarket Hyundai brake pads | 4,500+ | 交易型 | 中高 | Hyundai/Kia刹车片采购 |
+| OEM Hyundai parts catalog | 2,800+ | 信息/交易 | 低 | OEM配件目录引导页 |
+| Hyundai spare parts wholesale | 3,500+ | B2B交易 | 低-中 | 批发专题页 |
+| Kia auto parts supplier China | 2,200+ | B2B交易 | 低 | 供应商介绍文章 |
+| wholesale auto parts Middle East | 2,000+ | B2B交易 | 中 | 中东批发指南 |
+| Korean car parts Dubai | 1,800+ | B2B本地 | 低 | 迪拜市场文章 |
+| auto spare parts China to KSA | 1,200+ | B2B物流 | 低 | 中国发货沙特指南 |
+| Chinese auto parts quality review | 1,500+ | 信息型 | 低 | OEM-Grade品质认证文章 |
+| Hyundai AC compressor Dubai | 1,500+ | 交易型 | 低 | 中东高温适配配件 |
+| Kia Sportage parts wholesale | 2,500+ | B2B交易 | 低 | Sportage配件批发指南 |
+| Kia Seltos spare parts | 1,500+ | 交易型 | 低 | Seltos配件文章 |
+
+### 📊 内容标题TDK模板（韩系配件文章）
+
+**Title模板**（50-60字符）：
+```
+{Part Type} for {Car Model}: OEM vs Aftermarket — Wholesale from China
+例: Brake Pads for Hyundai Tucson: OEM vs Aftermarket — Wholesale Buyer's Guide from China
+```
+
+**Description模板**（150-160字符）：
+```
+Complete wholesale guide to sourcing {part type} for {car model} from China. Compare OEM vs aftermarket prices, quality grades, MOQ, and shipping to {target market}.
+例: Complete guide to sourcing brake pads for Hyundai Tucson 2015-2024 from China. Compare ceramic vs semi-metallic, OEM vs aftermarket quality grades, wholesale MOQ 200 sets, and shipping costs to Saudi Arabia and UAE.
+```
+
+**核心关键词布局规则**：
+- 核心关键词必须出现在：H1标题、首段前100词、至少1个H2标题、图片alt text、Meta Description
+- 次要关键词分布在：H2/H3标题、正文自然融入
+- 长尾关键词用于FAQ Schema（People Also Ask覆盖）
+- 每篇文章5-8个FAQ问题，覆盖PAA常见查询
+
+### 🔍 竞品内容对标
+
+| 竞品 | SEO优势 | 我们应学习的 |
+|------|--------|-------------|
+| mhjkiaautoparts.com | 20年Hyundai/Kia出口经验 | 品牌专注度、OE号精确匹配 |
+| seoulparts.ae | 迪拜本地仓库+配送 | 本地化服务内容、车型适配工具 |
+| mkena.com | 沙特全境配送+阿拉伯语 | KSA市场本地化内容 |
+| ok.parts | "How to Source OEM-Quality"系列 | 长尾关键词+采购教育内容 |
+| bladecommerce.com | Auto Parts SEO Top10策略 | 技术SEO结构（Schema/URL/CWV） |
+
+### 📐 内容结构模板（韩系配件专题文章）
+
+```markdown
+# {Part Type} for {Car Model} ({Year Range}): Complete Wholesale Buyer's Guide
+
+## 1. Why {Part Type} Demand Is Surging in {Target Market}
+   → 市场数据（保有量+更换周期+气候因素）
+   → 数据来源标注
+
+## 2. {Car Model} {Part Type}: OEM vs Aftermarket Comparison
+   → OEM/Quality Aftermarket/Budget 三级对比表
+   → 价格区间（FOB China / Landed KSA）
+   → 品质标准（IATF 16949 / ECE R90 等）
+
+## 3. Top-Selling {Part Type} References for {Car Model}
+   → 按年份分组的OE号对照表
+   → 每组标注MOQ/FOB价格
+
+## 4. How to Verify {Part Type} Quality from Chinese Suppliers
+   → 外观/重量/尺寸/包装检验要点
+   → IATF 16949工厂认证验证方法
+   → 常见品质陷阱
+
+## 5. Shipping {Part Type} from China to {Target Market}
+   → 空运 vs 海运对比（成本/时效/适用场景）
+   → 包装要求
+   → 清关文件
+
+## 6. FAQ (5-8 questions targeting PAA keywords)
+   → 每个FAQ用<details>标签
+   → FAQ Schema JSON-LD
+
+## CTA
+   → WhatsApp询盘 + 产品页链接 + 报价表单
+```
