@@ -8,7 +8,17 @@
   <title id="page-title">Vehicle Detail | Guangzhou Vehicle External Trade Co., Ltd.</title>
   <meta id="meta-description" name="description" content="Detailed specifications and pricing for export vehicles from Guangzhou Vehicle External Trade Co., Ltd. — your one-stop car export partner." />
   <meta id="meta-keywords" name="keywords" content="China car export, used car export China, new car export, Guangzhou vehicle export, BYD export, Toyota used car" />
+  <!-- Canonical URL — set immediately from query param so Googlebot reads the correct per-page URL -->
   <link rel="canonical" id="canonical-url" href="https://www.global-ucars.com/product-detail.html" />
+  <script>
+    (function(){
+      var sp = new URLSearchParams(window.location.search);
+      var id = sp.get('id');
+      if (id) {
+        document.getElementById('canonical-url').href = 'https://www.global-ucars.com/product-detail.html?id=' + encodeURIComponent(id);
+      }
+    })();
+  </script>
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
 
   <!-- Open Graph -->

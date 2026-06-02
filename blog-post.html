@@ -8,7 +8,17 @@
   <title id="post-page-title">Auto Parts Export Insights | Globalucar Blog</title>
   <meta id="post-meta-desc" name="description" content="Expert guides on sourcing auto parts from China and vehicle export procedures for international importers." />
   <meta id="post-meta-keys" name="keywords" content="auto parts China, car export guide, OEM parts sourcing" />
+  <!-- Canonical URL — set immediately from query param so Googlebot reads the correct per-page URL -->
   <link id="post-canonical" rel="canonical" href="https://www.global-ucars.com/blog-post.html" />
+  <script>
+    (function(){
+      var sp = new URLSearchParams(window.location.search);
+      var id = sp.get('id');
+      if (id) {
+        document.getElementById('post-canonical').href = 'https://www.global-ucars.com/blog-post.html?id=' + encodeURIComponent(id);
+      }
+    })();
+  </script>
 
   <!-- Open Graph -->
   <meta id="post-og-title"       property="og:title"       content="Globalucar Blog Post" />
