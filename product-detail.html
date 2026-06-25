@@ -381,22 +381,6 @@
     .oem-table tr:last-child td { border-bottom: none; }
     .oem-table tr:nth-child(even) td { background: #f0f2f5; }
 
-    .compat-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-    .compat-tag {
-      background: #fff;
-      border: 2px solid #e2e8f0;
-      border-radius: 20px;
-      padding: 5px 14px;
-      font-size: 0.82rem;
-      font-weight: 600;
-      color: #2d3748;
-    }
-    .compat-tag.primary { border-color: #0d1f3c; color: #0d1f3c; }
-
     .features-list { list-style: none; padding: 0; }
     .features-list li {
       padding: 8px 0 8px 24px;
@@ -975,14 +959,6 @@
       <p style="font-size:0.75rem;color:#a0aec0;margin-top:10px;">* For cross-reference only. Not OEM-branded parts.</p>
     </div>
     <div class="pd-section-box">
-      <h3>🚗 Compatible Vehicles</h3>
-      <div class="compat-grid" id="compat-grid"></div>
-      <p style="font-size:0.78rem;color:#718096;margin-top:14px;">
-        Not sure if this part fits your vehicle?
-        <a href="parts-finder.html" style="color:#c8102e;font-weight:600;">Use the Parts Finder →</a>
-      </p>
-    </div>
-    <div class="pd-section-box">
       <h3>✅ Product Features &amp; Benefits</h3>
       <ul class="features-list" id="features-list"></ul>
     </div>
@@ -1006,7 +982,6 @@
     <div class="pd-tabs-bar" id="pd-tabs-bar">
       <button class="pd-tab-btn active" data-tab="description">Product Description</button>
       <button class="pd-tab-btn" data-tab="oem-specs">OEM Specifications</button>
-      <button class="pd-tab-btn" data-tab="compatibility">Vehicle Compatibility</button>
       <button class="pd-tab-btn" data-tab="packaging">Packaging &amp; Delivery</button>
       <button class="pd-tab-btn" data-tab="quality">Quality &amp; Inspection</button>
     </div>
@@ -1022,14 +997,6 @@
       <p style="font-size:0.75rem;color:#a0aec0;margin-top:10px;">* For cross-reference only. Not OEM-branded parts.</p>
       <h3 style="margin-top:28px;">Technical Specifications</h3>
       <div class="pd-specs-grid" id="tab-specs-grid" style="margin-top:12px;"></div>
-    </div>
-    <div class="pd-tab-panel" id="tab-compatibility">
-      <h2>Compatible Vehicles</h2>
-      <div class="compat-grid" id="tab-compat-grid" style="margin-top:12px;"></div>
-      <p style="font-size:0.78rem;color:#718096;margin-top:14px;">
-        Not sure if this part fits your vehicle?
-        <a href="parts-finder.html" style="color:#c8102e;font-weight:600;">Use the Parts Finder &#x2192;</a>
-      </p>
     </div>
     <div class="pd-tab-panel" id="tab-packaging">
       <h2>Packaging &amp; Delivery</h2>
@@ -1602,19 +1569,7 @@
           }).join('');
         }
 
-        // Populate Tab 3: Compatibility
-        var compatMakes = p.compatible_makes || [];
-        var tabCompatGrid = document.getElementById('tab-compat-grid');
-        if (compatMakes.length > 0) {
-          var topMakes = ['Toyota', 'Honda', 'Nissan', 'Hyundai', 'Kia'];
-          tabCompatGrid.innerHTML = compatMakes.map(function(m) {
-            var parts = m.split(' ');
-            var brand = parts[0];
-            return '<span class="compat-tag ' + (topMakes.indexOf(brand) >= 0 ? 'primary' : '') + '">' + escHtml(m) + '</span>';
-          }).join('');
-        }
-
-        // Populate Tab 4: Packaging gallery
+        // Populate Tab 3: Packaging gallery
         var packagingPhotos = [
           { src: 'assets/gallery/factory-container-loading-04.jpg', caption: 'Auto parts palletized for bulk export' },
           { src: 'assets/gallery/factory-container-loading-05.jpg', caption: 'OEM-grade parts organized by brand' },
@@ -1627,7 +1582,7 @@
             '</div>';
         }).join('');
 
-        // Populate Tab 5: Quality gallery
+        // Populate Tab 4: Quality gallery
         var qualityPhotos = [
           { src: 'assets/gallery/parts-warehouse.jpg', caption: '30,000+ SKUs across 4 systems' },
           { src: 'assets/gallery/parts-warehouse02.jpg', caption: 'OEM-grade parts warehouse' },
@@ -1662,19 +1617,6 @@
           }).join('');
         } else {
           oemTbody.innerHTML = '<tr><td>&mdash;</td><td>Available on request. Contact us with your vehicle info.</td></tr>';
-        }
-
-        // Compatible makes/models (old flat layout fallback)
-        var compatGrid = document.getElementById('compat-grid');
-        if (compatMakes.length > 0) {
-          var topMakes = ['Toyota', 'Honda', 'Nissan', 'Hyundai', 'Kia'];
-          compatGrid.innerHTML = compatMakes.map(function(m) {
-            var parts = m.split(' ');
-            var brand = parts[0];
-            return '<span class="compat-tag ' + (topMakes.indexOf(brand) >= 0 ? 'primary' : '') + '">' + escHtml(m) + '</span>';
-          }).join('');
-        } else {
-          compatGrid.innerHTML = '<span class="compat-tag">Contact us for compatibility info</span>';
         }
 
         // Features (old flat layout fallback)

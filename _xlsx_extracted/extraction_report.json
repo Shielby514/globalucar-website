@@ -1,0 +1,885 @@
+{
+  "summary": {
+    "total_xlsx_products": 418,
+    "total_xlsx_images": 486,
+    "matched_to_website": 0,
+    "unmatched_xlsx": 418,
+    "unmatched_website": 101,
+    "images_extracted_matched": 0,
+    "images_extracted_unmatched": 64
+  },
+  "matched": [],
+  "unmatched_new_products": [
+    {
+      "kingmay_no": "49-1001",
+      "oe_raw": [
+        "028 117 021E",
+        "028 117 021H"
+      ],
+      "oe_normalized": [
+        "028117021E",
+        "028117021H"
+      ],
+      "application": "VW/AUDI",
+      "remark": "",
+      "saved_images": [
+        "/assets/parts/xlsx_49-1001_0.png",
+        "/assets/parts/xlsx_49-1001_1.png"
+      ],
+      "image_count": 2
+    },
+    {
+      "kingmay_no": "49-1002",
+      "oe_raw": [
+        "059 117 021B"
+      ],
+      "oe_normalized": [
+        "059117021B"
+      ],
+      "application": "VW/AUDI",
+      "remark": "",
+      "saved_images": [
+        "/assets/parts/xlsx_49-1002_0.png",
+        "/assets/parts/xlsx_49-1002_1.png"
+      ],
+      "image_count": 2
+    },
+    {
+      "kingmay_no": "49-1002-1",
+      "oe_raw": [
+        "059 117 021C"
+      ],
+      "oe_normalized": [
+        "059117021C"
+      ],
+      "application": "VW/AUDI",
+      "remark": "",
+      "saved_images": [
+        "/assets/parts/xlsx_49-1002-1_0.png",
+        "/assets/parts/xlsx_49-1002-1_1.png"
+      ],
+      "image_count": 2
+    },
+    {
+      "kingmay_no": "49-1003",
+      "oe_raw": [
+        "06D 117 021C"
+      ],
+      "oe_normalized": [
+        "06D117021C"
+      ],
+      "application": "VW/AUDI",
+      "remark": "",
+      "saved_images": [
+        "/assets/parts/xlsx_49-1003_0.jpg"
+      ],
+      "image_count": 1
+    },
+    {
+      "kingmay_no": "49-1003W",
+      "oe_raw": [
+        "06F115397F"
+      ],
+      "oe_normalized": [
+        "06F115397F"
+      ],
+      "application": "VW/AUDI",
+      "remark": "",
+      "saved_images": [
+        "/assets/parts/xlsx_49-1003w_0.png"
+      ],
+      "image_count": 1
+    },
+    {
+      "kingmay_no": "49-1003A",
+      "oe_raw": [
+        "06F115397J/F/H"
+      ],
+      "oe_normalized": [
+        "06F115397JFH"
+      ],
+      "application": "VW/AUDI",
+      "remark": "",
+      "saved_images": [
+        "/assets/parts/xlsx_49-1003a_0.png"
+      ],
+      "image_count": 1
+    },
+    {
+      "kingmay_no": "49-1004",
+      "oe_raw": [
+        "038 117 021E（old）",
+        "/021C"
+      ],
+      "oe_normalized": [
+        "038117021E",
+        "021C"
+      ],
+      "application": "VW/AUDI",
+      "remark": "",
+      "saved_images": [
+        "/assets/parts/xlsx_49-1004_0.png",
+        "/assets/parts/xlsx_49-1004_1.png"
+      ],
+      "image_count": 2
+    },
+    {
+      "kingmay_no": "49-1005",
+      "oe_raw": [
+        "068 117 021B"
+      ],
+      "oe_normalized": [
+        "068117021B"
+      ],
+      "application": "VW/AUDI",
+      "remark": "",
+      "saved_images": [
+        "/assets/parts/xlsx_49-1005_0.png",
+        "/assets/parts/xlsx_49-1005_1.png"
+      ],
+      "image_count": 2
+    },
+    {
+      "kingmay_no": "49-1006",
+      "oe_raw": [
+        "028 117 021B"
+      ],
+      "oe_normalized": [
+        "028117021B"
+      ],
+      "application": "VW/AUDI",
+      "remark": "",
+      "saved_images": [
+        "/assets/parts/xlsx_49-1006_0.png",
+        "/assets/parts/xlsx_49-1006_1.png"
+      ],
+      "image_count": 2
+    },
+    {
+      "kingmay_no": "49-1007",
+      "oe_raw": [
+        "078 117 021A"
+      ],
+      "oe_normalized": [
+        "078117021A"
+      ],
+      "application": "VW/AUDI",
+      "remark": "",
+      "saved_images": [
+        "/assets/parts/xlsx_49-1007_0.png",
+        "/assets/parts/xlsx_49-1007_1.png"
+      ],
+      "image_count": 2
+    },
+    {
+      "kingmay_no": "49-1008",
+      "oe_raw": [
+        "096 409 061G"
+      ],
+      "oe_normalized": [
+        "096409061G"
+      ],
+      "application": "VW/AUDI",
+      "remark": "",
+      "saved_images": [
+        "/assets/parts/xlsx_49-1008_0.png"
+      ],
+      "image_count": 1
+    },
+    {
+      "kingmay_no": "49-1009",
+      "oe_raw": [
+        "096 409 061E"
+      ],
+      "oe_normalized": [
+        "096409061E"
+      ],
+      "application": "VW/AUDI",
+      "remark": "",
+      "saved_images": [
+        "/assets/parts/xlsx_49-1009_0.png"
+      ],
+      "image_count": 1
+    },
+    {
+      "kingmay_no": "49-1010",
+      "oe_raw": [
+        "02E 409 061B"
+      ],
+      "oe_normalized": [
+        "02E409061B"
+      ],
+      "application": "VW/AUDI",
+      "remark": "",
+      "saved_images": [
+        "/assets/parts/xlsx_49-1010_0.png"
+      ],
+      "image_count": 1
+    },
+    {
+      "kingmay_no": "49-1010N",
+      "oe_raw": [
+        "02E 409 061C"
+      ],
+      "oe_normalized": [
+        "02E409061C"
+      ],
+      "application": "VW/AUDI",
+      "remark": "",
+      "saved_images": [
+        "/assets/parts/xlsx_49-1010n_0.png"
+      ],
+      "image_count": 1
+    },
+    {
+      "kingmay_no": "49-1011",
+      "oe_raw": [
+        "06J 117 021D"
+      ],
+      "oe_normalized": [
+        "06J117021D"
+      ],
+      "application": "VW/AUDI",
+      "remark": "",
+      "saved_images": [
+        "/assets/parts/xlsx_49-1011_0.png"
+      ],
+      "image_count": 1
+    },
+    {
+      "kingmay_no": "49-1011N",
+      "oe_raw": [
+        "06K117021G"
+      ],
+      "oe_normalized": [
+        "06K117021G"
+      ],
+      "application": "VW/AUDI",
+      "remark": "",
+      "saved_images": [
+        "/assets/parts/xlsx_49-1011n_0.png"
+      ],
+      "image_count": 1
+    },
+    {
+      "kingmay_no": "49-1012",
+      "oe_raw": [
+        "070 117 021D"
+      ],
+      "oe_normalized": [
+        "070117021D"
+      ],
+      "application": "VW/AUDI",
+      "remark": "",
+      "saved_images": [
+        "/assets/parts/xlsx_49-1012_0.png"
+      ],
+      "image_count": 1
+    },
+    {
+      "kingmay_no": "49-1013",
+      "oe_raw": [
+        "09G 409 061"
+      ],
+      "oe_normalized": [
+        "09G409061"
+      ],
+      "application": "VW/AUDI",
+      "remark": "",
+      "saved_images": [
+        "/assets/parts/xlsx_49-1013_0.png",
+        "/assets/parts/xlsx_49-1013_1.png"
+      ],
+      "image_count": 2
+    },
+    {
+      "kingmay_no": "49-1014",
+      "oe_raw": [
+        "001 409 061"
+      ],
+      "oe_normalized": [
+        "001409061"
+      ],
+      "application": "VW/AUDI",
+      "remark": "",
+      "saved_images": [
+        "/assets/parts/xlsx_49-1014_0.png"
+      ],
+      "image_count": 1
+    },
+    {
+      "kingmay_no": "49-1015",
+      "oe_raw": [
+        "09G 409 061A"
+      ],
+      "oe_normalized": [
+        "09G409061A"
+      ],
+      "application": "VW/AUDI",
+      "remark": "",
+      "saved_images": [
+        "/assets/parts/xlsx_49-1015_0.png",
+        "/assets/parts/xlsx_49-1015_1.png"
+      ],
+      "image_count": 2
+    },
+    {
+      "kingmay_no": "49-1016",
+      "oe_raw": [
+        "06E 117 021G"
+      ],
+      "oe_normalized": [
+        "06E117021G"
+      ],
+      "application": "VW/AUDI",
+      "remark": "",
+      "saved_images": [
+        "/assets/parts/xlsx_49-1016_0.png"
+      ],
+      "image_count": 1
+    },
+    {
+      "kingmay_no": "49-1017",
+      "oe_raw": [
+        "330 317 021"
+      ],
+      "oe_normalized": [
+        "330317021"
+      ],
+      "application": "VW/AUDI",
+      "remark": "",
+      "saved_images": [
+        "/assets/parts/xlsx_49-1017_0.png",
+        "/assets/parts/xlsx_49-1017_1.png"
+      ],
+      "image_count": 2
+    },
+    {
+      "kingmay_no": "49-1018",
+      "oe_raw": [
+        "03L 117 021C"
+      ],
+      "oe_normalized": [
+        "03L117021C"
+      ],
+      "application": "VW/AUDI",
+      "remark": "",
+      "saved_images": [
+        "/assets/parts/xlsx_49-1018_0.png"
+      ],
+      "image_count": 1
+    },
+    {
+      "kingmay_no": "49-1019",
+      "oe_raw": [
+        "09G 409 061B"
+      ],
+      "oe_normalized": [
+        "09G409061B"
+      ],
+      "application": "VW/AUDI",
+      "remark": "",
+      "saved_images": [
+        "/assets/parts/xlsx_49-1019_0.png"
+      ],
+      "image_count": 1
+    },
+    {
+      "kingmay_no": "49-1020",
+      "oe_raw": [
+        "3C0 317 037A"
+      ],
+      "oe_normalized": [
+        "3C0317037A"
+      ],
+      "application": "VW/AUDI",
+      "remark": "",
+      "saved_images": [
+        "/assets/parts/xlsx_49-1020_0.png",
+        "/assets/parts/xlsx_49-1020_1.png"
+      ],
+      "image_count": 2
+    },
+    {
+      "kingmay_no": "49-1021",
+      "oe_raw": [
+        "09G 409 061D"
+      ],
+      "oe_normalized": [
+        "09G409061D"
+      ],
+      "application": "VW/AUDI",
+      "remark": "",
+      "saved_images": [
+        "/assets/parts/xlsx_49-1021_0.png",
+        "/assets/parts/xlsx_49-1021_1.png"
+      ],
+      "image_count": 2
+    },
+    {
+      "kingmay_no": "49-1022",
+      "oe_raw": [
+        "4G0 317 021M"
+      ],
+      "oe_normalized": [
+        "4G0317021M"
+      ],
+      "application": "VW/AUDI",
+      "remark": "",
+      "saved_images": [
+        "/assets/parts/xlsx_49-1022_0.png"
+      ],
+      "image_count": 1
+    },
+    {
+      "kingmay_no": "49-1025",
+      "oe_raw": [
+        "079 117 015A  079 117 021M"
+      ],
+      "oe_normalized": [
+        "079117015A079117021M"
+      ],
+      "application": "VW/AUDI",
+      "remark": "",
+      "saved_images": [
+        "/assets/parts/xlsx_49-1025_0.png"
+      ],
+      "image_count": 1
+    },
+    {
+      "kingmay_no": "49-1026",
+      "oe_raw": [
+        "04E 117 021C/",
+        "04E 117 021F"
+      ],
+      "oe_normalized": [
+        "04E117021C",
+        "04E117021F"
+      ],
+      "application": "VW/AUDI",
+      "remark": "",
+      "saved_images": [
+        "/assets/parts/xlsx_49-1026_0.png"
+      ],
+      "image_count": 1
+    },
+    {
+      "kingmay_no": "49-1027",
+      "oe_raw": [
+        "/"
+      ],
+      "oe_normalized": [],
+      "application": "VW/AUDI",
+      "remark": "",
+      "saved_images": [
+        "/assets/parts/xlsx_49-1027_0.png"
+      ],
+      "image_count": 1
+    },
+    {
+      "kingmay_no": "49-1028",
+      "oe_raw": [
+        "4E0317021E"
+      ],
+      "oe_normalized": [
+        "4E0317021E"
+      ],
+      "application": "VW/AUDI",
+      "remark": "",
+      "saved_images": [
+        "/assets/parts/xlsx_49-1028_0.jpg"
+      ],
+      "image_count": 1
+    },
+    {
+      "kingmay_no": "49-1029",
+      "oe_raw": [
+        "4E0317021H"
+      ],
+      "oe_normalized": [
+        "4E0317021H"
+      ],
+      "application": "VW/AUDI",
+      "remark": "",
+      "saved_images": [
+        "/assets/parts/xlsx_49-1029_0.jpg"
+      ],
+      "image_count": 1
+    },
+    {
+      "kingmay_no": "49-1030",
+      "oe_raw": [
+        "06K117021E"
+      ],
+      "oe_normalized": [
+        "06K117021E"
+      ],
+      "application": "VW/AUDI",
+      "remark": "",
+      "saved_images": [
+        "/assets/parts/xlsx_49-1030_0.jpg"
+      ],
+      "image_count": 1
+    },
+    {
+      "kingmay_no": "49-1031",
+      "oe_raw": [
+        "059117021K"
+      ],
+      "oe_normalized": [
+        "059117021K"
+      ],
+      "application": "VW/AUDI",
+      "remark": "",
+      "saved_images": [
+        "/assets/parts/xlsx_49-1031_0.jpg"
+      ],
+      "image_count": 1
+    },
+    {
+      "kingmay_no": "49-1032",
+      "oe_raw": [
+        "03C117021"
+      ],
+      "oe_normalized": [
+        "03C117021"
+      ],
+      "application": "VW/AUDI",
+      "remark": "",
+      "saved_images": [
+        "/assets/parts/xlsx_49-1032_0.jpg"
+      ],
+      "image_count": 1
+    },
+    {
+      "kingmay_no": "49-1033",
+      "oe_raw": [
+        "038117021A/B"
+      ],
+      "oe_normalized": [
+        "038117021AB"
+      ],
+      "application": "VW/AUDI",
+      "remark": "",
+      "saved_images": [
+        "/assets/parts/xlsx_49-1033_0.png"
+      ],
+      "image_count": 1
+    },
+    {
+      "kingmay_no": "49-1034",
+      "oe_raw": [
+        "03L115389C"
+      ],
+      "oe_normalized": [
+        "03L115389C"
+      ],
+      "application": "VW/AUDI",
+      "remark": "",
+      "saved_images": [
+        "/assets/parts/xlsx_49-1034_0.png"
+      ],
+      "image_count": 1
+    },
+    {
+      "kingmay_no": "49-1034AL",
+      "oe_raw": [
+        "03L115390C全铝"
+      ],
+      "oe_normalized": [
+        "03L115390C全铝"
+      ],
+      "application": "VW/AUDI",
+      "remark": "",
+      "saved_images": [
+        "/assets/parts/xlsx_49-1034al_0.png"
+      ],
+      "image_count": 1
+    },
+    {
+      "kingmay_no": "49-1035",
+      "oe_raw": [
+        "03L 117 021D"
+      ],
+      "oe_normalized": [
+        "03L117021D"
+      ],
+      "application": "VW/AUDI",
+      "remark": "",
+      "saved_images": [
+        "/assets/parts/xlsx_49-1035_0.png"
+      ],
+      "image_count": 1
+    },
+    {
+      "kingmay_no": "49-1035A",
+      "oe_raw": [
+        "03L115389E"
+      ],
+      "oe_normalized": [
+        "03L115389E"
+      ],
+      "application": "VW/AUDI",
+      "remark": "",
+      "saved_images": [
+        "/assets/parts/xlsx_49-1035a_0.png"
+      ],
+      "image_count": 1
+    },
+    {
+      "kingmay_no": "49-1036",
+      "oe_raw": [
+        "1013010CBL"
+      ],
+      "oe_normalized": [
+        "1013010CBL"
+      ],
+      "application": "VW/AUDI",
+      "remark": "",
+      "saved_images": [
+        "/assets/parts/xlsx_49-1036_0.png"
+      ],
+      "image_count": 1
+    },
+    {
+      "kingmay_no": "49-1038",
+      "oe_raw": [
+        "4H0317021H"
+      ],
+      "oe_normalized": [
+        "4H0317021H"
+      ],
+      "application": "AUDI",
+      "remark": "",
+      "saved_images": [
+        "/assets/parts/xlsx_49-1038_0.png",
+        "/assets/parts/xlsx_49-1038_1.png"
+      ],
+      "image_count": 2
+    },
+    {
+      "kingmay_no": "49-1039",
+      "oe_raw": [
+        "03N117021"
+      ],
+      "oe_normalized": [
+        "03N117021"
+      ],
+      "application": "VW",
+      "remark": "",
+      "saved_images": [
+        "/assets/parts/xlsx_49-1039_0.png"
+      ],
+      "image_count": 1
+    },
+    {
+      "kingmay_no": "49-1039A",
+      "oe_raw": [
+        "03N115389A"
+      ],
+      "oe_normalized": [
+        "03N115389A"
+      ],
+      "application": "VW",
+      "remark": "",
+      "saved_images": [
+        "/assets/parts/xlsx_49-1039a_0.png"
+      ],
+      "image_count": 1
+    },
+    {
+      "kingmay_no": "49-1040",
+      "oe_raw": [
+        "06B117021"
+      ],
+      "oe_normalized": [
+        "06B117021"
+      ],
+      "application": "VW",
+      "remark": "",
+      "saved_images": [
+        "/assets/parts/xlsx_49-1040_0.png"
+      ],
+      "image_count": 1
+    },
+    {
+      "kingmay_no": "49-1042",
+      "oe_raw": [
+        "03C117021          （底板平）"
+      ],
+      "oe_normalized": [
+        "03C117021"
+      ],
+      "application": "BYD",
+      "remark": "",
+      "saved_images": [
+        "/assets/parts/xlsx_49-1042_0.png"
+      ],
+      "image_count": 1
+    },
+    {
+      "kingmay_no": "49-1043",
+      "oe_raw": [
+        "077117021P"
+      ],
+      "oe_normalized": [
+        "077117021P"
+      ],
+      "application": "VW",
+      "remark": "",
+      "saved_images": [
+        "/assets/parts/xlsx_49-1043_0.png",
+        "/assets/parts/xlsx_49-1043_1.png"
+      ],
+      "image_count": 2
+    },
+    {
+      "kingmay_no": "49-1044",
+      "oe_raw": [
+        "06E117021J"
+      ],
+      "oe_normalized": [
+        "06E117021J"
+      ],
+      "application": "AUDI",
+      "remark": "",
+      "saved_images": [
+        "/assets/parts/xlsx_49-1044_0.png"
+      ],
+      "image_count": 1
+    },
+    {
+      "kingmay_no": "49-1045",
+      "oe_raw": [
+        "059117021R/P"
+      ],
+      "oe_normalized": [
+        "059117021RP"
+      ],
+      "application": "AUDI",
+      "remark": "",
+      "saved_images": [
+        "/assets/parts/xlsx_49-1045_0.png"
+      ],
+      "image_count": 1
+    },
+    {
+      "kingmay_no": "49-1046",
+      "oe_raw": [
+        "03H117021E"
+      ],
+      "oe_normalized": [
+        "03H117021E"
+      ],
+      "application": "VW",
+      "remark": "",
+      "saved_images": [
+        "/assets/parts/xlsx_49-1046_0.png"
+      ],
+      "image_count": 1
+    }
+  ],
+  "unmatched_website_ids": [
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56,
+    57,
+    58,
+    59,
+    60,
+    61,
+    62,
+    63,
+    64,
+    65,
+    66,
+    67,
+    68,
+    69,
+    70,
+    71,
+    72,
+    73,
+    74,
+    75,
+    76,
+    77,
+    78,
+    79,
+    80,
+    81,
+    82,
+    83,
+    84,
+    85,
+    86,
+    87,
+    88,
+    89,
+    90,
+    163,
+    164,
+    165,
+    166,
+    167,
+    168,
+    169,
+    170,
+    171,
+    172,
+    173,
+    174,
+    175,
+    176,
+    177,
+    178,
+    179,
+    180,
+    181,
+    182,
+    183,
+    184,
+    185,
+    186,
+    187,
+    188,
+    189,
+    190,
+    191,
+    192,
+    193,
+    194,
+    195,
+    196,
+    197,
+    198,
+    199,
+    200,
+    201,
+    202,
+    205
+  ]
+}

@@ -2,6 +2,33 @@
 
 ## Execution Log
 
+### 2026-05-08 (周四 第3次执行)
+- **发布文章**：Post #17 — *Hyundai Tucson vs Chery Tiggo 8: Korean Reliability or Chinese Value for Importers in 2026?*
+- **类别**：🚗 Vehicles · Market Comparison
+- **阅读时间**：9 min read
+- **SEO关键词**：Hyundai Tucson export, Chery Tiggo 8 export, Korean vs Chinese SUV, Tucson vs Tiggo 8, compact SUV comparison 2026, Hyundai Africa import, SUV wholesale China, vehicle import Southeast Asia
+- **文章亮点**：韩系 vs 国产 SUV 全面对比（契合2026年进口商在日系以外寻求替代品牌的需求）
+- **选题背景**：契合博客计划 W3 May 选题（韩系车 vs 中国车），同时也回应了当前询盘中 Hyundai Tucson 和 Chery Tiggo 8 的高热度
+- **文章内容**（10章节）：
+  1. Two Titans of the Compact SUV Segment（市场背景 + 2026年结构性趋势）
+  2. Market Context: Why This Comparison Matters in 2026（宏观驱动：关税、OEM扩张、TCO意识）
+  3. Model Overview & Design Philosophy（设计对比：Sensuous Sportiness vs 三联屏科技）
+  4. Dimensions & Interior Space（尺寸表：长/宽/高/轴距/行李箱）
+  5. Powertrain Options & Fuel Efficiency（发动机/混动/PHEV对比表）
+  6. FOB Price Benchmarks: Tucson vs Tiggo 8（FOB价格对比表）
+  7. Total Landed Cost to Key Destinations（蒙巴萨/迪拜落地成本估算表）
+  8. Parts Availability & After-Sales Network（售后网络分析 + 风险点）
+  9. Which Model for Which Market?（市场推荐矩阵：6个区域市场）
+  10. Your Next Steps as an Importer（CTA多样化：Browse catalog + Request quote + WhatsApp）
+- **数据来源标注**：Chery International annual export report 2025; Hyundai Motor Group global sales data 2025; McKinsey Global Institute Automotive Sector Report 2025
+- **配图**：assets/gallery/A_professional_side_by_side_co_2026-05-08T07-01-30.png（AI生成韩系/国产SUV对比图）
+- **文件更新**：
+  - `blog-post.html` — BLOG_POSTS 数组末尾添加 id:17（含完整10章节内容）；POST_IMAGES 添加 `17: 'assets/gallery/A_professional_side_by_side_co_2026-05-08T07-01-30.png'`
+  - `blog.html` — Posts Grid 顶部新增 Featured 卡片（Post 17），Post 16 降为普通卡片；侧边栏 Recent Posts 更新（新增 Post 17，移除最旧的 Post 10）；Tag Cloud 新增"Hyundai""Chery""SUV Comparison""Africa Import"
+- **下次建议选题**：
+  - 汽配类：车身件/钣金件出口（保险杠/翼子板/大灯总成）← 对应 W1 May 汽配选题（车身件）
+  - 或：发动机大修件全套采购（活塞/曲轴/气缸垫）← P0优先级汽配选题
+
 ### 2026-04-16 (周四 第2次执行)
 - **发布文章**：Post #13 — *BYD Seal U, Han & Dolphin in the Middle East: Why Chinese EVs Are Reshaping GCC Vehicle Markets*
 - **类别**：🚗 Vehicles · Market Analysis

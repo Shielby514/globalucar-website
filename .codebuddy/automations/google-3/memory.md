@@ -7,23 +7,56 @@
 
 ## 执行历史
 
-### 2026-04-13 (第1次执行)
-**状态**: ⚠️ 部分完成
+### 2026-05-08 (第4次执行)
+**状态**: ✅ 完成
 
 **执行结果摘要**:
-- ✅ 成功获取 sitemap.xml（21个URL）
-- ✅ 成功访问网站首页，SEO基础标签正常
-- ⚠️ 无法访问 Google Search Console 认证数据
-- ⚠️ 无法获取性能数据（点击/展示/排名）
-- ⚠️ 无法获取索引覆盖率详情
+- ✅ sitemap.xml 26个URL正常（+5 vs 上次21个）
+- ✅ robots.txt 正常配置
+- ✅ HTTPS 启用，SEO验证文件有效
+- ✅ 产品页加载问题已修复（上次的products.html异常）
+- ⚠️ GSC 性能数据（点击/展示/排名）无法自动获取（需OAuth认证）
+- ⚠️ 两篇新博客文章（id=14, id=15）未加入 sitemap
 
-**发现的问题**:
-1. robots.txt 返回 404（文件不存在）
-2. 无法自动获取 GSC 认证数据
+**对比上次 (04-21)**:
+- ⬆️ sitemap从21增至26个URL（+5篇博客文章）
+- ✅ 产品页加载问题已解决
+- ⚠️ 新文章缺失问题：id=14和id=15未添加到sitemap
 
-**建议**:
-- 手动检查 GSC：https://search.google.com/search-console
-- 需要 OAuth/API 集成才能自动获取 GSC 数据
+**GSC认证问题说明**:
+- 所有 GSC 页面（性能/覆盖率）均需 Google 账号登录
+- web_fetch 访问 GSC URL 自动跳转至 accounts.google.com
+- 自动化无法直接获取点击/展示/排名数据
+- 建议：每月手动登录一次 GSC 记录关键指标
+
+**关键动作**:
+1. 更新 sitemap.xml 添加 id=14 和 id=15
+2. 登录 GSC 重新提交 sitemap
+3. 手动查看 GSC 性能数据
+
+---
+
+### 2026-04-21 10:32 (第3次执行)
+**状态**: ⚠️ 发现关键问题
+
+**执行结果摘要**:
+- ✅ 网站整体可访问（首页/关于/服务/Kingmay/联系/产品/配件查找器均正常加载）
+- ✅ robots.txt 正常（Allow: / + Sitemap 指令）
+- ✅ sitemap.xml 21个URL正常
+- ✅ Google 已开始收录主站页面（首页/关于/服务/Kingmay/联系/产品/配件查找器）
+- ⚠️ 无法自动获取 GSC 性能数据（无 OAuth API 集成）
+- ⚠️ blog-post 页面通过 JS 动态渲染，web_fetch 显示 "Loading..." 但实际浏览器可正常访问
+
+**🔴 发现的关键问题**:
+1. **sitemap.xml 严重滞后**: 仅包含 blog id=1~8（共8篇），缺少 id=9~13（5篇新文章）
+2. **4个汽配系统分类页未出现在 site: 搜索结果中**
+3. **博客文章尚未被 Google 收录**
+
+**对比上次 (2026-04-21 10:35 之前)**:
+- ✅ 首页+核心页面收录从 0 增至 7 页（重大进展）
+- ⚠️ sitemap 停滞在21个URL，未同步新增的5篇博客文章
+
+---
 
 ### 2026-04-21 (第2次执行)
 **状态**: ⚠️ 发现问题
@@ -39,51 +72,21 @@
 1. 🔴 **产品页加载失败**: HOT SALES/USED CARS/AUTO PARTS 三个区域均无法加载
 2. 结构化数据缺失（持续问题）
 
-**对比上次**:
-- ✅ robots.txt 从404修复为正常
-- ⚠️ 产品页出现新的加载问题
+---
 
-**建议**:
-- 紧急检查 products-inline.js 数据文件
-- 手动登录 GSC 查看实际收录数据
-
-### 2026-04-21 10:32 (第3次执行)
-**状态**: ⚠️ 发现关键问题
+### 2026-04-13 (第1次执行)
+**状态**: ⚠️ 部分完成
 
 **执行结果摘要**:
-- ✅ 网站整体可访问（首页/关于/服务/Kingmay/联系/产品/配件查找器均正常加载）
-- ✅ robots.txt 正常（Allow: / + Sitemap 指令）
-- ✅ sitemap.xml 21个URL正常
-- ✅ 博客页正常加载，最新文章 id=13 (BYD Middle East, Apr 16) 已展示
-- ✅ Google 已开始收录主站页面（首页/关于/服务/Kingmay/联系/产品/配件查找器）
-- ⚠️ 无法自动获取 GSC 性能数据（无 OAuth API 集成）
-- ⚠️ blog-post 页面通过 JS 动态渲染，web_fetch 显示 "Loading..." 但实际浏览器可正常访问
+- ✅ 成功获取 sitemap.xml（21个URL）
+- ✅ 成功访问网站首页，SEO基础标签正常
+- ⚠️ 无法访问 Google Search Console 认证数据
+- ⚠️ 无法获取性能数据（点击/展示/排名）
 
-**Google 收录情况（通过 site: 搜索验证）**:
-- ✅ 首页 `www.global-ucars.com/` — 已收录
-- ✅ `about.html` — 已收录
-- ✅ `services.html` — 已收录
-- ✅ `kingmay.html` — 已收录
-- ✅ `contact.html` — 已收录
-- ✅ `products.html` — 已收录
-- ✅ `parts-finder.html` — 已收录
-- ⚠️ `blog-post.html?id=*` — 未见收录（site:搜索未命中）
-- ⚠️ `parts-engine/cooling/suspension/electrical.html` — 未见收录
-
-**🔴 发现的关键问题**:
-1. **sitemap.xml 严重滞后**: 仅包含 blog id=1~8（共8篇），缺少 id=9~13（5篇新文章）
-2. **4个汽配系统分类页未出现在 site: 搜索结果中**
-3. **博客文章尚未被 Google 收录**（可能因 sitemap 未包含最新文章）
-
-**对比上次（2026-04-21 10:35 之前）**:
-- ✅ 首页+核心页面收录从 0 增至 7 页（重大进展）
-- ⚠️ sitemap 停滞在21个URL，未同步新增的5篇博客文章
-
-**建议**:
-1. 📌 **紧急**：更新 sitemap.xml，添加 blog-post id=9~13
-2. 📌 **紧急**：添加汽配系统分类页的 lastmod 更新时间（parts-engine/cooling/suspension/electrical）
-3. 手动登录 GSC 重新提交更新后的 sitemap
-4. 考虑为 blog-post.html 使用静态 URL（/blog/slug）提升可收录性
+**发现的问题**:
+1. robots.txt 返回 404（文件不存在）
+2. 无法自动获取 GSC 认证数据
 
 ---
-*最后更新: 2026-04-21 10:35*
+
+*最后更新: 2026-05-08*
