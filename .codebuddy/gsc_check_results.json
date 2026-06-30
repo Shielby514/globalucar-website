@@ -1,0 +1,37 @@
+{
+  "check_date": "2026-06-29 11:39:20",
+  "domain": "www.global-ucars.com",
+  "status": "success",
+  "data": {
+    "indexed_pages": {
+      "search_query": "site:global-ucars.com",
+      "count": null,
+      "found": false,
+      "page_snippet": "\n\nAbout this page\n\nOur systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. Why did this happen?\n\n\n\nIP address: 38.60.202.130\nTime: 2026-06-29T03:39:35Z\nURL: https://www.google.com/search?q=site:global-ucars.com&sei=9ehBas6bMbu1i-gP-onE0Qk\n"
+    },
+    "indexed_pages_www": {
+      "search_query": "site:www.global-ucars.com",
+      "count": null,
+      "found": false,
+      "page_snippet": "\n\nAbout this page\n\nOur systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. Why did this happen?\n\n\n\nIP address: 38.60.202.130\nTime: 2026-06-29T03:39:44Z\nURL: https://www.google.com/search?q=site:www.global-ucars.com&sei=_-hBaqy1BvKN-d8P7dmH-A4\n"
+    },
+    "sitemap": {
+      "url": "https://www.global-ucars.com/sitemap.xml",
+      "accessible": true,
+      "url_count": 87,
+      "size_chars": 101398
+    },
+    "robots_txt": {
+      "url": "https://www.global-ucars.com/robots.txt",
+      "accessible": true,
+      "has_sitemap_reference": true,
+      "content_preview": "User-agent: *\nAllow: /\n\n# Sitemap location\nSitemap: https://www.global-ucars.com/sitemap.xml\n\n# Disallow admin or private pages if any\n# Disallow: /admin/\n# Disallow: /private/\n"
+    },
+    "homepage": {
+      "url": "https://www.global-ucars.com/",
+      "title": "China Car Exporter – New & Used Cars, Auto Parts | Globalucar & Kingmay",
+      "accessible": true,
+      "has_globalucar": true
+    }
+  }
+}
