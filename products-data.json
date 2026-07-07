@@ -12331,8 +12331,12 @@
     "category": "new_car",
     "sub_category": "Honda",
     "price": 21250,
-    "images": [],
-    "local_image": "assets/products/product_221.jpg",
+    "images": [
+      "assets/products/df-honda-s7-orange-rear-trunk.png",
+      "assets/products/df-honda-s7-auto-show-front.png",
+      "assets/products/df-honda-s7-two-colors.png"
+    ],
+    "local_image": "assets/products/df-honda-s7-orange-front-studio.png",
     "description": "DF Honda S7 2025 EV SUV — Explorer trim with High Speed Pack (Honda SENSING ADAS, adaptive cruise, lane keep assist, auto emergency braking, highway assist). Single motor FWD 150 kW (204 hp) / 310 Nm. CATL LFP 60 kWh battery, 420 km CLTC range. CCS2 DC fast charging 30-80% in 30 minutes. Dimensions: 4,750 x 1,930 x 1,625 mm, wheelbase 2,930 mm. 15.6-inch central touchscreen, Honda Connect 4.0, 8 airbags, 360 camera. Brand new 0km, 2025 production. FOB Nansha $21,250. White paint +$450. Exclusive Globalucar promotional offer — limited stock.",
     "specs": {
       "Engine": "Single PMSM, 150 kW (204 hp) / 310 Nm",
@@ -12378,8 +12382,12 @@
     "category": "new_car",
     "sub_category": "Honda",
     "price": 22550,
-    "images": [],
-    "local_image": "assets/products/product_221.jpg",
+    "images": [
+      "assets/products/df-honda-s7-white-front.png",
+      "assets/products/df-honda-s7-composite-seats-exterior.png",
+      "assets/products/df-honda-s7-two-colors.png"
+    ],
+    "local_image": "assets/products/df-honda-s7-white-studio-evr.png",
     "description": "DF Honda S7 2025 EV SUV — Explorer trim with Comfort Pack (panoramic sunroof, leather seats, ventilated front seats, premium audio system, wireless charging pad). Single motor FWD 150 kW (204 hp) / 310 Nm. CATL LFP 60 kWh battery, 420 km CLTC range. CCS2 DC fast charging 30-80% in 30 minutes. Dimensions: 4,750 x 1,930 x 1,625 mm, wheelbase 2,930 mm. 15.6-inch central touchscreen, Honda Connect 4.0, 8 airbags, 360 camera. Brand new 0km, 2025 production. FOB Nansha $22,550. White paint +$450. Exclusive Globalucar promotional offer — limited stock.",
     "specs": {
       "Engine": "Single PMSM, 150 kW (204 hp) / 310 Nm",
