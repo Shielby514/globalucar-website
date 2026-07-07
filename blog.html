@@ -60,9 +60,43 @@
     /* ── Plan B: Dual-Track Dashboard ──────────────────── */
 
     /* ── Stats Dashboard ─────────────────────────────── */
-    .blog-hero { background: linear-gradient(135deg, #0d1f3c 0%, #1a3a6e 100%); padding: 70px 20px 50px; text-align: center; color: #fff; }
-    .blog-hero h1 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; margin-bottom: 12px; }
-    .blog-hero p { font-size: 1.1rem; opacity: 0.85; max-width: 680px; margin: 0 auto 24px; }
+    .blog-hero { position: relative; overflow: hidden; padding: 70px 20px 50px; text-align: center; color: #fff; }
+    .blog-hero::before,
+    .blog-hero::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-size: cover;
+      background-position: center;
+      z-index: 0;
+    }
+    .blog-hero::before {
+      background-image: url('assets/blog/hero-bg-factory-1.jpg');
+      animation: heroFade1 12s infinite ease-in-out;
+    }
+    .blog-hero::after {
+      background-image: url('assets/blog/hero-bg-factory-2.jpg');
+      animation: heroFade2 12s infinite ease-in-out;
+    }
+    @keyframes heroFade1 {
+      0%, 40% { opacity: 1; }
+      50%, 90% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+    @keyframes heroFade2 {
+      0%, 40% { opacity: 0; }
+      50%, 90% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(13,31,60,0.82) 0%, rgba(26,58,110,0.75) 100%);
+      z-index: 1;
+    }
+    .blog-hero > *:not(.hero-overlay) { position: relative; z-index: 2; }
+    .blog-hero h1 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; margin-bottom: 12px; text-shadow: 0 2px 10px rgba(0,0,0,0.4); }
+    .blog-hero p { font-size: 1.1rem; opacity: 0.9; max-width: 680px; margin: 0 auto 24px; text-shadow: 0 1px 6px rgba(0,0,0,0.4); }
 
     .stats-dashboard {
       display: grid;
@@ -244,6 +278,7 @@
 
   <!-- HERO + STATS DASHBOARD -->
   <section class="blog-hero">
+    <div class="hero-overlay"></div>
     <h1>Export Industry Insights</h1>
     <p>Practical guides on auto parts sourcing, vehicle export procedures, OEM part quality, and China trade — written for international importers and distributors.</p>
     <div class="stats-dashboard">
@@ -265,8 +300,8 @@
   <!-- CATEGORY FILTER -->
   <div class="blog-cats">
     <a href="#" class="blog-cat-btn active" data-cat="all">All Topics</a>
-    <a href="#" class="blog-cat-btn" data-cat="parts">🔧 Auto Parts</a>
-    <a href="#" class="blog-cat-btn" data-cat="vehicles">🚗 Vehicles</a>
+    <a href="#" class="blog-cat-btn" data-cat="parts">AUTO PARTS</a>
+    <a href="#" class="blog-cat-btn" data-cat="vehicles">WHOLE-VEHICLE</a>
   </div>
 
   <!-- MAIN LAYOUT -->
