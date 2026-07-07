@@ -57,363 +57,164 @@
 
   <link rel="stylesheet" href="styles.css" />
   <style>
-    /* ── Blog Page Magazine-Style ───────────────── */
-    .blog-hero {
-      background: linear-gradient(135deg, #0d1f3c 0%, #1a3a6e 100%);
-      padding: 90px 20px 70px;
-      text-align: center;
-      color: #fff;
-    }
+    /* ── Plan B: Dual-Track Dashboard ──────────────────── */
+
+    /* ── Stats Dashboard ─────────────────────────────── */
+    .blog-hero { background: linear-gradient(135deg, #0d1f3c 0%, #1a3a6e 100%); padding: 70px 20px 50px; text-align: center; color: #fff; }
     .blog-hero h1 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; margin-bottom: 12px; }
-    .blog-hero p  { font-size: 1.1rem; opacity: 0.85; max-width: 680px; margin: 0 auto; }
+    .blog-hero p { font-size: 1.1rem; opacity: 0.85; max-width: 680px; margin: 0 auto 24px; }
 
-    /* ── Category Pills ────────────────────────── */
-    .blog-cats {
-      background: #fff;
-      border-bottom: 1px solid #e8edf5;
-      padding: 14px 20px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      justify-content: center;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    .blog-cat-btn {
-      padding: 6px 16px;
-      border-radius: 20px;
-      border: 1.5px solid #d0d8e8;
-      background: #f5f7fa;
-      color: #555;
-      font-size: 0.85rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s;
-      text-decoration: none;
-      display: inline-block;
-    }
-    .blog-cat-btn:hover, .blog-cat-btn.active {
-      background: #c8102e;
-      border-color: #c8102e;
-      color: #fff;
-    }
-
-    /* ── Main Layout ───────────────────────────── */
-    .blog-layout {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 40px 20px 60px;
-    }
-
-    /* ── Hero Row (Top 3 Featured) ─────────────── */
-    .hero-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 24px;
-      margin-bottom: 48px;
-      padding-bottom: 40px;
-      border-bottom: 2px solid #f0f2f5;
-    }
-    .hero-card {
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 2px 16px rgba(0,0,0,0.07);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      transition: transform 0.25s, box-shadow 0.25s;
-    }
-    .hero-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 40px rgba(0,0,0,0.13);
-    }
-    .hero-card .post-card-img { height: 200px; }
-    .hero-card .post-card-body { padding: 20px; flex: 1; display: flex; flex-direction: column; }
-    .hero-card .post-cat-label { font-size: 0.68rem; padding: 3px 10px; }
-    .hero-card .post-meta { font-size: 0.75rem; color: #999; margin-bottom: 8px; }
-    .hero-card .hero-title {
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: #0d1f3c;
-      line-height: 1.4;
-      margin-bottom: 8px;
-      flex: 1;
-    }
-    .hero-card .hero-title a { color: inherit; text-decoration: none; }
-    .hero-card .hero-title a:hover { color: #c8102e; }
-
-    /* ── Section Header ─────────────────────────── */
-    .section-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 24px;
-    }
-    .section-header h2 {
-      font-size: 1.3rem;
-      font-weight: 800;
-      color: #0d1f3c;
-    }
-    .section-header .result-count {
-      font-size: 0.85rem;
-      color: #999;
-      font-weight: 500;
-    }
-
-    /* ── 3-Column Grid ──────────────────────────── */
-    .posts-grid-inner {
+    .stats-dashboard {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
+      gap: 16px;
+      max-width: 800px;
+      margin: 0 auto;
     }
+    .stat-card {
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(8px);
+      border-radius: 12px;
+      padding: 16px 12px;
+      text-align: center;
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+    .stat-number { font-size: 2rem; font-weight: 900; color: #fff; display: block; }
+    .stat-label { font-size: 0.8rem; opacity: 0.8; color: #fff; }
+
+    /* ── Category Pills ────────────────────────────── */
+    .blog-cats { background: #fff; border-bottom: 1px solid #e8edf5; padding: 14px 20px; display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; position: sticky; top: 0; z-index: 100; }
+    .blog-cat-btn { padding: 6px 16px; border-radius: 20px; border: 1.5px solid #d0d8e8; background: #f5f7fa; color: #555; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-block; }
+    .blog-cat-btn:hover, .blog-cat-btn.active { background: #c8102e; border-color: #c8102e; color: #fff; }
+
+    /* ── Main Layout ─────────────────────────────── */
+    .blog-layout { max-width: 1200px; margin: 0 auto; padding: 40px 20px 60px; }
+
+    /* ── Dual Track Featured ──────────────────────── */
+    .dual-track { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-bottom: 48px; }
+    .track-section { }
+    .track-header {
+      display: flex; align-items: center; gap: 10px; margin-bottom: 16px;
+      padding-bottom: 10px; border-bottom: 2px solid #f0f2f5;
+    }
+    .track-header h2 { font-size: 1.1rem; font-weight: 800; color: #0d1f3c; margin: 0; }
+    .track-count { font-size: 0.75rem; color: #888; font-weight: 500; background: #f0f2f5; padding: 2px 8px; border-radius: 10px; }
+
+    .track-cards { display: flex; flex-direction: column; gap: 16px; }
+    .track-card {
+      display: flex; gap: 14px; background: #fff; border-radius: 10px;
+      box-shadow: 0 1px 8px rgba(0,0,0,0.06); overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s; padding: 12px;
+    }
+    .track-card:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(0,0,0,0.1); }
+    .track-card .post-card-img { width: 140px; height: 100px; border-radius: 8px; flex-shrink: 0; }
+    .track-card .post-card-body { padding: 0; flex: 1; display: flex; flex-direction: column; justify-content: center; }
+    .track-card .post-meta { font-size: 0.7rem; color: #aaa; margin-bottom: 4px; }
+    .track-card .post-title { font-size: 0.85rem; font-weight: 700; color: #0d1f3c; line-height: 1.4; margin-bottom: 6px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .track-card .post-excerpt { font-size: 0.75rem; color: #888; line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin-bottom: 0; }
+    .track-card .post-read-more { font-size: 0.72rem; margin-top: 6px; }
+
+    /* ── Section Header for All Articles ──────────── */
+    .section-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; padding-top: 24px; border-top: 2px solid #f0f2f5; }
+    .section-header h2 { font-size: 1.3rem; font-weight: 800; color: #0d1f3c; }
+    .section-header .result-count { font-size: 0.85rem; color: #999; font-weight: 500; }
+
+    /* ── 3-Column Grid (All Articles) ─────────────── */
+    .posts-grid-inner { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
     .post-card {
-      background: #fff;
-      border-radius: 10px;
-      box-shadow: 0 1px 8px rgba(0,0,0,0.06);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
+      background: #fff; border-radius: 10px; box-shadow: 0 1px 8px rgba(0,0,0,0.06);
+      overflow: hidden; display: flex; flex-direction: column;
       transition: transform 0.2s, box-shadow 0.2s;
     }
-    .post-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 24px rgba(0,0,0,0.1);
-    }
+    .post-card:hover { transform: translateY(-3px); box-shadow: 0 6px 24px rgba(0,0,0,0.1); }
     .post-card-img {
       background: linear-gradient(135deg, #0d1f3c, #1a3a6e);
-      position: relative;
-      overflow: hidden;
+      position: relative; overflow: hidden; height: 170px;
+      display: flex; align-items: center; justify-content: center;
     }
-    .post-card-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+    .post-card-img img { width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; z-index: 1; }
+    .post-card-img .img-fallback {
+      display: none; flex-direction: column; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.7); text-align: center; padding: 20px; z-index: 2; position: relative;
     }
-    .post-card .post-card-img { height: 170px; }
+    .post-card-img .img-fallback .fallback-icon { font-size: 2.5rem; margin-bottom: 6px; }
+    .post-card-img .img-fallback .fallback-title { font-size: 0.8rem; font-weight: 700; line-height: 1.3; color: rgba(255,255,255,0.9); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .post-card-img.img-error img { display: none; }
+    .post-card-img.img-error .img-fallback { display: flex; }
+
     .post-cat-label {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      background: #c8102e;
-      color: #fff;
-      font-size: 0.65rem;
-      font-weight: 700;
-      padding: 2px 8px;
-      border-radius: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.3px;
-      white-space: nowrap;
-      max-width: calc(100% - 20px);
-      overflow: hidden;
-      text-overflow: ellipsis;
+      position: absolute; top: 10px; left: 10px; z-index: 3;
+      background: #c8102e; color: #fff; font-size: 0.65rem; font-weight: 700;
+      padding: 2px 8px; border-radius: 10px; text-transform: uppercase; letter-spacing: 0.3px;
+      white-space: nowrap; max-width: calc(100% - 20px); overflow: hidden; text-overflow: ellipsis;
     }
     .post-card-body { padding: 14px 16px; flex: 1; display: flex; flex-direction: column; }
     .post-meta { font-size: 0.72rem; color: #aaa; margin-bottom: 6px; }
-    .post-title,.hero-title {
-      font-size: 0.9rem;
-      font-weight: 700;
-      color: #0d1f3c;
-      line-height: 1.4;
-      margin-bottom: 8px;
-      flex: 1;
-      display: -webkit-box;
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
-    .post-title a,.hero-title a { color: inherit; text-decoration: none; }
-    .post-title a:hover,.hero-title a:hover { color: #c8102e; }
-    .post-excerpt {
-      font-size: 0.8rem;
-      color: #888;
-      line-height: 1.5;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-      margin-bottom: 10px;
-    }
-    .post-read-more {
-      font-size: 0.78rem;
-      font-weight: 700;
-      color: #c8102e;
-      text-decoration: none;
-      margin-top: auto;
-    }
+    .post-title { font-size: 0.9rem; font-weight: 700; color: #0d1f3c; line-height: 1.4; margin-bottom: 8px; flex: 1; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+    .post-title a { color: inherit; text-decoration: none; }
+    .post-title a:hover { color: #c8102e; }
+    .post-excerpt { font-size: 0.8rem; color: #888; line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin-bottom: 10px; }
+    .post-read-more { font-size: 0.78rem; font-weight: 700; color: #c8102e; text-decoration: none; margin-top: auto; }
     .post-read-more:hover { text-decoration: underline; }
 
-    /* ── Sidebar (compact below grid on desktop) ── */
-    .blog-sidebar {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 24px;
-      margin-top: 48px;
-      padding-top: 40px;
-      border-top: 2px solid #f0f2f5;
-    }
-    .sidebar-widget {
-      background: #fff;
-      border-radius: 10px;
-      padding: 20px;
-      box-shadow: 0 1px 8px rgba(0,0,0,0.05);
-    }
-    .sidebar-widget h3 {
-      font-size: 0.95rem;
-      font-weight: 800;
-      color: #0d1f3c;
-      margin-bottom: 14px;
-      padding-bottom: 8px;
-      border-bottom: 2px solid #c8102e;
-    }
-    .recent-post-item {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 12px;
-      padding-bottom: 12px;
-      border-bottom: 1px solid #f0f0f0;
-    }
+    /* ── Sidebar ─────────────────────────────────── */
+    .blog-sidebar { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; margin-top: 48px; padding-top: 40px; border-top: 2px solid #f0f2f5; }
+    .sidebar-widget { background: #fff; border-radius: 10px; padding: 20px; box-shadow: 0 1px 8px rgba(0,0,0,0.05); }
+    .sidebar-widget h3 { font-size: 0.95rem; font-weight: 800; color: #0d1f3c; margin-bottom: 14px; padding-bottom: 8px; border-bottom: 2px solid #c8102e; }
+    .recent-post-item { display: flex; gap: 10px; margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid #f0f0f0; }
     .recent-post-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-    .recent-thumb {
-      width: 56px;
-      height: 48px;
-      border-radius: 6px;
-      object-fit: cover;
-      background: #eee;
-      flex-shrink: 0;
-    }
-    .recent-post-title {
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: #0d1f3c;
-      line-height: 1.4;
-      text-decoration: none;
-    }
+    .recent-thumb { width: 56px; height: 48px; border-radius: 6px; object-fit: cover; background: #eee; flex-shrink: 0; }
+    .recent-post-title { font-size: 0.8rem; font-weight: 600; color: #0d1f3c; line-height: 1.4; text-decoration: none; }
     .recent-post-title:hover { color: #c8102e; }
     .recent-post-date { font-size: 0.7rem; color: #bbb; margin-top: 4px; }
     .tag-cloud { display: flex; flex-wrap: wrap; gap: 6px; }
-    .tag-pill {
-      font-size: 0.72rem;
-      padding: 3px 10px;
-      border-radius: 12px;
-      background: #f0f2f5;
-      color: #666;
-      text-decoration: none;
-      transition: background 0.2s;
-    }
+    .tag-pill { font-size: 0.72rem; padding: 3px 10px; border-radius: 12px; background: #f0f2f5; color: #666; text-decoration: none; transition: background 0.2s; }
     .tag-pill:hover { background: #c8102e; color: #fff; }
-    .newsletter-form input[type="email"] {
-      width: 100%;
-      padding: 8px 12px;
-      border: 1.5px solid #ddd;
-      border-radius: 6px;
-      font-size: 0.85rem;
-      margin-bottom: 8px;
-      outline: none;
-      box-sizing: border-box;
-    }
+    .newsletter-form input[type="email"] { width: 100%; padding: 8px 12px; border: 1.5px solid #ddd; border-radius: 6px; font-size: 0.85rem; margin-bottom: 8px; outline: none; box-sizing: border-box; }
     .newsletter-form input[type="email"]:focus { border-color: #c8102e; }
-    .newsletter-form button {
-      width: 100%;
-      padding: 8px;
-      background: #c8102e;
-      color: #fff;
-      border: none;
-      border-radius: 6px;
-      font-size: 0.85rem;
-      font-weight: 700;
-      cursor: pointer;
-    }
+    .newsletter-form button { width: 100%; padding: 8px; background: #c8102e; color: #fff; border: none; border-radius: 6px; font-size: 0.85rem; font-weight: 700; cursor: pointer; }
     .newsletter-form button:hover { background: #a00d24; }
 
-    /* ── Pagination ─────────────────────────────── */
-    .blog-pagination {
-      display: flex;
-      gap: 6px;
-      justify-content: center;
-      margin-top: 36px;
-      flex-wrap: wrap;
-    }
-    .blog-pagination button {
-      padding: 8px 14px;
-      border: 1.5px solid #ddd;
-      border-radius: 6px;
-      background: #fff;
-      color: #444;
-      font-size: 0.85rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
+    /* ── Pagination ───────────────────────────────── */
+    .blog-pagination { display: flex; gap: 6px; justify-content: center; margin-top: 36px; flex-wrap: wrap; }
+    .blog-pagination button { padding: 8px 14px; border: 1.5px solid #ddd; border-radius: 6px; background: #fff; color: #444; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all 0.2s; }
     .blog-pagination button:hover { background: #f5f5f5; border-color: #ccc; }
-    .blog-pagination button.active {
-      background: #c8102e;
-      border-color: #c8102e;
-      color: #fff;
-    }
-    .blog-pagination button:disabled {
-      opacity: 0.4;
-      cursor: not-allowed;
-    }
-    .blog-pagination .page-ellipsis {
-      padding: 8px 6px;
-      color: #aaa;
-      font-size: 0.85rem;
-      align-self: center;
-    }
+    .blog-pagination button.active { background: #c8102e; border-color: #c8102e; color: #fff; }
+    .blog-pagination button:disabled { opacity: 0.4; cursor: not-allowed; }
+    .blog-pagination .page-ellipsis { padding: 8px 6px; color: #aaa; font-size: 0.85rem; align-self: center; }
 
-    /* ── CTA ────────────────────────────────────── */
-    .blog-cta {
-      background: linear-gradient(135deg, #c8102e, #a00d24);
-      padding: 56px 20px;
-      text-align: center;
-      color: #fff;
-    }
+    /* ── CTA ──────────────────────────────────────── */
+    .blog-cta { background: linear-gradient(135deg, #c8102e, #a00d24); padding: 56px 20px; text-align: center; color: #fff; }
     .blog-cta h2 { font-size: 1.8rem; font-weight: 900; margin-bottom: 12px; }
-    .blog-cta p  { font-size: 1rem; opacity: 0.9; margin-bottom: 28px; }
-    .blog-cta a {
-      display: inline-block;
-      background: #fff;
-      color: #c8102e;
-      font-weight: 700;
-      padding: 14px 36px;
-      border-radius: 6px;
-      text-decoration: none;
-      font-size: 1rem;
-      transition: transform 0.2s;
-    }
+    .blog-cta p { font-size: 1rem; opacity: 0.9; margin-bottom: 28px; }
+    .blog-cta a { display: inline-block; background: #fff; color: #c8102e; font-weight: 700; padding: 14px 36px; border-radius: 6px; text-decoration: none; font-size: 1rem; transition: transform 0.2s; }
     .blog-cta a:hover { transform: scale(1.04); }
 
-    /* ── Empty State ────────────────────────────── */
-    .empty-state {
-      text-align: center;
-      padding: 60px 20px;
-      color: #999;
-      grid-column: 1 / -1;
-    }
+    /* ── Empty State ─────────────────────────────── */
+    .empty-state { text-align: center; padding: 60px 20px; color: #999; grid-column: 1 / -1; }
     .empty-state h3 { font-size: 1.1rem; color: #666; margin-bottom: 8px; }
     .empty-state p { font-size: 0.9rem; }
 
-    /* ── Responsive ─────────────────────────────── */
+    /* ── Responsive ──────────────────────────────── */
     @media (max-width: 1024px) {
-      .hero-row { grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
-      .posts-grid-inner { grid-template-columns: 1fr 1fr; gap: 16px; }
+      .dual-track { grid-template-columns: 1fr; }
+      .posts-grid-inner { grid-template-columns: repeat(2, 1fr); gap: 16px; }
       .blog-sidebar { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 768px) {
-      .hero-row { grid-template-columns: 1fr; gap: 16px; }
-      .hero-card .post-card-img { height: 180px; }
+      .stats-dashboard { grid-template-columns: 1fr; }
       .posts-grid-inner { grid-template-columns: 1fr 1fr; gap: 14px; }
+      .track-card .post-card-img { width: 100px; height: 75px; }
       .blog-sidebar { grid-template-columns: 1fr; }
     }
     @media (max-width: 480px) {
       .blog-hero { padding: 60px 16px 40px; }
       .blog-hero h1 { font-size: 1.6rem; }
       .blog-layout { padding: 24px 12px 40px; }
-      .hero-row { margin-bottom: 32px; padding-bottom: 28px; }
+      .track-card { flex-direction: column; }
+      .track-card .post-card-img { width: 100%; height: 140px; }
       .posts-grid-inner { grid-template-columns: 1fr; gap: 16px; }
     }
-  </style>
 </head>
 <body>
 
@@ -440,10 +241,24 @@
     </div>
   </nav>
 
-  <!-- HERO -->
+  <!-- HERO + STATS DASHBOARD -->
   <section class="blog-hero">
     <h1>Export Industry Insights</h1>
     <p>Practical guides on auto parts sourcing, vehicle export procedures, OEM part quality, and China trade — written for international importers and distributors.</p>
+    <div class="stats-dashboard">
+      <div class="stat-card">
+        <span class="stat-number" id="stat-total">95</span>
+        <span class="stat-label">Total Articles</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number" id="stat-vehicles">48</span>
+        <span class="stat-label">Vehicle Guides</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number" id="stat-parts">47</span>
+        <span class="stat-label">Auto Parts Guides</span>
+      </div>
+    </div>
   </section>
 
   <!-- CATEGORY FILTER -->
@@ -455,14 +270,43 @@
 
   <!-- MAIN LAYOUT -->
   <div class="blog-layout">
-    <!-- POSTS GRID -->
+
+    <!-- DUAL TRACK: Featured Vehicles + Auto Parts -->
+    <div class="dual-track" id="dual-track">
+      <!-- Vehicles Track -->
+      <div class="track-section" id="track-vehicles">
+        <div class="track-header">
+          <h2>🚗 Latest Vehicle Exports</h2>
+          <span class="track-count" id="vehicles-count">48 articles</span>
+        </div>
+        <div class="track-cards" id="track-vehicles-cards"></div>
+      </div>
+      <!-- Auto Parts Track -->
+      <div class="track-section" id="track-parts">
+        <div class="track-header">
+          <h2>🔧 Latest Auto Parts</h2>
+          <span class="track-count" id="parts-count">47 articles</span>
+        </div>
+        <div class="track-cards" id="track-parts-cards"></div>
+      </div>
+    </div>
+
+    <!-- ALL ARTICLES -->
+    <div class="section-header">
+      <h2>All Articles</h2>
+      <span class="result-count" id="all-count">95 articles</span>
+    </div>
     <main>
       <div class="posts-grid" id="posts-grid">
 
         <!-- Post 91 — Featured (Latest Vehicles, July 6 2026) -->
         <article class="post-card featured" data-cat="vehicles">
           <div class="post-card-img">
-            <img src="assets/products/product_125.jpg" alt="2026 MG5 1.8T Turbocharged Global Flagship Edition sedan — 184 hp, 7DCT, $8,700 FOB Nansha export from China via Globalucar for Africa Middle East markets" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🚗</span>
+              <span class="fallback-title">MG5 Sedan Export from China: Specs, Pricing &amp; Market Gui...</span>
+            </div>
+            <img src="assets/products/product_125.jpg" alt="2026 MG5 1.8T Turbocharged Global Flagship Edition sedan — 184 hp, 7DCT, $8,700 FOB Nansha export from China via Globalucar for Africa Middle East markets" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🚗 Vehicles · Chinese Sedan Export</span>
           </div>
           <div class="post-card-body">
@@ -476,7 +320,11 @@
         <!-- Post 92 — (Latest Parts, July 6 2026) -->
         <article class="post-card" data-cat="parts">
           <div class="post-card-img">
-            <img src="assets/blog/hyundai-kia-fuel-injector-rail-pump.jpg" alt="Hyundai Kia fuel system parts — GDI high-pressure fuel pump, MPI fuel injector set, and common rail assembly with pressure sensor for wholesale export from Kingmay Auto Parts China" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🔧</span>
+              <span class="fallback-title">Hyundai Kia Fuel System Parts Wholesale: Injectors, Fuel Pum...</span>
+            </div>
+            <img src="assets/blog/hyundai-kia-fuel-injector-rail-pump.jpg" alt="Hyundai Kia fuel system parts — GDI high-pressure fuel pump, MPI fuel injector set, and common rail assembly with pressure sensor for wholesale export from Kingmay Auto Parts China" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🔧 Auto Parts · Fuel System</span>
           </div>
           <div class="post-card-body">
@@ -490,7 +338,11 @@
         <!-- Post 93 — (Latest Parts, July 6 2026) -->
         <article class="post-card" data-cat="parts">
           <div class="post-card-img">
-            <img src="assets/blog/hyundai-kia-timing-chain-kit-tensioner.jpg" alt="Hyundai Kia timing chain kit with chain, tensioner, guide rails, and camshaft sprockets — OEM-grade engine timing system parts for wholesale export from Kingmay Auto Parts China" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🔧</span>
+              <span class="fallback-title">Hyundai Kia Engine Timing System Parts Wholesale: Timing Cha...</span>
+            </div>
+            <img src="assets/blog/hyundai-kia-timing-chain-kit-tensioner.jpg" alt="Hyundai Kia timing chain kit with chain, tensioner, guide rails, and camshaft sprockets — OEM-grade engine timing system parts for wholesale export from Kingmay Auto Parts China" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🔧 Auto Parts · Engine Timing</span>
           </div>
           <div class="post-card-body">
@@ -504,7 +356,11 @@
         <!-- Post 94 — (Latest Vehicles, July 6 2026) -->
         <article class="post-card" data-cat="vehicles">
           <div class="post-card-img">
-            <img src="assets/blog/df-honda-s7-orange-front-studio.png" alt="DF Honda S7 2025 electric SUV orange studio shot — Honda's mid-size EV crossover, 204 hp, CATL LFP 60 kWh, 420 km range, CCS2 charging, FOB Nansha $21,250 promotional export from Globalucar China" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🚗</span>
+              <span class="fallback-title">DF Honda S7 2025 EV Export: Exclusive Promotional Pricing fr...</span>
+            </div>
+            <img src="assets/blog/df-honda-s7-orange-front-studio.png" alt="DF Honda S7 2025 electric SUV orange studio shot — Honda's mid-size EV crossover, 204 hp, CATL LFP 60 kWh, 420 km range, CCS2 charging, FOB Nansha $21,250 promotional export from Globalucar China" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🚗 Vehicles · Honda EV SUV Export</span>
           </div>
           <div class="post-card-body">
@@ -518,7 +374,11 @@
         <!-- Post 95 — (Latest Vehicles, July 6 2026) -->
         <article class="post-card" data-cat="vehicles">
           <div class="post-card-img">
-            <img src="assets/products/product_163.jpg" alt="2026 Kia Sportage compact SUV — 1.6T GDI 180 hp, 7DCT, AWD option, 12.3-inch dual curved display, FOB Nansha $24,500-35,800 export from Globalucar China for global markets" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🚗</span>
+              <span class="fallback-title">Kia Sportage 2026 Export Guide: Specs, Pricing &amp; Market ...</span>
+            </div>
+            <img src="assets/products/product_163.jpg" alt="2026 Kia Sportage compact SUV — 1.6T GDI 180 hp, 7DCT, AWD option, 12.3-inch dual curved display, FOB Nansha $24,500-35,800 export from Globalucar China for global markets" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🚗 Vehicles · Kia SUV Export</span>
           </div>
           <div class="post-card-body">
@@ -532,7 +392,11 @@
         <!-- Post 86 — Featured (Latest Vehicles, July 2 2026) -->
         <article class="post-card featured" data-cat="vehicles">
           <div class="post-card-img">
-            <img src="assets/products/product_129.jpg" alt="2025 Toyota Land Cruiser Prado HEV VX 5-seat hybrid off-road SUV — 330 PS, Torsen full-time 4WD, $82,347 EXW Guangzhou, export from China via Globalucar" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🚗</span>
+              <span class="fallback-title">2025 Toyota Prado HEV Export Guide: Africa &amp; Middle East</span>
+            </div>
+            <img src="assets/products/product_129.jpg" alt="2025 Toyota Land Cruiser Prado HEV VX 5-seat hybrid off-road SUV — 330 PS, Torsen full-time 4WD, $82,347 EXW Guangzhou, export from China via Globalucar" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🚗 Vehicles · Toyota/Hybrid SUV Export</span>
           </div>
           <div class="post-card-body">
@@ -546,7 +410,11 @@
         <!-- Post 87 — Featured (Latest Parts, July 2 2026) -->
         <article class="post-card featured" data-cat="parts">
           <div class="post-card-img">
-            <img src="assets/blog/brake-system-components-diagram.jpg" alt="Hyundai Kia brake system components — ceramic brake pads, ventilated rotors, caliper assembly, and brake hardware for wholesale export from Kingmay Auto Parts China" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🔧</span>
+              <span class="fallback-title">Hyundai Kia Brake System Parts Wholesale: Ceramic vs Semi-Me...</span>
+            </div>
+            <img src="assets/blog/brake-system-components-diagram.jpg" alt="Hyundai Kia brake system components — ceramic brake pads, ventilated rotors, caliper assembly, and brake hardware for wholesale export from Kingmay Auto Parts China" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🔧 Auto Parts · Brake System</span>
           </div>
           <div class="post-card-body">
@@ -560,7 +428,11 @@
         <!-- Post 88 — Featured (Latest Parts, July 2 2026) -->
         <article class="post-card featured" data-cat="parts">
           <div class="post-card-img">
-            <img src="assets/blog/steering-suspension-power-steering-pump.jpg" alt="Hyundai Kia steering and suspension system components — power steering pump, tie rod ends, ball joints, and control arms wholesale from Kingmay Auto Parts China" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🔧</span>
+              <span class="fallback-title">Hyundai Kia Steering &amp; Suspension System Parts Wholesale...</span>
+            </div>
+            <img src="assets/blog/steering-suspension-power-steering-pump.jpg" alt="Hyundai Kia steering and suspension system components — power steering pump, tie rod ends, ball joints, and control arms wholesale from Kingmay Auto Parts China" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🔧 Auto Parts · Steering &amp; Suspension</span>
           </div>
           <div class="post-card-body">
@@ -574,7 +446,11 @@
         <!-- Post 89 — Featured (Latest Parts, July 3 2026) -->
         <article class="post-card featured" data-cat="parts">
           <div class="post-card-img">
-            <img src="assets/blog/hyundai-kia-ac-compressor-condenser-wholesale.jpg" alt="Hyundai Kia AC compressor with clutch pulley and aluminum condenser core — OEM-grade climate control parts wholesale export from Kingmay Auto Parts China for Elantra Tucson Sportage Sonata Santa Fe" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🔧</span>
+              <span class="fallback-title">Hyundai Kia AC Compressor &amp; Climate Control Parts Wholes...</span>
+            </div>
+            <img src="assets/blog/hyundai-kia-ac-compressor-condenser-wholesale.jpg" alt="Hyundai Kia AC compressor with clutch pulley and aluminum condenser core — OEM-grade climate control parts wholesale export from Kingmay Auto Parts China for Elantra Tucson Sportage Sonata Santa Fe" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🔧 Auto Parts · Climate Control</span>
           </div>
           <div class="post-card-body">
@@ -588,7 +464,11 @@
         <!-- Post 90 — Featured (Latest Parts, July 3 2026) -->
         <article class="post-card featured" data-cat="parts">
           <div class="post-card-img">
-            <img src="assets/blog/hyundai-kia-turbocharger-assembly-actuator-wholesale.jpg" alt="Hyundai Kia turbocharger assembly with electronic actuator and cast iron turbine housing — OEM-grade turbocharger parts wholesale export from Kingmay Auto Parts China for Sonata Santa Fe Sportage Sorento diesel and petrol engines" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🔧</span>
+              <span class="fallback-title">Hyundai Kia Turbocharger Parts Wholesale: Turbo Assemblies, ...</span>
+            </div>
+            <img src="assets/blog/hyundai-kia-turbocharger-assembly-actuator-wholesale.jpg" alt="Hyundai Kia turbocharger assembly with electronic actuator and cast iron turbine housing — OEM-grade turbocharger parts wholesale export from Kingmay Auto Parts China for Sonata Santa Fe Sportage Sorento diesel and petrol engines" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🔧 Auto Parts · Turbocharger</span>
           </div>
           <div class="post-card-body">
@@ -602,7 +482,11 @@
         <!-- Post 85 — Featured (Latest Parts, July 1 2026) -->
         <article class="post-card featured" data-cat="parts">
           <div class="post-card-img">
-            <img src="assets/blog/hyundai-kia-clutch-kit-pressure-plate-disc.jpg" alt="Hyundai Kia clutch kit set with pressure plate, clutch disc and release bearing — OEM-grade manual transmission clutch parts wholesale from Kingmay Auto Parts China" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🔧</span>
+              <span class="fallback-title">Hyundai Kia Clutch System Parts Wholesale: Clutch Kit, Flywh...</span>
+            </div>
+            <img src="assets/blog/hyundai-kia-clutch-kit-pressure-plate-disc.jpg" alt="Hyundai Kia clutch kit set with pressure plate, clutch disc and release bearing — OEM-grade manual transmission clutch parts wholesale from Kingmay Auto Parts China" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🔧 Auto Parts · Hyundai/Kia</span>
           </div>
           <div class="post-card-body">
@@ -616,7 +500,11 @@
         <!-- Post 84 — Featured (July 1 2026) -->
         <article class="post-card featured" data-cat="parts">
           <div class="post-card-img">
-            <img src="assets/blog/hyundai-kia-timing-chain-kit-tensioner-wholesale.jpg" alt="Hyundai Kia timing chain kit with tensioner, guide rails and sprockets — OEM-grade engine timing parts wholesale from Kingmay Auto Parts China for Elantra Tucson Sportage Sonata Sorento" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🔧</span>
+              <span class="fallback-title">Hyundai Kia Timing Chain Kit &amp; Tensioner Wholesale: Comp...</span>
+            </div>
+            <img src="assets/blog/hyundai-kia-timing-chain-kit-tensioner-wholesale.jpg" alt="Hyundai Kia timing chain kit with tensioner, guide rails and sprockets — OEM-grade engine timing parts wholesale from Kingmay Auto Parts China for Elantra Tucson Sportage Sonata Sorento" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🔧 Auto Parts · Hyundai/Kia</span>
           </div>
           <div class="post-card-body">
@@ -630,7 +518,11 @@
         <!-- Post 83 — Featured (Latest Parts, June 30 2026) -->
         <article class="post-card featured" data-cat="parts">
           <div class="post-card-img">
-            <img src="assets/blog/hyundai-kia-exhaust-catalytic-converter.png" alt="Hyundai Kia catalytic converter assembly with stainless steel body and heat shield — OEM-grade emission parts wholesale from Kingmay Auto Parts China for Elantra Tucson Sonata Sportage Santa Fe" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🔧</span>
+              <span class="fallback-title">Hyundai Kia Exhaust System &amp; Catalytic Converter Parts W...</span>
+            </div>
+            <img src="assets/blog/hyundai-kia-exhaust-catalytic-converter.png" alt="Hyundai Kia catalytic converter assembly with stainless steel body and heat shield — OEM-grade emission parts wholesale from Kingmay Auto Parts China for Elantra Tucson Sonata Sportage Santa Fe" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🔧 Auto Parts · Exhaust &amp; Emission</span>
           </div>
           <div class="post-card-body">
@@ -644,7 +536,11 @@
         <!-- Post 82 — Featured (June 30 2026) -->
         <article class="post-card featured" data-cat="parts">
           <div class="post-card-img">
-            <img src="assets/blog/hyundai-kia-headlight-assembly-led-wholesale.jpg" alt="Hyundai Kia headlight assembly set with LED DRL projector lamps — OEM-grade lighting parts wholesale from Kingmay Auto Parts China for Elantra Tucson Sonata Sportage Santa Fe collision repair" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🔧</span>
+              <span class="fallback-title">Hyundai Kia Lighting &amp; Body Parts Wholesale: Headlights,...</span>
+            </div>
+            <img src="assets/blog/hyundai-kia-headlight-assembly-led-wholesale.jpg" alt="Hyundai Kia headlight assembly set with LED DRL projector lamps — OEM-grade lighting parts wholesale from Kingmay Auto Parts China for Elantra Tucson Sonata Sportage Santa Fe collision repair" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🔧 Auto Parts · Lighting &amp; Body</span>
           </div>
           <div class="post-card-body">
@@ -658,7 +554,11 @@
         <!-- Post 79 — Featured (Latest Parts, June 29 2026) -->
         <article class="post-card featured" data-cat="parts">
           <div class="post-card-img">
-            <img src="assets/blog/hyundai-kia-radiator-hmc-tag.jpg" alt="Hyundai Kia radiator with HMC OEM tag — OEM-grade cooling parts: AC compressor 97701-2S600, condenser 97606-2S600, radiator 25310-2S500, Kingmay Auto Parts wholesale for Saudi Arabia UAE Qatar" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🔧</span>
+              <span class="fallback-title">Hyundai &amp; Kia Summer Cooling &amp; AC Parts Wholesale: A...</span>
+            </div>
+            <img src="assets/blog/hyundai-kia-radiator-hmc-tag.jpg" alt="Hyundai Kia radiator with HMC OEM tag — OEM-grade cooling parts: AC compressor 97701-2S600, condenser 97606-2S600, radiator 25310-2S500, Kingmay Auto Parts wholesale for Saudi Arabia UAE Qatar" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🔧 Auto Parts · Cooling &amp; AC System</span>
           </div>
           <div class="post-card-body">
@@ -672,7 +572,11 @@
         <!-- Post 78 — Featured (Latest Vehicle, June 26 2026) -->
         <article class="post-card featured" data-cat="vehicles">
           <div class="post-card-img">
-            <img src="assets/products/product_116.jpg" alt="2026 XPENG G6 RWD Long Range Smart Edition electric SUV — 296 hp, 800V SiC platform, CLTC 755 km range, FOB Guangzhou $29,153, Chinese EV export for Middle East" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🚗</span>
+              <span class="fallback-title">XPENG G6 2026 RWD Export Guide: China Electric SUV vs Tesla ...</span>
+            </div>
+            <img src="assets/products/product_116.jpg" alt="2026 XPENG G6 RWD Long Range Smart Edition electric SUV — 296 hp, 800V SiC platform, CLTC 755 km range, FOB Guangzhou $29,153, Chinese EV export for Middle East" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">⚡ Vehicles · Electric SUV Export</span>
           </div>
           <div class="post-card-body">
@@ -686,7 +590,11 @@
         <!-- Post 81 — Featured (Latest Parts, June 29 2026) -->
         <article class="post-card featured" data-cat="parts">
           <div class="post-card-img">
-            <img src="assets/blog/hyundai-kia-ignition-coil-alternator-wholesale.jpg" alt="Engine management sensors and electrical parts wholesale — crankshaft position sensor, O2 sensor, MAF sensor, alternator and starter motor assembly from Kingmay Auto Parts China for export" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🔧</span>
+              <span class="fallback-title">Engine Management Sensors &amp; Electrical Parts Wholesale: ...</span>
+            </div>
+            <img src="assets/blog/hyundai-kia-ignition-coil-alternator-wholesale.jpg" alt="Engine management sensors and electrical parts wholesale — crankshaft position sensor, O2 sensor, MAF sensor, alternator and starter motor assembly from Kingmay Auto Parts China for export" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">⚡ Auto Parts · Electrical &amp; Sensors</span>
           </div>
           <div class="post-card-body">
@@ -700,7 +608,11 @@
         <!-- Post 77 — Featured (Latest Parts, June 26 2026) -->
         <article class="post-card featured" data-cat="parts">
           <div class="post-card-img">
-            <img src="assets/blog/hyundai-tucson-spare-parts.jpg" alt="Hyundai Kia cooling system parts wholesale — radiator, A/C compressor, water pump and thermostat assembly for summer export from Kingmay Auto Parts China" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🔧</span>
+              <span class="fallback-title">Hyundai Kia Cooling System Parts Wholesale: Radiator, AC Com...</span>
+            </div>
+            <img src="assets/blog/hyundai-tucson-spare-parts.jpg" alt="Hyundai Kia cooling system parts wholesale — radiator, A/C compressor, water pump and thermostat assembly for summer export from Kingmay Auto Parts China" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🔧 Auto Parts · Cooling System</span>
           </div>
           <div class="post-card-body">
@@ -714,7 +626,11 @@
         <!-- Post 72 — Featured (Latest Vehicle, June 27 2026) -->
         <article class="post-card featured" data-cat="vehicles">
           <div class="post-card-img">
-            <img src="assets/blog/geely-coolray-white-front.png" alt="2026 Geely Coolray 1.5TD subcompact budget SUV - real photo, 126 hp turbo, BMA platform, FOB Nansha $8,200" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🚗</span>
+              <span class="fallback-title">Geely Coolray 1.5TD 2026 Export Guide: Africa &amp; Central ...</span>
+            </div>
+            <img src="assets/blog/geely-coolray-white-front.png" alt="2026 Geely Coolray 1.5TD subcompact budget SUV - real photo, 126 hp turbo, BMA platform, FOB Nansha $8,200" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🚗 Vehicles · Chinese SUV Export</span>
           </div>
           <div class="post-card-body">
@@ -728,7 +644,11 @@
         <!-- Post 74 — Featured (Latest Parts, June 25 2026) -->
         <article class="post-card featured" data-cat="parts">
           <div class="post-card-img">
-            <img src="assets/parts/part_219_santafe_climate_1.jpg" alt="Hyundai Santa Fe DM/ix45 A/C Heater Climate Control Panel OE 97250-2W360 — OEM-grade replacement, Kingmay Auto Parts exclusive, Middle East export" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🔧</span>
+              <span class="fallback-title">Hyundai Santa Fe DM A/C Climate Control Panel: Common Failur...</span>
+            </div>
+            <img src="assets/parts/part_219_santafe_climate_1.jpg" alt="Hyundai Santa Fe DM/ix45 A/C Heater Climate Control Panel OE 97250-2W360 — OEM-grade replacement, Kingmay Auto Parts exclusive, Middle East export" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🔧 Auto Parts · HVAC &amp; Climate Control</span>
           </div>
           <div class="post-card-body">
@@ -743,7 +663,11 @@
         <!-- Post 70 — Featured (June 25 2026) -->
         <article class="post-card featured" data-cat="parts">
           <div class="post-card-img">
-            <img src="assets/blog/brake-pads-ceramic.jpg" alt="Hyundai Kia ceramic brake pads set — OEM-grade friction material with anti-noise shims, wholesale export from Kingmay Auto Parts China for Elantra Tucson Sportage Sonata Optima" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🔧</span>
+              <span class="fallback-title">Hyundai Kia Brake System Parts Wholesale: Brake Pads, Calipe...</span>
+            </div>
+            <img src="assets/blog/brake-pads-ceramic.jpg" alt="Hyundai Kia ceramic brake pads set — OEM-grade friction material with anti-noise shims, wholesale export from Kingmay Auto Parts China for Elantra Tucson Sportage Sonata Optima" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🔧 Auto Parts · Hyundai/Kia</span>
           </div>
           <div class="post-card-body">
@@ -757,7 +681,11 @@
         <!-- Post 69 — Featured (June 26 2026) -->
         <article class="post-card featured" data-cat="vehicles">
           <div class="post-card-img">
-            <img src="assets/products/product_122.jpg" alt="2026 Jetour Traveler 2.0TD 4WD Explorer Edition body-on-frame adventure SUV — 254 hp, XWD intelligent 4WD, 220 mm ground clearance, FOB Nansha $22,208 wholesale export from Globalucar" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🚗</span>
+              <span class="fallback-title">Jetour Traveler 2.0TD 4WD 2026 Export Guide: China&amp;#39;s...</span>
+            </div>
+            <img src="assets/products/product_122.jpg" alt="2026 Jetour Traveler 2.0TD 4WD Explorer Edition body-on-frame adventure SUV — 254 hp, XWD intelligent 4WD, 220 mm ground clearance, FOB Nansha $22,208 wholesale export from Globalucar" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🚗 Vehicles · Chinese Adventure SUV Export</span>
           </div>
           <div class="post-card-body">
@@ -771,7 +699,11 @@
         <!-- Post 75 — Featured (Market Analysis, June 25 2026) -->
         <article class="post-card featured" data-cat="parts">
           <div class="post-card-img">
-            <img src="assets/parts/part_219_santafe_climate_1.jpg" alt="Hyundai Santa Fe DM/ix45 A/C Heater Climate Control Panel OE 97250-2W360 — Kingmay exclusive mold, Middle East Gulf export" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🔧</span>
+              <span class="fallback-title">Middle East Hyundai Santa Fe HVAC Parts Market: Why Climate ...</span>
+            </div>
+            <img src="assets/parts/part_219_santafe_climate_1.jpg" alt="Hyundai Santa Fe DM/ix45 A/C Heater Climate Control Panel OE 97250-2W360 — Kingmay exclusive mold, Middle East Gulf export" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">📈 Market Analysis · Middle East Auto Parts</span>
           </div>
           <div class="post-card-body">
@@ -785,7 +717,11 @@
         <!-- Post 80 — Featured (Latest Parts, June 29 2026) -->
         <article class="post-card featured" data-cat="parts">
           <div class="post-card-img">
-            <img src="assets/blog/suspension-system-diagram.png" alt="Complete suspension system diagram with labeled components — upper and lower control arms, ball joints, coil spring, shock absorber, tie rod ends and stabilizer link — wholesale parts guide from Kingmay Auto Parts China" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🔧</span>
+              <span class="fallback-title">Suspension &amp; Chassis Parts Wholesale from China: Control...</span>
+            </div>
+            <img src="assets/blog/suspension-system-diagram.png" alt="Complete suspension system diagram with labeled components — upper and lower control arms, ball joints, coil spring, shock absorber, tie rod ends and stabilizer link — wholesale parts guide from Kingmay Auto Parts China" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🔧 Auto Parts · Suspension &amp; Chassis</span>
           </div>
           <div class="post-card-body">
@@ -799,7 +735,11 @@
         <!-- Post 68 — (June 23 2026) -->
         <article class="post-card" data-cat="vehicles">
           <div class="post-card-img">
-            <img src="assets/blog/geely-xingyue-l-monjaro-white-studio-front.jpg" alt="2026 Geely Xingyue L Monjaro white studio front view — 2.0TD AWD Flagship mid-size SUV, 218 hp, Volvo CMA platform, FOB Nansha $23,431 wholesale export for Africa and Middle East" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🚗</span>
+              <span class="fallback-title">Geely Xingyue L (Monjaro) 2026 Export Guide: China&amp;#39;s...</span>
+            </div>
+            <img src="assets/blog/geely-xingyue-l-monjaro-white-studio-front.jpg" alt="2026 Geely Xingyue L Monjaro white studio front view — 2.0TD AWD Flagship mid-size SUV, 218 hp, Volvo CMA platform, FOB Nansha $23,431 wholesale export for Africa and Middle East" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🚗 Vehicles · Chinese SUV Export</span>
           </div>
           <div class="post-card-body">
@@ -813,7 +753,11 @@
         <!-- Post 76 — Featured (Product Development, June 25 2026) -->
         <article class="post-card featured" data-cat="parts">
           <div class="post-card-img">
-            <img src="assets/parts/part_220_santafe_climate_back.jpg" alt="Hyundai Santa Fe DM ix45 A/C Heater Climate Control Panel rear view PCB — OEM-grade replacement, Kingmay exclusive mold, Middle East Gulf region export" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🔧</span>
+              <span class="fallback-title">Behind the Product: How Kingmay Independently Developed the ...</span>
+            </div>
+            <img src="assets/parts/part_220_santafe_climate_back.jpg" alt="Hyundai Santa Fe DM ix45 A/C Heater Climate Control Panel rear view PCB — OEM-grade replacement, Kingmay exclusive mold, Middle East Gulf region export" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🛠️ Auto Parts · Product Development</span>
           </div>
           <div class="post-card-body">
@@ -827,7 +771,11 @@
         <!-- Post 67 — Featured (June 23 2026) -->
         <article class="post-card featured" data-cat="parts">
           <div class="post-card-img">
-            <img src="assets/blog/kia-fuel-pump-assembly-module-wholesale.jpg" alt="Kia MOBIS genuine fuel pump assembly module 31110-3K000 — complete unit with sender, filter sock and pressure regulator, wholesale from Kingmay Auto Parts China" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🔧</span>
+              <span class="fallback-title">Hyundai Kia Fuel System Parts Wholesale: Fuel Pump, Injector...</span>
+            </div>
+            <img src="assets/blog/kia-fuel-pump-assembly-module-wholesale.jpg" alt="Kia MOBIS genuine fuel pump assembly module 31110-3K000 — complete unit with sender, filter sock and pressure regulator, wholesale from Kingmay Auto Parts China" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🔧 Auto Parts · Hyundai/Kia</span>
           </div>
           <div class="post-card-body">
@@ -841,7 +789,11 @@
         <!-- Post 66 — (June 22 2026) -->
         <article class="post-card" data-cat="vehicles">
           <div class="post-card-img">
-            <img src="assets/products/product_101.jpg" alt="2026 BYD Song Pro DM-i 115km Premium Edition PHEV compact SUV — 204 hp, 115 km EV range, FOB Nansha $12,600 export for Africa and Middle East" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🚗</span>
+              <span class="fallback-title">BYD Song Pro DM-i 2026 Export Guide: Africa &amp; Middle Eas...</span>
+            </div>
+            <img src="assets/products/product_101.jpg" alt="2026 BYD Song Pro DM-i 115km Premium Edition PHEV compact SUV — 204 hp, 115 km EV range, FOB Nansha $12,600 export for Africa and Middle East" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🚗 Vehicles · PHEV Export</span>
           </div>
           <div class="post-card-body">
@@ -855,7 +807,11 @@
         <!-- Post 71 — Featured (Latest Parts, June 27 2026) -->
         <article class="post-card featured" data-cat="parts">
           <div class="post-card-img">
-            <img src="assets/blog/hyundai-kia-ignition-coil-alternator-wholesale.jpg" alt="Hyundai Kia ignition coils and alternator assembly wholesale set — OEM-grade electrical parts from Kingmay Auto Parts China for Elantra Tucson Sportage Sonata" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🔧</span>
+              <span class="fallback-title">Hyundai Kia Electrical System Parts Wholesale: Ignition Coil...</span>
+            </div>
+            <img src="assets/blog/hyundai-kia-ignition-coil-alternator-wholesale.jpg" alt="Hyundai Kia ignition coils and alternator assembly wholesale set — OEM-grade electrical parts from Kingmay Auto Parts China for Elantra Tucson Sportage Sonata" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🔧 Auto Parts · Hyundai/Kia</span>
           </div>
           <div class="post-card-body">
@@ -869,7 +825,11 @@
         <!-- Post 64 — (June 4 2026) -->
         <article class="post-card" data-cat="parts">
           <div class="post-card-img">
-            <img src="assets/blog/hyundai-kia-engine-block-cylinder-wholesale.jpg" alt="Hyundai Kia 4-cylinder engine block OEM casting — cylinder bores, main bearing saddles and oil gallery visible for G4NA 2.0L engine wholesale export" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🔧</span>
+              <span class="fallback-title">Hyundai Kia Engine Block, Cylinder Head &amp; Gasket Wholesa...</span>
+            </div>
+            <img src="assets/blog/hyundai-kia-engine-block-cylinder-wholesale.jpg" alt="Hyundai Kia 4-cylinder engine block OEM casting — cylinder bores, main bearing saddles and oil gallery visible for G4NA 2.0L engine wholesale export" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🔧 Auto Parts · Hyundai/Kia</span>
           </div>
           <div class="post-card-body">
@@ -883,7 +843,11 @@
         <!-- Post 63 — (June 3 2026) -->
         <article class="post-card" data-cat="vehicles">
           <div class="post-card-img">
-            <img src="assets/blog/aion-y-plus-2025-front-exterior.jpg" alt="AION Y Plus 2025 electric SUV export for rental and fleet operators — EXW Nansha $12,700 factory-licensed direct export" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🚗</span>
+              <span class="fallback-title">AION Y Plus 2025 Electric SUV Export Guide: EXW Nansha $12,7...</span>
+            </div>
+            <img src="assets/blog/aion-y-plus-2025-front-exterior.jpg" alt="AION Y Plus 2025 electric SUV export for rental and fleet operators — EXW Nansha $12,700 factory-licensed direct export" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🚗 Vehicles · New Energy</span>
           </div>
           <div class="post-card-body">
@@ -897,7 +861,11 @@
         <!-- Post 62 — (June 2 2026) -->
         <article class="post-card" data-cat="parts">
           <div class="post-card-img">
-            <img src="assets/blog/hyundai-kia-automatic-transmission-assembly-oem-genuine.jpg" alt="Hyundai Kia A6MF1 6-speed automatic transmission assembly OEM genuine — complete gearbox unit for wholesale export from China" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🔧</span>
+              <span class="fallback-title">Hyundai Kia Automatic Transmission Parts Wholesale: OEM Gear...</span>
+            </div>
+            <img src="assets/blog/hyundai-kia-automatic-transmission-assembly-oem-genuine.jpg" alt="Hyundai Kia A6MF1 6-speed automatic transmission assembly OEM genuine — complete gearbox unit for wholesale export from China" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🔧 Auto Parts · Hyundai/Kia</span>
           </div>
           <div class="post-card-body">
@@ -911,7 +879,11 @@
         <!-- Post 61 — (June 2 2026) -->
         <article class="post-card" data-cat="vehicles">
           <div class="post-card-img">
-            <img src="assets/blog/toyota-highlander-hybrid-ultimate-front.jpg" alt="Toyota Highlander Hybrid Dual Motor 4x4 Ultimate Edition — FOB Nansha $42,000 export to Central Asia and Middle East" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🚗</span>
+              <span class="fallback-title">Toyota Highlander Hybrid Dual Motor 4&#215;4 Ultimate Editio...</span>
+            </div>
+            <img src="assets/blog/toyota-highlander-hybrid-ultimate-front.jpg" alt="Toyota Highlander Hybrid Dual Motor 4x4 Ultimate Edition — FOB Nansha $42,000 export to Central Asia and Middle East" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🚗 Vehicles · Toyota/Hybrid SUV</span>
           </div>
           <div class="post-card-body">
@@ -925,7 +897,11 @@
         <!-- Post 60 — (June 1 2026) -->
         <article class="post-card" data-cat="parts">
           <div class="post-card-img">
-            <img src="assets/blog/brake-pads-full-set-with-clips.jpg" alt="Hyundai Kia brake pad full set with wear indicator and anti-rattle clips — OEM-grade wholesale export from China" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🔧</span>
+              <span class="fallback-title">Hyundai &amp; Kia Brake Pads: OEM vs Aftermarket — Complete ...</span>
+            </div>
+            <img src="assets/blog/brake-pads-full-set-with-clips.jpg" alt="Hyundai Kia brake pad full set with wear indicator and anti-rattle clips — OEM-grade wholesale export from China" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🔧 Auto Parts · Hyundai/Kia</span>
           </div>
           <div class="post-card-body">
@@ -939,7 +915,11 @@
         <!-- Post 59 — (June 1 2026) -->
         <article class="post-card" data-cat="parts">
           <div class="post-card-img">
-            <img src="assets/blog/kia-mobis-thermostat-housing-assembly-genuine.jpg" alt="Kia MOBIS genuine thermostat housing assembly 25620-03800 wholesale Sportage parts China supplier" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🔧</span>
+              <span class="fallback-title">Kia Sportage Parts Wholesale: Complete 2026 Sourcing Guide f...</span>
+            </div>
+            <img src="assets/blog/kia-mobis-thermostat-housing-assembly-genuine.jpg" alt="Kia MOBIS genuine thermostat housing assembly 25620-03800 wholesale Sportage parts China supplier" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🔧 Auto Parts · Hyundai/Kia</span>
           </div>
           <div class="post-card-body">
@@ -953,7 +933,11 @@
         <!-- Post 58 — (May 28 2026) -->
         <article class="post-card" data-cat="vehicles">
           <div class="post-card-img">
-            <img src="assets/blog/elantra-export-main.jpg" alt="Hyundai Elantra 2026 1.5L Smartstream IVT Luxury sedan export FOB Nansha China Africa Middle East" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🚗</span>
+              <span class="fallback-title">Hyundai Elantra 2026 Export Guide: FOB Nansha $14,900 — Kore...</span>
+            </div>
+            <img src="assets/blog/elantra-export-main.jpg" alt="Hyundai Elantra 2026 1.5L Smartstream IVT Luxury sedan export FOB Nansha China Africa Middle East" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🚗 Vehicles · New Car Export</span>
           </div>
           <div class="post-card-body">
@@ -967,7 +951,11 @@
         <!-- Post 57 — (May 28 2026) -->
         <article class="post-card" data-cat="parts">
           <div class="post-card-img">
-            <img src="assets/blog/hyundai-elantra-engine-overhaul-kit-parts.jpg" alt="Hyundai Elantra engine overhaul kit wholesale China — pistons gaskets crankshaft timing chain water pump OEM-grade parts" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🔧</span>
+              <span class="fallback-title">Hyundai Elantra Parts Online: Complete Wholesale Sourcing Gu...</span>
+            </div>
+            <img src="assets/blog/hyundai-elantra-engine-overhaul-kit-parts.jpg" alt="Hyundai Elantra engine overhaul kit wholesale China — pistons gaskets crankshaft timing chain water pump OEM-grade parts" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🔧 Auto Parts · Hyundai/Kia</span>
           </div>
           <div class="post-card-body">
@@ -981,7 +969,11 @@
         <!-- Post 56 — (May 28 2026) -->
         <article class="post-card" data-cat="vehicles">
           <div class="post-card-img">
-            <img src="assets/products/product_091.jpg" alt="Chinese electric vehicles export UAE Saudi Arabia BYD XPENG GCC EV market 2026" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🚗</span>
+              <span class="fallback-title">Exporting Chinese Electric Vehicles to UAE &amp; Saudi Arabi...</span>
+            </div>
+            <img src="assets/products/product_091.jpg" alt="Chinese electric vehicles export UAE Saudi Arabia BYD XPENG GCC EV market 2026" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🚗 Vehicles · New Car Export</span>
           </div>
           <div class="post-card-body">
@@ -995,7 +987,11 @@
         <!-- Post 55 — (May 27 2026) -->
         <article class="post-card" data-cat="vehicles">
           <div class="post-card-img">
-            <img src="assets/products/product_128.jpg" alt="2026 Toyota Corolla 1.8L HEV Smart Hybrid Elite white sedan export Central Asia Africa FOB Nansha China" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🚗</span>
+              <span class="fallback-title">2026 Toyota Corolla 1.8L HEV Export Guide: Fuel-Saving Hybri...</span>
+            </div>
+            <img src="assets/products/product_128.jpg" alt="2026 Toyota Corolla 1.8L HEV Smart Hybrid Elite white sedan export Central Asia Africa FOB Nansha China" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🚗 Vehicles · New Car Export</span>
           </div>
           <div class="post-card-body">
@@ -1009,7 +1005,11 @@
         <!-- Post 54 — (May 27 2026) -->
         <article class="post-card" data-cat="parts">
           <div class="post-card-img">
-            <img src="assets/blog/hyundai-tucson-engine-gasket-kit-wholesale.jpg" alt="Hyundai Tucson engine gasket kit wholesale OEM cylinder head gasket valve cover seal China supplier" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🔧</span>
+              <span class="fallback-title">Hyundai Tucson Spare Parts Price Guide 2026: Wholesale Sourc...</span>
+            </div>
+            <img src="assets/blog/hyundai-tucson-engine-gasket-kit-wholesale.jpg" alt="Hyundai Tucson engine gasket kit wholesale OEM cylinder head gasket valve cover seal China supplier" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🔧 Auto Parts · Hyundai/Kia</span>
           </div>
           <div class="post-card-body">
@@ -1023,7 +1023,11 @@
         <!-- Post 53 — (May 26 2026) -->
         <article class="post-card" data-cat="vehicles">
           <div class="post-card-img">
-            <img src="assets/products/product_091.jpg" alt="BYD Top 10 Export Models 2026 Prices Specs Market Guide Dolphin Seal Qin Han Tang" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🚗</span>
+              <span class="fallback-title">Top 10 BYD Export Models from China: Prices, Specs & Market ...</span>
+            </div>
+            <img src="assets/products/product_091.jpg" alt="BYD Top 10 Export Models 2026 Prices Specs Market Guide Dolphin Seal Qin Han Tang" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🚗 Vehicles · New Car Export</span>
           </div>
           <div class="post-card-body">
@@ -1037,7 +1041,11 @@
         <!-- Post 52 — (May 26 2026) -->
         <article class="post-card" data-cat="parts">
           <div class="post-card-img">
-            <img src="assets/blog/brake-pads-ceramic-set-blue-coating.jpg" alt="Hyundai Kia Brake Pads OEM vs Aftermarket Ceramic Semi-Metallic Wholesale Buyer's Guide China" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🔧</span>
+              <span class="fallback-title">Brake Pads for Hyundai & Kia: OEM vs Aftermarket — Wholesale...</span>
+            </div>
+            <img src="assets/blog/brake-pads-ceramic-set-blue-coating.jpg" alt="Hyundai Kia Brake Pads OEM vs Aftermarket Ceramic Semi-Metallic Wholesale Buyer's Guide China" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🔧 Auto Parts · Hyundai/Kia</span>
           </div>
           <div class="post-card-body">
@@ -1051,7 +1059,11 @@
         <!-- Post 51 — (May 25 2026) -->
         <article class="post-card" data-cat="parts">
           <div class="post-card-img">
-            <img src="assets/parts/part_033_fuel_injector.jpg" alt="Diesel Engine Parts Sourcing Guide China Injectors Turbochargers Glow Plugs 2026" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🔧</span>
+              <span class="fallback-title">Diesel Engine Parts from China: Complete Sourcing Guide</span>
+            </div>
+            <img src="assets/parts/part_033_fuel_injector.jpg" alt="Diesel Engine Parts Sourcing Guide China Injectors Turbochargers Glow Plugs 2026" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🔧 Auto Parts</span>
           </div>
           <div class="post-card-body">
@@ -1065,7 +1077,11 @@
         <!-- Post 50 — (May 22 2026) -->
         <article class="post-card" data-cat="parts">
           <div class="post-card-img">
-            <img src="assets/parts/part_032_spark_plug.jpg" alt="Top 10 Best Selling Auto Parts Small Dealer Stock China 2026" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🔧</span>
+              <span class="fallback-title">Top 10 Best-Selling Auto Parts Every Small Dealer Should Sto...</span>
+            </div>
+            <img src="assets/parts/part_032_spark_plug.jpg" alt="Top 10 Best Selling Auto Parts Small Dealer Stock China 2026" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🔧 Auto Parts</span>
           </div>
           <div class="post-card-body">
@@ -1079,7 +1095,11 @@
         <!-- Post 49 — (May 21 2026) -->
         <article class="post-card" data-cat="vehicles">
           <div class="post-card-img">
-            <img src="assets/products/product_105.jpg" alt="China vehicle export Russia GOST certification EAC import guide 2026" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🚗</span>
+              <span class="fallback-title">China's New Vehicle Export to Russia in 2026: GOST Certifica...</span>
+            </div>
+            <img src="assets/products/product_105.jpg" alt="China vehicle export Russia GOST certification EAC import guide 2026" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🚗 Vehicles</span>
           </div>
           <div class="post-card-body">
@@ -1093,7 +1113,11 @@
         <!-- Post 48 — (May 20 2026) -->
         <article class="post-card" data-cat="vehicles">
           <div class="post-card-img">
-            <img src="assets/products/product_105.jpg" alt="Chinese compact sedans SUVs under 12000 USD FOB China export Africa Southeast Asia" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🚗</span>
+              <span class="fallback-title">Chinese Compact Sedans & SUVs Under $12,000 FOB: Best Value ...</span>
+            </div>
+            <img src="assets/products/product_105.jpg" alt="Chinese compact sedans SUVs under 12000 USD FOB China export Africa Southeast Asia" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🚗 Vehicles</span>
           </div>
           <div class="post-card-body">
@@ -1107,7 +1131,11 @@
         <!-- Post 31 — Previously Featured (May 19 2026) -->
         <article class="post-card" data-cat="vehicles">
           <div class="post-card-img">
-            <img src="assets/products/product_205.jpg" alt="Dongfeng Sokon K07S microvan export Africa Asia commercial fleet" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🚗</span>
+              <span class="fallback-title">Dongfeng Sokon K07S: The $6,450 Microvan That Is Taking Over...</span>
+            </div>
+            <img src="assets/products/product_205.jpg" alt="Dongfeng Sokon K07S microvan export Africa Asia commercial fleet" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🚗 Vehicles</span>
           </div>
           <div class="post-card-body">
@@ -1121,7 +1149,11 @@
         <!-- Post 30 — (May 19 2026) -->
         <article class="post-card" data-cat="parts">
           <div class="post-card-img">
-            <img src="assets/parts/part_061_control_arm.jpg" alt="Private Label Auto Parts Build Brand Chinese Factories Wholesaler Guide" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🔧</span>
+              <span class="fallback-title">Private Label Auto Parts: How to Build Your Own Brand from C...</span>
+            </div>
+            <img src="assets/parts/part_061_control_arm.jpg" alt="Private Label Auto Parts Build Brand Chinese Factories Wholesaler Guide" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🔧 Auto Parts</span>
           </div>
           <div class="post-card-body">
@@ -1135,7 +1167,11 @@
         <!-- Post 29 — (May 22 2026) -->
         <article class="post-card" data-cat="parts">
           <div class="post-card-img">
-            <img src="assets/blog/hyundai-switch-93600-c5350.png" alt="Hyundai Kia OEM switch assembly lock cylinder eBay reseller guide" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🔧</span>
+              <span class="fallback-title">Hyundai & Kia OEM Parts for eBay Resellers: Switch Assemblie...</span>
+            </div>
+            <img src="assets/blog/hyundai-switch-93600-c5350.png" alt="Hyundai Kia OEM switch assembly lock cylinder eBay reseller guide" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🔧 Auto Parts</span>
           </div>
           <div class="post-card-body">
@@ -1149,7 +1185,11 @@
         <!-- Post 28 — Previously Featured (May 19 2026) -->
         <article class="post-card" data-cat="parts">
           <div class="post-card-img">
-            <img src="assets/parts/part_034_fuel_pump.jpg" alt="Auto Parts Import Duty Cheat Sheet Africa Middle East" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🔧</span>
+              <span class="fallback-title">Auto Parts Import Duty Cheat Sheet: Kenya, Nigeria, Ghana, U...</span>
+            </div>
+            <img src="assets/parts/part_034_fuel_pump.jpg" alt="Auto Parts Import Duty Cheat Sheet Africa Middle East" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🔧 Auto Parts</span>
           </div>
           <div class="post-card-body">
@@ -1163,7 +1203,11 @@
         <!-- Post 26 — (May 20 2026) -->
         <article class="post-card" data-cat="parts">
           <div class="post-card-img">
-            <img src="assets/parts/part_063_sway_bar_link.jpg" alt="Top 15 Auto Parts That Fail Before 150000 km Repair Shop Guide" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🔧</span>
+              <span class="fallback-title">Top 15 Auto Parts That Fail Before 150,000 km — What Every R...</span>
+            </div>
+            <img src="assets/parts/part_063_sway_bar_link.jpg" alt="Top 15 Auto Parts That Fail Before 150000 km Repair Shop Guide" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🔧 Auto Parts</span>
           </div>
           <div class="post-card-body">
@@ -1177,7 +1221,11 @@
         <!-- Post 25 — (May 15 2026) -->
         <article class="post-card" data-cat="parts">
           <div class="post-card-img">
-            <img src="assets/parts/part_044_engine_piston.jpg" alt="Top 20 Most Profitable Auto Parts Import China 2026" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🔧</span>
+              <span class="fallback-title">Top 20 Most Profitable Auto Parts to Import from China in 20...</span>
+            </div>
+            <img src="assets/parts/part_044_engine_piston.jpg" alt="Top 20 Most Profitable Auto Parts Import China 2026" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🔧 Auto Parts</span>
           </div>
           <div class="post-card-body">
@@ -1191,7 +1239,11 @@
         <!-- Post 21 — (May 14 2026) -->
         <article class="post-card featured" data-cat="vehicles">
           <div class="post-card-img">
-            <img src="assets/products/product_149.jpg" alt="VW T-Roc 2026 China Export Compact SUV Guide" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🚗</span>
+              <span class="fallback-title">2026 VW T-Roc from China: European Engineering at Export Pri...</span>
+            </div>
+            <img src="assets/products/product_149.jpg" alt="VW T-Roc 2026 China Export Compact SUV Guide" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🚗 Vehicles</span>
           </div>
           <div class="post-card-body">
@@ -1205,7 +1257,11 @@
         <!-- Post 20 — Featured (May 14 2026) -->
         <article class="post-card featured" data-cat="vehicles">
           <div class="post-card-img">
-            <img src="assets/products/product_003.jpg" alt="China NEV Export Latin America Brazil Mexico Chile 2026" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🚗</span>
+              <span class="fallback-title">China NEV Export to Latin America in 2026: Brazil, Mexico & ...</span>
+            </div>
+            <img src="assets/products/product_003.jpg" alt="China NEV Export Latin America Brazil Mexico Chile 2026" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🚗 Vehicles</span>
           </div>
           <div class="post-card-body">
@@ -1219,7 +1275,11 @@
         <!-- Post 19 — Previously Featured (May 11 2026) -->
         <article class="post-card" data-cat="parts">
           <div class="post-card-img">
-            <img src="assets/parts/part_075_cv_axle_shaft.jpg" alt="Transmission Drivetrain Parts CV Axle Clutch Kit China Sourcing Guide 2026" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🔧</span>
+              <span class="fallback-title">Transmission &amp; Drivetrain Parts from China: CV Axles, Cl...</span>
+            </div>
+            <img src="assets/parts/part_075_cv_axle_shaft.jpg" alt="Transmission Drivetrain Parts CV Axle Clutch Kit China Sourcing Guide 2026" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🔧 Auto Parts</span>
           </div>
           <div class="post-card-body">
@@ -1233,7 +1293,11 @@
         <!-- Post 17 — Previously Featured (May 8 2026) -->
         <article class="post-card" data-cat="vehicles">
           <div class="post-card-img">
-            <img src="assets/gallery/A_professional_side_by_side_co_2026-05-08T07-01-30.png" alt="Hyundai Tucson vs Chery Tiggo 8 SUV Comparison 2026" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🚗</span>
+              <span class="fallback-title">Hyundai Tucson vs Chery Tiggo 8: Korean Reliability or Chine...</span>
+            </div>
+            <img src="assets/gallery/A_professional_side_by_side_co_2026-05-08T07-01-30.png" alt="Hyundai Tucson vs Chery Tiggo 8 SUV Comparison 2026" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🚗 Vehicles</span>
           </div>
           <div class="post-card-body">
@@ -1247,7 +1311,11 @@
         <!-- Post 16 — Previously Featured (May 8 2026) -->
         <article class="post-card" data-cat="parts">
           <div class="post-card-img">
-            <img src="assets/parts/part_039_oxygen_sensor.jpg" alt="Exhaust System Catalytic Converter China Sourcing Guide 2026" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🔧</span>
+              <span class="fallback-title">Exhaust System &amp; Catalytic Converter Parts from China: A...</span>
+            </div>
+            <img src="assets/parts/part_039_oxygen_sensor.jpg" alt="Exhaust System Catalytic Converter China Sourcing Guide 2026" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🔧 Auto Parts</span>
           </div>
           <div class="post-card-body">
@@ -1261,7 +1329,11 @@
         <!-- Post 18 — ROX Adamas (Updated May 14 2026) -->
         <article class="post-card" data-cat="vehicles">
           <div class="post-card-img">
-            <img src="assets/products/product_131.jpg" alt="2026 ROX Adamas EREV 7-seat luxury off-road SUV China export" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🚗</span>
+              <span class="fallback-title">2026 ROX Adamas EREV: Full Specs, FOB Pricing &amp; Import G...</span>
+            </div>
+            <img src="assets/products/product_131.jpg" alt="2026 ROX Adamas EREV 7-seat luxury off-road SUV China export" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🚗 Vehicles</span>
           </div>
           <div class="post-card-body">
@@ -1275,7 +1347,11 @@
         <!-- Post 15 — Previously Featured (Apr 22 2026) -->
         <article class="post-card" data-cat="vehicles">
           <div class="post-card-img">
-            <img src="assets/products/product_121.jpg" alt="Geely Coolray VW T-Roc Skoda Tharu Jetta VS5 export price 2026" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🚗</span>
+              <span class="fallback-title">Geely Coolray, VW T-Roc, Skoda Tharu XR &amp; Jetta VS5: Bes...</span>
+            </div>
+            <img src="assets/products/product_121.jpg" alt="Geely Coolray VW T-Roc Skoda Tharu Jetta VS5 export price 2026" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🚗 Vehicles</span>
           </div>
           <div class="post-card-body">
@@ -1288,7 +1364,11 @@
         <!-- Post 14 — Africa Used Cars (Apr 21 2026) -->
         <article class="post-card" data-cat="vehicles">
           <div class="post-card-img">
-            <img src="assets/products/product_008.jpg" alt="China Used Car Export Africa Kenya Nigeria Ghana 2026" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🚗</span>
+              <span class="fallback-title">China Used Car Exports to Africa in 2026: Kenya, Nigeria &am...</span>
+            </div>
+            <img src="assets/products/product_008.jpg" alt="China Used Car Export Africa Kenya Nigeria Ghana 2026" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🚗 Vehicles</span>
           </div>
           <div class="post-card-body">
@@ -1302,7 +1382,11 @@
         <!-- Post 13 — Previously Featured (Apr 16 2026) -->
         <article class="post-card" data-cat="vehicles">
           <div class="post-card-img">
-            <img src="assets/products/product_003.jpg" alt="BYD Export Middle East GCC EVs 2026" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🚗</span>
+              <span class="fallback-title">BYD Seal U, Han &amp; Dolphin in the Middle East: Why Chines...</span>
+            </div>
+            <img src="assets/products/product_003.jpg" alt="BYD Export Middle East GCC EVs 2026" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🚗 Vehicles</span>
           </div>
           <div class="post-card-body">
@@ -1316,7 +1400,11 @@
         <!-- Post 12 — Electrical Parts (Previously Featured) -->
         <article class="post-card" data-cat="parts">
           <div class="post-card-img">
-            <img src="assets/parts/part_077_alternator.jpg" alt="Electrical System Auto Parts China Alternators Starters Wiring Harnesses" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🔧</span>
+              <span class="fallback-title">Electrical System Auto Parts from China: Alternators, Starte...</span>
+            </div>
+            <img src="assets/parts/part_077_alternator.jpg" alt="Electrical System Auto Parts China Alternators Starters Wiring Harnesses" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🔧 Auto Parts</span>
           </div>
           <div class="post-card-body">
@@ -1330,7 +1418,11 @@
         <!-- Post 11 — Used Car Export Australia -->
         <article class="post-card" data-cat="vehicles">
           <div class="post-card-img">
-            <img src="assets/products/product_016.jpg" alt="Used Car Export Australia from China 2026 RAWS compliance" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🚗</span>
+              <span class="fallback-title">Exporting Used Cars from China to Australia: Compliance, Cos...</span>
+            </div>
+            <img src="assets/products/product_016.jpg" alt="Used Car Export Australia from China 2026 RAWS compliance" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🚗 Vehicles</span>
           </div>
           <div class="post-card-body">
@@ -1344,7 +1436,11 @@
         <!-- Post 10 — Brake Parts Sourcing -->
         <article class="post-card" data-cat="parts">
           <div class="post-card-img">
-            <img src="assets/parts/part_068_wheel_bearing.jpg" alt="Brake Parts Wholesale China Pads Discs Calipers" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🔧</span>
+              <span class="fallback-title">Sourcing Brake Parts from China: Pads, Discs &amp; Calipers ...</span>
+            </div>
+            <img src="assets/parts/part_068_wheel_bearing.jpg" alt="Brake Parts Wholesale China Pads Discs Calipers" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🔧 Auto Parts</span>
           </div>
           <div class="post-card-body">
@@ -1358,7 +1454,11 @@
         <!-- Post 9 — Featured (Previously Latest, Apr 9 2026) -->
         <article class="post-card" data-cat="vehicles">
           <div class="post-card-img">
-            <img src="assets/products/product_003.jpg" alt="China PHEV Export Southeast Asia BYD Geely 2026" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🚗</span>
+              <span class="fallback-title">China PHEV Export to Southeast Asia in 2026: BYD, Geely &amp...</span>
+            </div>
+            <img src="assets/products/product_003.jpg" alt="China PHEV Export Southeast Asia BYD Geely 2026" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🚗 Vehicles</span>
           </div>
           <div class="post-card-body">
@@ -1372,7 +1472,11 @@
         <!-- Post 1 — OEM vs Aftermarket (previously Featured) -->
         <article class="post-card" data-cat="parts">
           <div class="post-card-img">
-            <img src="assets/parts/part_031_ignition_coil.jpg" alt="OEM vs Aftermarket Auto Parts China" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🔧</span>
+              <span class="fallback-title">OEM vs Aftermarket Auto Parts from China: A Practical Buyer'...</span>
+            </div>
+            <img src="assets/parts/part_031_ignition_coil.jpg" alt="OEM vs Aftermarket Auto Parts China" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🔧 Auto Parts</span>
           </div>
           <div class="post-card-body">
@@ -1386,7 +1490,11 @@
         <!-- Post 2 -->
         <article class="post-card" data-cat="vehicles">
           <div class="post-card-img">
-            <img src="assets/products/product_001.jpg" alt="Export New Cars from China" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🚗</span>
+              <span class="fallback-title">How to Import New Chinese Cars in 2026: Step-by-Step Process...</span>
+            </div>
+            <img src="assets/products/product_001.jpg" alt="Export New Cars from China" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🚗 Vehicles</span>
           </div>
           <div class="post-card-body">
@@ -1400,7 +1508,11 @@
         <!-- Post 3 -->
         <article class="post-card" data-cat="parts">
           <div class="post-card-img">
-            <img src="assets/parts/part_039_oxygen_sensor.jpg" alt="Engine Sensor Troubleshooting Guide" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🔧</span>
+              <span class="fallback-title">5 Engine Sensors That Fail Most Often — and How to Source Re...</span>
+            </div>
+            <img src="assets/parts/part_039_oxygen_sensor.jpg" alt="Engine Sensor Troubleshooting Guide" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🔧 Auto Parts</span>
           </div>
           <div class="post-card-body">
@@ -1414,7 +1526,11 @@
         <!-- Post 4 -->
         <article class="post-card" data-cat="vehicles">
           <div class="post-card-img">
-            <img src="assets/products/product_016.jpg" alt="Shipping Cars from Guangzhou Nansha Port" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🚗</span>
+              <span class="fallback-title">Nansha Port, Guangzhou: Why It's Becoming the #1 Choice for ...</span>
+            </div>
+            <img src="assets/products/product_016.jpg" alt="Shipping Cars from Guangzhou Nansha Port" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🚗 Vehicles</span>
           </div>
           <div class="post-card-body">
@@ -1428,7 +1544,11 @@
         <!-- Post 5 -->
         <article class="post-card" data-cat="vehicles">
           <div class="post-card-img">
-            <img src="assets/products/product_008.jpg" alt="Used Car Export Market Trends 2026" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🚗</span>
+              <span class="fallback-title">Used Car Export from China in 2026: Which Models Are Selling...</span>
+            </div>
+            <img src="assets/products/product_008.jpg" alt="Used Car Export Market Trends 2026" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🚗 Vehicles</span>
           </div>
           <div class="post-card-body">
@@ -1442,7 +1562,11 @@
         <!-- Post 6 -->
         <article class="post-card" data-cat="parts">
           <div class="post-card-img">
-            <img src="assets/parts/part_046_water_pump.jpg" alt="Cooling System Parts Wholesale China" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🔧</span>
+              <span class="fallback-title">Sourcing Cooling System Parts from China: Water Pumps, Radia...</span>
+            </div>
+            <img src="assets/parts/part_046_water_pump.jpg" alt="Cooling System Parts Wholesale China" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🔧 Auto Parts</span>
           </div>
           <div class="post-card-body">
@@ -1456,7 +1580,11 @@
         <!-- Post 7 -->
         <article class="post-card" data-cat="parts">
           <div class="post-card-img">
-            <img src="assets/parts/part_066_control_arm.jpg" alt="Suspension Parts Guide" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🔧</span>
+              <span class="fallback-title">Suspension &amp; Steering Parts: What Quality Grades Mean fo...</span>
+            </div>
+            <img src="assets/parts/part_066_control_arm.jpg" alt="Suspension Parts Guide" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🔧 Auto Parts</span>
           </div>
           <div class="post-card-body">
@@ -1470,7 +1598,11 @@
         <!-- Post 8 -->
         <article class="post-card" data-cat="vehicles">
           <div class="post-card-img">
-            <img src="assets/products/product_022.jpg" alt="EV Electric Car Export China" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🚗</span>
+              <span class="fallback-title">Exporting Chinese Electric Vehicles in 2026: Regulations, In...</span>
+            </div>
+            <img src="assets/products/product_022.jpg" alt="EV Electric Car Export China" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🚗 Vehicles</span>
           </div>
           <div class="post-card-body">
@@ -1485,7 +1617,11 @@
         <!--
         <article class="post-card" data-cat="vehicles">
           <div class="post-card-img">
-            <img src="assets/products/product_145.jpg" alt="Skoda Tharu XR 2026 China Export SUV" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🚗</span>
+              <span class="fallback-title">2026 Skoda Tharu XR from China: VW Group Engineering at Skod...</span>
+            </div>
+            <img src="assets/products/product_145.jpg" alt="Skoda Tharu XR 2026 China Export SUV" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🚗 Vehicles</span>
           </div>
           <div class="post-card-body">
@@ -1501,7 +1637,11 @@
         <!--
         <article class="post-card" data-cat="vehicles">
           <div class="post-card-img">
-            <img src="assets/products/product_113.jpg" alt="Jetta VS5 2026 China Export Compact SUV" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🚗</span>
+              <span class="fallback-title">2026 Jetta VS5 from China: VW Group Engineering for Budget-C...</span>
+            </div>
+            <img src="assets/products/product_113.jpg" alt="Jetta VS5 2026 China Export Compact SUV" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🚗 Vehicles</span>
           </div>
           <div class="post-card-body">
@@ -1517,7 +1657,11 @@
         <!--
         <article class="post-card" data-cat="vehicles">
           <div class="post-card-img">
-            <img src="assets/products/product_121.jpg" alt="Geely Coolray 2026 Three Variants Export Guide" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🚗</span>
+              <span class="fallback-title">2026 Geely Coolray: Three Variants from $8,100 FOB — A Compl...</span>
+            </div>
+            <img src="assets/products/product_121.jpg" alt="Geely Coolray 2026 Three Variants Export Guide" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🚗 Vehicles</span>
           </div>
           <div class="post-card-body">
@@ -1532,7 +1676,11 @@
               <!-- Post 32 — Geely Coolray 1.5TD DCT (AT) — (May 20, 2026) -->
         <article class="post-card" data-cat="vehicles">
           <div class="post-card-img">
-            <img src="assets/products/product_204.jpg" alt="Geely Coolray 1.5TD DCT (AT) — Best-Selling Chinese Compact SUV for Export" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🚗</span>
+              <span class="fallback-title">Geely Coolray 1.5TD DCT (AT) — Best-Selling Chinese Compact ...</span>
+            </div>
+            <img src="assets/products/product_204.jpg" alt="Geely Coolray 1.5TD DCT (AT) — Best-Selling Chinese Compact SUV for Export" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🚗 Vehicles</span>
           </div>
           <div class="post-card-body">
@@ -1546,7 +1694,11 @@
         <!-- Post 33 — Geely Coolray 1.5TD Manual — B (May 21, 2026) -->
         <article class="post-card" data-cat="vehicles">
           <div class="post-card-img">
-            <img src="assets/products/product_121.jpg" alt="Geely Coolray 1.5TD Manual — Budget SUV Champion at $8,200 FOB" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🚗</span>
+              <span class="fallback-title">Geely Coolray 1.5TD Manual — Budget SUV Champion at $8,200 F...</span>
+            </div>
+            <img src="assets/products/product_121.jpg" alt="Geely Coolray 1.5TD Manual — Budget SUV Champion at $8,200 FOB" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🚗 Vehicles</span>
           </div>
           <div class="post-card-body">
@@ -1560,7 +1712,11 @@
         <!-- Post 34 — MG5 1.8T DCT — Global Best-Sel (May 22, 2026) -->
         <article class="post-card" data-cat="vehicles">
           <div class="post-card-img">
-            <img src="assets/products/product_125.jpg" alt="MG5 1.8T DCT — Global Best-Selling Sedan from China, Now $8,700 FOB" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🚗</span>
+              <span class="fallback-title">MG5 1.8T DCT — Global Best-Selling Sedan from China, Now $8,...</span>
+            </div>
+            <img src="assets/products/product_125.jpg" alt="MG5 1.8T DCT — Global Best-Selling Sedan from China, Now $8,700 FOB" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🚗 Vehicles</span>
           </div>
           <div class="post-card-body">
@@ -1574,7 +1730,11 @@
         <!-- Post 35 — MG5 1.5L Manual — The Most Aff (May 23, 2026) -->
         <article class="post-card" data-cat="vehicles">
           <div class="post-card-img">
-            <img src="assets/products/product_208.jpg" alt="MG5 1.5L Manual — The Most Affordable Global Sedan at $7,600 FOB" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🚗</span>
+              <span class="fallback-title">MG5 1.5L Manual — The Most Affordable Global Sedan at $7,600...</span>
+            </div>
+            <img src="assets/products/product_208.jpg" alt="MG5 1.5L Manual — The Most Affordable Global Sedan at $7,600 FOB" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🚗 Vehicles</span>
           </div>
           <div class="post-card-body">
@@ -1588,7 +1748,11 @@
         <!-- Post 36 — JETTA VS5 1.4T DSG — Volkswage (May 24, 2026) -->
         <article class="post-card" data-cat="vehicles">
           <div class="post-card-img">
-            <img src="assets/products/product_209.jpg" alt="JETTA VS5 1.4T DSG — Volkswagen Engineering at Chinese Export Price $13,100" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🚗</span>
+              <span class="fallback-title">JETTA VS5 1.4T DSG — Volkswagen Engineering at Chinese Expor...</span>
+            </div>
+            <img src="assets/products/product_209.jpg" alt="JETTA VS5 1.4T DSG — Volkswagen Engineering at Chinese Export Price $13,100" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🚗 Vehicles</span>
           </div>
           <div class="post-card-body">
@@ -1602,7 +1766,11 @@
         <!-- Post 37 — Volkswagen T-Roc 300TSI — Icon (May 25, 2026) -->
         <article class="post-card" data-cat="vehicles">
           <div class="post-card-img">
-            <img src="assets/products/product_210.jpg" alt="Volkswagen T-Roc 300TSI — Iconic European SUV Made in China at $19,400" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🚗</span>
+              <span class="fallback-title">Volkswagen T-Roc 300TSI — Iconic European SUV Made in China ...</span>
+            </div>
+            <img src="assets/products/product_210.jpg" alt="Volkswagen T-Roc 300TSI — Iconic European SUV Made in China at $19,400" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🚗 Vehicles</span>
           </div>
           <div class="post-card-body">
@@ -1616,7 +1784,11 @@
         <!-- Post 38 — Roewe i5 1.5L Manual — Ultra-B (May 26, 2026) -->
         <article class="post-card" data-cat="vehicles">
           <div class="post-card-img">
-            <img src="assets/products/product_207.jpg" alt="Roewe i5 1.5L Manual — Ultra-Budget Sedan for Fleet Buyers at $6,800" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🚗</span>
+              <span class="fallback-title">Roewe i5 1.5L Manual — Ultra-Budget Sedan for Fleet Buyers a...</span>
+            </div>
+            <img src="assets/products/product_207.jpg" alt="Roewe i5 1.5L Manual — Ultra-Budget Sedan for Fleet Buyers at $6,800" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🚗 Vehicles</span>
           </div>
           <div class="post-card-body">
@@ -1630,7 +1802,11 @@
         <!-- Post 39 — Livan X3 Pro 1.5L CVT — Cheape (May 27, 2026) -->
         <article class="post-card" data-cat="vehicles">
           <div class="post-card-img">
-            <img src="assets/products/product_211.jpg" alt="Livan X3 Pro 1.5L CVT — Cheapest New SUV for African Markets at $7,800" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🚗</span>
+              <span class="fallback-title">Livan X3 Pro 1.5L CVT — Cheapest New SUV for African Markets...</span>
+            </div>
+            <img src="assets/products/product_211.jpg" alt="Livan X3 Pro 1.5L CVT — Cheapest New SUV for African Markets at $7,800" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🚗 Vehicles</span>
           </div>
           <div class="post-card-body">
@@ -1644,7 +1820,11 @@
         <!-- Post 40 — Livan X3 Pro 1.5L Manual — Bud (May 28, 2026) -->
         <article class="post-card" data-cat="vehicles">
           <div class="post-card-img">
-            <img src="assets/products/product_212.jpg" alt="Livan X3 Pro 1.5L Manual — Budget Mini SUV Under $7,100 FOB" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🚗</span>
+              <span class="fallback-title">Livan X3 Pro 1.5L Manual — Budget Mini SUV Under $7,100 FOB</span>
+            </div>
+            <img src="assets/products/product_212.jpg" alt="Livan X3 Pro 1.5L Manual — Budget Mini SUV Under $7,100 FOB" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🚗 Vehicles</span>
           </div>
           <div class="post-card-body">
@@ -1658,7 +1838,11 @@
         <!-- Post 41 — GAC Trumpchi GS3 R-Style — Pre (May 29, 2026) -->
         <article class="post-card" data-cat="vehicles">
           <div class="post-card-img">
-            <img src="assets/products/product_216.jpg" alt="GAC Trumpchi GS3 R-Style — Premium Compact SUV with Full ADAS at $11,200" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🚗</span>
+              <span class="fallback-title">GAC Trumpchi GS3 R-Style — Premium Compact SUV with Full ADA...</span>
+            </div>
+            <img src="assets/products/product_216.jpg" alt="GAC Trumpchi GS3 R-Style — Premium Compact SUV with Full ADAS at $11,200" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🚗 Vehicles</span>
           </div>
           <div class="post-card-body">
@@ -1672,7 +1856,11 @@
         <!-- Post 42 — Kia Seltos 1.5L IVT — Korean Q (May 30, 2026) -->
         <article class="post-card" data-cat="vehicles">
           <div class="post-card-img">
-            <img src="assets/products/product_126.jpg" alt="Kia Seltos 1.5L IVT — Korean Quality at $11,700 FOB Nansha" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🚗</span>
+              <span class="fallback-title">Kia Seltos 1.5L IVT — Korean Quality at $11,700 FOB Nansha</span>
+            </div>
+            <img src="assets/products/product_126.jpg" alt="Kia Seltos 1.5L IVT — Korean Quality at $11,700 FOB Nansha" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🚗 Vehicles</span>
           </div>
           <div class="post-card-body">
@@ -1686,7 +1874,11 @@
         <!-- Post 43 — Kia Sportage 2.0L AT — 7 Milli (May 31, 2026) -->
         <article class="post-card" data-cat="vehicles">
           <div class="post-card-img">
-            <img src="assets/products/product_217.jpg" alt="Kia Sportage 2.0L AT — 7 Million Units Sold Worldwide, Now $10,000 FOB" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🚗</span>
+              <span class="fallback-title">Kia Sportage 2.0L AT — 7 Million Units Sold Worldwide, Now $...</span>
+            </div>
+            <img src="assets/products/product_217.jpg" alt="Kia Sportage 2.0L AT — 7 Million Units Sold Worldwide, Now $10,000 FOB" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🚗 Vehicles</span>
           </div>
           <div class="post-card-body">
@@ -1700,7 +1892,11 @@
         <!-- Post 44 — Volkswagen Golf 300TSI — World (June 1, 2026) -->
         <article class="post-card" data-cat="vehicles">
           <div class="post-card-img">
-            <img src="assets/products/product_218.jpg" alt="Volkswagen Golf 300TSI — World's Best-Selling Hatchback Made in China at $20,200" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🚗</span>
+              <span class="fallback-title">Volkswagen Golf 300TSI — World's Best-Selling Hatchback Made...</span>
+            </div>
+            <img src="assets/products/product_218.jpg" alt="Volkswagen Golf 300TSI — World's Best-Selling Hatchback Made in China at $20,200" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🚗 Vehicles</span>
           </div>
           <div class="post-card-body">
@@ -1714,7 +1910,11 @@
         <!-- Post 45 — Engine Overhaul Parts Guide — May 20, 2026 -->
         <article class="post-card" data-cat="parts">
           <div class="post-card-img">
-            <img src="assets/parts/part_044_engine_piston.jpg" alt="Engine overhaul parts pistons crankshafts gasket sets China wholesale" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🔧</span>
+              <span class="fallback-title">Complete Engine Overhaul Parts Sourcing Guide 2026: Pistons,...</span>
+            </div>
+            <img src="assets/parts/part_044_engine_piston.jpg" alt="Engine overhaul parts pistons crankshafts gasket sets China wholesale" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🔧 Auto Parts</span>
           </div>
           <div class="post-card-body">
@@ -1728,7 +1928,11 @@
         <!-- Post 46 — Toyota Africa Export Guide — May 20, 2026 -->
         <article class="post-card" data-cat="vehicles">
           <div class="post-card-img">
-            <img src="assets/products/product_129.jpg" alt="Toyota Land Cruiser Prado export Africa Middle East used car" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🚗</span>
+              <span class="fallback-title">Toyota Land Cruiser & Hilux Used Car Export from China to Af...</span>
+            </div>
+            <img src="assets/products/product_129.jpg" alt="Toyota Land Cruiser Prado export Africa Middle East used car" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🚗 Vehicles</span>
           </div>
           <div class="post-card-body">
@@ -1742,7 +1946,11 @@
         <!-- Post 47 — Auto Parts (May 20 2026) -->
         <article class="post-card" data-cat="parts">
           <div class="post-card-img">
-            <img src="assets/parts/part_041_pcv_valve.jpg" alt="Auto filter wholesale sourcing guide oil air fuel cabin filters China 2026" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🔧</span>
+              <span class="fallback-title">Auto Filter Wholesale Sourcing from China: Oil, Air, Fuel & ...</span>
+            </div>
+            <img src="assets/parts/part_041_pcv_valve.jpg" alt="Auto filter wholesale sourcing guide oil air fuel cabin filters China 2026" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🔧 Auto Parts</span>
           </div>
           <div class="post-card-body">
@@ -1756,7 +1964,11 @@
         <!-- Post 48 — Vehicles (May 20 2026) -->
         <article class="post-card" data-cat="vehicles">
           <div class="post-card-img">
-            <img src="assets/products/product_105.jpg" alt="Chinese compact sedans SUVs under 12000 FOB China export 2026" onerror="this.style.display='none'" loading="lazy" />
+            <div class="img-fallback">
+              <span class="fallback-icon">🚗</span>
+              <span class="fallback-title">Chinese Compact Sedans & SUVs Under $12,000 FOB: Best Value ...</span>
+            </div>
+            <img src="assets/products/product_105.jpg" alt="Chinese compact sedans SUVs under 12000 FOB China export 2026" onerror="handleImgError(this)" loading="lazy" />
             <span class="post-cat-label">🚗 Vehicles</span>
           </div>
           <div class="post-card-body">
@@ -1770,7 +1982,7 @@
 </div><!-- /posts-grid -->
 
       <!-- PAGINATION -->
-      <nav class="blog-pagination" aria-label="Blog pagination">
+      <nav class="blog-pagination" id="blog-pagination" aria-label="Blog pagination">
         <a href="#" class="active">1</a>
         <a href="#">2</a>
         <a href="#">3</a>
@@ -1971,200 +2183,179 @@
   </footer>
 
   <script src="script.js"></script>
+
   <script>
-    // ── Magazine-style blog with hero row + paginated 3-col grid ──
-    (function() {
-      const grid = document.getElementById('posts-grid');
-      const allCards = Array.from(grid.querySelectorAll('.post-card'));
-      const sidebar = document.querySelector('.blog-sidebar');
-      const paginationContainer = document.createElement('div');
-      paginationContainer.className = 'blog-pagination';
+    // ── Plan B: Dual-Track Dashboard + Pagination ───────────
 
-      let currentCat = 'all';
-      let currentPage = 1;
-      const PER_PAGE = 9;
+    const PAGE_SIZE = 9;
+    let currentPage = 1;
+    let currentFilter = 'all';
 
-      function buildLayout() {
-        // Filter by category
-        let cards = allCards;
-        if (currentCat !== 'all') {
-          cards = allCards.filter(function(c) { return c.dataset.cat === currentCat; });
-        }
+    // Image error handler: show fallback instead of blank
+    function handleImgError(img) {
+      const container = img.closest('.post-card-img');
+      if (container) container.classList.add('img-error');
+    }
 
-        if (cards.length === 0) {
-          grid.innerHTML = '<div class="empty-state"><h3>No articles found</h3><p>Try selecting a different category.</p></div>';
-          paginationContainer.innerHTML = '';
-          if (sidebar) sidebar.style.display = 'none';
-          return;
-        }
-        if (sidebar) sidebar.style.display = '';
+    // Get all cards from the DOM
+    function getAllCards() {
+      return Array.from(document.querySelectorAll('#posts-grid .post-card'));
+    }
 
-        // Split: first 3 -> hero, rest -> paginated grid
-        var heroCards = cards.slice(0, 3);
-        var gridCards = cards.slice(3);
-        var totalPages = Math.ceil(gridCards.length / PER_PAGE) || 1;
+    // Count articles by category
+    function countArticles() {
+      const cards = getAllCards();
+      const vCount = cards.filter(c => c.dataset.cat === 'vehicles').length;
+      const pCount = cards.filter(c => c.dataset.cat === 'parts').length;
+      document.getElementById('stat-total').textContent = cards.length;
+      document.getElementById('stat-vehicles').textContent = vCount;
+      document.getElementById('stat-parts').textContent = pCount;
+      document.getElementById('vehicles-count').textContent = vCount + ' articles';
+      document.getElementById('parts-count').textContent = pCount + ' articles';
+      document.getElementById('all-count').textContent = cards.length + ' articles';
+    }
 
-        // Clamp current page
-        if (currentPage > totalPages) currentPage = 1;
-        if (currentPage < 1) currentPage = 1;
+    // Build dual-track featured cards (top 4 from each category)
+    function buildDualTrack() {
+      const cards = getAllCards();
+      const vCards = cards.filter(c => c.dataset.cat === 'vehicles').slice(0, 4);
+      const pCards = cards.filter(c => c.dataset.cat === 'parts').slice(0, 4);
 
-        var startIdx = (currentPage - 1) * PER_PAGE;
-        var pageCards = gridCards.slice(startIdx, startIdx + PER_PAGE);
+      const vContainer = document.getElementById('track-vehicles-cards');
+      const pContainer = document.getElementById('track-parts-cards');
 
-        // Build HTML
-        var html = '';
+      vContainer.innerHTML = '';
+      pContainer.innerHTML = '';
 
-        // Hero Row
-        html += '<div class="hero-row">';
-        heroCards.forEach(function(card) {
-          var img = card.querySelector('.post-card-img');
-          var catLabel = card.querySelector('.post-cat-label');
-          var meta = card.querySelector('.post-meta');
-          var title = card.querySelector('.post-title');
-          var excerpt = card.querySelector('.post-excerpt');
-          var link = card.querySelector('.post-read-more');
-
-          html += '<article class="hero-card" data-cat="' + (card.dataset.cat || '') + '">';
-          html += '<div class="post-card-img">' + (img ? img.innerHTML : '') + (catLabel ? catLabel.outerHTML : '') + '</div>';
-          html += '<div class="post-card-body">';
-          html += '<p class="post-meta">' + (meta ? meta.textContent : '') + '</p>';
-          html += '<h2 class="hero-title">' + (title ? title.innerHTML : '') + '</h2>';
-          html += '<p class="post-excerpt">' + (excerpt ? excerpt.textContent : '') + '</p>';
-          if (link) html += link.outerHTML;
-          html += '</div></article>';
-        });
-        html += '</div>';
-
-        // Section Header
-        html += '<div class="section-header">';
-        html += '<h2>' + (currentCat === 'all' ? 'All Articles' : (currentCat === 'vehicles' ? 'Vehicle Export Guides' : 'Auto Parts Sourcing')) + '</h2>';
-        html += '<span class="result-count">' + cards.length + ' articles</span>';
-        html += '</div>';
-
-        // Grid
-        html += '<div class="posts-grid-inner">';
-        pageCards.forEach(function(card) {
-          var img = card.querySelector('.post-card-img');
-          var catLabel = card.querySelector('.post-cat-label');
-          var meta = card.querySelector('.post-meta');
-          var title = card.querySelector('.post-title');
-          var excerpt = card.querySelector('.post-excerpt');
-          var link = card.querySelector('.post-read-more');
-
-          html += '<article class="post-card" data-cat="' + (card.dataset.cat || '') + '">';
-          html += '<div class="post-card-img">' + (img ? img.innerHTML : '') + (catLabel ? catLabel.outerHTML : '') + '</div>';
-          html += '<div class="post-card-body">';
-          html += '<p class="post-meta">' + (meta ? meta.textContent : '') + '</p>';
-          html += '<h3 class="post-title">' + (title ? title.innerHTML : '') + '</h3>';
-          html += '<p class="post-excerpt">' + (excerpt ? excerpt.textContent : '') + '</p>';
-          if (link) html += link.outerHTML;
-          html += '</div></article>';
-        });
-        html += '</div>';
-
-        grid.innerHTML = html;
-
-        // Pagination
-        buildPagination(totalPages);
-      }
-
-      function buildPagination(totalPages) {
-        paginationContainer.innerHTML = '';
-        if (totalPages <= 1) return;
-
-        // Prev
-        var prevBtn = document.createElement('button');
-        prevBtn.textContent = '\u2190 Prev';
-        prevBtn.disabled = currentPage === 1;
-        prevBtn.addEventListener('click', function() {
-          if (currentPage > 1) { currentPage--; buildLayout(); scrollToTop(); }
-        });
-        paginationContainer.appendChild(prevBtn);
-
-        // Page numbers (show max 7, with ellipsis)
-        var maxVisible = 7;
-        var startPage = Math.max(1, currentPage - Math.floor(maxVisible / 2));
-        var endPage = Math.min(totalPages, startPage + maxVisible - 1);
-        if (endPage - startPage < maxVisible - 1) {
-          startPage = Math.max(1, endPage - maxVisible + 1);
-        }
-
-        if (startPage > 1) {
-          var firstBtn = document.createElement('button');
-          firstBtn.textContent = '1';
-          firstBtn.addEventListener('click', function() { currentPage = 1; buildLayout(); scrollToTop(); });
-          paginationContainer.appendChild(firstBtn);
-          if (startPage > 2) {
-            var ellipsis = document.createElement('span');
-            ellipsis.className = 'page-ellipsis';
-            ellipsis.textContent = '...';
-            paginationContainer.appendChild(ellipsis);
-          }
-        }
-
-        for (var i = startPage; i <= endPage; i++) {
-          var btn = document.createElement('button');
-          btn.textContent = i;
-          if (i === currentPage) btn.className = 'active';
-          (function(pageNum) {
-            btn.addEventListener('click', function() { currentPage = pageNum; buildLayout(); scrollToTop(); });
-          })(i);
-          paginationContainer.appendChild(btn);
-        }
-
-        if (endPage < totalPages) {
-          if (endPage < totalPages - 1) {
-            var ellipsis2 = document.createElement('span');
-            ellipsis2.className = 'page-ellipsis';
-            ellipsis2.textContent = '...';
-            paginationContainer.appendChild(ellipsis2);
-          }
-          var lastBtn = document.createElement('button');
-          lastBtn.textContent = totalPages;
-          lastBtn.addEventListener('click', function() { currentPage = totalPages; buildLayout(); scrollToTop(); });
-          paginationContainer.appendChild(lastBtn);
-        }
-
-        // Next
-        var nextBtn = document.createElement('button');
-        nextBtn.textContent = 'Next \u2192';
-        nextBtn.disabled = currentPage === totalPages;
-        nextBtn.addEventListener('click', function() {
-          if (currentPage < totalPages) { currentPage++; buildLayout(); scrollToTop(); }
-        });
-        paginationContainer.appendChild(nextBtn);
-
-        // Insert after grid
-        grid.parentNode.insertBefore(paginationContainer, grid.nextSibling);
-      }
-
-      function scrollToTop() {
-        var hero = document.querySelector('.blog-hero');
-        if (hero) hero.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-
-      // Category filter buttons
-      document.querySelectorAll('.blog-cat-btn').forEach(function(btn) {
-        btn.addEventListener('click', function(e) {
-          e.preventDefault();
-          currentCat = btn.dataset.cat;
-          currentPage = 1;
-          document.querySelectorAll('.blog-cat-btn').forEach(function(b) { b.classList.remove('active'); });
-          btn.classList.add('active');
-          buildLayout();
-        });
+      vCards.forEach(card => {
+        const clone = card.cloneNode(true);
+        clone.classList.remove('featured');
+        clone.classList.add('track-card');
+        vContainer.appendChild(clone);
       });
 
-      // Initial build
-      buildLayout();
-    })();
-  </script>
-  <script>
+      pCards.forEach(card => {
+        const clone = card.cloneNode(true);
+        clone.classList.remove('featured');
+        clone.classList.add('track-card');
+        pContainer.appendChild(clone);
+      });
+
+      // Hide dual track when filtering single category
+      const dualTrack = document.getElementById('dual-track');
+      if (currentFilter !== 'all') {
+        dualTrack.style.display = 'none';
+      } else {
+        dualTrack.style.display = 'grid';
+      }
+    }
+
+    // Build paginated grid
+    function buildGrid() {
+      const allCards = getAllCards();
+      let filtered = allCards;
+
+      if (currentFilter !== 'all') {
+        filtered = allCards.filter(c => c.dataset.cat === currentFilter);
+      }
+
+      const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
+      if (currentPage > totalPages) currentPage = totalPages;
+      if (currentPage < 1) currentPage = 1;
+
+      const start = (currentPage - 1) * PAGE_SIZE;
+      const end = start + PAGE_SIZE;
+      const pageCards = filtered.slice(start, end);
+
+      // Hide all, show page cards
+      allCards.forEach(c => c.style.display = 'none');
+      pageCards.forEach(c => c.style.display = '');
+
+      buildPagination(totalPages);
+
+      // Update count text
+      const countEl = document.getElementById('all-count');
+      if (countEl) {
+        if (currentFilter === 'all') {
+          countEl.textContent = allCards.length + ' articles';
+        } else {
+          countEl.textContent = filtered.length + ' articles';
+        }
+      }
+    }
+
+    // Build pagination buttons
+    function buildPagination(totalPages) {
+      const container = document.getElementById('blog-pagination');
+      if (!container) return;
+      container.innerHTML = '';
+
+      if (totalPages <= 1) return;
+
+      const addBtn = (label, page, isActive, disabled) => {
+        const btn = document.createElement('button');
+        btn.textContent = label;
+        if (isActive) btn.classList.add('active');
+        if (disabled) btn.disabled = true;
+        if (!disabled && !isActive) {
+          btn.addEventListener('click', () => { currentPage = page; buildGrid(); window.scrollTo({top: 450, behavior: 'smooth'}); });
+        }
+        container.appendChild(btn);
+      };
+
+      // Prev
+      addBtn('Previous', currentPage - 1, false, currentPage === 1);
+
+      // Page numbers with ellipsis
+      const showPage = (p) => addBtn(String(p), p, p === currentPage, false);
+      if (totalPages <= 7) {
+        for (let p = 1; p <= totalPages; p++) showPage(p);
+      } else {
+        showPage(1);
+        if (currentPage > 3) {
+          const el = document.createElement('span'); el.className = 'page-ellipsis'; el.textContent = '...'; container.appendChild(el);
+        }
+        let startPage = Math.max(2, currentPage - 1);
+        let endPage = Math.min(totalPages - 1, currentPage + 1);
+        if (currentPage <= 3) { startPage = 2; endPage = 4; }
+        if (currentPage >= totalPages - 2) { startPage = totalPages - 3; endPage = totalPages - 1; }
+        for (let p = startPage; p <= endPage; p++) showPage(p);
+        if (currentPage < totalPages - 2) {
+          const el = document.createElement('span'); el.className = 'page-ellipsis'; el.textContent = '...'; container.appendChild(el);
+        }
+        showPage(totalPages);
+      }
+
+      // Next
+      addBtn('Next', currentPage + 1, false, currentPage === totalPages);
+    }
+
+    // Category filter
+    document.querySelectorAll('.blog-cat-btn').forEach(btn => {
+      btn.addEventListener('click', e => {
+        e.preventDefault();
+        const cat = btn.dataset.cat;
+        currentFilter = cat;
+        currentPage = 1;
+        document.querySelectorAll('.blog-cat-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        buildGrid();
+        buildDualTrack();
+      });
+    });
+
     function handleSubscribe(e) {
       e.preventDefault();
       document.getElementById('subscribe-msg').style.display = 'block';
       e.target.reset();
     }
+
+    // Initialize on load
+    document.addEventListener('DOMContentLoaded', () => {
+      countArticles();
+      buildDualTrack();
+      buildGrid();
+    });
   </script>
 </body>
 </html>
