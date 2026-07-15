@@ -649,6 +649,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.global-ucars.com/blog-post.html?id=101</loc>
+    <lastmod>2026-07-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.global-ucars.com/product-detail.html</loc>
     <lastmod>2026-04-16</lastmod>
     <changefreq>weekly</changefreq>
