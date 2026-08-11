@@ -699,6 +699,24 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://www.global-ucars.com/blog-post.html?id=109</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.global-ucars.com/blog-post.html?id=110</loc>
+    <lastmod>2026-08-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.global-ucars.com/blog-post.html?id=111</loc>
+    <lastmod>2026-08-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://www.global-ucars.com/product-detail.html</loc>
     <lastmod>2026-04-16</lastmod>
     <changefreq>weekly</changefreq>
