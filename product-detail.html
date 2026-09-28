@@ -74,6 +74,13 @@
       transition: transform 0.2s;
     }
     .pd-main-img:hover { transform: scale(1.01); }
+    /* 零部件产品图为白底方图：正方形画框 + contain，避免 4:3 + cover 把
+       上下各 12.5% 的产品本体裁掉（实测 152 张里 84 张会被裁到产品像素） */
+    .pd-main.is-parts .pd-main-img {
+      aspect-ratio: 1/1;
+      object-fit: contain;
+      background: #fff;
+    }
     .pd-thumbs {
       display: flex;
       gap: 10px;
@@ -1424,6 +1431,10 @@
 
       const mainImg = document.getElementById('pd-main-img');
       const thumbsEl = document.getElementById('pd-thumbs');
+
+      // 零部件走正方形画框（见 CSS .pd-main.is-parts .pd-main-img）
+      const pdMainEl = document.getElementById('pd-main');
+      if (pdMainEl) pdMainEl.classList.toggle('is-parts', p.category === 'parts');
 
       if (imgSources.length > 0) {
         mainImg.src = imgSources[0];
