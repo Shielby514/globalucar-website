@@ -14,7 +14,7 @@
   <!-- Open Graph -->
   <meta property="og:type"        content="website" />
   <meta property="og:title"       content="New Cars, Used Cars &amp; Auto Parts for Export — Globalucar China" />
-  <meta property="og:description" content="202 export-ready products: 57 new cars, 45 used cars and 100 auto parts across engine, cooling, suspension &amp; electrical systems. FOB Guangzhou. MOQ 1 unit." />
+  <meta property="og:description" content="202 export-ready products: 57 new cars, 45 used cars and 100 auto parts across engine, cooling, suspension &amp; electrical systems. FOB Guangzhou. MOQ 1 unit." data-meta-stats="products_total:272 new_cars:75 used_cars:45 parts_skus:152" />
   <meta property="og:url"         content="https://www.global-ucars.com/products.html" />
   <meta property="og:image"       content="https://www.global-ucars.com/assets/products/product_001.jpg" />
   <meta property="og:site_name"   content="Globalucar — China Vehicle &amp; Parts Export" />
@@ -623,10 +623,10 @@
   <div class="products-toolbar-wrap">
     <div class="products-toolbar">
       <div class="filter-group">
-        <button class="filter-btn active" data-filter="all">All (204)</button>
-        <button class="filter-btn" data-filter="new_car">New Cars (60)</button>
-        <button class="filter-btn" data-filter="used_car">Used Cars (45)</button>
-        <button class="filter-btn" data-filter="parts">Auto Parts (100)</button>
+        <button class="filter-btn active" data-filter="all">All (<span data-products-total>272+</span>)</button>
+        <button class="filter-btn" data-filter="new_car">New Cars (<span data-new-cars>75+</span>)</button>
+        <button class="filter-btn" data-filter="used_car">Used Cars (<span data-used-cars>45+</span>)</button>
+        <button class="filter-btn" data-filter="parts">Auto Parts (<span data-parts-skus>152+</span>)</button>
       </div>
       <!-- Fuel type sub-filter (visible only when new_car selected) -->
       <div class="filter-group" id="fuel-type-filter" style="display:none">
@@ -743,7 +743,7 @@
       <div class="section-heading">
         <span class="sec-icon">⚙️</span>
         <h2>Auto Parts</h2>
-        <a href="products.html?cat=parts" class="sec-link">View All 100 →</a>
+        <a href="products.html?cat=parts" class="sec-link">View All <span data-parts-skus>152+</span> →</a>
       </div>
       <div class="showcase-grid" id="parts-grid">
         <div style="text-align:center;padding:40px;color:#888;grid-column:1/-1">Loading...</div>
@@ -1071,6 +1071,52 @@
       // Timeout after 5s
       setTimeout(function(){ clearInterval(check); }, 5000);
     }
+  })();
+  </script>
+
+  <!-- Auto-sync product counts from assets/data/site-stats.json -->
+  <script>
+  (function(){
+    function fmt(n){ return n.toLocaleString('en-US') + '+'; }
+    function applyStats(s){
+      if (!s) return;
+      if (typeof s.parts_skus === 'number') {
+        var t = fmt(s.parts_skus);
+        document.querySelectorAll('[data-parts-skus]').forEach(function(el){ el.textContent = t; });
+      }
+      if (typeof s.new_cars === 'number') {
+        var t = fmt(s.new_cars);
+        document.querySelectorAll('[data-new-cars]').forEach(function(el){ el.textContent = t; });
+      }
+      if (typeof s.used_cars === 'number') {
+        var t = fmt(s.used_cars);
+        document.querySelectorAll('[data-used-cars]').forEach(function(el){ el.textContent = t; });
+      }
+      if (typeof s.products_total === 'number') {
+        var t = fmt(s.products_total);
+        document.querySelectorAll('[data-products-total]').forEach(function(el){ el.textContent = t; });
+      }
+      // 替换 og:description 和 twitter:description 中硬编码的 "202 / 57 / 45 / 100"
+      try {
+        var nc = s.new_cars || 0, uc = s.used_cars || 0, pk = s.parts_skus || 0, tt = s.products_total || 0;
+        ['og:description','twitter:description'].forEach(function(prop){
+          var m = document.querySelector('meta[property="'+prop+'"]') || document.querySelector('meta[name="'+prop+'"]');
+          if (!m) return;
+          var c = m.getAttribute('content') || '';
+          c = c.replace(/\b202\b(?!.*[+])/, tt).replace(/\b57\b(?=\s*new cars)/i, nc).replace(/\b45\b(?=\s*used cars)/i, uc).replace(/\b100\b(?=\s*auto parts)/i, pk).replace(/\b100\b(?=\s*OEM)/i, pk);
+          m.setAttribute('content', c);
+        });
+        var descM = document.querySelector('meta[name="description"]');
+        if (descM) {
+          var dc = descM.getAttribute('content') || '';
+          dc = dc.replace(/\b100\b(?=\s*OEM)/i, pk).replace(/\b57\b(?=\s*new cars)/i, nc).replace(/\b45\b(?=\s*used cars)/i, uc).replace(/\b202\b/, tt);
+          descM.setAttribute('content', dc);
+        }
+      } catch(e){}
+    }
+    fetch('assets/data/site-stats.json').then(function(r){ return r.ok ? r.json() : null; })
+      .then(applyStats)
+      .catch(function(){});
   })();
   </script>
 </body>
