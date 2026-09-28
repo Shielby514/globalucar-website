@@ -85,3 +85,18 @@ ehthumbs.db
 
 # 其他
 jida005
+
+# 数据备份快照（本地回滚用，不上传）
+products-data.json.pre_*
+*.pre_merge_backup
+*.pre_deep_merge
+*.pre_ownstock_backup
+*.pre_na_backup
+*.pre_idfix_backup
+
+# 本地生成物料 / 草稿
+generated-images/
+_kingmay_plan_dump.json
+_validate_108.js
+monthly-blog-paa-pipeline.zip
+FB-Kingmay-*-Post.md
