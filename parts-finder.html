@@ -1303,7 +1303,7 @@
   </footer>
 
   <!-- ===== DATA + LOGIC ===== -->
-  <script src="products-inline.js?v=20260520"></script>
+  <script src="products-inline.js?v=20260928a"></script>
   <script>
   // ── Vehicle database ─────────────────────────────────────────────
   const VEHICLE_DB = {
@@ -1590,7 +1590,7 @@
         : `<div class="part-card-img-ph">⚙️</div>`;
       const compat = (p.compatible_makes || []).slice(0,4).join(', ');
       const sysLabel = {engine:'Engine',cooling:'Cooling',suspension:'Suspension',electrical:'Electrical'}[p.part_system] || p.part_system || '';
-      return `<div class="part-card" onclick="location.href='product-detail.html?id=${p.id}'">
+      return `<div class="part-card" onclick="location.href='${(p.category === 'parts' && p.slug) ? ('parts/' + p.slug + '.html') : ('product-detail.html?id=' + p.id)}'">
         ${imgHtml}
         <div class="part-card-body">
           <div class="part-card-system">${sysLabel}</div>

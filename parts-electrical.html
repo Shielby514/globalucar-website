@@ -575,7 +575,7 @@
     </div>
   </footer>
 
-  <script src="products-inline.js?v=20260520"></script>
+  <script src="products-inline.js?v=20260928a"></script>
   <script>
   function toggleFaq(btn) {
     btn.classList.toggle('open');
@@ -598,6 +598,13 @@
     var data = window.PRODUCTS_INLINE_DATA;
     if (!data) { console.error('products-inline.js not loaded'); return; }
     var all = data.products || [];
+    // Parts with a pre-rendered static page get a crawlable URL; others fall back
+    // to the dynamic detail route. Keeps internal links aligned with canonical.
+    function pdHref(p) {
+      return (p.category === 'parts' && p.slug)
+        ? ('parts/' + p.slug + '.html')
+        : ('product-detail.html?id=' + p.id);
+    }
     var items = all.filter(function(p) {
       return p.category === 'parts' && p.system === SYSTEM_KEY;
     });
@@ -628,7 +635,7 @@
       }).join('');
       var compat = p.compatible_vehicles ? 'Fits: ' + p.compatible_vehicles : '';
       var oem = p.oem_ref ? 'OEM Ref: ' + p.oem_ref : (p.part_number ? 'Part#: ' + p.part_number : '');
-      var card = '<div class="pc-card" onclick="location.href=\'product-detail.html?id=' + p.id + '\'">' +
+      var card = '<div class="pc-card" onclick="location.href=\'' + pdHref(p) + '\'">' +
         '<img class="pc-img" src="' + img + '" alt="' + (p.name || '') + '" loading="lazy" onerror="this.src=\'assets/placeholder.jpg\'" />' +
         '<div class="pc-body">' +
         '<div class="pc-name">' + (p.name || '') + '</div>' +

@@ -35,6 +35,14 @@
   }
 
   // ── Build product card HTML ───────────────────────
+  // Parts that have a pre-rendered static page get a real crawlable URL
+  // (parts/<slug>.html); anything else falls back to the dynamic detail route.
+  function pdHref(p) {
+    return (p.category === 'parts' && p.slug)
+      ? 'parts/' + p.slug + '.html'
+      : 'product-detail.html?id=' + p.id;
+  }
+
   function buildCard(p) {
     const imgSrc = getImage(p);
     const fallbackIcon = p.category === 'parts' ? '🔧' : '🚗';
@@ -56,7 +64,7 @@
       ? `<div class="card-sub-cat">${escHtml(p.sub_category)}</div>` : '';
 
     return `
-      <article class="product-card" data-id="${p.id}" data-cat="${p.category}" onclick="window.location='product-detail.html?id=${p.id}'" style="cursor:pointer">
+      <article class="product-card" data-id="${p.id}" data-cat="${p.category}" onclick="window.location='${pdHref(p)}'" style="cursor:pointer">
         <div class="card-img-wrap">
           ${imgHtml}
           <div class="card-badge" style="background:${badgeColor}">${badgeText}</div>
@@ -69,7 +77,7 @@
           <div class="card-price">${escHtml(priceDisplay)}</div>
           <div class="card-moq">Min. Order: ${escHtml(p.moq || '1 Piece')}</div>
           <div class="card-actions">
-            <a href="product-detail.html?id=${p.id}" class="btn-detail" onclick="event.stopPropagation()">View Details</a>
+            <a href="${pdHref(p)}" class="btn-detail" onclick="event.stopPropagation()">View Details</a>
             <a href="contact.html?product=${encodeURIComponent(p.name)}&id=${p.id}" class="btn-inquire" onclick="event.stopPropagation()">Get Quote</a>
           </div>
         </div>

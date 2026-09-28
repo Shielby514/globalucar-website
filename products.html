@@ -850,7 +850,7 @@
   </footer>
 
   <script src="script.js"></script>
-  <script src="products-inline.js?v=20260520"></script>
+  <script src="products-inline.js?v=20260928a"></script>
   <script src="products.js"></script>
   <script>function pdUrl(p){return (p.category==='parts'&&p.slug)?('parts/'+p.slug+'.html'):('product-detail.html?id='+p.id);}
   /* ── Used Car Searcher & Showcase Sections ─────────────────── */
@@ -943,7 +943,7 @@
       var badgeText = p.category==='parts'
         ? ({engine:'Engine',cooling:'Cooling',suspension:'Suspension',electrical:'Electrical'}[p.part_system]||'Parts')
         : ({new_car:'New Car',used_car:'Used Car',parts:'Auto Parts'}[p.category]||p.category);
-      return '<article class="product-card" data-id="'+p.id+'" onclick="window.location=\'product-detail.html?id='+p.id+'\'" style="cursor:pointer">'
+      return '<article class="product-card" data-id="'+p.id+'" onclick="window.location=\''+pdUrl(p)+'\'" style="cursor:pointer">'
         + '<div class="card-img-wrap">'
         + imgHtml
         + '<div class="card-badge" style="background:'+badgeColor+'">'+badgeText+'</div>'
@@ -955,7 +955,7 @@
         + '<div class="card-price">'+esc(p.price||'Contact for Price')+'</div>'
         + '<div class="card-moq">Min. Order: '+esc(p.moq||'1 Piece')+'</div>'
         + '<div class="card-actions">'
-        + '<a href="product-detail.html?id='+p.id+'" class="btn-detail" onclick="event.stopPropagation()">View Details</a>'
+        + '<a href="'+pdUrl(p)+'" class="btn-detail" onclick="event.stopPropagation()">View Details</a>'
         + '<a href="contact.html?product='+encodeURIComponent(p.name)+'&id='+p.id+'" class="btn-inquire" onclick="event.stopPropagation()">Get Quote</a>'
         + '</div>'
         + '</div>'

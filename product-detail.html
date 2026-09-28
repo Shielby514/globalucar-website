@@ -1097,7 +1097,7 @@
   </footer>
 
   <script src="script.js"></script>
-  <script src="products-inline.js?v=20260520"></script>
+  <script src="products-inline.js?v=20260928a"></script>
   <script>
   /**
    * Product Detail Page Logic
@@ -1106,11 +1106,20 @@
   (function () {
     const params = new URLSearchParams(window.location.search);
     const productId = parseInt(params.get('id'), 10) || 1;
+    // Normalise both sides to String: data ids may be number or string depending
+    // on the ingestion pipeline. Comparing raw values (e.g. "223" === 223) is
+    // false and silently breaks every newly ingested product.
+    const sameId = (p, id) => String(p.id) === String(id);
+    // Parts that have a pre-rendered static page get a real crawlable URL,
+    // everything else falls back to the dynamic detail route.
+    const pdHref = (q) => (q && q.category === 'parts' && q.slug)
+      ? 'parts/' + q.slug + '.html'
+      : 'product-detail.html?id=' + (q ? q.id : '');
 
     function loadData() {
       if (window.PRODUCTS_INLINE_DATA) {
         const all = window.PRODUCTS_INLINE_DATA.products || [];
-        const product = all.find(p => p.id === productId);
+        const product = all.find(p => sameId(p, productId));
         if (!product) {
           document.getElementById('pd-title').textContent = 'Product not found (id=' + productId + ')';
           return;
@@ -1121,7 +1130,7 @@
         setTimeout(function() {
           if (window.PRODUCTS_INLINE_DATA) {
             const all = window.PRODUCTS_INLINE_DATA.products || [];
-            const product = all.find(p => p.id === productId);
+            const product = all.find(p => sameId(p, productId));
             if (product) { renderProduct(product, all); return; }
           }
           document.getElementById('pd-title').textContent = 'Error: product data not loaded';
@@ -1178,7 +1187,7 @@
       }
 
       // Schema.org Product (full structured data)
-      const priceVal = (p.price || '').match(/[\d.]+/);
+      const priceVal = String(p.price == null ? '' : p.price).match(/[\d.]+/);
       const schema = {
         "@context": "https://schema.org",
         "@type": "Product",
@@ -1296,7 +1305,7 @@
       document.getElementById('pd-title').textContent = p.name;
 
       // ── Price ──
-      document.getElementById('pd-price').textContent = p.price || 'Contact for Price';
+      document.getElementById('pd-price').textContent = (p.price === 0 || p.price) ? String(p.price) : 'Contact for Price';
 
       // ── Tags ──
       const tagsEl = document.getElementById('pd-tags');
@@ -1495,7 +1504,7 @@
       if (related.length > 0) {
         relatedEl.innerHTML = related.map(r => {
           const imgSrc = (typeof r.local_image === 'string' ? r.local_image : null) || r.image || (r.images && r.images[0]) || 'assets/products/placeholder.jpg';
-          return `<a href="product-detail.html?id=${r.id}" class="pd-related-card">
+          return `<a href="${pdHref(r)}" class="pd-related-card">
             <img src="${imgSrc}" alt="${escHtml(r.name)}" class="pd-related-img"
                  onerror="this.src='assets/products/placeholder.jpg'" />
             <div class="pd-related-info">
