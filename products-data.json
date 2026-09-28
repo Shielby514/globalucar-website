@@ -8911,7 +8911,7 @@
  },
  {
   "id": 74,
-  "slug": "parts-electrical-knock-sensor",
+  "slug": "parts-electrical-knock-sensor-74",
   "name": "Knock Sensor",
   "category": "parts",
   "part_system": "suspension",
@@ -9068,7 +9068,7 @@
  },
  {
   "id": 71,
-  "slug": "parts-electrical-throttle-position-sensor",
+  "slug": "parts-electrical-throttle-position-sensor-71",
   "name": "Throttle Position Sensor (TPS)",
   "category": "parts",
   "part_system": "suspension",
@@ -9121,7 +9121,7 @@
  },
  {
   "id": 70,
-  "slug": "parts-electrical-oil-pressure-sensor",
+  "slug": "parts-electrical-oil-pressure-sensor-70",
   "name": "Oil Pressure Sending Unit",
   "category": "parts",
   "part_system": "suspension",
@@ -9651,7 +9651,7 @@
  },
  {
   "id": 60,
-  "slug": "parts-electrical-oil-pressure-sensor",
+  "slug": "parts-electrical-oil-pressure-sensor-60",
   "name": "Oil Pressure Sensor",
   "category": "parts",
   "part_system": "cooling",
@@ -9704,7 +9704,7 @@
  },
  {
   "id": 59,
-  "slug": "parts-electrical-map-sensor",
+  "slug": "parts-electrical-map-sensor-59",
   "name": "MAP Sensor",
   "category": "parts",
   "part_system": "cooling",
@@ -9757,7 +9757,7 @@
  },
  {
   "id": 58,
-  "slug": "parts-electrical-maf-sensor",
+  "slug": "parts-electrical-maf-sensor-58",
   "name": "Mass Air Flow Sensor",
   "category": "parts",
   "part_system": "cooling",
@@ -9810,7 +9810,7 @@
  },
  {
   "id": 57,
-  "slug": "parts-electrical-camshaft-sensor",
+  "slug": "parts-electrical-camshaft-sensor-57",
   "name": "Camshaft Position Sensor",
   "category": "parts",
   "part_system": "cooling",
@@ -9863,7 +9863,7 @@
  },
  {
   "id": 56,
-  "slug": "parts-electrical-crankshaft-sensor",
+  "slug": "parts-electrical-crankshaft-sensor-56",
   "name": "Crankshaft Position Sensor",
   "category": "parts",
   "part_system": "cooling",
@@ -10756,7 +10756,7 @@
  },
  {
   "id": 39,
-  "slug": "parts-electrical-oxygen-sensor",
+  "slug": "parts-electrical-oxygen-sensor-39",
   "name": "Oxygen Sensor (Lambda Sensor)",
   "category": "parts",
   "part_system": "engine",
@@ -12991,7 +12991,7 @@
  },
  {
   "id": "233",
-  "slug": "parts-electrical-oxygen-sensor-24103681",
+  "slug": "parts-electrical-oxygen-sensor-24103681-233",
   "name": "GM / Chevrolet / Buick Heated Oxygen (O2) Sensor — 24103681 (DELPHI)",
   "category": "parts",
   "part_system": "electrical",
@@ -13647,7 +13647,7 @@
  },
  {
   "id": "245",
-  "slug": "parts-electrical-oxygen-sensor-tb120412l",
+  "slug": "parts-electrical-oxygen-sensor-tb120412l-245",
   "name": "Ford Heated Oxygen (O2) Sensor — TB-120412L- (NTK)",
   "category": "parts",
   "part_system": "electrical",
@@ -13961,7 +13961,7 @@
  },
  {
   "id": "251",
-  "slug": "parts-electrical-oxygen-sensor-92099891",
+  "slug": "parts-electrical-oxygen-sensor-92099891-251",
   "name": "Other Heated Oxygen (O2) Sensor — 92099891 (BOSCH)",
   "category": "parts",
   "part_system": "electrical",
@@ -14780,7 +14780,7 @@
  },
  {
   "id": "266",
-  "slug": "parts-electrical-oxygen-sensor-tb120412l",
+  "slug": "parts-electrical-oxygen-sensor-tb120412l-266",
   "name": "Other Heated Oxygen (O2) Sensor — TB-120412L- (BOSCH)",
   "category": "parts",
   "part_system": "electrical",
@@ -14832,7 +14832,7 @@
  },
  {
   "id": "267",
-  "slug": "parts-electrical-oxygen-sensor-tb120412v",
+  "slug": "parts-electrical-oxygen-sensor-tb120412v-267",
   "name": "Other Heated Oxygen (O2) Sensor — TB-120412V- (BOSCH)",
   "category": "parts",
   "part_system": "electrical",
@@ -14884,7 +14884,7 @@
  },
  {
   "id": "268",
-  "slug": "parts-electrical-oxygen-sensor-tb120412v",
+  "slug": "parts-electrical-oxygen-sensor-tb120412v-268",
   "name": "Other Heated Oxygen (O2) Sensor — TB-120412V- (BOSCH)",
   "category": "parts",
   "part_system": "electrical",
@@ -14936,7 +14936,7 @@
  },
  {
   "id": "269",
-  "slug": "parts-electrical-oxygen-sensor-tb120412l",
+  "slug": "parts-electrical-oxygen-sensor-tb120412l-269",
   "name": "Other Heated Oxygen (O2) Sensor — TB-120412L- (BOSCH)",
   "category": "parts",
   "part_system": "electrical",
