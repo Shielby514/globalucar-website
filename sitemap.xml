@@ -1462,8 +1462,10 @@
   <url><loc>https://www.global-ucars.com/oe/54500-el00b.html</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://www.global-ucars.com/oe/54500-et000.html</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://www.global-ucars.com/oe/54500-f2000.html</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.global-ucars.com/oe/54500-g2100.html</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://www.global-ucars.com/oe/54500-gi000.html</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://www.global-ucars.com/oe/54500-k0100.html</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.global-ucars.com/oe/54500-l1000.html</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://www.global-ucars.com/oe/54501-07100.html</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://www.global-ucars.com/oe/54501-1c000.html</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://www.global-ucars.com/oe/54501-1e000.html</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
@@ -2020,6 +2022,7 @@
   <url><loc>https://www.global-ucars.com/oe/45670-26650.html</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://www.global-ucars.com/oe/93766-2t000.html</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://www.global-ucars.com/oe/26250-2e021.html</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.global-ucars.com/oe/43394-32410.html</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://www.global-ucars.com/oe/45525-3b400.html</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://www.global-ucars.com/oe/45425-4g100.html</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://www.global-ucars.com/oe/45425-3b610.html</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
@@ -2041,6 +2044,7 @@
   <url><loc>https://www.global-ucars.com/oe/93300-d3000.html</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://www.global-ucars.com/oe/23200-2a405.html</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://www.global-ucars.com/oe/46321-2f000.html</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.global-ucars.com/oe/54501-3m00c.html</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://www.global-ucars.com/oe/54500-3m000.html</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://www.global-ucars.com/oe/46321-4g300.html</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://www.global-ucars.com/oe/48197-2h000.html</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
@@ -2051,12 +2055,14 @@
   <url><loc>https://www.global-ucars.com/oe/24350-3cga1.html</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://www.global-ucars.com/oe/24350-2ggb1.html</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://www.global-ucars.com/oe/54500-2w600.html</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.global-ucars.com/oe/47300-3b630.html</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://www.global-ucars.com/oe/57740-4h000.html</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://www.global-ucars.com/oe/57740-3m900.html</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://www.global-ucars.com/oe/57740-3k000.html</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://www.global-ucars.com/oe/82640-3n000.html</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://www.global-ucars.com/oe/56820-2g000.html</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://www.global-ucars.com/oe/56820-2g900.html</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.global-ucars.com/oe/57100-4l000.html</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://www.global-ucars.com/oe/25412-28101.html</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://www.global-ucars.com/oe/25412-2s101.html</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://www.global-ucars.com/oe/97138-c5000.html</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
