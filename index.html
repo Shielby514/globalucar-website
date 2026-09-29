@@ -525,6 +525,22 @@
     .oem-stat-item strong {
       color: #94a3b8;
     }
+    .oem-browse-link {
+      text-align: center;
+      font-size: 0.85rem;
+      color: #94a3b8;
+      margin-top: 18px;
+      line-height: 1.6;
+    }
+    .oem-browse-link a {
+      color: #c8102e;
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .oem-browse-link a:hover {
+      color: #e63950;
+    }
     @media (max-width: 480px) {
       .oem-search-wrap {
         flex-direction: column;
@@ -643,7 +659,7 @@
     <div class="container">
       <div class="oem-lookup-inner">
         <h3>🔢 Free OEM Parts Lookup — <span>Search Any OE Number</span></h3>
-        <p>Instantly match <strong data-oe-count-inline>9,971+</strong> OE numbers against our wholesale catalog and verified OE reference library. Enter a part number to check availability and pricing.</p>
+        <p>Instantly match <strong data-oe-count-inline>9,972+</strong> OE numbers against our wholesale catalog and verified OE reference library. Enter a part number to check availability and pricing.</p>
         <form class="oem-search-wrap" onsubmit="return handleOEMSearch(event)">
           <input type="text" class="oem-search-input" id="homeOemInput"
                  placeholder="e.g. 54501-2H000, 28100-2B500..."
@@ -656,11 +672,12 @@
           </button>
         </form>
         <div class="oem-stats-row">
-          <div class="oem-stat-item">✅ <strong data-oe-count>9,971+</strong> OE Numbers</div>
+          <div class="oem-stat-item">✅ <strong data-oe-count>9,972+</strong> OE Numbers</div>
           <div class="oem-stat-item">📦 <strong data-parts-skus>152+</strong> Parts</div>
           <div class="oem-stat-item">🌐 <strong>25+ Brands</strong></div>
           <div class="oem-stat-item">🔍 <strong>+ Google Images</strong></div>
         </div>
+        <p class="oem-browse-link">Prefer to browse? Explore the full <a href="oe/index.html">OE part number reference library</a> — every number verified, grouped by system with fitment and cross-reference data.</p>
       </div>
     </div>
   </section>
@@ -1874,6 +1891,7 @@
           <li><a href="products.html?cat=new_car">New Cars</a></li>
           <li><a href="products.html?cat=used_car">Used Cars</a></li>
           <li><a href="products.html?cat=parts">Auto Parts</a></li>
+          <li><a href="oe/index.html">OE Parts Library</a></li>
         </ul>
       </div>
       <div class="footer-col">
