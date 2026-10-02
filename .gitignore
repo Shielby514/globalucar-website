@@ -19,6 +19,7 @@ gsc-site.json
 
 # 文本日志 / 分析输出
 *.txt
+!llms.txt
 *.log
 excel_output.txt
 excel2_output.txt
