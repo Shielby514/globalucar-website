@@ -70,14 +70,16 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   white-space: nowrap;
 }
 
-.nav-menu { display: flex; gap: 6px; }
+.nav-menu { display: flex; gap: 2px; flex-wrap: nowrap; }
+.nav-menu li { flex-shrink: 0; }
 .nav-menu a {
   color: var(--dark-grey);
-  padding: 8px 16px;
+  padding: 8px 11px;
   border-radius: var(--radius-sm);
   font-weight: 500;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   letter-spacing: 0.02em;
+  white-space: nowrap;
   transition: var(--trans);
 }
 .nav-menu a:hover,
@@ -661,11 +663,20 @@ section { padding: 80px 0; }
   .cta-inner { flex-direction: column; text-align: center; }
 }
 
+@media (max-width: 1100px) and (min-width: 901px) {
+  /* 9 nav items + brand: tighten to keep every label on one line */
+  .nav-menu { gap: 0; }
+  .nav-menu a { padding: 8px 7px; font-size: 0.84rem; letter-spacing: 0.01em; }
+  .nav-logo    { height: 52px; }
+  .nav-tagline { font-size: 0.62rem; }
+}
+
 @media (max-width: 992px) {
   .footer-grid { grid-template-columns: 1fr 1fr; }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
+  /* Nav switches to hamburger below 900px (was 768px — 9 items no longer fit inline) */
   .nav-menu {
     display: none; position: absolute; top: 100%; left: 0; width: 100%;
     background: var(--white); flex-direction: column;
@@ -674,8 +685,11 @@ section { padding: 80px 0; }
     box-shadow: 0 8px 24px rgba(0,0,0,0.1);
   }
   .nav-menu.open { display: flex; }
+  .nav-menu a { white-space: normal; padding: 10px 12px; font-size: 0.95rem; }
   .mobile-menu-btn { display: flex; }
+}
 
+@media (max-width: 768px) {
   .hero-content { padding: 60px 16px; }
   .product-toolbar { flex-direction: column; align-items: stretch; }
   .product-search input { min-width: 100%; }
