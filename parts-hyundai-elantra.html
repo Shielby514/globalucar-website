@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  
+  
+  
+  
+  
+
+  <!-- Open Graph -->
+  
+  
+  
+  
+  
+  
+
+  <!-- Twitter Card -->
+  
+  
+  
+  
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Suspension & Chassis Parts — Globalucar Auto Parts",
+    "url": "https://www.global-ucars.com/parts-suspension.html",
+    "description": "Source wholesale suspension and chassis parts: control arms, ball joints, shock absorbers, CV axles, brake calipers, brake rotors and more. OEM grade. FOB Guangzhou, MOQ 10 pcs.",
+    "numberOfItems": 15,
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type":"ListItem","position":1,"name":"Home","item":"https://www.global-ucars.com/"},
+        {"@type":"ListItem","position":2,"name":"Auto Parts","item":"https://www.global-ucars.com/products.html?cat=parts"},
+        {"@type":"ListItem","position":3,"name":"Suspension & Chassis Parts","item":"https://www.global-ucars.com/parts-suspension.html"}
+      ]
+    }
+  }
+  </script>
+
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .sys-hero {
+      background: linear-gradient(135deg, #2a2060 0%, #1a1040 60%, #c8102e 100%);
+      padding: 90px 20px 70px;
+      text-align: center;
+      color: #fff;
+    }
+    .sys-hero .hero-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      padding: 6px 18px;
+      border-radius: 24px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 18px;
+    }
+    .sys-hero h1 { font-size: 2.6rem; font-weight: 900; margin-bottom: 14px; line-height: 1.2; }
+    .sys-hero p { font-size: 1.05rem; opacity: 0.88; max-width: 640px; margin: 0 auto 28px; }
+    .sys-hero-cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .sys-hero-cta a {
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      transition: opacity 0.2s, transform 0.1s;
+    }
+    .sys-hero-cta a:hover { opacity: 0.9; transform: translateY(-1px); }
+    .sys-hero-cta .btn-w { background: #fff; color: #0d1f3c; }
+    .sys-hero-cta .btn-r { background: #c8102e; color: #fff; }
+
+    /* Breadcrumb */
+    .breadcrumb {
+      background: #f8f9fa;
+      border-bottom: 1px solid #eee;
+      padding: 10px 0;
+      font-size: 0.83rem;
+      color: #718096;
+    }
+    .breadcrumb a { color: #0d1f3c; font-weight: 500; }
+    .breadcrumb a:hover { color: #c8102e; }
+
+    /* Stats strip */
+    .stats-strip {
+      background: #0d1f3c;
+      color: #fff;
+      padding: 20px 0;
+    }
+    .stats-row {
+      display: flex;
+      gap: 0;
+      flex-wrap: wrap;
+    }
+    .stat-item {
+      flex: 1;
+      min-width: 130px;
+      text-align: center;
+      padding: 12px 20px;
+      border-right: 1px solid rgba(255,255,255,0.12);
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-num { font-size: 1.8rem; font-weight: 900; color: #c8102e; line-height: 1; margin-bottom: 4px; }
+    .stat-label { font-size: 0.78rem; opacity: 0.75; text-transform: uppercase; letter-spacing: 0.08em; }
+
+    /* Intro section */
+    .intro-section {
+      max-width: 1200px;
+      margin: 56px auto 0;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+    @media (max-width: 768px) {
+      .intro-section { grid-template-columns: 1fr; gap: 28px; }
+    }
+    .intro-text h2 { font-size: 1.6rem; font-weight: 800; color: #0d1f3c; margin-bottom: 16px; }
+    .intro-text p { color: #4a5568; line-height: 1.8; margin-bottom: 14px; }
+
+    .intro-checklist {
+      background: #f8f9fa;
+      border-radius: 12px;
+      padding: 24px;
+      border-left: 4px solid #c8102e;
+    }
+    .intro-checklist h3 { font-size: 1rem; font-weight: 800; color: #0d1f3c; margin-bottom: 14px; }
+    .intro-checklist li {
+      list-style: none;
+      padding: 6px 0 6px 24px;
+      position: relative;
+      font-size: 0.9rem;
+      color: #2d3748;
+      border-bottom: 1px solid #eee;
+    }
+    .intro-checklist li:last-child { border: none; }
+    .intro-checklist li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: #c8102e;
+      font-weight: 700;
+    }
+
+    /* Product grid */
+    .section-products {
+      max-width: 1200px;
+      margin: 56px auto;
+      padding: 0 20px;
+    }
+    .section-hdr {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .section-hdr h2 { font-size: 1.8rem; font-weight: 800; color: #0d1f3c; }
+    .section-hdr p { color: #718096; font-size: 0.9rem; }
+
+    .sort-bar { display: flex; gap: 8px; }
+    .sort-btn {
+      padding: 7px 16px;
+      border-radius: 20px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      border: 2px solid #e2e8f0;
+      color: #2d3748;
+      background: #fff;
+      cursor: pointer;
+      transition: all 0.18s;
+    }
+    .sort-btn.active, .sort-btn:hover { background: #0d1f3c; border-color: #0d1f3c; color: #fff; }
+
+    .pc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 24px;
+    }
+    .pc-card {
+      background: #fff;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      position: relative;
+    }
+    .pc-card:hover { transform: translateY(-5px); box-shadow: 0 10px 28px rgba(0,0,0,0.14); }
+    .pc-img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      background: #f5f5f5;
+      transition: transform 0.4s;
+    }
+    .pc-card:hover .pc-img { transform: scale(1.04); }
+    .pc-img-ph {
+      width: 100%;
+      aspect-ratio: 1;
+      background: linear-gradient(135deg,#f0f2f5,#e2e8f0);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+    }
+    .pc-body { padding: 18px; }
+    .pc-name { font-size: 1.05rem; font-weight: 700; color: #0d1f3c; margin-bottom: 8px; line-height: 1.3; }
+    .pc-feats { padding-left: 0; margin: 0 0 8px; }
+    .pc-feats li {
+      list-style: none;
+      font-size: 0.78rem;
+      color: #4a5568;
+      padding: 2px 0 2px 16px;
+      position: relative;
+    }
+    .pc-feats li::before { content: '·'; position: absolute; left: 4px; color: #c8102e; font-size: 1rem; }
+    .pc-compat { font-size: 0.78rem; color: #718096; margin-bottom: 6px; }
+    .pc-oem { font-size: 0.75rem; color: #a0aec0; margin-bottom: 12px; }
+    .pc-actions { display: flex; gap: 8px; }
+    .pc-btn-detail {
+      flex: 1;
+      padding: 8px 12px;
+      background: #0d1f3c;
+      color: #fff;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-align: center;
+      transition: background 0.2s;
+    }
+    .pc-card:hover .pc-btn-detail { background: #c8102e; }
+    .pc-btn-quote {
+      padding: 8px 14px;
+      background: transparent;
+      border: 2px solid #c8102e;
+      color: #c8102e;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-align: center;
+      transition: all 0.18s;
+      white-space: nowrap;
+    }
+    .pc-btn-quote:hover { background: #c8102e; color: #fff; }
+
+    /* Content / FAQ section */
+    .content-section {
+      background: #f8f9fa;
+      padding: 60px 20px;
+    }
+    .content-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+    }
+    @media (max-width: 768px) { .content-inner { grid-template-columns: 1fr; } }
+
+    .faq-block h2 { font-size: 1.5rem; font-weight: 800; color: #0d1f3c; margin-bottom: 24px; }
+    .faq-item { border-bottom: 1px solid #e2e8f0; }
+    .faq-q {
+      width: 100%;
+      text-align: left;
+      padding: 16px 0;
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: #2d3748;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+    .faq-arrow { font-size: 0.7rem; color: #c8102e; transition: transform 0.2s; flex-shrink: 0; }
+    .faq-q.open .faq-arrow { transform: rotate(180deg); }
+    .faq-a { display: none; padding: 0 0 16px; }
+    .faq-a.open { display: block; }
+    .faq-a p { font-size: 0.88rem; color: #4a5568; line-height: 1.7; }
+
+    .sourcing-block h2 { font-size: 1.5rem; font-weight: 800; color: #0d1f3c; margin-bottom: 20px; }
+    .sourcing-steps { display: flex; flex-direction: column; gap: 16px; }
+    .step {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .step-num {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #c8102e;
+      color: #fff;
+      font-size: 0.9rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .step-content h4 { font-size: 0.95rem; font-weight: 700; color: #0d1f3c; margin-bottom: 3px; }
+    .step-content p { font-size: 0.84rem; color: #718096; }
+
+    /* Keywords section */
+    .kw-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px 60px;
+    }
+    .kw-section h3 { font-size: 1rem; font-weight: 700; color: #0d1f3c; margin-bottom: 14px; }
+    .kw-cloud { display: flex; flex-wrap: wrap; gap: 8px; }
+    .kw-tag {
+      padding: 6px 16px;
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 24px;
+      font-size: 0.8rem;
+      color: #4a5568;
+    }
+
+    /* CTA */
+    .sys-cta {
+      background: linear-gradient(135deg, #2a2060, #1a1040);
+      padding: 60px 20px;
+      text-align: center;
+      color: #fff;
+    }
+    .sys-cta h2 { font-size: 1.9rem; font-weight: 800; margin-bottom: 12px; }
+    .sys-cta p { opacity: 0.85; max-width: 520px; margin: 0 auto 28px; }
+  </style>
+
+  <title>Hyundai Elantra Parts Wholesale — OE Catalog &amp; Cross Reference | Globalucar</title>
+  <meta name="description" content="Wholesale Hyundai Elantra auto parts from China: 43 genuine OE numbers in stock, covering brake, suspension, engine, cooling and electrical systems. OEM grade, MOQ 10 pcs, FOB Guangzhou, 24h quote response." />
+  <meta name="keywords" content="Hyundai Elantra parts, Hyundai Elantra spare parts wholesale, Hyundai Elantra OE number catalog, China Hyundai parts exporter" />
+  <link rel="canonical" href="https://www.global-ucars.com/parts-hyundai-elantra.html" />
+  <meta property="og:type"        content="website" />
+  <meta property="og:title"       content="Hyundai Elantra Parts Wholesale — OE Catalog &amp; Cross Reference | Globalucar" />
+  <meta property="og:description" content="Wholesale Hyundai Elantra auto parts from China: 43 genuine OE numbers in stock, covering brake, suspension, engine, cooling and electrical systems. OEM grade, MOQ 10 pcs, FOB Guangzhou, 24h quote response." />
+  <meta property="og:url"         content="https://www.global-ucars.com/parts-hyundai-elantra.html" />
+
+  <!-- Generated by build_model_hubs.py -->
+  <style>
+    .mp-wrap{max-width:1180px;margin:0 auto;padding:28px 20px 60px}
+    .mp-wrap h1{font-size:1.9rem;line-height:1.25;margin:0 0 14px}
+    .mp-lead{font-size:1.02rem;line-height:1.75;color:#444;max-width:820px}
+    .mp-group{margin:34px 0 0}
+    .mp-group h2{font-size:1.15rem;margin:0 0 12px;padding-bottom:8px;border-bottom:2px solid #eee}
+    .mp-list{list-style:none;padding:0;margin:0;display:grid;
+      grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:8px 18px}
+    .mp-list li{font-size:.93rem;line-height:1.5;border-bottom:1px solid #f2f2f2;padding:5px 0}
+    .mp-list a{font-weight:600;color:#0B57A4;text-decoration:none}
+    .mp-list a:hover{text-decoration:underline}
+    .mp-list .pn{display:block;color:#666;font-size:.85rem}
+    .mp-spec{margin-top:34px;border-collapse:collapse;width:100%;font-size:.93rem}
+    .mp-spec th,.mp-spec td{border:1px solid #e6e6e6;padding:8px 12px;text-align:left}
+    .mp-spec th{background:#fafafa;width:210px}
+    .kw-cloud{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+    .kw-tag{display:inline-block;padding:5px 12px;border:1px solid #ddd;border-radius:16px;
+      font-size:.85rem;color:#333;text-decoration:none;background:#fff}
+    .kw-tag:hover{border-color:#0B57A4;color:#0B57A4}
+  </style>
+
+  
+</head>
+<body>
+
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-brand" aria-label="Globalucar Home">
+        <img src="assets/VEHICLE-logo-nav.jpg" alt="Globalucar Vehicle" class="nav-logo" />
+        <span class="nav-tagline">Car &amp; Auto Parts One-Stop Solution</span>
+      </a>
+      <ul class="nav-menu" role="menubar">
+        <li role="none"><a href="index.html" role="menuitem">Home</a></li>
+        <li role="none"><a href="products.html" role="menuitem" class="active">Products</a></li>
+        <li role="none"><a href="parts-finder.html" role="menuitem">Parts Finder</a></li>
+        <li role="none"><a href="kingmay.html"      role="menuitem">Kingmay Parts</a></li>
+        <li role="none"><a href="/oe/"               role="menuitem">OE Parts</a></li>
+        <li role="none"><a href="services.html" role="menuitem">Services</a></li>
+        <li role="none"><a href="about.html" role="menuitem">About Us</a></li>
+        <li role="none"><a href="contact.html" role="menuitem">Contact</a></li>
+      </ul>
+      <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+<!-- Breadcrumb -->
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <div class="container">
+      <a href="index.html">Home</a> &rsaquo;
+      <a href="products.html?cat=parts">Auto Parts</a> &rsaquo;
+      <a href="parts-finder.html">Find by Vehicle</a> &rsaquo;
+      <strong>Hyundai Elantra Parts</strong>
+    </div>
+  </nav>
+
+  <div class="mp-wrap">
+    <h1>Hyundai Elantra Parts Wholesale — 43 OE Numbers in Stock</h1>
+    <p class="mp-lead">
+      Looking for a reliable Hyundai Elantra parts supplier? This page lists every
+      Hyundai Elantra spare part currently in our export catalogue, indexed by genuine
+      OE number so you can cross-reference against your own parts book or VIN decode.
+      All items ship from our Guangzhou warehouse with OEM-grade or equivalent
+      aftermarket quality, backed by a 12-month warranty.
+    </p>
+    <p class="mp-lead">
+      Below you will find the full Hyundai Elantra OE parts list grouped by system —
+      brake, suspension, engine, cooling, electrical, filters and body. Click any OE number
+      for detailed specifications, compatible vehicle applications and current stock status.
+      If the part you need is not listed, send us the part number and we will source it
+      from our Hyundai supply chain network within 24 hours.
+    </p>
+
+      <section class="mp-group">
+    <h2>Hyundai Elantra Suspension Parts</h2>
+    <ul class="mp-list">
+      <li><a href="oe/54500-2h000.html">54500-2H000</a> <span class="pn">OE 54500-2H000 Front Lower Control Arm | Hyundai / Kia</span></li><li><a href="oe/54500-3x100.html">54500-3X100</a> <span class="pn">OE 54500-3X100 Front Lower Control Arm | Hyundai / Kia</span></li><li><a href="oe/54501-3x100.html">54501-3X100</a> <span class="pn">OE 54501-3X100 Front Lower Control Arm | Hyundai / Kia</span></li><li><a href="oe/54530-1m000.html">54530-1M000</a> <span class="pn">OE 54530-1M000 Front Lower Ball Joint | Hyundai / Kia</span></li><li><a href="oe/54530-2h000.html">54530-2H000</a> <span class="pn">OE 54530-2H000 Front Lower Ball Joint | Hyundai / Kia</span></li><li><a href="oe/54530-a7000.html">54530-A7000</a> <span class="pn">OE 54530-A7000 Front Lower Ball Joint | Hyundai / Kia</span></li><li><a href="oe/54610-1g000.html">54610-1G000</a> <span class="pn">OE 54610-1G000 Front Strut Mount &amp; amp; | Hyundai / Kia</span></li><li><a href="oe/54610-a7000.html">54610-A7000</a> <span class="pn">OE 54610-A7000 Front Strut Mount &amp; amp; | Hyundai / Kia</span></li><li><a href="oe/54612-1g000.html">54612-1G000</a> <span class="pn">OE 54612-1G000 Front Strut Mount &amp; amp; | Hyundai / Kia</span></li><li><a href="oe/54651-1g000.html">54651-1G000</a> <span class="pn">OE 54651-1G000 Front Shock Absorber | Hyundai / Kia</span></li><li><a href="oe/54651-2h000.html">54651-2H000</a> <span class="pn">OE 54651-2H000 Front Shock Absorber | Hyundai / Kia</span></li><li><a href="oe/54651-a7000.html">54651-A7000</a> <span class="pn">OE 54651-A7000 Front Shock Absorber | Hyundai / Kia</span></li><li><a href="oe/54651-f3700.html">54651-F3700</a> <span class="pn">OE 54651-F3700 Shock Absorber 54651-F3700 | Hyundai</span></li><li><a href="oe/54661-f3700.html">54661-F3700</a> <span class="pn">OE 54661-F3700 Shock Absorber 54661-F3700 | Hyundai</span></li><li><a href="oe/54830-1g000.html">54830-1G000</a> <span class="pn">OE 54830-1G000 Front Stabilizer Link | Hyundai / Kia</span></li><li><a href="oe/54830-2h000.html">54830-2H000</a> <span class="pn">OE 54830-2H000 Front Stabilizer Link | Hyundai / Kia</span></li><li><a href="oe/54830-a7000.html">54830-A7000</a> <span class="pn">OE 54830-A7000 Front Stabilizer Link | Hyundai / Kia</span></li><li><a href="oe/56820-1m000.html">56820-1M000</a> <span class="pn">OE 56820-1M000 Outer Tie Rod End – Hyundai | Hyundai / Kia</span></li><li><a href="oe/56820-2h000.html">56820-2H000</a> <span class="pn">OE 56820-2H000 Outer Tie Rod End – Hyundai | Hyundai / Kia</span></li><li><a href="oe/56820-a7000.html">56820-A7000</a> <span class="pn">OE 56820-A7000 Outer Tie Rod End – Hyundai | Hyundai / Kia</span></li><li><a href="oe/57724-1g000.html">57724-1G000</a> <span class="pn">OE 57724-1G000 Inner Tie Rod / Rack End | Hyundai / Kia</span></li><li><a href="oe/57724-1m000.html">57724-1M000</a> <span class="pn">OE 57724-1M000 Inner Tie Rod / Rack End | Hyundai / Kia</span></li><li><a href="oe/57724-2h000.html">57724-2H000</a> <span class="pn">OE 57724-2H000 Inner Tie Rod / Rack End | Hyundai / Kia</span></li>
+    </ul>
+  </section>  <section class="mp-group">
+    <h2>Hyundai Elantra Cooling Parts</h2>
+    <ul class="mp-list">
+      <li><a href="oe/25100-26015.html">25100-26015</a> <span class="pn">OE 25100-26015 25100-26015 Water Pump – For | Hyundai</span></li><li><a href="oe/2510026016.html">2510026016</a> <span class="pn">OE 2510026016 25100-26015 Water Pump – For | Hyundai / Kia</span></li><li><a href="oe/2510026550.html">2510026550</a> <span class="pn">OE 2510026550 25100-26015 Water Pump – For | Hyundai / Kia</span></li><li><a href="oe/2510026660.html">2510026660</a> <span class="pn">OE 2510026660 25100-26015 Water Pump – For | Hyundai / Kia</span></li><li><a href="oe/2510026900.html">2510026900</a> <span class="pn">OE 2510026900 25100-26015 Water Pump – For | Hyundai / Kia</span></li><li><a href="oe/2510026901.html">2510026901</a> <span class="pn">OE 2510026901 25100-26015 Water Pump – For | Hyundai / Kia</span></li>
+    </ul>
+  </section>  <section class="mp-group">
+    <h2>Hyundai Elantra Other Parts</h2>
+    <ul class="mp-list">
+      <li><a href="oe/21810-f3300.html">21810-F3300</a> <span class="pn">OE 21810-F3300 Engine Mount 21810-F3300 For | Hyundai</span></li><li><a href="oe/21830-f3100.html">21830-F3100</a> <span class="pn">OE 21830-F3100 Auto Performance Engine | Hyundai</span></li><li><a href="oe/31110-f2100.html">31110-F2100</a> <span class="pn">OE 31110-F2100 Fuel Pump Assembly | Hyundai</span></li><li><a href="oe/49501-f3150.html">49501-F3150</a> <span class="pn">OE 49501-F3150 CV Axle Shaft 49501-F3150 | Hyundai</span></li><li><a href="oe/51715-1g000.html">51715-1G000</a> <span class="pn">OE 51715-1G000 Front Steering Knuckle | Hyundai / Kia</span></li><li><a href="oe/51715-a7000.html">51715-A7000</a> <span class="pn">OE 51715-A7000 Front Steering Knuckle | Hyundai / Kia</span></li><li><a href="oe/51716-1g000.html">51716-1G000</a> <span class="pn">OE 51716-1G000 Front Steering Knuckle | Hyundai / Kia</span></li><li><a href="oe/51716-a7000.html">51716-A7000</a> <span class="pn">OE 51716-A7000 Front Steering Knuckle | Hyundai / Kia</span></li><li><a href="oe/51720-1g000.html">51720-1G000</a> <span class="pn">OE 51720-1G000 Front Wheel Hub Bearing | Hyundai / Kia</span></li><li><a href="oe/51720-2h000.html">51720-2H000</a> <span class="pn">OE 51720-2H000 Front Wheel Hub Bearing | Hyundai / Kia</span></li><li><a href="oe/51720-a7000.html">51720-A7000</a> <span class="pn">OE 51720-A7000 Front Wheel Hub Bearing | Hyundai / Kia</span></li><li><a href="oe/55100-1g000.html">55100-1G000</a> <span class="pn">OE 55100-1G000 Rear Trailing Arm – Hyundai | Hyundai / Kia</span></li><li><a href="oe/55100-2h000.html">55100-2H000</a> <span class="pn">OE 55100-2H000 Rear Trailing Arm – Hyundai | Hyundai / Kia</span></li><li><a href="oe/55100-a7000.html">55100-A7000</a> <span class="pn">OE 55100-A7000 Rear Trailing Arm – Hyundai | Hyundai / Kia</span></li>
+    </ul>
+  </section>
+
+    <section class="mp-group">
+      <h2>Specifications &amp; Trade Terms</h2>
+      <table class="mp-spec">
+        <tr><th>Make / Model</th><td>Hyundai Elantra</td></tr>
+        <tr><th>OE numbers listed</th><td>43</td></tr>
+        <tr><th>Part condition</th><td>New — genuine OEM and OEM-grade aftermarket</td></tr>
+        <tr><th>Minimum order</th><td>10 pcs per part number (mixed container accepted)</td></tr>
+        <tr><th>Lead time</th><td>3–7 days for stocked items, 15–25 days for production</td></tr>
+        <tr><th>Shipping</th><td>FOB Guangzhou / Nansha, CIF available worldwide</td></tr>
+        <tr><th>Warranty</th><td>12 months from bill of lading date</td></tr>
+        <tr><th>Quote response</th><td>Within 24 hours</td></tr>
+      </table>
+    </section>
+
+    <section class="mp-group">
+      <h2>Browse Other Models</h2>
+      <div class="kw-cloud"><a class="kw-tag" href="parts-hyundai-tucson.html">Hyundai Tucson parts</a><a class="kw-tag" href="parts-kia-sportage.html">Kia Sportage parts</a><a class="kw-tag" href="parts-hyundai-accent.html">Hyundai Accent parts</a><a class="kw-tag" href="parts-hyundai-santa-fe.html">Hyundai Santa Fe parts</a><a class="kw-tag" href="parts-kia-cerato.html">Kia Cerato parts</a><a class="kw-tag" href="parts-hyundai-sonata.html">Hyundai Sonata parts</a><a class="kw-tag" href="parts-hyundai-i30.html">Hyundai i30 parts</a><a class="kw-tag" href="parts-hyundai-ix35.html">Hyundai ix35 parts</a><a class="kw-tag" href="parts-kia-rio.html">Kia Rio parts</a></div>
+    </section>
+
+    <section class="mp-group">
+      <h2>FAQ — Buying Hyundai Elantra Parts from China</h2>
+      <h3>Can I order by OE number?</h3>
+      <p>Yes. Every part listed above is indexed by genuine OE number, so you can send us a list of numbers and we will quote the whole batch in one pass.</p>
+      <h3>What is the minimum order quantity?</h3>
+      <p>10 pieces per part number for stocked items. Mixed containers combining multiple part numbers are accepted, which is how most distributors consolidate a first order.</p>
+      <h3>Do you ship to Russia, Central Asia and the Middle East?</h3>
+      <p>Yes. We regularly export to Russia, Kazakhstan, Uzbekistan, Azerbaijan, the UAE, Saudi Arabia and Chile, with consolidated rail and sea options to inland destinations.</p>
+      <h3>What if my part number is not listed?</h3>
+      <p>Send the part number, VIN or a photo. We cross-reference against our Hyundai catalogue and quote within 24 hours, including non-stocked items sourced from the factory network.</p>
+    </section>
+
+    <p style="margin-top:36px">
+      <a class="btn btn-primary" href="contact.html">Request Bulk Quote for Hyundai Elantra Parts</a>
+    </p>
+  </div>
+
+
+  <footer class="footer" role="contentinfo">
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <div class="footer-brand-logos">
+          <img src="assets/VEHICLE-logo.jpg" alt="Globalucar Vehicle" onerror="this.style.display='none';this.nextElementSibling&&(this.nextElementSibling.style.display=this.nextElementSibling.nextElementSibling?'none':'block')" />
+          <span class="brand-divider"></span>
+          <img src="assets/logo-Kingmay.png" alt="Kingmay Auto Parts" onerror="this.style.display='none';this.previousElementSibling&&(this.previousElementSibling.style.display='block')" />
+        </div>
+        <p>Guangzhou Vehicle External Trade Co., Ltd</p>
+        <p class="footer-tag-line">New &amp; Used Cars · Auto Parts · Export Solutions</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Product Categories</h4>
+        <ul>
+          <li><a href="products.html?cat=new_car">New Cars</a></li>
+          <li><a href="products.html?cat=used_car">Used Cars</a></li>
+          <li><a href="products.html?cat=parts">Auto Parts</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p>🚗 <a href="mailto:ucars@global-ucars.com" style="color:inherit;">ucars@global-ucars.com</a></p>
+        <p>📍 Guangzhou, China</p>
+        <p>⚓ Nansha Port Terminal</p>
+      </div>
+    </div>
+    <div class="footer-social">
+      <a href="https://www.facebook.com/profile.php?id=61574434590217" target="_blank" rel="noopener" aria-label="Kingmay Auto Parts on Facebook">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      </a>
+      <a href="https://www.tiktok.com/@aaijo64" target="_blank" rel="noopener" aria-label="Kingmay Auto Parts on TikTok">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+      </a>
+      <a href="https://www.instagram.com/kingmay_auto_partss" target="_blank" rel="noopener" aria-label="Kingmay Auto Parts on Instagram">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+      </a>
+      <span style="color:#555;margin:0 4px;">|</span>
+      <a href="https://www.tiktok.com/@globalucar_cc" target="_blank" rel="noopener" aria-label="Globalucar on TikTok">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+      </a>
+      <a href="https://www.tiktok.com/@newbaydidi" target="_blank" rel="noopener" aria-label="Newbay-didi on TikTok">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+      </a>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Guangzhou Vehicle External Trade Co., Ltd. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script src="products-inline.js?v=20260928a"></script>
+  <script>
+  function toggleFaq(btn) {
+    btn.classList.toggle('open');
+    const ans = btn.nextElementSibling;
+    ans.classList.toggle('open');
+  }
+  // Mobile menu
+  const mBtn = document.querySelector('.mobile-menu-btn');
+  if (mBtn) mBtn.addEventListener('click', function() {
+    const menu = document.querySelector('.nav-menu');
+    const exp  = this.getAttribute('aria-expanded') === 'true';
+    this.setAttribute('aria-expanded', String(!exp));
+    if (menu) menu.classList.toggle('open', !exp);
+  });
+  </script>
+
+  <script>
+  (function() {
+    var SYSTEM_KEY = 'suspension';
+    var data = window.PRODUCTS_INLINE_DATA;
+    if (!data) { console.error('products-inline.js not loaded'); return; }
+    var all = data.products || [];
+    // Parts with a pre-rendered static page get a crawlable URL; others fall back
+    // to the dynamic detail route. Keeps internal links aligned with canonical.
+    function pdHref(p) {
+      return (p.category === 'parts' && p.slug)
+        ? ('parts/' + p.slug + '.html')
+        : ('product-detail.html?id=' + p.id);
+    }
+    var items = all.filter(function(p) {
+      return p.category === 'parts' && p.system === SYSTEM_KEY;
+    });
+
+    // Update header count
+    var hdr = document.querySelector('.section-hdr h2');
+    if (hdr) hdr.textContent = hdr.textContent.replace(/\d+\s*Products?/i, items.length + ' Products');
+
+    // Render cards
+    var grid = document.getElementById('pcGrid');
+    if (!grid) return;
+    grid.innerHTML = '';
+    if (items.length === 0) {
+      grid.innerHTML = '<p style="padding:40px;color:#999;">No products found.</p>';
+      return;
+    }
+    items.forEach(function(p) {
+      var img = '';
+      if (p.local_image) {
+        img = p.local_image;
+      } else if (p.images && p.images.length > 0) {
+        img = p.images[0];
+      } else {
+        img = 'assets/placeholder.jpg';
+      }
+      var feats = (p.features || []).slice(0, 3).map(function(f) {
+        return '<li>' + f + '</li>';
+      }).join('');
+      var compat = p.compatible_vehicles ? 'Fits: ' + p.compatible_vehicles : '';
+      var oem = p.oem_ref ? 'OEM Ref: ' + p.oem_ref : (p.part_number ? 'Part#: ' + p.part_number : '');
+      var card = '<div class="pc-card" onclick="location.href=\'' + pdHref(p) + '\'">' +
+        '<img class="pc-img" src="' + img + '" alt="' + (p.name || '') + '" loading="lazy" onerror="this.src=\'assets/placeholder.jpg\'" />' +
+        '<div class="pc-body">' +
+        '<div class="pc-name">' + (p.name || '') + '</div>' +
+        (feats ? '<ul class="pc-feats">' + feats + '</ul>' : '') +
+        (compat ? '<div class="pc-compat">' + compat + '</div>' : '') +
+        (oem ? '<div class="pc-oem">' + oem + '</div>' : '') +
+        '<div class="pc-actions">' +
+        '<span class="pc-btn-detail">View Details</span>' +
+        '<a href="contact.html" class="pc-btn-quote" onclick="event.stopPropagation()">Get Quote</a>' +
+        '</div>' +
+        '</div>' +
+        '</div>';
+      grid.innerHTML += card;
+    });
+  })();
+  </script>
+
+</body>
+</html>
