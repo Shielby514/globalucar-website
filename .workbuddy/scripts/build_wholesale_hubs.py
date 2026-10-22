@@ -218,9 +218,11 @@ def page(p, slug=''):
     chips = p['chips']
     chiphtml = ''.join(f'<a class="chip" href="{SITE}/{c[0]}/">{esc(c[1])}</a>' for c in chips)
 
+    # 详情页归属站点：主站用 MAIN，国产库页用 QIN（p['base'] 覆盖）
+    base = p.get('base') or MAIN
     rows = ''.join(
-        f'<tr><td class="oe"><a href="{MAIN}/oe/{esc(it["file"])}" rel="noopener">{esc(it["oe"])}</a></td>'
-        f'<td><a href="{MAIN}/oe/{esc(it["file"])}" rel="noopener">{esc(it["name"])}</a></td>'
+        f'<tr><td class="oe"><a href="{base}/oe/{esc(it["file"])}" rel="noopener">{esc(it["oe"])}</a></td>'
+        f'<td><a href="{base}/oe/{esc(it["file"])}" rel="noopener">{esc(it["name"])}</a></td>'
         f'<td>{esc(it["brandlabel"])}</td></tr>'
         for it in items)
 

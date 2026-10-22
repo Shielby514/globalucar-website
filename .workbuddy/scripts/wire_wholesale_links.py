@@ -37,6 +37,16 @@ CAT_PAGES = [
     ('wholesale-body-parts', 'Body parts'),
     ('wholesale-fuel-parts', 'Fuel system'),
 ]
+# 中国车品牌页（数据源 qinparts 国产 OE 库，详情页归属 qinparts.com）
+CN_PAGES = [
+    ('wholesale-chinese-chery-parts', 'Chery'),
+    ('wholesale-chinese-geely-parts', 'Geely'),
+    ('wholesale-chinese-byd-parts', 'BYD'),
+    ('wholesale-chinese-jetour-parts', 'Jetour'),
+    ('wholesale-chinese-exeed-parts', 'Exeed'),
+    ('wholesale-chinese-fangchengbao-parts', 'Fang Cheng Bao'),
+    ('wholesale-chinese-misc-parts', 'Other Chinese EV brands'),
+]
 
 
 def esc(s):
@@ -70,6 +80,17 @@ def wire_home(pages):
                      for s, n in BRAND_PAGES)
     cchips = ''.join(f'<a class="chip" href="{SITE}/{s}/">{esc(n)}</a>'
                      for s, n in CAT_PAGES)
+    # 中国车品牌：只列实际已生成页面的，避免空链
+    cn_exist = [(s, n) for s, n in CN_PAGES
+                if os.path.exists(os.path.join(WS, s, 'index.html'))]
+    cnsection = ''
+    if cn_exist:
+        cnchips = ''.join(f'<a class="chip" href="{SITE}/{s}/">{esc(n)}</a>'
+                          for s, n in cn_exist)
+        cnsection = (f'    <h2 style="margin-top:34px">Wholesale Chinese-brand parts</h2>\n'
+                     f'    <p class="sub">Chery, Geely, BYD and the newer EV marques — '
+                     f'sourced from the Guangzhou and Wuhu supply base.</p>\n'
+                     f'    <div class="chips">{cnchips}</div>\n')
     block = (f'\n<!-- WS-HUBS -->\n'
              f'<section>\n  <div class="wrap">\n'
              f'    <h2>Wholesale parts by vehicle brand</h2>\n'
@@ -77,6 +98,7 @@ def wire_home(pages):
              f'    <div class="chips">{bchips}</div>\n'
              f'    <h2 style="margin-top:34px">Wholesale parts by system</h2>\n'
              f'    <div class="chips">{cchips}</div>\n'
+             f'{cnsection}'
              f'  </div>\n</section>\n<!-- /WS-HUBS -->\n')
     # 插到 #parts 区之后（在 <section class="why"> 之前）
     anchor = '<section class="why">'
@@ -152,7 +174,7 @@ def wire_main(pages):
 
 
 def main():
-    pages = [s for s, _ in BRAND_PAGES + CAT_PAGES]
+    pages = [s for s, _ in BRAND_PAGES + CAT_PAGES + CN_PAGES]
     exist = [p for p in pages if os.path.exists(os.path.join(WS, p, 'index.html'))]
     print(f'聚合页 {len(exist)}/{len(pages)}')
 
