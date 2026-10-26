@@ -1,0 +1,34 @@
+# ==============================================================================
+# OE 库服务器 crontab 示例 —— 复制到服务器上 `crontab -e`
+# 必须先按 README 完成部署并跑通 deploy/env_check.sh
+# ==============================================================================
+
+# ---- 环境变量（cron 不加载 shell profile，必须显式写）----
+REPO=/home/ucars/ucars
+PY=/usr/bin/python3
+# 境外服务器留空（直连）；境内服务器填代理，例：http://127.0.0.1:10809
+ENRICH_PROXY=
+ENRICH_LIMIT=3000
+ENRICH_DELAY=1.0
+ENRICH_WORKERS=4
+# 前 2 周用 released（先补已上线页面），之后改 new（为后续发布备数据）
+ENRICH_MODE=released
+PATH=/usr/local/bin:/usr/bin:/bin
+
+# ---- 每天 01:00 跑流水线（补强 → 发布 → 推送）----
+# 耗时参考：3000 条补强约 45 分钟（4 线程）；发布日再加 30-60 分钟
+0 1 * * * cd $REPO && /usr/bin/env REPO=$REPO PY=$PY ENRICH_PROXY=$ENRICH_PROXY ENRICH_LIMIT=$ENRICH_LIMIT ENRICH_DELAY=$ENRICH_DELAY ENRICH_WORKERS=$ENRICH_WORKERS ENRICH_MODE=$ENRICH_MODE bash $REPO/deploy/oe_pipeline.sh
+
+# ---- 每周一 03:30 环境自检（网络/磁盘/git 推送能力）----
+30 3 * * 1 cd $REPO && /usr/bin/env REPO=$REPO PY=$PY ENRICH_PROXY=$ENRICH_PROXY bash $REPO/deploy/env_check.sh
+
+# ---- 每月 1 日 04:00 清理 30 天前的流水线日志 ----
+0 4 1 * * find $REPO/.workbuddy/logs -name 'pipeline-*.log' -mtime +30 -delete
+
+# ==============================================================================
+# ⚠️ GSC 相关（收录率周测 / 周报 / sitemap 提交）留在本机跑，不要搬到服务器：
+#    · 需要 Google OAuth 凭据，本机才有 refresh token
+#    · 大陆网络需本地代理才能访问 Google API
+#    · 已在本机建好自动化：周二 09:30「OE库｜真实收录率周测」
+#    若服务器在境外且 env_check 显示 GSC API 可达，再考虑迁移。
+# ==============================================================================
