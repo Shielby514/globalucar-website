@@ -477,6 +477,7 @@
     </div>
   </footer>
 
+  <script src="/assets/js/lead-attribution.js"></script>
   <script src="script.js"></script>
   <script>
   (function(){
@@ -645,6 +646,22 @@
           '. Additional files sent separately by email if needed.]';
       }
       fd.append('message', msgText);
+      // Lead attribution (2026-10-26): which page and which channel produced this inquiry.
+      try {
+        var _g = window.__GU_LEAD__ || {};
+        var _ref = '';
+        try { _ref = new URLSearchParams(location.search).get('ref') || ''; } catch (e) { _ref = ''; }
+        fd.append('_source', _g.source || '');
+        fd.append('_term', _g.term || '');
+        fd.append('_landing_page', _g.lp || '');
+        fd.append('_landing_type', _g.lp_type || '');
+        fd.append('_landing_slug', _g.lp_slug || '');
+        fd.append('_referrer', _g.ref || '');
+        fd.append('_first_seen', _g.ts || '');
+        fd.append('_pages_viewed', String(_g.pages || ''));
+        fd.append('_from_page', _ref || _g.last_slug || '');
+        fd.append('_page_type', _g.type || '');
+      } catch (e) { /* attribution must never block an inquiry */ }
       // FormSubmit 单附件字段: 第一个文件真实上传
       if (attached.length > 0) {
         fd.append('attachment', attached[0], attached[0].name);
