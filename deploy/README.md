@@ -290,26 +290,34 @@ git -c credential.helper= ls-remote origin
 ### 步骤 5：跑环境自检
 
 ```bash
-REPO=~/ucars PY=/usr/bin/python3 bash deploy/env_check.sh
+REPO=~/ucars PY=/usr/bin/python3 \
+ENRICH_PROXY=http://10.0.0.5:8080 GIT_PROXY=http://10.0.0.5:8080 \
+bash deploy/env_check.sh
 ```
 
-逐项看输出，按提示补齐。重点关注：
+脚本会对**每个外站点分别测直连和走代理**，直接给出结论，不用自己猜：
 
-- 数据源可达性（决定要不要配 `ENRICH_PROXY`）
-- GitHub 可达性（境内服务器需 `git config http.proxy`）
-- GSC API 可达性（不可达没关系，GSC 任务本来留在本机）
+- 数据源 `200` → 补强能跑
+- 数据源 `403` → 先换完整 UA 重试（脚本已内置），仍 403 才是白名单/墙的问题
+- GitHub `000` → 推送会失败，查 `GIT_PROXY`
+- GSC 不可达 → 正常，GSC 任务本来留在本机
+
+**末尾会打印「N 通过 / N 警告 / N 待处理」。有待处理项就先解决，别急着装 crontab。**
 
 ### 步骤 6：手动跑一遍 + 装 crontab
 
 ```bash
-# 先空跑看命令序列对不对
+# 先空跑看命令序列对不对（注意输出进了日志文件，不在终端）
 DRY=1 REPO=~/ucars bash deploy/oe_pipeline.sh
+tail -20 ~/ucars/.workbuddy/logs/pipeline-$(date +%F).log
 
 # 真跑一次小批量（10 条，验证链路）
-REPO=~/ucars ENRICH_LIMIT=10 ENRICH_MODE=released bash deploy/oe_pipeline.sh
+REPO=~/ucars ENRICH_LIMIT=10 ENRICH_MODE=released \
+ENRICH_PROXY=http://10.0.0.5:8080 GIT_PROXY=http://10.0.0.5:8080 \
+bash deploy/oe_pipeline.sh
 
 # 没问题后装 crontab
-crontab -e   # 粘贴 deploy/crontab.example 的内容
+crontab -e   # 粘贴 deploy/crontab.example 的内容（记得改 REPO 与两个代理）
 ```
 
 ---
