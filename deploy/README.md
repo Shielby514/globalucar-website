@@ -1,9 +1,11 @@
 # OE 库服务器 24 小时发布 —— 部署与交接文档
 
 > 版本：2026-10-26 ｜ 站点：`https://www.global-ucars.com`
+> 部署环境：**境内公司局域网**（本节所有代理配置为此而设）
 > 目标：**服务器全年无休运行**，每天自动「补数据 → 出页 → 发布 → 推送」。
 >
-> 本文档自成一体。拿到服务器后从「一、速览」读到「三、部署」即可开工，
+> 本文档自成一体。拿到服务器后按顺序读：
+> 「一、速览」→ **「二、境内部网专项」**（别跳）→「四、部署」。
 > 无需翻阅历史对话。
 
 ---
@@ -62,7 +64,137 @@
 
 ---
 
-## 二、架构
+## 二、境内部网专项（部署前必读）
+
+> 本部署环境：**境内公司局域网**。这一节的所有内容都和境外 VPS 不同，
+> 跳过会直接卡住。先花 5 分钟判断自己属于哪种出口情形。
+
+### 2.1 先判断：你的服务器能不能出境
+
+在服务器上跑这三条，看结果：
+
+```bash
+# ① 能不能到数据源（要 200）
+curl -s -o /dev/null -w "%{http_code}\n" --max-time 20 \
+  -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" \
+  "https://www.hyundaipartsdeal.com/genuine/hyundai-cover-rr-seat-mtg~89137-2e001-z9.html"
+
+# ② 能不能到 GitHub（200 或 401 都算通，000 才算不通）
+curl -s -o /dev/null -w "%{http_code}\n" --max-time 20 https://api.github.com
+
+# ③ 有没有现成代理
+env | grep -iE 'https?_proxy' || echo "无全局代理变量"
+```
+
+> ⚠️ 第 ① 条**必须带完整浏览器 UA**。数据源有 UA 反爬，
+> 短 UA `Mozilla/5.0` 会被判 **403**，看起来像"被墙"，实际是反爬。
+> 这个坑让自检误报过一次。
+
+### 2.2 三种情形，三条路
+
+| 情形 | 表现 | 部署方式 |
+|---|---|---|
+| **A. 有公司统一出口代理** | 直连失败，`curl -x proxy` 成功 | 最理想。`ENRICH_PROXY` + `GIT_PROXY` 都填代理地址，其余照本文档走 |
+| **B. 局域内有可出网机器** | 服务器不能出网，但同网段某台机器能 | 在那台机器装 squid/privoxy 做正向代理，服务器指过去。等价于情形 A |
+| **C. 全网不能出境** | 加代理也不行，白名单锁死 | 走"本机抓取 + rsync 同步"，见 2.5。**服务器退化为纯出页机器** |
+
+**先跑 `deploy/env_check.sh`，它会直接告诉你落在哪种情形**，
+不用自己判断。
+
+### 2.3 情形 A/B：代理怎么填
+
+```bash
+# 无认证
+ENRICH_PROXY=http://10.0.0.5:8080
+GIT_PROXY=http://10.0.0.5:8080
+
+# 有认证（用户名/密码含特殊字符必须 URL 编码）
+ENRICH_PROXY=http://user:p%40ssw0rd@10.0.0.5:8080
+```
+
+三个必检点：
+
+1. **代理端口不一定是 8080**。公司常见 8080/3128/8000/1080（socks5 需写 `socks5://`）
+2. **域名白名单**。公司代理常只放行常见站点，`hyundaipartsdeal.com` 和
+   `github.com` 要单独申请加白。env_check 会分别测这两个域名，缺哪个补哪个
+3. **`GIT_PROXY` 必须单独设**。git 不总是继承 `HTTPS_PROXY`，流水线用
+   `-c http.proxy=` 显式传，最稳
+
+验证代理真的能出去（不是"端口开着"）：
+
+```bash
+curl -x $ENRICH_PROXY -o /dev/null -w "%{http_code}\n" -A "$UA" "https://www.hyundaipartsdeal.com/..."
+curl -x $GIT_PROXY    -o /dev/null -w "%{http_code}\n" https://api.github.com
+```
+
+**内置的省时机制**：`enrich_oe_from_hpd.py` 启动时会先抓一条做预检，
+代理不通立刻 `exit 1` 并打印三种处置建议，**不会白跑 45 分钟**再报错。
+流水线收到非 0 退出码会直接中止本轮，不会带着坏网络去发布。
+
+### 2.4 境内特有故障模式
+
+| 现象 | 真实原因 | 处理 |
+|---|---|---|
+| 数据源 403，但浏览器能打开 | **UA 反爬**，不是墙 | curl 要带完整 Chrome UA；脚本已内置 |
+| 代理端口能 telnet 通，请求却 000 | 代理只放行 80/443 白名单 | 申请把两个域名加白 |
+| 白天正常，01:00 全失败 | 公司夜间断网/切换出口 | 把流水线改到 08:30（crontab 改 `30 8 * * *`） |
+| push 超时但 `git ls-remote` 正常 | credential helper 挂起 | 必须 `git -c credential.helper= push`（脚本已带） |
+| 补强很慢（>2s/条） | 代理带宽被办公流量挤占 | `ENRICH_WORKERS=2`、`ENRICH_DELAY=2.0`，或改夜间跑 |
+| 大批 `SSL: CERTIFICATE_VERIFY_FAILED` | 公司做了 SSL 中间人解密 | 让 IT 提供公司根证书，或换一台不走解密的机器 |
+
+### 2.5 情形 C：全网不能出境怎么办
+
+这是境内部网的真实常见情况。分工改成"本机抓、服务器发"：
+
+```
+本机（能出境）                     服务器（不能出境）
+─────────────────                ─────────────────
+enrich 抓数据                     读 oe-enriched.jsonl
+      │                                  │
+      └── rsync oe-enriched.jsonl ──────>┘
+                                         │
+                                   release + 出页 + 健康检查
+                                         │
+                                   git commit（只在本地）
+                                         │
+         <──── rsync 页面回来 ────────────┘
+      │
+      └── git push（本机推）
+```
+
+落地方式：
+
+```bash
+# 本机：每天抓完推过去
+python .workbuddy/scripts/enrich_oe_from_hpd.py --limit 3000 --workers 4
+rsync -avz .workbuddy/data/oe-enriched.jsonl server:~/ucars/.workbuddy/data/
+
+# 服务器：流水线去掉 enrich 和 push 两步（设两个开关）
+ENRICH_LIMIT=0 GIT_PUSH=0 bash deploy/oe_pipeline.sh
+
+# 本机：拉回页面并推送
+rsync -avz server:~/ucars/oe/ ./oe/
+git -c credential.helper= push origin main
+```
+
+> 情形 C 下服务器价值打折（只剩出页），但仍有意义：出页是 CPU/IO 密集，
+> 放服务器不影响本机使用。若嫌麻烦，也可以全程只在本机跑，
+> 代价是本机不能关机。
+
+### 2.6 境内部网的数据安全边界（别忽略）
+
+服务器在公司内网，意味着：
+
+- `.workbuddy/data/` 里有母库与补强数据（含竞品 MSRP）→ **不要开公网访问**，
+  只允许 SSH 进来
+- `git remote` URL 内嵌 PAT（明文）→ 服务器若多人共用，改用
+  `git config credential.helper store` + 单独的 deploy key，别把 PAT 写在 URL 里
+- 公司安全策略常扫出网流量。补强是每天 3000 次境外 HTTPS 请求，
+  **上线前跟 IT 报备一声**，避免被当成异常外联掐掉
+
+---
+
+## 三、架构
 
 ```
                    ┌──────────────────────────────────────┐
@@ -86,7 +218,21 @@
 
 ---
 
-## 三、部署（6 步）
+## 四、部署（6 步）
+
+> 境内部网请先读完第二节，确认自己在情形 A/B 还是 C。
+
+### 步骤 0：先确定两件事
+
+```bash
+# ① 时区（01:00 按服务器本地时间触发）
+sudo timedatectl set-timezone Asia/Shanghai
+timedatectl
+
+# ② 代理变量（情形 A/B 必填，情形 C 跳过）
+export ENRICH_PROXY=http://10.0.0.5:8080
+export GIT_PROXY=http://10.0.0.5:8080
+```
 
 ### 步骤 1：装基础环境
 
@@ -128,6 +274,11 @@ tar czf workbuddy.tar.gz .workbuddy
 ```bash
 # remote URL 内嵌 PAT。确认可见：
 git remote -v
+
+# 境内：把代理写进仓库配置（流水线还会用 GIT_PROXY 显式覆盖，双保险）
+git config http.proxy  "$GIT_PROXY"
+git config https.proxy "$GIT_PROXY"
+
 # 实测推送能力（ls-remote 通就基本没问题）
 git -c credential.helper= ls-remote origin
 ```
@@ -163,14 +314,14 @@ crontab -e   # 粘贴 deploy/crontab.example 的内容
 
 ---
 
-## 四、文件清单
+## 五、文件清单
 
 | 路径 | 作用 |
 |---|---|
 | `deploy/README.md` | 本文档 |
-| `deploy/env_check.sh` | 服务器环境自检（部署前必跑） |
-| `deploy/oe_pipeline.sh` | 每日流水线主脚本 |
-| `deploy/crontab.example` | crontab 模板 |
+| `deploy/env_check.sh` | 环境自检：**直连与代理双测**、DNS、NTP、cron 状态、推送能力（部署前必跑） |
+| `deploy/oe_pipeline.sh` | 每日流水线主脚本（含预检失败即停、`ENRICH_LIMIT=0`/`GIT_PUSH=0` 情形 C 开关） |
+| `deploy/crontab.example` | crontab 模板（境内版，代理已预留） |
 | `.workbuddy/scripts/enrich_oe_from_hpd.py` | **新增**：B 层数据补强（断点续传） |
 | `.workbuddy/data/oe-enriched.jsonl` | **新增**：补强产出，一行一条，增量追加 |
 | `.workbuddy/data/oe-enrich-progress.json` | 补强进度统计 |
@@ -180,7 +331,7 @@ crontab -e   # 粘贴 deploy/crontab.example 的内容
 
 ---
 
-## 五、三阶段路线（不要跳步）
+## 六、三阶段路线（不要跳步）
 
 ### 阶段 1 · 存数据（立即启动，零风险）
 
@@ -217,7 +368,7 @@ ENRICH_MODE=released ENRICH_LIMIT=3000 ENRICH_WORKERS=4 bash deploy/oe_pipeline.
 
 ---
 
-## 六、日常运维
+## 七、日常运维
 
 ```bash
 # 看今天流水线跑了什么
@@ -248,7 +399,7 @@ ENRICH_MODE=new        →   之后（为后续发布备数据）
 
 ---
 
-## 七、故障排查
+## 八、故障排查
 
 | 现象 | 原因 / 处理 |
 |---|---|
@@ -258,6 +409,11 @@ ENRICH_MODE=new        →   之后（为后续发布备数据）
 | `no_ld` 增多 | 数据源改版或返回反爬页。先 curl 一条看 HTML；必要时暂停并修 `parse_ld` |
 | 健康检查不通过 | 流水线会**自动中止推送**并 exit 1，等人工处理。不要注释掉这一步 |
 | 磁盘涨得快 | OE 页量大。定期清理 `.workbuddy/logs`（crontab 已配 30 天轮转） |
+| **预检就失败，日志只有三行** | 代理不通。这是内置保护：宁可 10 秒退出，不白跑 45 分钟。按日志里的三条建议逐一试 |
+| **数据源 403** | 先排除 UA 反爬（用完整 Chrome UA 重试），再怀疑墙 |
+| **补强速度突然降到 >2s/条** | 代理带宽被办公流量挤占。`ENRICH_WORKERS=2` 或改夜间 |
+| **SSL CERTIFICATE_VERIFY_FAILED** | 公司 SSL 中间人解密。找 IT 要根证书，或换不走解密的机器 |
+| **01:00 全失败，白天手工跑正常** | 公司夜间断网。crontab 改 `30 8 * * *` |
 
 ### 已知陷阱（别踩）
 
@@ -268,7 +424,7 @@ ENRICH_MODE=new        →   之后（为后续发布备数据）
 
 ---
 
-## 八、合规与护栏
+## 九、合规与护栏
 
 ### 数据使用边界（铁律）
 
@@ -299,13 +455,30 @@ ENRICH_MODE=new        →   之后（为后续发布备数据）
 
 ---
 
-## 九、上线检查清单
+## 十、上线检查清单
 
-- [ ] `deploy/env_check.sh` 全部通过
+**通用**
+
+- [ ] `deploy/env_check.sh` 全部通过（0 FAIL）
 - [ ] `.workbuddy` 已同步（母库 70MB 到位）
 - [ ] `git -c credential.helper= push` 实测通过
 - [ ] `DRY=1` 空跑命令序列无误
 - [ ] 小批量（10 条）真跑成功
 - [ ] crontab 已安装，次日 01:00 的日志正常生成
-- [ ] **本机发布线自动化已改 PAUSED**（避免两边重复发布）
+
+**境内局域网专项**
+
+- [ ] 已判定出口情形（A 有代理 / B 跳板机 / C 全网不出境）
+- [ ] `ENRICH_PROXY` 实测能取到数据源 200
+- [ ] `GIT_PROXY` 实测能到 api.github.com
+- [ ] 两个域名已申请加入公司代理白名单
+- [ ] 时区为 `Asia/Shanghai`，NTP 已同步（时间漂移会让证书校验失败）
+- [ ] `systemctl is-enabled cron` 为 enabled（断电恢复后才会继续跑）
+- [ ] 已向 IT 报备每日 3000 次境外 HTTPS 请求
+- [ ] 情形 C 的话：`ENRICH_LIMIT=0 GIT_PUSH=0` 已写进 crontab，rsync 链路已通
+- [ ] 服务器未开公网访问（`.workbuddy/data` 含竞品价格数据）
+
+**收尾**
+
+- [ ] **本机发布线自动化已改 PAUSED**（`automation-1792049617751`，避免两边重复发布）
 - [ ] 本机周二 09:30 收录率周测仍在跑（这是判断成效的北极星）

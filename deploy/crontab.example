@@ -1,34 +1,73 @@
 # ==============================================================================
-# OE 库服务器 crontab 示例 —— 复制到服务器上 `crontab -e`
-# 必须先按 README 完成部署并跑通 deploy/env_check.sh
+# OE 库服务器 crontab —— 境内公司局域网版
+#
+# 安装：crontab -e  然后粘贴本文件内容（把 <...> 换成实际值）
+# 前置：已按 README 完成部署，且 deploy/env_check.sh 无 FAIL
 # ==============================================================================
 
-# ---- 环境变量（cron 不加载 shell profile，必须显式写）----
+# ---- 环境变量：cron 不加载 shell profile，必须显式写 ----
+# 实际部署目录（不是 ~/ucars 就改这里）
 REPO=/home/ucars/ucars
 PY=/usr/bin/python3
-# 境外服务器留空（直连）；境内服务器填代理，例：http://127.0.0.1:10809
-ENRICH_PROXY=
+
+# ⚠️ 境内必填：公司出口代理。留空则脚本按直连处理，多半会全量超时。
+#    格式：http://10.0.0.5:8080
+#    需认证：http://user:pass@10.0.0.5:8080   （特殊字符要 URL 编码，@ 写 %40）
+ENRICH_PROXY=http://10.0.0.5:8080
+
+# ⚠️ 境内必填：git 推送代理。多数情况下与 ENRICH_PROXY 相同（公司统一出口）。
+#    若公司对不同域名走不同出口，这里要单独填。
+GIT_PROXY=http://10.0.0.5:8080
+
 ENRICH_LIMIT=3000
 ENRICH_DELAY=1.0
 ENRICH_WORKERS=4
-# 前 2 周用 released（先补已上线页面），之后改 new（为后续发布备数据）
+# released = 先补已上线页面（补完重出页立刻见效）
+# new      = 之后为后续发布备数据
 ENRICH_MODE=released
+
+# cron 的 PATH 极简，python3/git 的自定义安装路径要显式加
 PATH=/usr/local/bin:/usr/bin:/bin
 
-# ---- 每天 01:00 跑流水线（补强 → 发布 → 推送）----
-# 耗时参考：3000 条补强约 45 分钟（4 线程）；发布日再加 30-60 分钟
-0 1 * * * cd $REPO && /usr/bin/env REPO=$REPO PY=$PY ENRICH_PROXY=$ENRICH_PROXY ENRICH_LIMIT=$ENRICH_LIMIT ENRICH_DELAY=$ENRICH_DELAY ENRICH_WORKERS=$ENRICH_WORKERS ENRICH_MODE=$ENRICH_MODE bash $REPO/deploy/oe_pipeline.sh
+# 流水线自身会写 .workbuddy/logs，cron 的崩溃输出另存一份，便于区分
+MAILTO=""
+CRON_LOG=/home/ucars/ucars/.workbuddy/logs/cron.log
 
-# ---- 每周一 03:30 环境自检（网络/磁盘/git 推送能力）----
-30 3 * * 1 cd $REPO && /usr/bin/env REPO=$REPO PY=$PY ENRICH_PROXY=$ENRICH_PROXY bash $REPO/deploy/env_check.sh
+# ---- 每天 01:00 跑流水线：补强 → 护栏 → 出页 → 健康检查 → 推送 ----
+# 耗时参考：3000 条补强约 45 分钟（4 线程，走代理可能到 60-90 分钟）；发布日再加 30-60 分钟
+0 1 * * * cd $REPO && /usr/bin/env REPO=$REPO PY=$PY ENRICH_PROXY=$ENRICH_PROXY GIT_PROXY=$GIT_PROXY ENRICH_LIMIT=$ENRICH_LIMIT ENRICH_DELAY=$ENRICH_DELAY ENRICH_WORKERS=$ENRICH_WORKERS ENRICH_MODE=$ENRICH_MODE bash $REPO/deploy/oe_pipeline.sh >> $CRON_LOG 2>&1
 
-# ---- 每月 1 日 04:00 清理 30 天前的流水线日志 ----
+# ---- 每周一 03:30 环境自检（代理会变、PAT 会过期，要定期验）----
+30 3 * * 1 cd $REPO && /usr/bin/env REPO=$REPO PY=$PY ENRICH_PROXY=$ENRICH_PROXY GIT_PROXY=$GIT_PROXY bash $REPO/deploy/env_check.sh >> $CRON_LOG 2>&1
+
+# ---- 每月 1 日 04:00 清理 30 天前日志 ----
 0 4 1 * * find $REPO/.workbuddy/logs -name 'pipeline-*.log' -mtime +30 -delete
 
+# ---- 断电恢复后：延迟 5 分钟自检一次，确认代理与推送能力已恢复 ----
+# 只做自检不做发布，避免开机瞬间抢带宽影响其他服务
+@reboot sleep 300 && cd $REPO && /usr/bin/env REPO=$REPO PY=$PY ENRICH_PROXY=$ENRICH_PROXY GIT_PROXY=$GIT_PROXY bash $REPO/deploy/env_check.sh >> $CRON_LOG 2>&1
+
 # ==============================================================================
-# ⚠️ GSC 相关（收录率周测 / 周报 / sitemap 提交）留在本机跑，不要搬到服务器：
-#    · 需要 Google OAuth 凭据，本机才有 refresh token
-#    · 大陆网络需本地代理才能访问 Google API
-#    · 已在本机建好自动化：周二 09:30「OE库｜真实收录率周测」
-#    若服务器在境外且 env_check 显示 GSC API 可达，再考虑迁移。
+# 说明
+#
+# 1) 为什么 GSC 相关任务不搬到这里
+#    · 需要 Google OAuth refresh token，凭据在本机
+#    · 境内访问 Google API 需代理，且公司代理多半不放行
+#    · 本机已建好自动化：周二 09:30「OE库｜真实收录率周测」
+#    服务器只负责：补数据、出页、推送、(可选) IndexNow。
+#
+# 2) 为什么没有 @reboot 跑流水线
+#    服务器重启常见于停电/维护，开机时网络往往还没稳定。
+#    让 @reboot 只跑自检，正式发布留给 01:00 的固定任务。
+#
+# 3) 时区
+#    01:00 是服务器本地时区。确认 `timedatectl` 为 Asia/Shanghai，
+#    否则会跑到中国时间的奇怪点位（不影响功能，但排查时容易看错日志日期）。
+#
+# 4) 首次上线顺序
+#    a. bash deploy/env_check.sh         ← 必须 0 FAIL
+#    b. DRY=1 bash deploy/oe_pipeline.sh ← 只看命令序列
+#    c. ENRICH_LIMIT=10 bash deploy/oe_pipeline.sh ← 小批量真跑
+#    d. 确认 .workbuddy/logs/pipeline-*.log 正常后，再装本 crontab
+#    e. 本机 automation-1792049617751（每 2 天 600 页）改 PAUSED，避免重复发布
 # ==============================================================================
