@@ -339,6 +339,7 @@
 
 
 
+
 <!--CATEGORY-ITEMLIST:START-->
 <script type="application/ld+json">
 {
@@ -568,6 +569,7 @@
         <!--PRODUCT-GRID:START-->
 <!--PRODUCT-GRID:START-->
 <!--PRODUCT-GRID:START-->
+<div style="display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px;"><a class="sort-btn" style="text-decoration:none;" href="/parts/parts-engine-fuel-pump.html">Fuel Pump (1)</a><a class="sort-btn" style="text-decoration:none;" href="/parts/parts-engine-camshaft.html">Engine Internals (0)</a><a class="sort-btn" style="text-decoration:none;" href="/parts/parts-engine-piston.html">Piston (0)</a><a class="sort-btn" style="text-decoration:none;" href="/parts/parts-engine-pcv-valve.html">Pcv Valve (0)</a><a class="sort-btn" style="text-decoration:none;" href="/parts/parts-engine-spark-plug.html">Spark Plug (0)</a></div><!--PRODUCT-GRID:START-->
 <div style="display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px;"><a class="sort-btn" style="text-decoration:none;" href="/parts/parts-engine-fuel-pump.html">Fuel Pump (1)</a><a class="sort-btn" style="text-decoration:none;" href="/parts/parts-engine-camshaft.html">Engine Internals (0)</a><a class="sort-btn" style="text-decoration:none;" href="/parts/parts-engine-piston.html">Piston (0)</a><a class="sort-btn" style="text-decoration:none;" href="/parts/parts-engine-pcv-valve.html">Pcv Valve (0)</a><a class="sort-btn" style="text-decoration:none;" href="/parts/parts-engine-spark-plug.html">Spark Plug (0)</a></div><div class="pc-grid" id="pcGrid" data-static="1">
 <a class="pc-card" href="/parts/cabin-air-filter-301001157aa-for-tiggo-8-pro-max-tiggo-8-pro.html" style="text-decoration:none;display:block;">
           <img class="pc-img" src="/assets/parts/part_091_air_filter.jpg" alt="Cabin Air Filter 301001157AA for Chery tiggo 8 PRO MAX / tiggo 8 PRO - Kingmay w" loading="lazy" width="400" height="400" />
@@ -996,6 +998,7 @@
     // Render cards
     var grid = document.getElementById('pcGrid');
     if (!grid) return;
+    if (grid.getAttribute('data-static') === '1') { return; }
     if (grid.getAttribute('data-static') === '1') { return; }
     if (grid.getAttribute('data-static') === '1') { return; }
     if (grid.getAttribute('data-static') === '1') { return; }

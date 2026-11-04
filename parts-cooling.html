@@ -339,6 +339,7 @@
 
 
 
+
 <!--CATEGORY-ITEMLIST:START-->
 <script type="application/ld+json">
 {
@@ -988,6 +989,7 @@
         <!--PRODUCT-GRID:START-->
 <!--PRODUCT-GRID:START-->
 <!--PRODUCT-GRID:START-->
+<div style="display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px;"><a class="sort-btn" style="text-decoration:none;" href="/parts/parts-cooling-oil-cooler.html">Oil Cooler (310)</a><a class="sort-btn" style="text-decoration:none;" href="/parts/parts-cooling-water-pump.html">Water Pump (2)</a><a class="sort-btn" style="text-decoration:none;" href="/parts/parts-cooling-radiators.html">Radiators (0)</a></div><!--PRODUCT-GRID:START-->
 <div style="display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px;"><a class="sort-btn" style="text-decoration:none;" href="/parts/parts-cooling-oil-cooler.html">Oil Cooler (310)</a><a class="sort-btn" style="text-decoration:none;" href="/parts/parts-cooling-water-pump.html">Water Pump (2)</a><a class="sort-btn" style="text-decoration:none;" href="/parts/parts-cooling-radiators.html">Radiators (0)</a></div><div class="pc-grid" id="pcGrid" data-static="1">
 <a class="pc-card" href="/parts/ac-compressor-301000131aa-for-tiggo-7-pro-max-tiggo-8-pro-max.html" style="text-decoration:none;display:block;">
           <img class="pc-img" src="/assets/parts/part_053_ac_compressor.jpg" alt="AC Compressor 301000131AA for Chery tiggo 7 PRO MAX / tiggo 8 PRO MAX - Kingmay " loading="lazy" width="400" height="400" />
@@ -2256,6 +2258,7 @@
     // Render cards
     var grid = document.getElementById('pcGrid');
     if (!grid) return;
+    if (grid.getAttribute('data-static') === '1') { return; }
     if (grid.getAttribute('data-static') === '1') { return; }
     if (grid.getAttribute('data-static') === '1') { return; }
     if (grid.getAttribute('data-static') === '1') { return; }

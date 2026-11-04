@@ -339,6 +339,7 @@
 
 
 
+
 <!--CATEGORY-ITEMLIST:START-->
 <script type="application/ld+json">
 {
@@ -988,6 +989,7 @@
         <!--PRODUCT-GRID:START-->
 <!--PRODUCT-GRID:START-->
 <!--PRODUCT-GRID:START-->
+<div style="display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px;"><a class="sort-btn" style="text-decoration:none;" href="/parts/parts-suspension-control-arm.html">Control Arm (24)</a><a class="sort-btn" style="text-decoration:none;" href="/parts/parts-suspension-strut-mount.html">Strut Mount (9)</a><a class="sort-btn" style="text-decoration:none;" href="/parts/parts-suspension-ball-joint.html">Ball Joint (7)</a></div><!--PRODUCT-GRID:START-->
 <div style="display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px;"><a class="sort-btn" style="text-decoration:none;" href="/parts/parts-suspension-control-arm.html">Control Arm (24)</a><a class="sort-btn" style="text-decoration:none;" href="/parts/parts-suspension-strut-mount.html">Strut Mount (9)</a><a class="sort-btn" style="text-decoration:none;" href="/parts/parts-suspension-ball-joint.html">Ball Joint (7)</a></div><div class="pc-grid" id="pcGrid" data-static="1">
 <a class="pc-card" href="/parts/control-arm-ball-joint-assembly-m112909060-for-arrizo-3-tiggo-2.html" style="text-decoration:none;display:block;">
           <img class="pc-img" src="/assets/parts/gen/gen-ball-joint-pair.png" alt="Control Arm Ball Joint Assembly M112909060 for Chery Arrizo 3 / tiggo 2 - Kingma" loading="lazy" width="400" height="400" />
@@ -2256,6 +2258,7 @@
     // Render cards
     var grid = document.getElementById('pcGrid');
     if (!grid) return;
+    if (grid.getAttribute('data-static') === '1') { return; }
     if (grid.getAttribute('data-static') === '1') { return; }
     if (grid.getAttribute('data-static') === '1') { return; }
     if (grid.getAttribute('data-static') === '1') { return; }
