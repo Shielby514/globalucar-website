@@ -7,3 +7,4 @@ Sitemap: https://www.global-ucars.com/sitemap.xml
 # Disallow admin or private pages if any
 # Disallow: /admin/
 # Disallow: /private/
+Sitemap: https://www.global-ucars.com/sitemap-index.xml
