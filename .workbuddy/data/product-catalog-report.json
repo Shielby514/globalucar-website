@@ -1,0 +1,3506 @@
+{
+ "reject_supplier": [
+  [
+   "49-1001",
+   "oe_page_exists"
+  ],
+  [
+   "49-1002",
+   "oe_page_exists"
+  ],
+  [
+   "49-1002-1",
+   "oe_page_exists"
+  ],
+  [
+   "49-1003",
+   "oe_page_exists"
+  ],
+  [
+   "49-1004",
+   "oe_page_exists"
+  ],
+  [
+   "49-1006",
+   "oe_page_exists"
+  ],
+  [
+   "49-1007",
+   "oe_page_exists"
+  ],
+  [
+   "49-1008",
+   "oe_page_exists"
+  ],
+  [
+   "49-1009",
+   "oe_page_exists"
+  ],
+  [
+   "49-1012",
+   "oe_page_exists"
+  ],
+  [
+   "49-1027",
+   "no_oe"
+  ],
+  [
+   "49-1031",
+   "oe_page_exists"
+  ],
+  [
+   "49-1043",
+   "oe_page_exists"
+  ],
+  [
+   "49-1112",
+   "oe_page_exists"
+  ],
+  [
+   "49-1114",
+   "oe_page_exists"
+  ],
+  [
+   "49-1114AL",
+   "oe_page_exists"
+  ],
+  [
+   "49-1116",
+   "oe_page_exists"
+  ],
+  [
+   "49-1121",
+   "oe_page_exists"
+  ],
+  [
+   "49-1123",
+   "oe_page_exists"
+  ],
+  [
+   "49-1210",
+   "oe_page_exists"
+  ],
+  [
+   "49-1214",
+   "oe_page_exists"
+  ],
+  [
+   "49-1214A",
+   "oe_page_exists"
+  ],
+  [
+   "49-1214AL",
+   "oe_page_exists"
+  ],
+  [
+   "49-1219",
+   "oe_page_exists"
+  ],
+  [
+   "49-1228",
+   "oe_page_exists"
+  ],
+  [
+   "49-1228A",
+   "oe_page_exists"
+  ],
+  [
+   "49-1229A",
+   "oe_page_exists"
+  ],
+  [
+   "49-1233A",
+   "oe_page_exists"
+  ],
+  [
+   "81-1601",
+   "oe_page_exists"
+  ],
+  [
+   "81-1602",
+   "oe_page_exists"
+  ],
+  [
+   "81-1607",
+   "oe_page_exists"
+  ],
+  [
+   "81-1608",
+   "oe_page_exists"
+  ],
+  [
+   "81-1609",
+   "oe_page_exists"
+  ],
+  [
+   "81-1610",
+   "oe_page_exists"
+  ],
+  [
+   "81-1611",
+   "oe_page_exists"
+  ],
+  [
+   "81-1612",
+   "oe_page_exists"
+  ],
+  [
+   "81-1613",
+   "oe_page_exists"
+  ],
+  [
+   "81-1614",
+   "oe_page_exists"
+  ],
+  [
+   "81-1615",
+   "oe_page_exists"
+  ],
+  [
+   "81-1616",
+   "oe_page_exists"
+  ],
+  [
+   "81-1617",
+   "oe_page_exists"
+  ],
+  [
+   "81-1618",
+   "oe_page_exists"
+  ],
+  [
+   "81-1619",
+   "oe_page_exists"
+  ],
+  [
+   "81-1620",
+   "oe_page_exists"
+  ],
+  [
+   "81-1621",
+   "oe_page_exists"
+  ],
+  [
+   "81-1705",
+   "no_image"
+  ],
+  [
+   "81-1801",
+   "oe_page_exists"
+  ],
+  [
+   "81-1802",
+   "oe_page_exists"
+  ],
+  [
+   "81-1803",
+   "oe_page_exists"
+  ],
+  [
+   "81-1804",
+   "oe_page_exists"
+  ],
+  [
+   "81-1805",
+   "oe_page_exists"
+  ],
+  [
+   "81-1806",
+   "oe_page_exists"
+  ],
+  [
+   "81-1807",
+   "oe_page_exists"
+  ],
+  [
+   "81-1808",
+   "oe_page_exists"
+  ],
+  [
+   "81-1809",
+   "oe_page_exists"
+  ],
+  [
+   "81-1810",
+   "oe_page_exists"
+  ],
+  [
+   "81-1811",
+   "oe_page_exists"
+  ],
+  [
+   "81-1812",
+   "oe_page_exists"
+  ],
+  [
+   "81-1813",
+   "oe_page_exists"
+  ],
+  [
+   "81-1814",
+   "oe_page_exists"
+  ],
+  [
+   "81-1815",
+   "oe_page_exists"
+  ],
+  [
+   "81-1816",
+   "oe_page_exists"
+  ],
+  [
+   "81-1817",
+   "oe_page_exists"
+  ],
+  [
+   "81-1818",
+   "oe_page_exists"
+  ],
+  [
+   "81-1819",
+   "oe_page_exists"
+  ],
+  [
+   "81-1821",
+   "oe_page_exists"
+  ],
+  [
+   "81-1823",
+   "oe_page_exists"
+  ],
+  [
+   "81-1824",
+   "oe_page_exists"
+  ],
+  [
+   "81-1825",
+   "oe_page_exists"
+  ],
+  [
+   "82-1301",
+   "oe_page_exists"
+  ],
+  [
+   "82-1302",
+   "oe_page_exists"
+  ],
+  [
+   "82-1303",
+   "oe_page_exists"
+  ],
+  [
+   "82-1304",
+   "oe_page_exists"
+  ],
+  [
+   "82-1305",
+   "oe_page_exists"
+  ],
+  [
+   "82-1306",
+   "oe_page_exists"
+  ],
+  [
+   "82-1307",
+   "oe_page_exists"
+  ],
+  [
+   "82-1309",
+   "oe_page_exists"
+  ],
+  [
+   "82-1310",
+   "oe_page_exists"
+  ],
+  [
+   "82-1311",
+   "oe_page_exists"
+  ],
+  [
+   "82-1312",
+   "oe_page_exists"
+  ],
+  [
+   "82-1313",
+   "oe_page_exists"
+  ],
+  [
+   "82-1314",
+   "oe_page_exists"
+  ],
+  [
+   "82-1315",
+   "oe_page_exists"
+  ],
+  [
+   "82-1318",
+   "oe_page_exists"
+  ],
+  [
+   "82-1319",
+   "oe_page_exists"
+  ],
+  [
+   "82-1320",
+   "oe_page_exists"
+  ],
+  [
+   "82-1321",
+   "oe_page_exists"
+  ],
+  [
+   "60-1001",
+   "oe_page_exists"
+  ],
+  [
+   "60-1002",
+   "oe_page_exists"
+  ],
+  [
+   "33-1105",
+   "oe_page_exists"
+  ],
+  [
+   "33-1108",
+   "oe_page_exists"
+  ],
+  [
+   "86-7003",
+   "oe_page_exists"
+  ],
+  [
+   "86-9001",
+   "no_make"
+  ],
+  [
+   "86-9002",
+   "no_make"
+  ],
+  [
+   "49-1042",
+   "dup_oe"
+  ],
+  [
+   "49-1215AL",
+   "dup_oe"
+  ],
+  [
+   "49-1312",
+   "dup_oe"
+  ],
+  [
+   "01-1434H",
+   "dup_oe"
+  ],
+  [
+   "82-1317",
+   "dup_oe"
+  ],
+  [
+   "01-1501B",
+   "dup_oe"
+  ],
+  [
+   "01-1501W",
+   "dup_oe"
+  ],
+  [
+   "01-1501BW",
+   "dup_oe"
+  ],
+  [
+   "01-1504AL",
+   "dup_oe"
+  ],
+  [
+   "01-1504ALL",
+   "dup_oe"
+  ],
+  [
+   "44-1511",
+   "dup_oe"
+  ],
+  [
+   "98-1002",
+   "dup_oe"
+  ]
+ ],
+ "reject_leadong": [
+  [
+   "engine-timing-chain-tensioner-24410-2500",
+   "oe_page_exists"
+  ],
+  [
+   "complete-timing-chain-repair-kit-for-hyu",
+   "oe_page_exists"
+  ],
+  [
+   "timing-chain-guide-for-hyundai-grand-i10",
+   "oe_page_exists"
+  ],
+  [
+   "oil-pump-balance-shaft-assembly-for-hyun",
+   "no_oe"
+  ],
+  [
+   "oil-feed-282402g411-for-hyundai-santa-fe",
+   "oe_page_exists"
+  ],
+  [
+   "precise-fitment-durable-oem-timing-chain",
+   "oe_page_exists"
+  ],
+  [
+   "24377-2f000",
+   "oe_page_exists"
+  ],
+  [
+   "pump-assy-coolent-251002b700-hyundai-kia",
+   "no_oe"
+  ],
+  [
+   "genuine-oem-23111-2g230-crankshaft-assy-",
+   "oe_page_exists"
+  ],
+  [
+   "premium-timing-chain-guide-lever-for-hyu",
+   "no_oe"
+  ],
+  [
+   "premium-49501-c1250-front-right-drive-sh",
+   "oe_page_exists"
+  ],
+  [
+   "oem-hyundai-right-passenger-outer-axle-s",
+   "oe_page_exists"
+  ],
+  [
+   "drive-shaft-assembly-right-hand-hyundai-",
+   "oe_page_exists"
+  ],
+  [
+   "disk-set-under-drive-brake-45625-3b620-t",
+   "oe_page_exists"
+  ],
+  [
+   "front-wheel-hub-and-bearing-assembly-517",
+   "oe_page_exists"
+  ],
+  [
+   "smooth-buffering-front-right-shock-absor",
+   "oe_page_exists"
+  ],
+  [
+   "stable-cushioned-front-left-shock-absorb",
+   "oe_page_exists"
+  ],
+  [
+   "firm-wearproof-front-left-shock-absorber",
+   "oe_page_exists"
+  ],
+  [
+   "anti-deformation-solid-front-lower-arm-5",
+   "oe_page_exists"
+  ],
+  [
+   "tight-fit-durable-front-left-control-arm",
+   "oe_page_exists"
+  ],
+  [
+   "exquisitely-crafted-robust-clock-spring-",
+   "oe_page_exists"
+  ],
+  [
+   "oem-4pcs-ignition-coil-for-hyundai-sonat",
+   "oe_page_exists"
+  ],
+  [
+   "4x-genuine-ignition-coil-for-2001-17-hyu",
+   "oe_page_exists"
+  ],
+  [
+   "",
+   "no_oe"
+  ],
+  [
+   "windshield-washer-motor-pump-replacement",
+   "oe_page_exists"
+  ],
+  [
+   "professional-automotive-standard-durable",
+   "oe_page_exists"
+  ],
+  [
+   "premium-sturdy-direct-fit-long-lasting-c",
+   "oe_page_exists"
+  ],
+  [
+   "wonderfully-stable-sensitive-safe-replac",
+   "no_image"
+  ],
+  [
+   "super-smooth-safe-premium-complete-conso",
+   "no_image"
+  ],
+  [
+   "direct-fit-sturdy-long-lasting-superior-",
+   "oe_page_exists"
+  ],
+  [
+   "high-precision-cvt-transmission-rear-she",
+   "no_oe"
+  ],
+  [
+   "automatic-transmission-differential-carr",
+   "oe_page_exists"
+  ],
+  [
+   "premium-durable-speedometer-drive-gearfo",
+   "oe_page_exists"
+  ],
+  [
+   "transaxle-mounting-bracket-assembly-2183",
+   "oe_page_exists"
+  ],
+  [
+   "23040-2g200-piston-ring-set-genuine-oem",
+   "oe_page_exists"
+  ],
+  [
+   "23040-2g500-piston-ring-set",
+   "oe_page_exists"
+  ],
+  [
+   "ransmission-awd-differential-cover-for-h",
+   "oe_page_exists"
+  ],
+  [
+   "458223b650-transmission-awd-differential",
+   "oe_page_exists"
+  ],
+  [
+   "unit-ultra-premium-heavy-duty-cup-differ",
+   "no_oe"
+  ],
+  [
+   "truly-hardwearing-standard-precise-trans",
+   "no_oe"
+  ],
+  [
+   "25330-3k000",
+   "oe_page_exists"
+  ],
+  [
+   "budget-friendly-premium-oil-cooler-assem",
+   "oe_page_exists"
+  ],
+  [
+   "one-highly-premium-durable-compatible-or",
+   "oe_page_exists"
+  ],
+  [
+   "superbly-reliable-smooth-fit-premium-rea",
+   "no_oe"
+  ],
+  [
+   "optimally-wear-resistant-precise-high-ef",
+   "no_oe"
+  ],
+  [
+   "washer-nozzle-front-spray-for-optima-k5-",
+   "no_image"
+  ],
+  [
+   "vehicle-specific-well-fitted-rear-stabil",
+   "oe_page_exists"
+  ],
+  [
+   "shock-resistant-thickened-front-right-ar",
+   "oe_page_exists"
+  ],
+  [
+   "precise-fit-anti-leak-lower-oil-pan-2151",
+   "oe_page_exists"
+  ]
+ ],
+ "reject_cnoe": [
+  [
+   "chery-m113502075",
+   "no_own_image"
+  ],
+  [
+   "chery-m113501075",
+   "no_own_image"
+  ],
+  [
+   "j428105010ba",
+   "no_own_image"
+  ],
+  [
+   "j608105010",
+   "no_own_image"
+  ],
+  [
+   "t211311110",
+   "no_own_image"
+  ],
+  [
+   "m111311110",
+   "no_own_image"
+  ],
+  [
+   "j421311110be",
+   "no_own_image"
+  ],
+  [
+   "chery-t153502075ep",
+   "no_own_image"
+  ],
+  [
+   "chery-t153502075",
+   "no_own_image"
+  ],
+  [
+   "chery-t153501075",
+   "no_own_image"
+  ],
+  [
+   "chery-j693502075",
+   "no_own_image"
+  ],
+  [
+   "chery-204000081aa",
+   "no_own_image"
+  ],
+  [
+   "chery-204003322aa",
+   "no_own_image"
+  ],
+  [
+   "chery-t156gn3502170",
+   "no_own_image"
+  ],
+  [
+   "t218107110",
+   "no_own_image"
+  ],
+  [
+   "j608107110",
+   "no_own_image"
+  ],
+  [
+   "t158107350ba",
+   "no_own_image"
+  ],
+  [
+   "t158107350",
+   "no_own_image"
+  ],
+  [
+   "301001420aa",
+   "no_own_image"
+  ],
+  [
+   "301001238aa",
+   "no_own_image"
+  ],
+  [
+   "301000820aa",
+   "no_own_image"
+  ],
+  [
+   "chery-j603502075ev",
+   "no_own_image"
+  ],
+  [
+   "chery-204001698aa",
+   "no_own_image"
+  ],
+  [
+   "chery-204001686aa",
+   "no_own_image"
+  ],
+  [
+   "j608107350",
+   "no_own_image"
+  ],
+  [
+   "301002026aa",
+   "no_own_image"
+  ],
+  [
+   "301000058aa",
+   "no_own_image"
+  ],
+  [
+   "j521311111",
+   "no_own_image"
+  ],
+  [
+   "j111311110",
+   "no_own_image"
+  ],
+  [
+   "j521311110",
+   "no_own_image"
+  ],
+  [
+   "chery-j433502031",
+   "no_own_image"
+  ],
+  [
+   "chery-j433501075",
+   "no_own_image"
+  ],
+  [
+   "chery-j113501075",
+   "no_own_image"
+  ],
+  [
+   "chery-j113501075ba",
+   "no_own_image"
+  ],
+  [
+   "chery-j436gn3502070",
+   "no_own_image"
+  ],
+  [
+   "j524bs3401400bb-tie-rod-end",
+   "no_own_image"
+  ],
+  [
+   "chery-204001231aa",
+   "no_own_image"
+  ],
+  [
+   "chery-204001641aa",
+   "no_own_image"
+  ],
+  [
+   "chery-204000479aa",
+   "no_own_image"
+  ],
+  [
+   "chery-204000453aa",
+   "no_own_image"
+  ],
+  [
+   "chery-204004266aa",
+   "no_own_image"
+  ],
+  [
+   "chery-204004261aa",
+   "no_own_image"
+  ],
+  [
+   "301002926aa",
+   "no_own_image"
+  ],
+  [
+   "301001541aa",
+   "no_own_image"
+  ],
+  [
+   "301002155aa",
+   "no_own_image"
+  ],
+  [
+   "301000116aa",
+   "no_own_image"
+  ],
+  [
+   "302001684aa",
+   "no_own_image"
+  ],
+  [
+   "chery-204002964aa",
+   "no_own_image"
+  ],
+  [
+   "chery-204002701aa",
+   "no_own_image"
+  ],
+  [
+   "chery-204002692aa",
+   "no_own_image"
+  ],
+  [
+   "chery-204001537aa",
+   "no_own_image"
+  ],
+  [
+   "chery-t213501075",
+   "no_own_image"
+  ],
+  [
+   "chery-t213502075",
+   "no_own_image"
+  ],
+  [
+   "chery-t213502210",
+   "no_own_image"
+  ],
+  [
+   "chery-j603502075",
+   "no_own_image"
+  ],
+  [
+   "chery-j606gn3502210",
+   "no_own_image"
+  ],
+  [
+   "chery-j723502075na",
+   "no_own_image"
+  ],
+  [
+   "chery-j723501075ac",
+   "no_own_image"
+  ],
+  [
+   "j728107110na",
+   "no_own_image"
+  ],
+  [
+   "j728105010",
+   "no_own_image"
+  ],
+  [
+   "s121311110ba",
+   "no_own_image"
+  ],
+  [
+   "chery-j693501075",
+   "no_own_image"
+  ],
+  [
+   "j698107150",
+   "no_own_image"
+  ],
+  [
+   "chery-204001412aa",
+   "no_own_image"
+  ],
+  [
+   "302001073aa",
+   "no_own_image"
+  ],
+  [
+   "chery-s116ad3501075bc",
+   "no_own_image"
+  ],
+  [
+   "chery-s113js3501075bc",
+   "no_own_image"
+  ],
+  [
+   "chery-s113ah3501075",
+   "no_own_image"
+  ],
+  [
+   "chery-s113502031ab",
+   "no_own_image"
+  ],
+  [
+   "chery-s113502030ba",
+   "no_own_image"
+  ],
+  [
+   "chery-s111et3501075bc",
+   "no_own_image"
+  ],
+  [
+   "chery-s113501075",
+   "no_own_image"
+  ],
+  [
+   "chery-s116ad3502170",
+   "no_own_image"
+  ],
+  [
+   "chery-s113502170",
+   "no_own_image"
+  ],
+  [
+   "s119ec8107510",
+   "no_own_image"
+  ],
+  [
+   "s111311110ka",
+   "no_own_image"
+  ],
+  [
+   "s118105010eu",
+   "no_own_image"
+  ],
+  [
+   "chery-t113502075bc",
+   "no_own_image"
+  ],
+  [
+   "s111311110",
+   "no_own_image"
+  ],
+  [
+   "chery-t116gn3502170",
+   "no_own_image"
+  ],
+  [
+   "chery-t113501075bc",
+   "no_own_image"
+  ],
+  [
+   "chery-t113ah3502170",
+   "no_own_image"
+  ],
+  [
+   "chery-t113502170",
+   "no_own_image"
+  ],
+  [
+   "t111311111",
+   "no_own_image"
+  ],
+  [
+   "t111311110",
+   "no_own_image"
+  ],
+  [
+   "t112901110-strut-mount-bearing",
+   "no_own_image"
+  ],
+  [
+   "302000333aa",
+   "no_own_image"
+  ],
+  [
+   "chery-204004361aa",
+   "no_own_image"
+  ],
+  [
+   "chery-204004352aa",
+   "no_own_image"
+  ],
+  [
+   "chery-204003241aa",
+   "no_own_image"
+  ],
+  [
+   "chery-204003232aa",
+   "no_own_image"
+  ],
+  [
+   "s113501060-brake-caliper",
+   "no_own_image"
+  ],
+  [
+   "s113501050bb-brake-caliper",
+   "no_own_image"
+  ],
+  [
+   "s113501060bb-brake-caliper",
+   "no_own_image"
+  ],
+  [
+   "s113501050-brake-caliper",
+   "no_own_image"
+  ],
+  [
+   "jetour-204004879aa",
+   "no_own_image"
+  ],
+  [
+   "301002052aa",
+   "no_own_image"
+  ],
+  [
+   "302001399aa",
+   "no_own_image"
+  ],
+  [
+   "chery-204002262aa",
+   "no_own_image"
+  ],
+  [
+   "chery-204002271aa",
+   "no_own_image"
+  ],
+  [
+   "chery-204001723aa",
+   "no_own_image"
+  ],
+  [
+   "chery-204000944aa",
+   "no_own_image"
+  ],
+  [
+   "chery-t116gn3502075",
+   "no_own_image"
+  ],
+  [
+   "chery-t113502075ra",
+   "no_own_image"
+  ],
+  [
+   "chery-t113502075",
+   "no_own_image"
+  ],
+  [
+   "chery-t113501075bs",
+   "no_own_image"
+  ],
+  [
+   "chery-t113501075ac",
+   "no_own_image"
+  ],
+  [
+   "chery-t113501075ba",
+   "no_own_image"
+  ],
+  [
+   "chery-t113501075ra",
+   "no_own_image"
+  ],
+  [
+   "chery-t113501075",
+   "no_own_image"
+  ],
+  [
+   "202000665aa",
+   "no_own_image"
+  ],
+  [
+   "202000664aa",
+   "no_own_image"
+  ],
+  [
+   "exeed-204002831aa",
+   "no_own_image"
+  ],
+  [
+   "exeed-204001946aa",
+   "no_own_image"
+  ],
+  [
+   "301002626aa",
+   "no_own_image"
+  ],
+  [
+   "301002584aa",
+   "no_own_image"
+  ],
+  [
+   "301001589aa",
+   "no_own_image"
+  ],
+  [
+   "302001391aa",
+   "no_own_image"
+  ],
+  [
+   "301001962aa",
+   "no_own_image"
+  ],
+  [
+   "204002833aa-brake-caliper",
+   "no_own_image"
+  ],
+  [
+   "204002832aa-brake-caliper",
+   "no_own_image"
+  ],
+  [
+   "301003033aa",
+   "no_own_image"
+  ],
+  [
+   "301002039aa",
+   "no_own_image"
+  ],
+  [
+   "302002256aa",
+   "no_own_image"
+  ],
+  [
+   "exeed-204001529aa",
+   "no_own_image"
+  ],
+  [
+   "exeed-204000376aa",
+   "no_own_image"
+  ],
+  [
+   "exeed-204000354aa",
+   "no_own_image"
+  ],
+  [
+   "301001792aa",
+   "no_own_image"
+  ],
+  [
+   "301001476aa",
+   "no_own_image"
+  ],
+  [
+   "301001455aa",
+   "no_own_image"
+  ],
+  [
+   "301000240aa",
+   "no_own_image"
+  ],
+  [
+   "301003038aa",
+   "no_own_image"
+  ],
+  [
+   "301001794aa",
+   "no_own_image"
+  ],
+  [
+   "301000243aa",
+   "no_own_image"
+  ],
+  [
+   "301001460aa",
+   "no_own_image"
+  ],
+  [
+   "exeed-204000243aa",
+   "no_own_image"
+  ],
+  [
+   "exeed-204000244aa",
+   "no_own_image"
+  ],
+  [
+   "301000086aa",
+   "no_own_image"
+  ],
+  [
+   "302000508aa",
+   "no_own_image"
+  ],
+  [
+   "302000099aa",
+   "no_own_image"
+  ],
+  [
+   "jetour-f163502075yt",
+   "no_own_image"
+  ],
+  [
+   "jetour-f083501075",
+   "no_own_image"
+  ],
+  [
+   "jetour-f013502075",
+   "no_own_image"
+  ],
+  [
+   "jetour-f013001075",
+   "no_own_image"
+  ],
+  [
+   "jetour-204005056aa",
+   "no_own_image"
+  ],
+  [
+   "jetour-204005040aa",
+   "no_own_image"
+  ],
+  [
+   "f278107012yd",
+   "no_own_image"
+  ],
+  [
+   "f188107012",
+   "no_own_image"
+  ],
+  [
+   "f168107060-blower-motor",
+   "no_own_image"
+  ],
+  [
+   "f188107031-evaporator-core",
+   "no_own_image"
+  ],
+  [
+   "f168107040",
+   "no_own_image"
+  ],
+  [
+   "f208105010",
+   "no_own_image"
+  ],
+  [
+   "f278107040",
+   "no_own_image"
+  ],
+  [
+   "k098105010",
+   "no_own_image"
+  ],
+  [
+   "f011311110",
+   "no_own_image"
+  ],
+  [
+   "jetour-204005465aa",
+   "no_own_image"
+  ],
+  [
+   "f018107014",
+   "no_own_image"
+  ],
+  [
+   "f018107036da",
+   "no_own_image"
+  ],
+  [
+   "f018107036",
+   "no_own_image"
+  ],
+  [
+   "f018107031",
+   "no_own_image"
+  ],
+  [
+   "f018105010da",
+   "no_own_image"
+  ],
+  [
+   "f018105010ba",
+   "no_own_image"
+  ],
+  [
+   "jetour-f183502075",
+   "no_own_image"
+  ],
+  [
+   "jetour-f183001075",
+   "no_own_image"
+  ],
+  [
+   "f088107016",
+   "no_own_image"
+  ],
+  [
+   "f088107030",
+   "no_own_image"
+  ],
+  [
+   "jetour-f263001075lb",
+   "no_own_image"
+  ],
+  [
+   "jetour-204004865aa",
+   "no_own_image"
+  ],
+  [
+   "jetour-f263502075lb",
+   "no_own_image"
+  ],
+  [
+   "f188107012bn",
+   "no_own_image"
+  ],
+  [
+   "f268105010",
+   "no_own_image"
+  ],
+  [
+   "f261311110ba",
+   "no_own_image"
+  ],
+  [
+   "301002580aa",
+   "no_own_image"
+  ],
+  [
+   "f191311110ev",
+   "no_own_image"
+  ],
+  [
+   "f188107030bn-evaporator-core",
+   "no_own_image"
+  ],
+  [
+   "jetour-f083502075",
+   "no_own_image"
+  ],
+  [
+   "f018107013ma",
+   "no_own_image"
+  ],
+  [
+   "h-202002396aa",
+   "no_own_image"
+  ],
+  [
+   "h-202002395aa",
+   "no_own_image"
+  ],
+  [
+   "body-assy-tailgate-5062053300c15",
+   "no_own_image"
+  ],
+  [
+   "self-priming-tailgate-lock-body-5068005200",
+   "no_own_image"
+  ],
+  [
+   "blower-a-c-8022037200",
+   "no_own_image"
+  ],
+  [
+   "core-evaporator-8020056200",
+   "no_own_image"
+  ],
+  [
+   "expansion-tank-2082006700",
+   "no_own_image"
+  ],
+  [
+   "door-body-assy-frt-lh-5075068600c15",
+   "no_own_image"
+  ],
+  [
+   "door-body-assy-frt-rh-5075068500c15",
+   "no_own_image"
+  ],
+  [
+   "body-assy-tailgate-5062045300c15",
+   "no_own_image"
+  ],
+  [
+   "blower-a-c-6608210882",
+   "no_own_image"
+  ],
+  [
+   "blower-a-c-8022039300",
+   "no_own_image"
+  ],
+  [
+   "core-evaporator-8020051700",
+   "no_own_image"
+  ],
+  [
+   "combination-headlamp-rh-frt-7051041000",
+   "no_own_image"
+  ],
+  [
+   "lh-hinge-assy-trunk-door-5060032900c15",
+   "no_own_image"
+  ],
+  [
+   "rh-hinge-assy-trunk-door-5060032800c15",
+   "no_own_image"
+  ],
+  [
+   "blower-a-c-8022041800",
+   "no_own_image"
+  ],
+  [
+   "core-evaporator-8020052400",
+   "no_own_image"
+  ],
+  [
+   "condenser-8010091100",
+   "no_own_image"
+  ],
+  [
+   "expansion-tank-assy-2082010900",
+   "no_own_image"
+  ],
+  [
+   "expansion-tank-assy-2082005600",
+   "no_own_image"
+  ],
+  [
+   "lh-hinge-assy-trunk-door-5060029600",
+   "no_own_image"
+  ],
+  [
+   "rh-hinge-assy-trunk-door-5060029500",
+   "no_own_image"
+  ],
+  [
+   "expansion-tank-assy-6608001242",
+   "no_own_image"
+  ],
+  [
+   "blower-a-c-8022030300",
+   "no_own_image"
+  ],
+  [
+   "condenser-8010049300",
+   "no_own_image"
+  ],
+  [
+   "expansion-tank-assy-1066033474",
+   "no_own_image"
+  ],
+  [
+   "expansion-tank-assy-1016010920",
+   "no_own_image"
+  ],
+  [
+   "lh-frt-door-otr-opening-handle-1118045916",
+   "no_own_image"
+  ],
+  [
+   "rh-rr-door-otr-opening-handle-1118045915",
+   "no_own_image"
+  ],
+  [
+   "lh-rr-door-otr-opening-handle-1118045914",
+   "no_own_image"
+  ],
+  [
+   "lh-frt-door-otr-opening-handle-1118045355",
+   "no_own_image"
+  ],
+  [
+   "rh-frt-door-otr-opening-handle-1118045913",
+   "no_own_image"
+  ],
+  [
+   "rh-rr-door-otr-opening-handle-1018063167",
+   "no_own_image"
+  ],
+  [
+   "rh-frt-door-otr-opening-handle-1018063165",
+   "no_own_image"
+  ],
+  [
+   "lh-frt-door-otr-opening-handle-1018063164",
+   "no_own_image"
+  ],
+  [
+   "lh-rr-door-otr-opening-handle-1018063166",
+   "no_own_image"
+  ],
+  [
+   "door-body-assy-frt-lh-5075068900c15",
+   "no_own_image"
+  ],
+  [
+   "door-body-assy-frt-lh-5075068800c15",
+   "no_own_image"
+  ],
+  [
+   "door-body-assy-frt-rh-5075068700c15",
+   "no_own_image"
+  ],
+  [
+   "blower-a-c-1016016690",
+   "no_own_image"
+  ],
+  [
+   "core-evaporator-1016019172",
+   "no_own_image"
+  ],
+  [
+   "body-assy-tailgate-101204051801c15",
+   "no_own_image"
+  ],
+  [
+   "condenser-1016017453",
+   "no_own_image"
+  ],
+  [
+   "lh-frt-door-otr-opening-handle-5077039400",
+   "no_own_image"
+  ],
+  [
+   "rh-frt-door-otr-opening-handle-5077039200",
+   "no_own_image"
+  ],
+  [
+   "lh-frt-door-otr-opening-handle-5077039300",
+   "no_own_image"
+  ],
+  [
+   "rh-frt-door-otr-opening-handle-5077039100",
+   "no_own_image"
+  ],
+  [
+   "door-body-assy-rr-lh-5081040300c15",
+   "no_own_image"
+  ],
+  [
+   "door-body-assy-rr-rh-5081040200c15",
+   "no_own_image"
+  ],
+  [
+   "blower-a-c-8022021100",
+   "no_own_image"
+  ],
+  [
+   "body-assy-tailgate-5062050200c15",
+   "no_own_image"
+  ],
+  [
+   "core-evaporator-8020025200",
+   "no_own_image"
+  ],
+  [
+   "combination-headlamp-assy-lh-frt-7051022900",
+   "no_own_image"
+  ],
+  [
+   "combination-headlamp-assy-rh-frt-7051022800",
+   "no_own_image"
+  ],
+  [
+   "combination-headlamp-lh-frt-7051022500",
+   "no_own_image"
+  ],
+  [
+   "combination-headlamp-rh-frt-7051022400",
+   "no_own_image"
+  ],
+  [
+   "condenser-8010572500",
+   "no_own_image"
+  ],
+  [
+   "self-priming-tailgate-lock-body-5068008900",
+   "no_own_image"
+  ],
+  [
+   "condenser-8010075300",
+   "no_own_image"
+  ],
+  [
+   "lh-frt-door-otr-opening-handle-5077055000",
+   "no_own_image"
+  ],
+  [
+   "rh-frt-door-otr-opening-handle-5077054900",
+   "no_own_image"
+  ],
+  [
+   "door-body-assy-frt-lh-5075055800c15",
+   "no_own_image"
+  ],
+  [
+   "door-body-assy-frt-rh-5075055700c15",
+   "no_own_image"
+  ],
+  [
+   "body-assy-tailgate-5062058500c15",
+   "no_own_image"
+  ],
+  [
+   "body-assy-tailgate-5062037200c15",
+   "no_own_image"
+  ],
+  [
+   "body-assy-tailgate-5062036700c15",
+   "no_own_image"
+  ],
+  [
+   "blower-assembly-8022042600",
+   "no_own_image"
+  ],
+  [
+   "blower-assembly-8022032000",
+   "no_own_image"
+  ],
+  [
+   "core-evaporator-8020054600",
+   "no_own_image"
+  ],
+  [
+   "blower-a-c-8022024300",
+   "no_own_image"
+  ],
+  [
+   "blower-a-c-6608055702",
+   "no_own_image"
+  ],
+  [
+   "core-evaporator-8020038700",
+   "no_own_image"
+  ],
+  [
+   "core-evaporator-8020028400",
+   "no_own_image"
+  ],
+  [
+   "combination-headlamp-lh-frt-7051032200",
+   "no_own_image"
+  ],
+  [
+   "1345307800-blower-motor",
+   "no_own_image"
+  ],
+  [
+   "1542353300-evaporator-core",
+   "no_own_image"
+  ],
+  [
+   "1259423700-blower-motor",
+   "no_own_image"
+  ],
+  [
+   "1313298500-evaporator-core",
+   "no_own_image"
+  ],
+  [
+   "1463215600-ac-condenser",
+   "no_own_image"
+  ],
+  [
+   "1374907600-ac-condenser",
+   "no_own_image"
+  ],
+  [
+   "1319705800-ac-condenser",
+   "no_own_image"
+  ],
+  [
+   "1317784900-ac-condenser",
+   "no_own_image"
+  ],
+  [
+   "1317031300-ac-condenser",
+   "no_own_image"
+  ],
+  [
+   "1259829000-expansion-tank",
+   "no_own_image"
+  ],
+  [
+   "1605897700-evaporator-core",
+   "no_own_image"
+  ],
+  [
+   "1605897200-evaporator-core",
+   "no_own_image"
+  ],
+  [
+   "1382592700-ac-condenser",
+   "no_own_image"
+  ],
+  [
+   "1342597200-expansion-tank",
+   "no_own_image"
+  ],
+  [
+   "1342344500-brake-discs",
+   "no_own_image"
+  ],
+  [
+   "1342346700-brake-discs",
+   "no_own_image"
+  ],
+  [
+   "1318642000-ac-condenser",
+   "no_own_image"
+  ],
+  [
+   "1528985500-blower-motor",
+   "no_own_image"
+  ],
+  [
+   "1341806700-blower-motor",
+   "no_own_image"
+  ],
+  [
+   "1542878600-evaporator-core",
+   "no_own_image"
+  ],
+  [
+   "1344491000-evaporator-core",
+   "no_own_image"
+  ],
+  [
+   "1344490800-ac-condenser",
+   "no_own_image"
+  ],
+  [
+   "1351115600-evaporator-core",
+   "no_own_image"
+  ],
+  [
+   "1304122000-abs-pump",
+   "no_own_image"
+  ],
+  [
+   "1364653900-evaporator-core",
+   "no_own_image"
+  ],
+  [
+   "1431936500-brake-discs",
+   "no_own_image"
+  ],
+  [
+   "1496595300-ac-condenser",
+   "no_own_image"
+  ],
+  [
+   "1346008100-door-handle",
+   "no_own_image"
+  ],
+  [
+   "1725838200-evaporator-core",
+   "no_own_image"
+  ],
+  [
+   "1590101700-ac-condenser",
+   "no_own_image"
+  ],
+  [
+   "1430041300-ac-condenser",
+   "no_own_image"
+  ],
+  [
+   "1522650700-ac-condenser",
+   "no_own_image"
+  ],
+  [
+   "1358624200-ac-condenser",
+   "no_own_image"
+  ],
+  [
+   "1534904700-blower-motor",
+   "no_own_image"
+  ],
+  [
+   "1534904800-evaporator-core",
+   "no_own_image"
+  ],
+  [
+   "1485248700-ac-condenser",
+   "no_own_image"
+  ],
+  [
+   "1446618900-ac-condenser",
+   "no_own_image"
+  ],
+  [
+   "1331911100-expansion-tank",
+   "no_own_image"
+  ],
+  [
+   "jetour-f263001075",
+   "no_own_image"
+  ],
+  [
+   "jetour-f263502075",
+   "no_own_image"
+  ],
+  [
+   "Front Brake Pads S111ET3501080 for IQ",
+   "type_cap"
+  ],
+  [
+   "Rear Brake Pads T113AH3502080 / T11-3502",
+   "type_cap"
+  ],
+  [
+   "Rear Brake Pads T113502080BA for tiggo 3",
+   "type_cap"
+  ],
+  [
+   "Rear Brake Pads T113502080 / T11-BJ35010",
+   "type_cap"
+  ],
+  [
+   "Front Brake Pads T113501080BA for tiggo ",
+   "type_cap"
+  ],
+  [
+   "Rear Brake Pads T19C3JS3502080 for chery",
+   "type_cap"
+  ],
+  [
+   "Front Brake Pads T19C3JS3501080 for cher",
+   "type_cap"
+  ],
+  [
+   "Front Brake Pads M1E6GN3501080 for arriz",
+   "type_cap"
+  ],
+  [
+   "Rear Brake Pads M1E6GN3502080 for arrizo",
+   "type_cap"
+  ],
+  [
+   "Rear Brake Pads M1E3502080 for arrizo 8",
+   "type_cap"
+  ],
+  [
+   "Front Brake Pads M1E3501080 for arrizo 8",
+   "type_cap"
+  ],
+  [
+   "Front Brake Pads T113501080 for tiggo 3",
+   "type_cap"
+  ],
+  [
+   "Front Brake Pads T113501080AC for tiggo ",
+   "type_cap"
+  ],
+  [
+   "Front Brake Pads T113AH3501080 / T11-350",
+   "type_cap"
+  ],
+  [
+   "Front Brake Pads 204003787AA for ES",
+   "type_cap"
+  ],
+  [
+   "Rear Brake Pads 204005424AA for ET",
+   "type_cap"
+  ],
+  [
+   "Front Brake Pads 204005423AA for ET",
+   "type_cap"
+  ],
+  [
+   "Front Brake Pads 204002687AA / 204002687",
+   "type_cap"
+  ],
+  [
+   "Rear Brake Pads 204002696AA / 204002696A",
+   "type_cap"
+  ],
+  [
+   "Front Brake Pads T223501080 for exeed RX",
+   "type_cap"
+  ],
+  [
+   "Rear Brake Pads M36T6GN3502080 for exeed",
+   "type_cap"
+  ],
+  [
+   "Front Brake Pads M36T6GN3501080 for exee",
+   "type_cap"
+  ],
+  [
+   "Rear Brake Pads M31T6GN3502080 for exeed",
+   "type_cap"
+  ],
+  [
+   "Front Brake Pads M31T6GN3501080 for exee",
+   "type_cap"
+  ],
+  [
+   "Rear Brake Pads F163502080YT for dashing",
+   "type_cap"
+  ],
+  [
+   "Rear Brake Pads F163502080 for dashing /",
+   "type_cap"
+  ],
+  [
+   "Front Brake Pads F163501080YT for dashin",
+   "type_cap"
+  ],
+  [
+   "Front Brake Pads F163501080 for dashing ",
+   "type_cap"
+  ],
+  [
+   "Rear Brake Pads 204005100AA for dashing ",
+   "type_cap"
+  ],
+  [
+   "Rear Brake Pads F083502080SB for jetour ",
+   "type_cap"
+  ],
+  [
+   "Front Brake Pads F083501080 for jetour X",
+   "type_cap"
+  ],
+  [
+   "Rear Brake Pads F013502080 / F01-3502080",
+   "type_cap"
+  ],
+  [
+   "Front Brake Pads F013501080YL for jetour",
+   "type_cap"
+  ],
+  [
+   "Front Brake Pads F013501080 / F01-350108",
+   "type_cap"
+  ],
+  [
+   "Front Brake Pads F203501080 for jetour X",
+   "type_cap"
+  ],
+  [
+   "Rear Brake Pads F183502080 for jetour X9",
+   "type_cap"
+  ],
+  [
+   "Front Brake Pads F183501080 for jetour X",
+   "type_cap"
+  ],
+  [
+   "Rear Brake Pads F083502080AB / F08-35020",
+   "type_cap"
+  ],
+  [
+   "Front Brake Pads F013501080HY for jetour",
+   "type_cap"
+  ],
+  [
+   "Rear Brake Pads F263502080LB for T1",
+   "type_cap"
+  ],
+  [
+   "Front Brake Pads F263501080LB for T1",
+   "type_cap"
+  ],
+  [
+   "Front Brake Pads F263501080 for T1",
+   "type_cap"
+  ],
+  [
+   "Rear Brake Pads F083502080 for X90",
+   "type_cap"
+  ],
+  [
+   "Stabilizer Bar Bushing S112906025 for ch",
+   "over_cap"
+  ],
+  [
+   "Left Drive Shaft Assembly S112203010AB f",
+   "over_cap"
+  ],
+  [
+   "Right Drive Shaft Assembly S112203020AB ",
+   "over_cap"
+  ],
+  [
+   "Strut Mount S112911031 for chery Q",
+   "over_cap"
+  ],
+  [
+   "Electric AC Compressor Assembly 30100218",
+   "over_cap"
+  ],
+  [
+   "Toe Link Assembly 202001757AA for J6",
+   "over_cap"
+  ],
+  [
+   "Stabilizer Link T112906030BU for J6 / ti",
+   "over_cap"
+  ],
+  [
+   "Low-Temperature Radiator Assembly 302001",
+   "over_cap"
+  ],
+  [
+   "Electronic Water Pump Assembly 302002011",
+   "over_cap"
+  ],
+  [
+   "Strut Mount 202001373AA for J6",
+   "over_cap"
+  ],
+  [
+   "Right Outer Tie Rod End Assembly 2010004",
+   "over_cap"
+  ],
+  [
+   "Front Wheel Hub Bearing Assembly 2040016",
+   "over_cap"
+  ],
+  [
+   "Left Outer Ball Joint Assembly 201000409",
+   "over_cap"
+  ],
+  [
+   "Inner Tie Rod Assembly 201000407AA for a",
+   "over_cap"
+  ],
+  [
+   "Left Outer Tie Rod End 201000394AA for a",
+   "over_cap"
+  ],
+  [
+   "Right Outer Tie Rod End 201000395AA for ",
+   "over_cap"
+  ],
+  [
+   "Inner Tie Rod End 201000392AA 201000392A",
+   "over_cap"
+  ],
+  [
+   "Steering Rack with Tie Rod Assembly 2010",
+   "over_cap"
+  ],
+  [
+   "Steering Rack with Tie Rod Assembly 2010",
+   "over_cap"
+  ],
+  [
+   "Front Wheel Hub 204000112AA for tiggo 8 ",
+   "over_cap"
+  ],
+  [
+   "Rear Wheel Hub Bearing Assembly 20400006",
+   "over_cap"
+  ],
+  [
+   "Right Outer Tie Rod End 201000776AA for ",
+   "over_cap"
+  ],
+  [
+   "Left Outer Tie Rod End 201000775AA for t",
+   "over_cap"
+  ],
+  [
+   "Tie Rod End 201000774AA for tiggo 8 PRO ",
+   "over_cap"
+  ],
+  [
+   "Electric Power Steering Rack with Tie Ro",
+   "over_cap"
+  ],
+  [
+   "Control Arm Ball Joint Assembly 20200238",
+   "over_cap"
+  ],
+  [
+   "Right Front Control Arm Assembly 2020006",
+   "over_cap"
+  ],
+  [
+   "Steering Rack with Tie Rod Assembly 2010",
+   "over_cap"
+  ],
+  [
+   "Left Front Control Arm Assembly 20200067",
+   "over_cap"
+  ],
+  [
+   "Control Arm Ball Joint Assembly 20200005",
+   "over_cap"
+  ],
+  [
+   "Rear Lower Control Arm Assembly 20200066",
+   "over_cap"
+  ],
+  [
+   "AC Compressor Assembly 301003353AA for E",
+   "over_cap"
+  ],
+  [
+   "AC Compressor Assembly 301001967AA for E",
+   "over_cap"
+  ],
+  [
+   "Non-Redundant Electric Power Steering Ra",
+   "over_cap"
+  ],
+  [
+   "PM0.3 Activated Carbon Filter 301002631A",
+   "over_cap"
+  ],
+  [
+   "Electronic Water Pump Assembly 302001796",
+   "over_cap"
+  ],
+  [
+   "Right Rear Drive Shaft Assembly 15400061",
+   "over_cap"
+  ],
+  [
+   "Electronic Water Pump Assembly 302001604",
+   "over_cap"
+  ],
+  [
+   "Left Rear Drive Shaft Assembly 154000613",
+   "over_cap"
+  ],
+  [
+   "Right Front Drive Shaft Assembly 1540004",
+   "over_cap"
+  ],
+  [
+   "Left Rear Drive Shaft Assembly 154000452",
+   "over_cap"
+  ],
+  [
+   "Right Rear Drive Shaft Assembly 15400045",
+   "over_cap"
+  ],
+  [
+   "Left Front Drive Shaft Assembly 15400045",
+   "over_cap"
+  ],
+  [
+   "Electric Power Steering Rack with Tie Ro",
+   "over_cap"
+  ],
+  [
+   "PM0.3 Single-Stage Cabin Air Filter 3010",
+   "over_cap"
+  ],
+  [
+   "Electric Water Pump Assembly 111300011AA",
+   "over_cap"
+  ],
+  [
+   "Radiator Assembly 302002253AA for ET",
+   "over_cap"
+  ],
+  [
+   "Electronic Water Pump Assembly 302000779",
+   "over_cap"
+  ],
+  [
+   "Right Rear Drive Shaft Assembly 15400068",
+   "over_cap"
+  ],
+  [
+   "Heater Core Assembly 301003042AA for exe",
+   "over_cap"
+  ],
+  [
+   "Heater Core Assembly 301001464AA for exe",
+   "over_cap"
+  ],
+  [
+   "Heater Core Assembly 301001793AA for exe",
+   "over_cap"
+  ],
+  [
+   "Heater Core Assembly 301000241AA for exe",
+   "over_cap"
+  ],
+  [
+   "Strut Mount Bearing 202000136AA for exee",
+   "over_cap"
+  ],
+  [
+   "Front Wheel Hub Bearing Assembly (1st Ge",
+   "over_cap"
+  ],
+  [
+   "Front Wheel Hub 204000153AA for exeed TX",
+   "over_cap"
+  ],
+  [
+   "Wheel Hub Bearing F083301210 / F18-33012",
+   "over_cap"
+  ],
+  [
+   "Heater Core (with Sponge) F088107028 for",
+   "over_cap"
+  ],
+  [
+   "Electric AC Compressor Assembly F2681030",
+   "over_cap"
+  ],
+  [
+   "Rear Wheel Hub Bearing Unit Assembly F26",
+   "over_cap"
+  ],
+  [
+   "Front Wheel Hub Bearing F263001030LB for",
+   "over_cap"
+  ],
+  [
+   "Front Wheel Hub Bearing F263001030 for T",
+   "over_cap"
+  ],
+  [
+   "Tie Rod End Assembly 201001019AA for T1",
+   "over_cap"
+  ],
+  [
+   "Inner Tie Rod Assembly 201001005AA for T",
+   "over_cap"
+  ],
+  [
+   "Tie Rod End 201001018AA for T1",
+   "over_cap"
+  ],
+  [
+   "Tie Rod End 201001004AA for T1",
+   "over_cap"
+  ],
+  [
+   "Inner Tie Rod Assembly 201000971AA for T",
+   "over_cap"
+  ],
+  [
+   "Right Outer Tie Rod End Assembly 2010009",
+   "over_cap"
+  ],
+  [
+   "Left Outer Tie Rod End 201000969AA for T",
+   "over_cap"
+  ],
+  [
+   "Rear Wheel Hub Bearing Assembly F1833012",
+   "over_cap"
+  ],
+  [
+   "Steering Rack with Tie Rods Assembly F26",
+   "over_cap"
+  ],
+  [
+   "Front Wheel Hub Bearing F183001030 for T",
+   "over_cap"
+  ],
+  [
+   "Right Outer Tie Rod End Assembly F193401",
+   "over_cap"
+  ],
+  [
+   "Front Wheel Hub Bearing F013001030 for T",
+   "over_cap"
+  ],
+  [
+   "Steering Rack with Tie Rod Assembly 2010",
+   "over_cap"
+  ],
+  [
+   "Rear Wheel Hub Bearing Assembly F0133012",
+   "over_cap"
+  ],
+  [
+   "Tie Rod End F193401310EP for T2 I DM",
+   "over_cap"
+  ],
+  [
+   "Left Outer Tie Rod End F193401330EP for ",
+   "over_cap"
+  ],
+  [
+   "Left Outer Tie Rod End F163401330FS for ",
+   "over_cap"
+  ],
+  [
+   "Right Outer Tie Rod End F163401430FS for",
+   "over_cap"
+  ],
+  [
+   "Tie Rod Assembly F163401310FS for T2 I D",
+   "over_cap"
+  ],
+  [
+   "Mechanical Steering Rack with Tie Rod As",
+   "over_cap"
+  ],
+  [
+   "Steering Rack F193401100EP for T2 I DM",
+   "over_cap"
+  ],
+  [
+   "Right Outer Tie Rod End F083401430FD for",
+   "over_cap"
+  ],
+  [
+   "Tie Rod End F083401310FD for T1",
+   "over_cap"
+  ],
+  [
+   "Left Outer Tie Rod End F083401330FD for ",
+   "over_cap"
+  ],
+  [
+   "Wheel Hub Bearing F083001030 / F18-30010",
+   "over_cap"
+  ],
+  [
+   "Right Outer Tie Rod End F083401430EP / F",
+   "over_cap"
+  ],
+  [
+   "Cabin Air Filter 301001574AA for jaecoo ",
+   "over_cap"
+  ],
+  [
+   "Left Front Control Arm Assembly 20200197",
+   "over_cap"
+  ],
+  [
+   "Right Front Control Arm Assembly 2020019",
+   "over_cap"
+  ],
+  [
+   "Right Rear Stabilizer Link 202001597AA f",
+   "over_cap"
+  ],
+  [
+   "Left Rear Stabilizer Link 202001596AA fo",
+   "over_cap"
+  ],
+  [
+   "Electronic Water Pump Assembly 302001909",
+   "over_cap"
+  ],
+  [
+   "LH RR DOOR LOCK BODY 5083029500 / 660006",
+   "over_cap"
+  ],
+  [
+   "RH RR DOOR LOCK BODY 5083029200 / 660006",
+   "over_cap"
+  ],
+  [
+   "COMPRESSOR ASSY, AIR CONDITIONER 8013016",
+   "over_cap"
+  ],
+  [
+   "COMPRESSOR ASSY, AIR CONDITIONER 8013016",
+   "over_cap"
+  ],
+  [
+   "STARTER 2043010000 / 5511696454 for atla",
+   "over_cap"
+  ],
+  [
+   "COMPRESSOR ASSY, AIR CONDITIONER 8013015",
+   "over_cap"
+  ],
+  [
+   "STARTER 2043009700 / 8893212171 for atla",
+   "over_cap"
+  ],
+  [
+   "STARTER 2043009900 / 5511699305 for atla",
+   "over_cap"
+  ],
+  [
+   "STARTER 2043009500 / 5511696804 for atla",
+   "over_cap"
+  ],
+  [
+   "STARTER 2043009400 / 5511699306 for atla",
+   "over_cap"
+  ],
+  [
+   "STARTER 2043009300 / 5511701581 for atla",
+   "over_cap"
+  ],
+  [
+   "FRT SHOCK ABSORBER BEARING 8894162198 fo",
+   "over_cap"
+  ],
+  [
+   "FRT SHOCK ABSORBER BEARING 4013089100 / ",
+   "over_cap"
+  ],
+  [
+   "FRT SHOCK ABSORBER BEARING 4013080900 / ",
+   "over_cap"
+  ],
+  [
+   "WHEEL HUB ASSY-RR 6608025339 for atlas",
+   "over_cap"
+  ],
+  [
+   "WHEEL HUB ASSY-RR 4048103900 / 889365420",
+   "over_cap"
+  ],
+  [
+   "STEERING GEAR TIE ROD 4036047700 / 88926",
+   "over_cap"
+  ],
+  [
+   "LH RR DOOR LOCK BODY 5083056800 / 888917",
+   "over_cap"
+  ],
+  [
+   "TIE ROD-STEERING GEAR RH OTR 4036047400 ",
+   "over_cap"
+  ],
+  [
+   "TIE ROD-STEERING GEAR LH OTR 4036047500 ",
+   "over_cap"
+  ],
+  [
+   "RH RR DOOR LOCK BODY 5083056700 / 888917",
+   "over_cap"
+  ],
+  [
+   "STARTER 2043009200 / 8891541001 for monj",
+   "over_cap"
+  ],
+  [
+   "FRT SHOCK ABSORBER BEARING 6608081049 fo",
+   "over_cap"
+  ],
+  [
+   "STARTER 2043009800 / 8893212166 for monj",
+   "over_cap"
+  ],
+  [
+   "LH RR DOOR LOCK BODY 5083526300 / 101805",
+   "over_cap"
+  ],
+  [
+   "WHEEL HUB ASSY-RR 4048088500 / 889180154",
+   "over_cap"
+  ],
+  [
+   "WHEEL HUB ASSY-RR 4048088300 / 888942932",
+   "over_cap"
+  ],
+  [
+   "RH RR DOOR LOCK BODY 5083526200 / 101805",
+   "over_cap"
+  ],
+  [
+   "RH RR DOOR LOCK BODY 5083006700 / 101805",
+   "over_cap"
+  ],
+  [
+   "LH RR DOOR LOCK BODY 5083007000 / 101805",
+   "over_cap"
+  ],
+  [
+   "LH FRT DOOR LOCK BODY 5077537700 / 10180",
+   "over_cap"
+  ],
+  [
+   "RH FRT DOOR LOCK BODY 5077537600 / 10180",
+   "over_cap"
+  ],
+  [
+   "RH FRT DOOR LOCK BODY 5077009500 / 10180",
+   "over_cap"
+  ],
+  [
+   "LH FRT DOOR LOCK BODY 5077009900 / 10180",
+   "over_cap"
+  ],
+  [
+   "COMPRESSOR ASSY, AIR CONDITIONER 8013007",
+   "over_cap"
+  ],
+  [
+   "COMPRESSOR ASSY, AIR CONDITIONER 8013017",
+   "over_cap"
+  ],
+  [
+   "COMPRESSOR ASSY, AIR CONDITIONER 1067000",
+   "over_cap"
+  ],
+  [
+   "STARTER 113600018059 for emgrand",
+   "over_cap"
+  ],
+  [
+   "STARTER 1136000180 for emgrand / Gx 3PRO",
+   "over_cap"
+  ],
+  [
+   "FRT SHOCK ABSORBER BEARING 4013022600 / ",
+   "over_cap"
+  ],
+  [
+   "CLUTCH DRIVEN DISC 6608057409 for emgran",
+   "over_cap"
+  ],
+  [
+   "LH FRT DOOR LOCK BODY 5077045400 / 66001",
+   "over_cap"
+  ],
+  [
+   "RH RR DOOR LOCK BODY 5083029700 / 660019",
+   "over_cap"
+  ],
+  [
+   "LH RR DOOR LOCK BODY 5083029800 / 660019",
+   "over_cap"
+  ],
+  [
+   "RH FRT DOOR LOCK BODY 5077045300 / 66001",
+   "over_cap"
+  ],
+  [
+   "BEARING-FRT WHEEL HUB 4048106800 / 88924",
+   "over_cap"
+  ],
+  [
+   "WHEEL HUB ASSY-RR 4050561900 / 888976315",
+   "over_cap"
+  ],
+  [
+   "BEARING-FRT WHEEL HUB 4017524000 / 88897",
+   "over_cap"
+  ],
+  [
+   "TIE ROD-STEERING GEAR RH OTR 4036042000 ",
+   "over_cap"
+  ],
+  [
+   "STEERING ASSY-ELECTRIC POWER W/ TIE ROD ",
+   "over_cap"
+  ],
+  [
+   "KNOCK SENSOR 1033024500 / 31370761 for p",
+   "over_cap"
+  ],
+  [
+   "TIE ROD-STEERING GEAR LH OTR 4036041900 ",
+   "over_cap"
+  ],
+  [
+   "A/C FILTER ELEMENT 8025530600 / 88913520",
+   "over_cap"
+  ],
+  [
+   "LINK ROD, FRT STABILIZER BAR 6608116493 ",
+   "over_cap"
+  ],
+  [
+   "LH RR DOOR LOCK BODY 5083049700 / 889098",
+   "over_cap"
+  ],
+  [
+   "PUMP-FUEL WITH LEVEL SENSOR 6608080522 f",
+   "over_cap"
+  ],
+  [
+   "LH FRT DOOR LOCK BODY 5077080900 / 88909",
+   "over_cap"
+  ],
+  [
+   "RH RR DOOR LOCK BODY 5083049600 / 889098",
+   "over_cap"
+  ],
+  [
+   "RH FRT DOOR LOCK BODY 5077080800 / 88909",
+   "over_cap"
+  ],
+  [
+   "COMPRESSORS 8013014600 / 8891802345 for ",
+   "over_cap"
+  ],
+  [
+   "COMPRESSORS 8013011200 / 8891361190 for ",
+   "over_cap"
+  ],
+  [
+   "CLOCK SPRING 1013005361 for geometry C",
+   "over_cap"
+  ],
+  [
+   "FRT SHOCK ABSORBER BEARING 1014028436 fo",
+   "over_cap"
+  ],
+  [
+   "WHEEL HUB ASSY-RR 4050006200 / 106400314",
+   "over_cap"
+  ],
+  [
+   "WHEEL HUB ASSY-RR 4048070800 / 660027751",
+   "over_cap"
+  ],
+  [
+   "TIE ROD-STEERING GEAR LH OTR 4036037600 ",
+   "over_cap"
+  ],
+  [
+   "TIE ROD-STEERING GEAR RH OTR 4036037500 ",
+   "over_cap"
+  ],
+  [
+   "STEERING GEAR TIE ROD 4036037300 / 88909",
+   "over_cap"
+  ],
+  [
+   "A/C FILTER ELEMENT 8025529600 / 88913520",
+   "over_cap"
+  ],
+  [
+   "LINK ROD, FRT STABILIZER BAR 4015011500 ",
+   "over_cap"
+  ],
+  [
+   "RADIATOR ASSY 2069028200 / 6600185803 fo",
+   "over_cap"
+  ],
+  [
+   "LINK ROD, FRT STABILIZER BAR 6608150638 ",
+   "over_cap"
+  ],
+  [
+   "DRIVE SHAFT-LH FRT 4082086400 / 66001274",
+   "over_cap"
+  ],
+  [
+   "UPR BRACKET, FRT SHOCK ABSORBER 40135632",
+   "over_cap"
+  ],
+  [
+   "DRIVE SHAFT-RH FRT 4082086300 / 66001274",
+   "over_cap"
+  ],
+  [
+   "LH RR DOOR LOCK BODY 5083027300 / 101805",
+   "over_cap"
+  ],
+  [
+   "RH RR DOOR LOCK BODY 5083026900 / 101805",
+   "over_cap"
+  ],
+  [
+   "LH FRT DOOR LOCK BODY 5077038800 / 10180",
+   "over_cap"
+  ],
+  [
+   "RH FRT DOOR LOCK BODY 5077038300 / 10180",
+   "over_cap"
+  ],
+  [
+   "COMPRESSOR ASSY, AIR CONDITIONER 1116000",
+   "over_cap"
+  ],
+  [
+   "CLOCK SPRING 7042005500 / 1013006059 for",
+   "over_cap"
+  ],
+  [
+   "LH RR DOOR LOCK BODY 1018061057 for cool",
+   "over_cap"
+  ],
+  [
+   "RH RR DOOR LOCK BODY 1018061058 for cool",
+   "over_cap"
+  ],
+  [
+   "RH FRT DOOR LOCK BODY 1018061056 for coo",
+   "over_cap"
+  ],
+  [
+   "LH FRT DOOR LOCK BODY 1018061055 for coo",
+   "over_cap"
+  ],
+  [
+   "COMPRESSOR ASSY, AIR CONDITIONER 8013010",
+   "over_cap"
+  ],
+  [
+   "COMPRESSOR ASSY, AIR CONDITIONER 8013009",
+   "over_cap"
+  ],
+  [
+   "COMPRESSOR ASSY, AIR CONDITIONER 8013510",
+   "over_cap"
+  ],
+  [
+   "COMPRESSOR ASSY, AIR CONDITIONER 8013016",
+   "over_cap"
+  ],
+  [
+   "CLOCK SPRING 7042005200 / 1017031958 for",
+   "over_cap"
+  ],
+  [
+   "Right Front Door Lock Assembly 131678310",
+   "over_cap"
+  ],
+  [
+   "Rear Door Lock Assembly 1268094800 / SA3",
+   "over_cap"
+  ],
+  [
+   "Right Front Exterior Door Handle Assembl",
+   "over_cap"
+  ],
+  [
+   "Left Front Exterior Door Handle Assembly",
+   "over_cap"
+  ],
+  [
+   "Left Front Door Lock Cylinder Assembly 1",
+   "over_cap"
+  ],
+  [
+   "Electric Compressor Assembly 1563684800 ",
+   "over_cap"
+  ],
+  [
+   "Electric AC Compressor Assembly 15029702",
+   "over_cap"
+  ],
+  [
+   "BYD Electric AC Compressor Assembly 1320",
+   "over_cap"
+  ],
+  [
+   "Electric Compressor Assembly 1370835100 ",
+   "over_cap"
+  ],
+  [
+   "Electric AC Compressor Assembly 14610391",
+   "over_cap"
+  ],
+  [
+   "Front Strut Mount Bearing Assembly 12438",
+   "over_cap"
+  ],
+  [
+   "Steering Tie Rod Outer Ball Joint Assemb",
+   "over_cap"
+  ],
+  [
+   "Rear Wheel Hub Unit Assembly 1298765200 ",
+   "over_cap"
+  ],
+  [
+   "Steering Tie Rod Outer End Assembly 1520",
+   "over_cap"
+  ],
+  [
+   "Electric Compressor Assembly 1357158800 ",
+   "over_cap"
+  ],
+  [
+   "Rear Wheel Hub Unit Assembly 1266070300 ",
+   "over_cap"
+  ],
+  [
+   "Stabilizer Link and Ball Joint Assembly ",
+   "over_cap"
+  ],
+  [
+   "Cabin Air Filter 1642009800 / EQEA810024",
+   "over_cap"
+  ],
+  [
+   "Motor Radiator Assembly I 1466286400 / E",
+   "over_cap"
+  ],
+  [
+   "Electric Water Pump Assembly 1497320000 ",
+   "over_cap"
+  ],
+  [
+   "Front Strut Mount Assembly 1437847700 / ",
+   "over_cap"
+  ],
+  [
+   "Front Shock Absorber Dust Boot 124382700",
+   "over_cap"
+  ],
+  [
+   "Right Rear Shock Absorber Spring Upper S",
+   "over_cap"
+  ],
+  [
+   "Rear Shock Absorber Dust Cover and Bump ",
+   "over_cap"
+  ],
+  [
+   "Electronic Fan Assembly I 1466286300 / E",
+   "over_cap"
+  ],
+  [
+   "Front Shock Absorber Bump Stop 134362400",
+   "over_cap"
+  ],
+  [
+   "Left Rear Shock Absorber Spring Upper Se",
+   "over_cap"
+  ],
+  [
+   "Right Front Door Lock Assembly 130086200",
+   "over_cap"
+  ],
+  [
+   "Left Front Exterior Door Handle Assembly",
+   "over_cap"
+  ],
+  [
+   "Right Front Exterior Door Handle Assembl",
+   "over_cap"
+  ],
+  [
+   "Left Front Door Lock Cylinder Assembly 1",
+   "over_cap"
+  ],
+  [
+   "BYD Electric AC Compressor Assembly 1377",
+   "over_cap"
+  ],
+  [
+   "Front Axle Bearing Assembly 1266070900 /",
+   "over_cap"
+  ],
+  [
+   "Steering Tie Rod Outer Ball Joint Assemb",
+   "over_cap"
+  ],
+  [
+   "Outer Tie Rod End Assembly 1515224600 / ",
+   "over_cap"
+  ],
+  [
+   "Outer Tie Rod End Assembly 1511941600 / ",
+   "over_cap"
+  ],
+  [
+   "Outer Tie Rod End Assembly 1511941000 / ",
+   "over_cap"
+  ],
+  [
+   "Mechanical Steering Rack with Tie Rod As",
+   "over_cap"
+  ],
+  [
+   "Front Lower Control Arm Ball Joint Assem",
+   "over_cap"
+  ],
+  [
+   "High-Efficiency Filter 1312461000 / EM2E",
+   "over_cap"
+  ],
+  [
+   "Right Front Exterior Door Handle Assembl",
+   "over_cap"
+  ],
+  [
+   "Left Front Exterior Door Handle Assembly",
+   "over_cap"
+  ],
+  [
+   "Right Outer Tie Rod End Assembly 1510681",
+   "over_cap"
+  ],
+  [
+   "Left Outer Tie Rod End Assembly 15106808",
+   "over_cap"
+  ],
+  [
+   "Mechanical Steering Gear with Tie Rod As",
+   "over_cap"
+  ],
+  [
+   "Front Stabilizer Link and Ball Joint Ass",
+   "over_cap"
+  ],
+  [
+   "Front Lower Control Arm Ball Joint Assem",
+   "over_cap"
+  ],
+  [
+   "Motor Radiator Assembly I 1431753400 / T",
+   "over_cap"
+  ],
+  [
+   "Rear Stabilizer Bar Link and Ball Joint ",
+   "over_cap"
+  ],
+  [
+   "Electric Water Pump Assembly I 134514440",
+   "over_cap"
+  ],
+  [
+   "Rear Strut Mount Assembly 1439393400 / E",
+   "over_cap"
+  ],
+  [
+   "Front Strut Mount Assembly 1439393500 / ",
+   "over_cap"
+  ],
+  [
+   "Rear Shock Absorber Upper Support Assemb",
+   "over_cap"
+  ],
+  [
+   "Front Shock Absorber Bump Stop 137210920",
+   "over_cap"
+  ],
+  [
+   "Rear Shock Absorber Bump Stop 1372109100",
+   "over_cap"
+  ],
+  [
+   "Electronic Cooling Fan Assembly III 1420",
+   "over_cap"
+  ],
+  [
+   "Rear Door Lock Body Assembly 1343305400 ",
+   "over_cap"
+  ],
+  [
+   "Rear Shock Absorber Dust Boot 1342342300",
+   "over_cap"
+  ],
+  [
+   "Electric Compressor Assembly 1434192400 ",
+   "over_cap"
+  ],
+  [
+   "Front Stabilizer Link and Ball Joint Ass",
+   "over_cap"
+  ],
+  [
+   "Right Rear Stabilizer Bar Link and Ball ",
+   "over_cap"
+  ],
+  [
+   "Motor Radiator Assembly I 1391901100 / T",
+   "over_cap"
+  ],
+  [
+   "Left Rear Stabilizer Link and Ball Joint",
+   "over_cap"
+  ],
+  [
+   "Rear Shock Absorber Upper Mount Assembly",
+   "over_cap"
+  ],
+  [
+   "Electric Water Pump Assembly II 14043023",
+   "over_cap"
+  ],
+  [
+   "Rear Shock Absorber Dust Boot 1437847900",
+   "over_cap"
+  ],
+  [
+   "Front Strut Mount Assembly 1415224300 / ",
+   "over_cap"
+  ],
+  [
+   "Front Shock Absorber Dust Boot 143784780",
+   "over_cap"
+  ],
+  [
+   "Front Shock Absorber Bump Stop Assembly ",
+   "over_cap"
+  ],
+  [
+   "Rear Shock Absorber Bump Stop 1415224000",
+   "over_cap"
+  ],
+  [
+   "Electronic Cooling Fan Assembly III 1537",
+   "over_cap"
+  ],
+  [
+   "Transmission Oil Cooler Assembly I 13711",
+   "over_cap"
+  ],
+  [
+   "Oil Cooler Assembly I 1363272000 / NRT40",
+   "over_cap"
+  ],
+  [
+   "Left Front ABS Wheel Speed Sensor 125545",
+   "over_cap"
+  ],
+  [
+   "Right Front Exterior Door Handle Assembl",
+   "over_cap"
+  ],
+  [
+   "Electric Compressor Assembly 1686871600 ",
+   "over_cap"
+  ],
+  [
+   "Electric Compressor Assembly 1371965000 ",
+   "over_cap"
+  ],
+  [
+   "Outer Tie Rod End Assembly 1553483800 / ",
+   "over_cap"
+  ],
+  [
+   "Outer Tie Rod End Assembly 1553488500 / ",
+   "over_cap"
+  ],
+  [
+   "High-Efficiency Cabin Air Filter 1303390",
+   "over_cap"
+  ],
+  [
+   "Electric Power Steering Rack Assembly wi",
+   "over_cap"
+  ],
+  [
+   "Front Stabilizer Link and Ball Joint Ass",
+   "over_cap"
+  ],
+  [
+   "High-Efficiency Filter 1297777400 / SA2F",
+   "over_cap"
+  ],
+  [
+   "Motor Radiator Assembly I 1521085900 / T",
+   "over_cap"
+  ],
+  [
+   "Knock Sensor 1050978400 / 476ZQA3611400 ",
+   "over_cap"
+  ],
+  [
+   "Rear Stabilizer Link and Ball Joint Asse",
+   "over_cap"
+  ],
+  [
+   "Left Front Stabilizer Link and Ball Join",
+   "over_cap"
+  ],
+  [
+   "Right Front Stabilizer Link and Ball Joi",
+   "over_cap"
+  ],
+  [
+   "Low-Temperature Radiator Assembly 143872",
+   "over_cap"
+  ],
+  [
+   "Electric Water Pump Assembly I 138995500",
+   "over_cap"
+  ],
+  [
+   "Transmission Oil Cooler 1483370100 / EP0",
+   "over_cap"
+  ],
+  [
+   "Electric A/C Compressor Assembly 1440370",
+   "over_cap"
+  ],
+  [
+   "Low-Temperature Radiator Assembly 138716",
+   "over_cap"
+  ],
+  [
+   "BYD Outer Tie Rod End Assembly 166041430",
+   "over_cap"
+  ],
+  [
+   "Outer Tie Rod End Assembly 1660413700 / ",
+   "over_cap"
+  ],
+  [
+   "Outer Tie Rod End Assembly 1660414400 / ",
+   "over_cap"
+  ],
+  [
+   "Steering Tie Rod Outer End Assembly 1660",
+   "over_cap"
+  ],
+  [
+   "Cabin Air Filter 1 1536267000 / SFHB-812",
+   "over_cap"
+  ],
+  [
+   "Fuel Pump Assembly 1376028800 / SFHA-110",
+   "over_cap"
+  ],
+  [
+   "Cabin Air Filter 2 1537199800 / SFHB-812",
+   "over_cap"
+  ],
+  [
+   "BYD Ignition Coil 1270698900 / 476ZQC370",
+   "over_cap"
+  ],
+  [
+   "Right Front Stabilizer Link and Ball Joi",
+   "over_cap"
+  ],
+  [
+   "Rear Stabilizer Bar Link and Ball Joint ",
+   "over_cap"
+  ],
+  [
+   "Control Arm Ball Joint Aftermarket Pack ",
+   "over_cap"
+  ],
+  [
+   "Front Stabilizer Bar Link and Ball Joint",
+   "over_cap"
+  ],
+  [
+   "Rear Stabilizer Link and Ball Joint Asse",
+   "over_cap"
+  ],
+  [
+   "Left Front Stabilizer Link and Ball Join",
+   "over_cap"
+  ],
+  [
+   "Electric Water Pump Assembly I 133191100",
+   "over_cap"
+  ],
+  [
+   "High-Temperature Radiator Assembly 15817",
+   "over_cap"
+  ],
+  [
+   "Right Front Door Lock Cylinder Assembly ",
+   "over_cap"
+  ],
+  [
+   "Left Front Door Lock Assembly 1267853700",
+   "over_cap"
+  ],
+  [
+   "Left Front Door Lock Assembly 1342943800",
+   "over_cap"
+  ],
+  [
+   "Right Front Door Lock Assembly 134294190",
+   "over_cap"
+  ],
+  [
+   "Left Front Door Lock Assembly 1340108100",
+   "over_cap"
+  ]
+ ],
+ "reject_existing": [],
+ "type_pages": [
+  [
+   "84",
+   "parts-electrical-map-sensor",
+   "name"
+  ],
+  [
+   "83",
+   "parts-electrical-maf-sensor",
+   "name"
+  ],
+  [
+   "77",
+   "parts-electrical-alternator",
+   "name"
+  ],
+  [
+   "73",
+   "parts-suspension-strut-mount",
+   "name"
+  ],
+  [
+   "72",
+   "parts-suspension-ball-joint",
+   "name"
+  ],
+  [
+   "61",
+   "parts-suspension-control-arm",
+   "name"
+  ],
+  [
+   "59",
+   "parts-electrical-map-sensor-59",
+   "name"
+  ],
+  [
+   "54",
+   "parts-cooling-radiators",
+   "name"
+  ],
+  [
+   "50",
+   "parts-cooling-oil-cooler",
+   "name"
+  ],
+  [
+   "46",
+   "parts-cooling-water-pump",
+   "name"
+  ],
+  [
+   "45",
+   "parts-engine-camshaft",
+   "name"
+  ],
+  [
+   "44",
+   "parts-engine-piston",
+   "name"
+  ],
+  [
+   "41",
+   "parts-engine-pcv-valve",
+   "name"
+  ],
+  [
+   "34",
+   "parts-engine-fuel-pump",
+   "name"
+  ],
+  [
+   "32",
+   "parts-engine-spark-plug",
+   "name"
+  ],
+  [
+   "225",
+   "parts-electrical-oxygen-sensor-tb120422300",
+   "oe"
+  ],
+  [
+   "240",
+   "parts-electrical-oxygen-sensor-tb120412l",
+   "oe"
+  ],
+  [
+   "241",
+   "parts-electrical-oxygen-sensor-tb120412v",
+   "oe"
+  ],
+  [
+   "243",
+   "parts-electrical-oxygen-sensor-tb060312v",
+   "oe"
+  ],
+  [
+   "244",
+   "parts-electrical-oxygen-sensor-tb060312l",
+   "oe"
+  ],
+  [
+   "245",
+   "parts-electrical-oxygen-sensor-tb120412l-245",
+   "oe"
+  ],
+  [
+   "246",
+   "parts-electrical-oxygen-sensor-tb0301103",
+   "oe"
+  ],
+  [
+   "248",
+   "parts-electrical-oxygen-sensor-tb0301108320",
+   "oe"
+  ],
+  [
+   "249",
+   "parts-electrical-oxygen-sensor-tb200971300",
+   "oe"
+  ],
+  [
+   "250",
+   "parts-electrical-oxygen-sensor-tb060372950",
+   "oe"
+  ],
+  [
+   "266",
+   "parts-electrical-oxygen-sensor-tb120412l-266",
+   "oe"
+  ],
+  [
+   "267",
+   "parts-electrical-oxygen-sensor-tb120412v-267",
+   "oe"
+  ],
+  [
+   "268",
+   "parts-electrical-oxygen-sensor-tb120412v-268",
+   "oe"
+  ],
+  [
+   "269",
+   "parts-electrical-oxygen-sensor-tb120412l-269",
+   "oe"
+  ]
+ ],
+ "stats": {
+  "total": 600,
+  "existing": 123,
+  "supplier": 312,
+  "leadong": 0,
+  "cnoe": 165,
+  "type_pages": 29,
+  "by_system": {
+   "suspension": 191,
+   "electrical": 48,
+   "cooling": 342,
+   "engine": 19
+  },
+  "by_sub_category": {
+   "Control Arm": 11,
+   "Suspension Kit": 2,
+   "Subframe Bushing": 1,
+   "Ball Joint": 5,
+   "Tie Rod Kit": 1,
+   "Tie Rod End": 15,
+   "Trailing Arm": 1,
+   "Stabilizer Link": 5,
+   "Steering Knuckle": 1,
+   "Wheel Bearing": 3,
+   "Shock Absorber": 3,
+   "Strut Mount": 3,
+   "Inner Tie Rod": 2,
+   "Bushing Kit": 2,
+   "Wiring & Harnesses": 1,
+   "Starter Motor": 1,
+   "Oxygen Sensor": 38,
+   "Knock Sensor": 2,
+   "Throttle Position Sensor": 2,
+   "Oil Pressure Sensor": 3,
+   "Camshaft Sensor": 2,
+   "Crankshaft Sensor": 2,
+   "Abs Sensor": 1,
+   "Climate Control Module": 1,
+   "Safety & Camera": 1,
+   "Power Window Switch": 1,
+   "Driveline": 1,
+   "Bearing": 1,
+   "Steering Rack": 2,
+   "Inner Tie Rods": 1,
+   "Sway Bar Link": 1,
+   "Maf Sensor": 1,
+   "Coolant Temperature Sensor": 1,
+   "Ac Compressor": 1,
+   "Thermostat Housing": 1,
+   "Thermostat": 1,
+   "HVAC System": 1,
+   "Fan Motor": 1,
+   "Radiator Fan Assy": 1,
+   "Ignition Wire": 1,
+   "Fuel Metering Valve": 1,
+   "Vvt": 1,
+   "Engine Mount": 1,
+   "Engine Sealing": 1,
+   "Throttle Body": 1,
+   "Fuel Pump Assy": 1,
+   "Fuel Injector": 1,
+   "Ignition Coil": 1,
+   "Climate Control Panel": 2,
+   "Engine Oil Cooler": 195,
+   "Oil Cooler": 74,
+   "Gear Oil Cooler": 1,
+   "Oil Filter Housing": 2,
+   "Transmission Oil Cooler": 40,
+   "Front Brake Pads": 20,
+   "Rear Brake Pads": 20,
+   "AC Compressor Assembly": 6,
+   "Compressor Assembly": 1,
+   "Strut Mount Bearing": 6,
+   "Wheel Hub Bearing": 3,
+   "Rear Wheel Hub Bearing": 6,
+   "Front Wheel Hub": 2,
+   "Tie Rod End Assembly": 5,
+   "Right Outer Tie Rod End": 6,
+   "Left Tie Rod End": 1,
+   "Heater Core Assembly": 2,
+   "Multi-Ribbed Belt AC Compressor Assembly": 1,
+   "Front Wheel Hub Bearing": 5,
+   "Front Wheel Hub Bearing Assembly": 1,
+   "Rear Wheel Hub Bearing Unit": 3,
+   "Front Wheel Hub Assembly": 2,
+   "Left Steering Tie Rod Assembly": 2,
+   "Left Outer Tie Rod End Assembly": 1,
+   "Control Arm Ball Joint Assembly": 2,
+   "Left Front Control Arm Assembly": 3,
+   "Right Front Control Arm Assembly": 3,
+   "Radiator Assembly": 2,
+   "AC Compressor": 1,
+   "Electric Compressor Assembly": 2,
+   "Inner Tie Rod Assembly": 4,
+   "Left Outer Tie Rod End": 4,
+   "Cabin Air Filter": 7,
+   "Rear Lower Control Arm Assembly": 1,
+   "Rear Upper Control Arm": 1,
+   "Rear Stabilizer Link Assembly": 1,
+   "Rear Stabilizer Link": 1,
+   "Front Stabilizer Link": 1,
+   "Inner Tie Rod End": 1,
+   "Inner Tie Rod End Assembly": 1,
+   "Electric Power Steering Rack with Tie Rod Assembly": 1,
+   "Front Brake Pads T213501080": 1,
+   "Right Steering Tie Rod Assembly": 1,
+   "Right Control Arm Assembly": 1,
+   "Left Control Arm Assembly": 1,
+   "Rear Right Stabilizer Link": 1,
+   "Left Rear Stabilizer Link Assembly": 1,
+   "Right Rear Stabilizer Link": 1,
+   "Rear Left Stabilizer Link Assembly": 1,
+   "Rear Wheel Hub": 2,
+   "Front Wheel Hub (with Bolts)": 1,
+   "Steering Rack without Outer Tie Rod Ends": 1,
+   "Steering Rack with Tie Rod Assembly": 3,
+   "Rear Lateral Link Assembly": 1,
+   "Front Stabilizer Bar Bushing": 1,
+   "Electronic Water Pump Assembly": 2,
+   "Right Drive Shaft Assembly": 1,
+   "Steering Knuckle Bearing Assembly": 1,
+   "Power Steering Rack with Tie Rod Assembly": 1,
+   "Steering Tie Rod Assembly (Mechanical)": 1,
+   "Lower Control Arm Assembly": 1
+  },
+  "by_brand": {
+   "Hyundai": 83,
+   "BYD": 4,
+   "Nissan": 7,
+   "Toyota": 5,
+   "GM": 17,
+   "Ford": 46,
+   "Other": 18,
+   "Volkswagen": 42,
+   "Audi": 6,
+   "Bentley": 1,
+   "Mercedes-Benz": 20,
+   "BMW": 33,
+   "Fiat": 10,
+   "Opel": 6,
+   "Deutz": 4,
+   "John Deere": 1,
+   "Navistar": 1,
+   "DAF": 1,
+   "Porsche": 5,
+   "Peugeot": 15,
+   "PEUGEOT \n（MAZDA）": 1,
+   "Volvo": 12,
+   "Mitsubishi": 3,
+   "Mazda": 4,
+   "Honda": 8,
+   "Perodua": 1,
+   "Chevrolet": 8,
+   "Buick": 1,
+   "Chevrolet(Polaris）": 2,
+   "Renault": 7,
+   "Dodge": 7,
+   "Chrysler": 1,
+   "Cherokee JEEP": 1,
+   "Land Rover": 16,
+   "Chery": 171,
+   "JAC": 2,
+   "Wuling": 4,
+   "Maxus": 3,
+   "Roewe": 1,
+   "Dongfeng": 3,
+   "Cummins": 2,
+   "Great Wall Motors": 9,
+   "Trumpchi": 2,
+   "FAW": 5,
+   "吉利": 1
+  },
+  "rejected": {
+   "supplier": 106,
+   "leadong": 49,
+   "cnoe": 633
+  },
+  "reject_reasons": {
+   "supplier": {
+    "oe_page_exists": 90,
+    "no_oe": 1,
+    "no_image": 1,
+    "no_make": 2,
+    "dup_oe": 12
+   },
+   "leadong": {
+    "oe_page_exists": 37,
+    "no_oe": 9,
+    "no_image": 3
+   },
+   "cnoe": {
+    "no_own_image": 292,
+    "type_cap": 43,
+    "over_cap": 298
+   }
+  }
+ },
+ "cap": 600
+}
