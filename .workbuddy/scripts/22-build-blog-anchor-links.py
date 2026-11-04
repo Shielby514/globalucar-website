@@ -104,11 +104,19 @@ def build_keyword_map(products, type_pages):
     return kw
 
 
+# 受保护片段：完整 <a>…</a>（含内文，避免嵌套链接）、HTML 注释、以及任意标签内部。
+# 只保护 <a> 会让注入落到 alt="" / title="" 等属性值里，把 HTML 塞进 alt 文本。
+PROTECT_RE = re.compile(r'<a\b[^>]*>.*?</a>|<!--.*?-->|<[^>]*>', re.S | re.I)
+
+
 def split_links(body):
-    """把正文按 <a>...</a> 切成 [普通段, 链接段, 普通段, ...]"""
+    """把正文切成 [普通文本段, 受保护段, 普通文本段, ...]
+
+    受保护段既不注入也不参与关键词命中统计。
+    """
     parts = []
     last = 0
-    for m in re.finditer(r'<a\b[^>]*>.*?</a>', body, re.S | re.I):
+    for m in PROTECT_RE.finditer(body):
         if m.start() > last:
             parts.append((False, body[last:m.start()]))
         parts.append((True, m.group(0)))
