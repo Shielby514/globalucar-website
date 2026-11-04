@@ -1,0 +1,224 @@
+{
+  "version": "2.0",
+  "updated": "2026-11-04",
+  "purpose": "OE 站博客文章生成契约（v2）。选题/生成/评分/发布四个环节共用此文件，改规范只改这里。",
+
+  "structure": {
+    "min_words": 1400,
+    "max_words": 4200,
+    "min_h2": 8,
+    "max_h2": 14,
+    "min_paragraphs_per_h2": 2,
+    "min_tables": 1,
+    "min_faq": 4,
+    "min_body_links": 6,
+    "max_body_links": 30,
+    "min_body_images": 4,
+    "min_image_alt_len": 12,
+    "require_quick_answer": true,
+    "require_h1_unique": true,
+    "forbid_empty_h2": true
+  },
+
+  "metadata": {
+    "title_max": 70,
+    "title_min": 25,
+    "description_max": 160,
+    "description_min": 70,
+    "keywords_min": 3,
+    "keywords_max": 8,
+    "tags_min": 3,
+    "tags_max": 6,
+    "readtime_min": 5,
+    "readtime_max": 20,
+    "date_format": "YYYY-MM-DD"
+  },
+
+  "categories": [
+    "Auto Parts Sourcing",
+    "Auto Parts Technical Guide",
+    "OEM Parts Reference",
+    "Vehicle Export",
+    "Shipping & Logistics",
+    "Market Analysis"
+  ],
+  "category_aliases": {
+    "Vehicles": "Vehicle Export",
+    "Vehicle": "Vehicle Export",
+    "Auto Parts": "Auto Parts Sourcing",
+    "Automotive Parts": "Auto Parts Sourcing",
+    "Automotive Parts · Hyundai/Kia": "Auto Parts Technical Guide",
+    "Auto Parts · Hyundai/Kia": "Auto Parts Technical Guide",
+    "Auto Parts · Engine": "Auto Parts Technical Guide",
+    "Auto Parts · Technical Guide": "Auto Parts Technical Guide",
+    "Auto Parts · Technical Guides": "Auto Parts Technical Guide",
+    "Auto Parts | HVAC & Climate Control": "Auto Parts Technical Guide",
+    "Parts": "Auto Parts Sourcing",
+    "Technical Guide": "Auto Parts Technical Guide",
+    "Technical Guides": "Auto Parts Technical Guide",
+    "OEM Sourcing": "OEM Parts Reference",
+    "Import Guide": "Shipping & Logistics",
+    "Shipping & Logistics": "Shipping & Logistics",
+    "Market Analysis": "Market Analysis",
+    "Market Trends": "Market Analysis",
+    "Market Comparison": "Market Analysis",
+    "Private Label": "Auto Parts Sourcing",
+    "Business Strategy": "Auto Parts Sourcing",
+    "Dealer Inventory": "Auto Parts Sourcing",
+    "New Energy": "Vehicle Export",
+    "Commercial": "Vehicle Export",
+    "Hyundai/Kia": "Auto Parts Technical Guide",
+    "Lighting & Body": "Auto Parts Technical Guide",
+    "HVAC & Climate Control": "Auto Parts Technical Guide",
+    "Engine": "Auto Parts Technical Guide",
+    "SUV Export": "Vehicle Export",
+    "Sedan Export": "Vehicle Export",
+    "New Car Export": "Vehicle Export",
+    "New Cars": "Vehicle Export",
+    "Used Car Export": "Vehicle Export",
+    "Chinese SUV Export": "Vehicle Export",
+    "Chinese Adventure SUV Export": "Vehicle Export",
+    "PHEV Export": "Vehicle Export",
+    "Toyota/Hybrid SUV": "Vehicle Export"
+  },
+  "date_rules": {
+    "min": "2026-01-01",
+    "max_offset_days": 0,
+    "note": "发布日由发布器强制写入；模型给的日期不可信"
+  },
+
+  "banned_phrases": [
+    "cheapest price in the world",
+    "lowest price",
+    "best price guaranteed",
+    "100% original",
+    "we are the best",
+    "world's largest",
+    "number one supplier",
+    "guaranteed oem",
+    "factory direct price",
+    "buy now best price",
+    "limited time offer",
+    "act now"
+  ],
+  "banned_patterns": [
+    "\\bwe (?:are|offer|provide|supply)\\b",
+    "\\bour (?:factory|company|team)\\b",
+    "\\bI (?:recommend|suggest|think)\\b",
+    "\\bAs an AI\\b",
+    "\\bthe market is (?:very )?(?:competitive|dynamic)\\b"
+  ],
+  "banned_self_reference": ["we", "our", "us", "i", "my"],
+
+  "anchor_rules": {
+    "min_len": 5,
+    "max_occurrences_per_term": 3,
+    "forbid_generic_anchors": ["read more", "click here", "here", "this", "more", "link", "source"],
+    "forbid_truncated_terms": true
+  },
+
+  "uniqueness": {
+    "max_title_jaccard": 0.6,
+    "max_keyword_jaccard": 0.55,
+    "max_paragraph_overlap": 0.15,
+    "min_shared_title_headword_gap": 1
+  },
+
+  "facts": {
+    "require_oe_number_in_factpack": true,
+    "forbid_fabricated_oe_number": true,
+    "forbid_fabricated_price": true,
+    "forbid_fabricated_stock_claim": true,
+    "price_policy": "FOB price on request only; never state a numeric unit price",
+    "stock_policy": "never claim in-stock unless the factpack says stock=1",
+    "moq_default": 10,
+    "lead_time_default": "1 business day for quotation"
+  },
+
+  "scoring": {
+    "weights": {
+      "structure": 30,
+      "facts": 25,
+      "links": 15,
+      "images": 10,
+      "metadata": 10,
+      "uniqueness": 10
+    },
+    "publish_threshold": 85,
+    "draft_threshold": 70,
+    "hard_fail_zero_out": ["facts", "uniqueness"]
+  },
+
+  "required_sections": [
+    "What This Guide Covers",
+    "How to Identify the Right Part",
+    "OE Number Cross-Reference",
+    "Vehicle Fitment",
+    "Pricing, MOQ and Lead Time",
+    "Common Failure Signs",
+    "Quality Checklist",
+    "FAQ"
+  ],
+  "required_sections_mode": "recommended",
+
+  "faq_min": 4,
+  "faq_schema_type": "FAQPage",
+
+  "content_policy": {
+    "reader": "overseas B2B parts buyer / importer, not a retail shopper",
+    "tone": "practical, specific, supplier-side but buyer-facing; no hype",
+    "must_include": [
+      "at least one concrete OE number from the factpack",
+      "at least one vehicle/application list from the factpack",
+      "MOQ and FOB quotation process",
+      "at least one comparison table"
+    ],
+    "must_not_include": [
+      "numeric unit prices",
+      "competitor brand names",
+      "unverifiable superlatives",
+      "internal company names"
+    ]
+  },
+
+  "internal_link_targets": {
+    "parts_pages": "/parts/<slug>.html",
+    "oe_pages": "/oe/<slug>.html",
+    "category_pages": ["/parts/index.html", "/oe/", "/blog.html"],
+    "min_parts_links": 2,
+    "min_oe_links": 2
+  },
+
+  "article_types": {
+    "oem_cross_reference": {
+      "description": "簇内已有已发布 OE 页：正文交叉号主体就是可链接的 OE 页",
+      "min_parts_links": 2,
+      "min_oe_links": 2,
+      "min_crossref_rows": 4,
+      "requires_linked_oe": true
+    },
+    "product_guide": {
+      "description": "簇内没有已发布 OE 页，但有真实 OE 交叉号：交叉号进表格（不链 /oe/），主体是 /parts/ 产品页",
+      "min_parts_links": 4,
+      "min_oe_links": 0,
+      "min_crossref_rows": 6,
+      "requires_linked_oe": false
+    }
+  },
+  "article_type_field": "draft.article_type",
+  "article_type_default": "product_guide",
+
+  "crossref_table": {
+    "min_rows": 4,
+    "required_columns": ["OE Number", "Part Name"],
+    "note": "交叉号表里的 OE 号必须来自 factpack.oe_numbers；实际行数下限以 article_types[type].min_crossref_rows 为准（oem_cross_reference=4, product_guide=6），本键仅作兜底。"
+  },
+
+  "image_rules": {
+    "prefer_own": true,
+    "own_roots": ["assets/parts/", "assets/blog/", "assets/gallery/"],
+    "forbid_competitor_hotlink": true,
+    "require_file_exists": true,
+    "alt_must_contain": ["part name or OE number"]
+  }
+}
