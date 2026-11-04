@@ -5,8 +5,16 @@ L3 单 OE 落地页批量生成器
 输出: oe/{oe}.html (单OE页) + oe/index.html (hub) + oe/{system}.html (L2) + sitemap 更新
 规范: SOP 4.5 改写(文字为自有模板生成,仅用同行结构化事实数据) / GEO-AEO 事实块 / FAQPage+Product schema
 """
-import json, os, re, hashlib, glob
+import json, os, re, hashlib, glob, sys
 from collections import defaultdict
+
+# 共享的 TDK 清洗与模板（与 15-oe-seo-tdk.py 存量改写共用同一套逻辑），
+# 保证「已发布存量页」与「本轮新出页」样式一致，不会出现两代模板混排。
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+try:
+    import oe_seo_tdk as TDK
+except Exception as _e:  # 模块缺失时回退到旧逻辑（不阻断出页）
+    TDK = None
 
 BASE = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 DB_P = os.path.join(BASE, '.workbuddy', 'data', 'oe-master-db.json')
@@ -364,21 +372,29 @@ BRAND_WORDS = ['NISSAN','TOYOTA','MERCEDES-BENZ','MERCEDES','BMW','AUDI','HYUNDA
 
 def page_html(e, related, bucket):
     oe = e['oe']
-    part = (e.get('part_name') or 'Auto Part').strip()
-    # 剥尾部应用信息: "Engine Mounting For NISSAN Serena ..." → "Engine Mounting"
-    part = re.sub(r'\s+for\s+[A-Z][A-Za-z0-9\-\./ &(),+]{2,}$', '', part)
-    part = re.sub(r'\s+for\s+(HYUNDAI|KIA|hyundai|kia|NISSAN|TOYOTA|MERCEDES|BMW|AUDI|SUBARU|PORSCHE|HONDA|MAZDA|VW|VOLKSWAGEN).*$', '', part)
-    part = re.sub(r'\s+OEM\s+[A-Z0-9\-/\s]+$', '', part)
-    # 剥尾部孤立 for（源数据残缺如 "Bushing Iron Hose for"），否则与模板的 "for {brand}" 拼成 "for for"
-    part = re.sub(r'\s+for\s*$', '', part, flags=re.I)
-    part = part[:80].strip(' -–,') or 'Auto Part'
+    raw_part = (e.get('part_name') or 'Auto Part').strip()
+    if TDK is not None:
+        # 统一清洗：去自身 OE 号、去 "For {品牌} {车型}" 尾巴、去营销词
+        part = TDK.clean_part_name(raw_part, oe) or 'Auto Part'
+    else:
+        part = raw_part
+        # 剥尾部应用信息: "Engine Mounting For NISSAN Serena ..." → "Engine Mounting"
+        part = re.sub(r'\s+for\s+[A-Z][A-Za-z0-9\-\./ &(),+]{2,}$', '', part)
+        part = re.sub(r'\s+for\s+(HYUNDAI|KIA|hyundai|kia|NISSAN|TOYOTA|MERCEDES|BMW|AUDI|SUBARU|PORSCHE|HONDA|MAZDA|VW|VOLKSWAGEN).*$', '', part)
+        part = re.sub(r'\s+OEM\s+[A-Z0-9\-/\s]+$', '', part)
+        # 剥尾部孤立 for（源数据残缺如 "Bushing Iron Hose for"），否则与模板的 "for {brand}" 拼成 "for for"
+        part = re.sub(r'\s+for\s*$', '', part, flags=re.I)
+        part = part[:80].strip(' -–,') or 'Auto Part'
     brands = e.get('brand') or []
-    if not brands:
-        # 从 part_name 原文提取品牌词兜底; 提不到 → 韩系目录默认(新瑞伟业线)
-        nm_up = (e.get('part_name') or '').upper()
-        found = [b.title() for b in BRAND_WORDS if b in nm_up]
-        brands = found if found else ['Hyundai', 'Kia']
-    brand = ' / '.join(dict.fromkeys([b.title() if b.isupper() else b for b in brands]))[:40]
+    if TDK is not None:
+        brand = TDK.display_brand(e, raw_part)[:40]
+    else:
+        if not brands:
+            # 从 part_name 原文提取品牌词兜底; 提不到 → 韩系目录默认(新瑞伟业线)
+            nm_up = (e.get('part_name') or '').upper()
+            found = [b.title() for b in BRAND_WORDS if b in nm_up]
+            brands = found if found else ['Hyundai', 'Kia']
+        brand = ' / '.join(dict.fromkeys([b.title() if b.isupper() else b for b in brands]))[:40]
     sys_l = (BUCKET_TITLE.get(bucket) or e.get('system') or 'Auto Parts').lower()
     idx = h(oe) % len(INTROS)
     intro = INTROS[idx].format(oe=oe, part=part.lower(), brand=brand, system_l=sys_l)
@@ -412,16 +428,24 @@ def page_html(e, related, bucket):
     cta = CTAS[h(oe, 'c') % len(CTAS)].format(oe=oe)
     img = find_image(e, bucket)
     url = f"{SITE}/oe/{slug_oe(oe)}.html"
-    title = f"OE {oe} — {part} for {brand} | Wholesale from KingMay"
-    if len(title) > 70:
-        # 在 word boundary 处截断，避免 "| Wholesale from KingM" 这种断尾
-        truncated = title[:70]
-        if ' ' in truncated:
-            truncated = truncated.rsplit(' ', 1)[0]
-        title = truncated
-    desc = (f"OE number {oe}: {part} for {brand} vehicles. Fitment list, cross-reference numbers, "
-            f"MOQ and export terms from KingMay Auto Parts, Guangzhou.")
-    if len(desc) > 160:
+    if TDK is not None:
+        # 与存量页改写共用同一套模板（oe_seo_tdk.build_title/build_desc）
+        _models = TDK.fitment_models(e)
+        title = TDK.build_title(oe, part, brand, _models)
+        desc = TDK.build_desc(oe, part, brand, _models)
+        keywords = TDK.build_keywords(oe, part, brand)
+    else:
+        title = f"OE {oe} — {part} for {brand} | Wholesale from KingMay"
+        if len(title) > 70:
+            # 在 word boundary 处截断，避免 "| Wholesale from KingM" 这种断尾
+            truncated = title[:70]
+            if ' ' in truncated:
+                truncated = truncated.rsplit(' ', 1)[0]
+            title = truncated
+        desc = (f"OE number {oe}: {part} for {brand} vehicles. Fitment list, cross-reference numbers, "
+                f"MOQ and export terms from KingMay Auto Parts, Guangzhou.")
+        keywords = f"OE {oe}, {oe} part, {part}, {brand} parts, wholesale auto parts, China auto parts supplier"
+    if TDK is None and len(desc) > 160:
         truncated = desc[:160]
         if ' ' in truncated:
             truncated = truncated.rsplit(' ', 1)[0]
@@ -547,7 +571,7 @@ def page_html(e, related, bucket):
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{esc(title)}</title>
 <meta name="description" content="{esc(desc)}">
-<meta name="keywords" content="OE {esc(oe)}, {esc(oe)} part, {esc(part)}, {esc(brand)} parts, wholesale auto parts, China auto parts supplier">
+<meta name="keywords" content="{esc(keywords)}">
 <link rel="canonical" href="{url}">
 <meta property="og:title" content="{esc(title)}">
 <meta property="og:description" content="{esc(desc)}">
