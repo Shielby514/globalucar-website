@@ -87,6 +87,13 @@ def strip_tags(s):
     return re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", s or "")).strip()
 
 
+def esc(s):
+    """属性/文本转义：& < > " ' """
+    return (str(s or "")
+            .replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+            .replace('"', "&quot;").replace("'", "&#x27;"))
+
+
 def slugify(t):
     t = re.sub(r"<[^>]+>", "", t or "")
     t = re.sub(r"[^a-zA-Z0-9]+", "-", t).strip("-").lower()
@@ -374,6 +381,133 @@ def top_up_images(p, assets, want):
     return (out if added else None), added, [(ph, pt) for _, ph, pt in picked[:added]]
 
 
+def faq_html(pairs):
+    """FAQ 块 HTML：一条问答一个 section，与新版文章的写法一致（生成器据此抽 FAQPage）。"""
+    parts = ['<h2 id="faq">FAQ</h2>']
+    for q, a in pairs:
+        parts.append('<section class="faq">\n<h3>%s</h3>\n<p>%s</p>\n</section>'
+                     % (esc(q), esc(a)))
+    return "\n".join(parts)
+
+
+def has_faq(content):
+    """正文里是否已有可用的 FAQ 块。"""
+    c = content or ""
+    if re.search(r'<section[^>]*class="[^"]*\bfaq\b[^"]*"', c, re.I):
+        return True
+    m = re.search(r"<h2[^>]*>[^<]*FAQ[^<]*</h2>(.*)$", c, re.S | re.I)
+    if m and re.search(r"<h3[^>]*>", m.group(1), re.I):
+        return True
+    return False
+
+
+FAQ_SYSTEM = ("You are a B2B automotive parts editor. You write factual FAQ blocks for "
+               "overseas importers and distributors. No marketing language, no first person.")
+
+FAQ_PROMPT = """Below is an article published on an auto parts export website.
+
+TITLE: %(title)s
+
+ARTICLE BODY (plain text):
+%(body)s
+
+Write %(n)d FAQ pairs for this article.
+
+Hard rules:
+- Every answer must be answerable **only** from the article body above. Do not add facts, figures, part numbers, dates or claims that are not in the body.
+- No unit prices, no currency amounts, no stock or availability statements.
+- No competitor brand names and no internal company names.
+- No first person or second person ("we", "our", "us", "I", "you").
+- Plain professional English, 40-160 words per answer, 6-18 words per question.
+- Questions must be the kind an importer actually asks before issuing a purchase order.
+
+Return JSON only, in this exact shape:
+{"faq": [{"q": "question text", "a": "answer text"}]}
+"""
+
+
+def _faq_violations(text, content, contract):
+    """返回该问答对违反的规则名列表；空列表表示通过。"""
+    bad = []
+    low = text.lower()
+    for ph in (contract.get("banned_phrases") or []):
+        if ph.lower() in low:
+            bad.append("banned_phrase:%s" % ph)
+    for pat in (contract.get("banned_patterns") or []):
+        try:
+            if re.search(pat, text, re.I):
+                bad.append("banned_pattern")
+                break
+        except re.error:
+            pass
+    for w in (contract.get("banned_self_reference") or []):
+        if w.lower() in ("us",):          # "US" 是国家，误伤率高，单独放过
+            continue
+        if re.search(r"(?<![A-Za-z])%s(?![A-Za-z])" % re.escape(w.lower()), low):
+            bad.append("self_reference:%s" % w)
+            break
+    if re.search(r"[$€£¥]\s?\d|\b\d+(?:\.\d+)?\s*(?:usd|eur|cny|rmb|dollars?)\b", low):
+        bad.append("price")
+    if re.search(r"\bin stock\b|\bstock available\b|\bready to ship\b|\bavailable now\b", low):
+        bad.append("stock_claim")
+    if re.search(r"https?://|www\.|\S+@\S+\.\w+", text, re.I):
+        bad.append("link_or_email")
+    # 回答里出现的 OE 编号必须原文就在正文里，否则是编造
+    body = content or ""
+    for oe in re.findall(r"\b[A-Z0-9]{2,8}-[A-Z0-9]{2,8}(?:-[A-Z0-9]{1,4})?\b", text):
+        if oe not in body:
+            bad.append("invented_oe:%s" % oe)
+            break
+    # 规格数字（kN / ℃ / cycles / 度 / mm…）必须原文出现过，否则是编造参数
+    body_nums = set(n.replace(",", "") for n in
+                    re.findall(r"\d+(?:[.,]\d+)*", strip_tags(body)))
+    for num in re.findall(r"\d+(?:[.,]\d+)*", text):
+        if num.replace(",", "") not in body_nums:
+            bad.append("ungrounded_number:%s" % num)
+            break
+    return bad
+
+
+def generate_faq(cli, p, contract, n=6):
+    """用 LLM 基于现有正文生成 FAQ 块；不合格的问答对直接丢弃。"""
+    content = p.get("content") or ""
+    body = strip_tags(content)[:7000]
+    if len(body) < 300:
+        return None
+    prompt = FAQ_PROMPT % {"title": p.get("title") or "", "body": body, "n": n}
+    try:
+        data = cli.chat_json(prompt, system=FAQ_SYSTEM, max_tokens=3000, temperature=0.3, retries=1)
+    except Exception as exc:
+        print("     [faq] LLM 调用失败：%s" % type(exc).__name__)
+        return None
+    items = data.get("faq") if isinstance(data, dict) else data
+    if not isinstance(items, list):
+        return None
+    pairs = []
+    dropped = 0
+    for it in items:
+        if not isinstance(it, dict):
+            continue
+        q = re.sub(r"<[^>]+>", " ", str(it.get("q") or "")).strip()
+        a = re.sub(r"<[^>]+>", " ", str(it.get("a") or "")).strip()
+        a = re.sub(r"\s+", " ", a)
+        if not q or not a:
+            continue
+        if not (6 <= len(q) <= 170) or not (40 <= len(a) <= 900):
+            dropped += 1
+            continue
+        if _faq_violations(q + " " + a, content, contract):
+            dropped += 1
+            continue
+        pairs.append((q, a))
+    need = int(contract.get("faq_min", 4) or 4)
+    if len(pairs) < need:
+        print("     [faq] 可用问答对不足（%d/%d，丢弃 %d）→ 本篇跳过"
+              % (len(pairs), need, dropped))
+        return None
+    return pairs
+
+
 def main():
     ap = argparse.ArgumentParser(description="blog refresher")
     ap.add_argument("--apply", action="store_true")
@@ -381,6 +515,8 @@ def main():
     ap.add_argument("--limit", type=int, default=15, help="max articles to refresh this run")
     ap.add_argument("--min-images", type=int, default=4)
     ap.add_argument("--faq", action="store_true", help="use LLM to add a FAQ block where missing")
+    ap.add_argument("--faq-limit", type=int, default=5, help="max articles to receive a LLM FAQ this run")
+    ap.add_argument("--faq-count", type=int, default=6, help="FAQ pairs per article")
     ap.add_argument("--tdk", action="store_true", help="use LLM to rewrite title/description")
     ap.add_argument("--model", default="MiniMax-M3")
     args = ap.parse_args()
@@ -456,6 +592,47 @@ def main():
 
     changed.sort(key=lambda x: -(x[1].count("images+") * 5 + len(x[1])))
     changed = changed[: args.limit]
+
+    # FAQ 补齐（--faq，走 LLM）——放在 limit 截断之后，
+    # 否则会出现「FAQ 已写进 JSON、但页面没被重渲染」的错位。
+    # 目标不是「同时有其他缺陷的文章」，而是「所有缺 FAQ 的文章」：
+    # 元数据本来就干净的老文章也得能排上队，否则永远补不上。
+    if args.faq:
+        need_faq = [p for p in posts if not has_faq(p.get("content") or "")]
+        need_faq.sort(key=lambda p: len(strip_tags(p.get("content") or "")))
+        print("\n[faq] 全站 %d 篇，其中 %d 篇缺 FAQ" % (len(posts), len(need_faq)))
+        if need_faq:
+            try:
+                from llm_client import LLMClient
+                cli = LLMClient(model=args.model)
+            except Exception as exc:
+                print("  [faq] LLM 客户端不可用（%s），跳过 FAQ 补齐" % type(exc).__name__)
+                cli = None
+            if cli is not None:
+                budget = max(0, int(args.faq_limit))
+                done = 0
+                for p in need_faq:
+                    if done >= budget:
+                        print("  [faq] 本轮额度用尽（%d 篇），其余留给下周" % budget)
+                        break
+                    pairs = generate_faq(cli, p, contract, n=args.faq_count)
+                    if not pairs:
+                        continue
+                    p["content"] = (p.get("content") or "").rstrip() + "\n\n" + faq_html(pairs)
+                    hit = None
+                    for item in changed:
+                        if item[0] is p:
+                            hit = item
+                            break
+                    if hit is None:
+                        changed.append((p, ["faq+%d" % len(pairs)]))
+                    else:
+                        hit[1].append("faq+%d" % len(pairs))
+                    done += 1
+                    print("  [faq] id=%-5s %-50s +%d 问答" %
+                          (p.get("id"), (p.get("title") or "")[:50], len(pairs)))
+                if done:
+                    print("  [faq] 完成 %d 篇" % done)
 
     print("\n--- refresh targets ---")
     for p, fixes in changed:
