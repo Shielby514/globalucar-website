@@ -547,41 +547,52 @@ class ExistingCorpus(object):
         self.entries = []
         self.para_set = set()
         self.para_buckets = {}
+        self.para_owner = {}
         for post in posts or []:
             if not isinstance(post, dict):
                 continue
+            slug = str(post.get('slug') or '')
             content = post.get('content') or ''
             norm_paras = [normalize_para(p) for p in extract_paragraphs(content)]
             norm_paras = [p for p in norm_paras if len(p) >= MIN_PARA_CHARS]
             for para in norm_paras:
                 self.para_set.add(para)
-                self.para_buckets.setdefault(para[:12], []).append(para)
+                self.para_buckets.setdefault(para[:12], []).append((para, slug))
+                self.para_owner.setdefault(para, set()).add(slug)
             self.entries.append({
-                'slug': str(post.get('slug') or ''),
+                'slug': slug,
                 'title': str(post.get('title') or ''),
                 'tokens': tokenize(post.get('title') or ''),
                 'keywords': keyword_phrase_set(post.get('keywords')),
                 'paras': norm_paras,
             })
 
-    def closest_title(self, tokens):
+    def closest_title(self, tokens, exclude_slug=None):
         best = (0.0, None)
         for entry in self.entries:
+            if exclude_slug and entry['slug'] == exclude_slug:
+                continue
             sim = jaccard(tokens, entry['tokens'])
             if sim > best[0]:
                 best = (sim, entry)
         return best
 
-    def closest_keywords(self, phrases):
+    def closest_keywords(self, phrases, exclude_slug=None):
         best = (0.0, None)
         for entry in self.entries:
+            if exclude_slug and entry['slug'] == exclude_slug:
+                continue
             sim = jaccard(phrases, entry['keywords'])
             if sim > best[0]:
                 best = (sim, entry)
         return best
 
-    def paragraph_overlap(self, paragraphs):
-        """草稿段落里有多少比例能在存量文章里找到（精确或近似）相同段落。"""
+    def paragraph_overlap(self, paragraphs, exclude_slug=None):
+        """草稿段落里有多少比例能在存量文章里找到（精确或近似）相同段落。
+
+        exclude_slug：草稿自己已发布的那一篇。重评已发布草稿时，
+        它和自己的已发布版本比相似度必然是 1.0，那是自我比较，不是重复内容。
+        """
         eligible = [normalize_para(p) for p in paragraphs]
         eligible = [p for p in eligible if len(p) >= MIN_PARA_CHARS]
         if not eligible:
@@ -589,12 +600,17 @@ class ExistingCorpus(object):
         matched = 0
         examples = []
         for para in eligible:
+            owners = self.para_owner.get(para) or set()
+            if exclude_slug and owners and exclude_slug in owners and owners <= {exclude_slug}:
+                continue
             if para in self.para_set:
                 matched += 1
                 examples.append(para[:70])
                 continue
             best = 0.0
-            for cand in self.para_buckets.get(para[:12], []):
+            for cand, cslug in self.para_buckets.get(para[:12], []):
+                if exclude_slug and cslug == exclude_slug:
+                    continue
                 if abs(len(cand) - len(para)) > max(40, int(len(para) * 0.35)):
                     continue
                 ratio = difflib.SequenceMatcher(None, para, cand).ratio()
@@ -603,7 +619,14 @@ class ExistingCorpus(object):
             if best >= FUZZY_PARA_RATIO:
                 matched += 1
                 examples.append(para[:70])
-        return matched / float(len(eligible)), examples
+        denom = len(eligible)
+        if exclude_slug:
+            owned = sum(1 for p in eligible
+                        if (self.para_owner.get(p) or set()) <= {exclude_slug})
+            denom -= owned
+        if denom <= 0:
+            return 0.0, []
+        return matched / float(denom), examples
 
 
 # ---------------------------------------------------------------- 规则模型
@@ -1110,13 +1133,26 @@ def score_metadata(draft, contract):
     return rules
 
 
+def draft_slug(draft):
+    """草稿自己的 slug（规则与 27-blog-publish.py 保持一致）。"""
+    dr = draft.get('draft') if isinstance(draft.get('draft'), dict) else draft
+    raw = dr.get('slug') or ''
+    if not raw:
+        raw = re.sub(r"[^a-zA-Z0-9]+", "-", str(dr.get('title') or '')).strip('-').lower()
+    return raw[:78].rstrip('-')
+
+
 def score_uniqueness(draft, contract, corpus):
     uq = contract.get('uniqueness') or {}
     rules = []
 
+    # 草稿若已发布，它会出现在存量语料里；拿它跟自己比必然 1.0，那是自比不是重复。
+    # 只按 slug 精确排除自己，不放宽「标题撞题」的判定。
+    self_slug = draft_slug(draft)
+
     title_tokens = tokenize(pick(draft, 'title') or '')
     max_title = float(uq.get('max_title_jaccard', 1.0))
-    sim_title, closest = corpus.closest_title(title_tokens)
+    sim_title, closest = corpus.closest_title(title_tokens, exclude_slug=self_slug)
     ok_title = sim_title <= max_title
     rules.append(rule('title_jaccard', 3, ok_title,
                       'closest published title "%s" similarity %.3f, max allowed %.2f'
@@ -1124,14 +1160,15 @@ def score_uniqueness(draft, contract, corpus):
 
     phrases = keyword_phrase_set(pick(draft, 'keywords'))
     max_kw = float(uq.get('max_keyword_jaccard', 1.0))
-    sim_kw, closest_kw = corpus.closest_keywords(phrases)
+    sim_kw, closest_kw = corpus.closest_keywords(phrases, exclude_slug=self_slug)
     ok_kw = sim_kw <= max_kw
     rules.append(rule('keyword_jaccard', 2, ok_kw,
                       'closest published keyword set "%s" similarity %.3f, max allowed %.2f'
                       % (closest_kw['slug'] if closest_kw else '-', sim_kw, max_kw), fatal=True))
 
     max_par = float(uq.get('max_paragraph_overlap', 1.0))
-    overlap, examples = corpus.paragraph_overlap(extract_paragraphs(pick(draft, 'content') or ''))
+    overlap, examples = corpus.paragraph_overlap(extract_paragraphs(pick(draft, 'content') or ''),
+                                                 exclude_slug=self_slug)
     ok_par = overlap <= max_par
     rules.append(rule('paragraph_overlap', 3, ok_par,
                       'paragraph overlap with published posts %.3f, max allowed %.2f'

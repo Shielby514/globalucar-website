@@ -223,6 +223,26 @@ def main():
         return 3
     print("verified: %d new page(s) on disk (already published: %d)"
           % (len(to_add), len(already)))
+
+    # 已发布的草稿从待发布队列里清掉。
+    # 不清的话：下轮评分卡会拿已发布草稿和「它自己的已发布版本」比，
+    # uniqueness 必然 1.0 → 误判 reject，草稿队列也会越积越脏。
+    published_slugs = set(dr["slug"] for dr in to_add) | set(s for _, s in already)
+    keep = []
+    dropped = 0
+    for d in drafts:
+        dr = d.get("draft") or {}
+        slug = re.sub(r"[^a-zA-Z0-9-]+", "-",
+                      str(dr.get("slug") or slugify(dr.get("title") or ""))).strip("-").lower()
+        if slug and slug in published_slugs:
+            dropped += 1
+            continue
+        keep.append(d)
+    if dropped:
+        with open(DRAFTS, "w", encoding="utf-8") as f:
+            json.dump(keep, f, ensure_ascii=False, indent=1)
+        print("cleared %d published draft(s) from blog-drafts.json (remaining: %d)"
+              % (dropped, len(keep)))
     return 0
 
 
