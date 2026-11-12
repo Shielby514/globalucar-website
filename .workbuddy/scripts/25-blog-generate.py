@@ -56,7 +56,10 @@ not confirm stock. Only state MOQ and the quotation lead time.
 6. No hype: no "best price", "cheapest", "100% original", "world's largest", "guaranteed".
 7. Be specific and practical: what the part is, how to identify it, what it replaces, \
 what to check on arrival, MOQ and lead time.
-8. Return ONE JSON object and nothing else. No markdown fences, no commentary."""
+8. Write every H2 as a question the buyer would actually type, not a label. \
+"What must be confirmed in the box?" beats "Inspection and Verification". \
+A reader skimming the outline must see their own question answered by the section.
+9. Return ONE JSON object and nothing else. No markdown fences, no commentary."""
 
 
 def build_prompt(topic, contract, factpack):
@@ -78,6 +81,39 @@ def build_prompt(topic, contract, factpack):
     banned = contract.get("banned_phrases", [])[:8]
     banned_pat = contract.get("banned_patterns", [])[:5]
     anchor = contract.get("anchor_rules", {})
+
+    # --- 标题意图槽位（与选题器同一份契约） ---
+    intent_block = ""
+    ti = topic["topic"].get("title_intent")
+    if ti:
+        for kind, lst in ((contract.get("title_intents") or {}).get("slots") or {}).items():
+            for s in lst:
+                if s.get("id") == ti:
+                    intent_block = ("  intent slot: %s - %s\n"
+                                    "  the title must make the reader understand: %s\n"
+                                    "  a title shape for this slot: %s\n"
+                                    % (ti, s.get("desc", ""), s.get("task", ""),
+                                       s.get("example", "")))
+                    break
+    # --- H2 买家问句 + 文章互链 ---
+    h2_ratio = st.get("min_h2_question_ratio", 0)
+    markers = ", ".join(st.get("h2_question_markers", []) or
+                         ["what", "which", "how", "why", "when", "who", "where"])
+    rel = contract.get("related_articles") or {}
+    rel_min = rel.get("min", 0)
+    rel_head = rel.get("heading", "Related Articles")
+    h2_rule = ""
+    if st.get("h2_style") == "buyer_question":
+        h2_rule = ("  EVERY H2 must be phrased as a buyer question, not a label. "
+                   "At least {ratio:.0%} of the H2s must start with one of: {markers}.\n"
+                   "  Good: \"What must be confirmed in the box?\"  Bad: \"Inspection and Verification\"\n"
+                   "  The section heading is the question; the first paragraph answers it directly.\n"
+                   .format(ratio=h2_ratio, markers=markers))
+    rel_rule = ""
+    if rel_min:
+        rel_rule = ("  do NOT write links to other articles yourself: a \"{head}\" block is injected "
+                    "automatically after the page is built, from the real article list\n"
+                    .format(head=rel_head))
 
     parts = factpack.get("product_pages", [])
     oe_pages = factpack.get("oe_pages", [])
@@ -122,7 +158,7 @@ TOPIC
   category: {category}
   article type: {atype}
   why this topic now: {why_now}
-
+{intent_block}
 FACTS - the ONLY facts you may use
 OE numbers (use these exact strings):
 {oe_list}
@@ -141,6 +177,7 @@ STRUCTURE REQUIREMENTS (the quality gate checks every one of these)
   H2 sections: {min_h2}-{max_h2} (use these headings, adapt the wording slightly if needed):
 {section_lines}
   every H2 must have at least {min_par} paragraphs
+{h2_rule}
   include at least {min_tables} HTML <table> - one of them MUST be a cross-reference table with \
 header row "OE Number" and "Part Name" and at least {min_rows} data rows, every OE number in it \
 must come from the OE numbers list above
@@ -174,7 +211,7 @@ WRITING REQUIREMENTS
   - never state a warranty period in months or years unless it appears in the FACTS block
   - use at least {min_img} images in the body (aim for 5); every src must be one of the local
     paths listed above, and every alt must name the part or quote the OE number
-
+{rel_rule}
 OUTPUT FORMAT - return exactly this JSON object, nothing else:
 {{
   "title": "<= {title_max} chars",
@@ -200,6 +237,9 @@ OUTPUT FORMAT - return exactly this JSON object, nothing else:
         category=topic["topic"]["category"],
         atype=topic["topic"].get("article_type", "product_guide"),
         why_now=topic["topic"].get("why_now", ""),
+        intent_block=intent_block,
+        h2_rule=h2_rule,
+        rel_rule=rel_rule,
         oe_list=oe_list, oe_page_list=oe_page_list, parts_list=parts_list,
         fit_list=fit_list, img_list=img_list,
         moq=moq, lead=lead,
@@ -241,6 +281,9 @@ def normalize_draft(d, topic):
         tg = [x.strip() for x in tg.split(",") if x.strip()]
     out["tags"] = [str(x).strip() for x in (tg or []) if str(x).strip()]
     out["category"] = str(out.get("category") or topic["topic"]["category"])
+    # 记录标题意图槽位：发布后仍能看出这篇落在矩阵的哪一格
+    out["title_intent"] = str(out.get("title_intent")
+                              or topic["topic"].get("title_intent") or "")
     out["date"] = str(out.get("date") or date.today().isoformat())
     try:
         out["readtime"] = int(out.get("readtime") or 8)

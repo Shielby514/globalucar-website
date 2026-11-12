@@ -10,7 +10,7 @@
 #
 # crontab 见 deploy/crontab.example
 # ==============================================================================
-set -uo pipefail
+set -euo pipefail
 
 REPO="${REPO:-$HOME/ucars}"
 PY="${PY:-python3}"
@@ -41,6 +41,7 @@ echo "== OE 流水线启动 $(date '+%F %T') | mode=$ENRICH_MODE limit=$ENRICH_L
 echo "== 代理=${ENRICH_PROXY:-(脚本默认/直连)}  workers=$ENRICH_WORKERS delay=$ENRICH_DELAY"
 
 # 防重入：上次没跑完就不启动下一轮
+mkdir -p "$REPO/.workbuddy/logs"
 LOCK="$REPO/.workbuddy/logs/pipeline.lock"
 if [ -e "$LOCK" ]; then
   if kill -0 "$(cat "$LOCK" 2>/dev/null)" 2>/dev/null; then
@@ -115,7 +116,10 @@ if [ "$DRY" = "1" ]; then
   echo "   (dry) git add/push/indexnow"
 else
   # 只对页面与 sitemap 入库，.workbuddy 在 .gitignore 内
-  git add oe sitemap.xml llms.txt 2>/dev/null
+  if ! git diff --cached --quiet; then
+    echo '!! Existing staged changes; refusing to include unrelated work'; exit 1
+  fi
+  git add oe sitemap.xml llms.txt
   if ! git diff --cached --quiet; then
     git commit -q -m "chore(oe): pipeline $(date +%F)"
     if [ "$GIT_PUSH" = "0" ]; then
@@ -129,17 +133,26 @@ else
     if [ -n "${GIT_PROXY:-}" ]; then
       PUSH_ARGS+=(-c "http.proxy=$GIT_PROXY" -c "https.proxy=$GIT_PROXY")
     fi
-    timeout 600 git "${PUSH_ARGS[@]}" push origin main
-    push_rc=$?
+    push_rc=0
+    timeout 600 git "${PUSH_ARGS[@]}" push origin main || push_rc=$?
     if [ $push_rc -ne 0 ]; then
-      echo "!! push 失败 rc=$push_rc（本地已提交，下轮会重试）"
+      echo "!! push failed rc=$push_rc; local commit retained"
+      exit "$push_rc"
       [ -z "${GIT_PROXY:-}" ] && echo "   境内服务器若超时：确认 GIT_PROXY 已设置（crontab 里配）"
     fi
   else
     echo "   无变更，跳过提交"
   fi
+  # Retry previously committed but unpushed work even when this run has no new diff.
+  if [ "$GIT_PUSH" = "1" ]; then
+    PUSH_ARGS=(-c credential.helper=)
+    if [ -n "${GIT_PROXY:-}" ]; then
+      PUSH_ARGS+=(-c "http.proxy=$GIT_PROXY" -c "https.proxy=$GIT_PROXY")
+    fi
+    timeout 600 git "${PUSH_ARGS[@]}" push origin main || { echo '!! Push failed'; exit 1; }
+  fi
   # 推送新页给 IndexNow（无需 Google API，境内服务器配了代理就能跑）
-  if [ "$SKIP_RELEASE" = "0" ] && [ "$GIT_PUSH" != "0" ]; then
+  if [ "$SKIP_RELEASE" = "0" ] && [ "$GIT_PUSH" != "0" ] && [ "${DEPLOY_VERIFIED:-0}" = "1" ]; then
     if [ -n "${GIT_PROXY:-}" ]; then
       HTTPS_PROXY="$GIT_PROXY" HTTP_PROXY="$GIT_PROXY" \
         timeout 900 $PY .workbuddy/scripts/indexnow_push.py --recent 600 \

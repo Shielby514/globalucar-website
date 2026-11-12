@@ -17,6 +17,10 @@
   · 注入后打哨兵注释，重复运行不重复注入（幂等）
 
 用法：python 22-build-blog-anchor-links.py [--dry-run] [--limit N]
+
+  3) 文末 "Related Articles" 模块：每篇列出同簇相关文章（真实 slug，不猜 URL），
+     锚文本用对方文章标题。兄弟站点 kingmay 做到 28/28 篇每篇 4 条，
+     我们原来只有 16/157 篇有，而且每篇只有 1~3 条。
 """
 import argparse
 import glob
@@ -31,11 +35,21 @@ ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)
 sys.stdout.reconfigure(encoding='utf-8')
 BLOG_DIR = os.path.join(ROOT, 'blog')
 CATALOG = os.path.join(ROOT, '.workbuddy', 'data', 'product-catalog.json')
+POSTS = os.path.join(ROOT, '.workbuddy', 'data', 'blog-posts.json')
 SITE = 'https://www.global-ucars.com'
 
 SENTINEL = '<!--BLOG-PARTS:INJECTED-->'
+REL_SENTINEL = '<!--BLOG-RELATED:INJECTED-->'
 MAX_INLINE = 3
 MAX_BLOCK = 6
+MAX_RELATED = 4
+MAX_RELATED_PER_CAT = 2
+
+# 文章间互链用的停用词（与评分卡/改写脚本同一份口径）
+STOP = set(
+    'a an the of for to in on and or with from by at as is are be it its your you yours '
+    'how what why when can do does vs about into that this these those their them they '
+    'his her'.split())
 
 # 允许做行内锚的词（单词需有区分度；多词组合需完整出现）
 SINGLE_OK = {'alternator', 'radiator', 'thermostat', 'condenser', 'evaporator',
@@ -193,10 +207,87 @@ def build_block(related):
     </section>""" % items)
 
 
+def _tok(x):
+    """把 title / keywords / tags 压成内容词集合。"""
+    if isinstance(x, (list, tuple)):
+        x = ' '.join(str(i) for i in x)
+    s = re.sub(r'<[^>]+>', ' ', str(x or '')).lower()
+    return set(w for w in re.findall(r'[a-z0-9]+', s) if w not in STOP and len(w) > 2)
+
+
+def load_posts():
+    try:
+        posts = json.load(open(POSTS, encoding='utf-8'))
+    except Exception:
+        return []
+    if isinstance(posts, dict):
+        posts = posts.get('posts') or []
+    out = []
+    for p in posts:
+        if not isinstance(p, dict):
+            continue
+        sl = (p.get('slug') or '').strip()
+        if not sl:
+            continue
+        out.append({
+            'slug': sl,
+            'title': (p.get('title') or '').strip(),
+            'category': (p.get('category') or '').strip(),
+            'tokens': _tok(p.get('title')) | _tok(p.get('keywords')) | _tok(p.get('tags')),
+        })
+    return out
+
+
+def pick_related_articles(self_slug, posts):
+    """挑同簇相关文章：词重叠打分 + 同分类加权，同一分类最多 2 条保证多样性。"""
+    me = next((p for p in posts if p['slug'] == self_slug), None)
+    if not me:
+        return []
+    scored = []
+    for p in posts:
+        if p['slug'] == self_slug:
+            continue
+        if not os.path.isfile(os.path.join(BLOG_DIR, p['slug'] + '.html')):
+            continue
+        s = len(me['tokens'] & p['tokens'])
+        if p['category'] and p['category'] == me['category']:
+            s += 2
+        if s <= 0:
+            continue
+        scored.append((s, p))
+    scored.sort(key=lambda x: (-x[0], x[1]['title']))
+    out, per_cat = [], defaultdict(int)
+    for _s, p in scored:
+        if len(out) >= MAX_RELATED:
+            break
+        if per_cat[p['category']] >= MAX_RELATED_PER_CAT:
+            continue
+        per_cat[p['category']] += 1
+        out.append(p)
+    return out
+
+
+def build_related_block(related):
+    if not related:
+        return ''
+    items = ''.join(
+        '<li><a href="/blog/%s.html">%s</a></li>' % (esc(p['slug']), esc(p['title'][:110]))
+        for p in related)
+    return ("""
+    <section class="blog-related" style="margin:28px 0 8px;padding:18px 20px;border:1px solid #e2e8f0;border-radius:12px;background:#f8fafc;">
+      %s
+      <h2 style="font-size:1.15rem;margin:0 0 10px;color:#0d1f3c;">Related Articles</h2>
+      <ul style="margin:0 0 0 18px;font-size:.95rem;line-height:1.7;">
+        %s
+      </ul>
+    </section>""" % (REL_SENTINEL, items))
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--dry-run', action='store_true')
     ap.add_argument('--limit', type=int, default=0)
+    ap.add_argument('--no-related', action='store_true', help='skip the Related Articles block')
     args = ap.parse_args()
 
     products, type_pages = load_catalog()
@@ -209,37 +300,59 @@ def main():
     files = sorted(glob.glob(os.path.join(BLOG_DIR, '*.html')))
     if args.limit:
         files = files[:args.limit]
-    n_inj = n_skip = n_inline = n_block = 0
+    posts = load_posts()
+    print('文章库：%d 篇（Related Articles 互链用）' % len(posts))
+    n_inj = n_skip = n_inline = n_block = n_rel = 0
     for f in files:
         s = open(f, encoding='utf-8', errors='ignore').read()
-        if SENTINEL in s:
-            n_skip += 1
-            continue
         m = re.search(r'(<article[^>]*>)(.*?)(</article>)', s, re.S)
         if not m:
             n_skip += 1
             continue
         body = m.group(2)
-        low = body.lower()
-        related = pick_related(low, kw, products_by_slug)
-        used = set()
-        new_body, hits = inject_inline(body, kw, used)
-        block = build_block(related)
-        if block:
-            # 插到 </article> 前
-            new_body = new_body + block
-        if new_body == body:
+        new_body = body
+        hits = 0
+        block = ''
+        changed = False
+
+        # --- 1) 行内锚 + 文末零件模块（老逻辑，哨兵保护，幂等） ---
+        if SENTINEL not in s:
+            low = body.lower()
+            related = pick_related(low, kw, products_by_slug)
+            used = set()
+            new_body, hits = inject_inline(body, kw, used)
+            block = build_block(related)
+            if block:
+                new_body = new_body + block
+            changed = new_body != body
+
+        # --- 2) Related Articles 互链模块（独立哨兵，可与零件模块并存） ---
+        if not args.no_related and REL_SENTINEL not in s:
+            slug = os.path.splitext(os.path.basename(f))[0]
+            rel = pick_related_articles(slug, posts)
+            rblock = build_related_block(rel)
+            if rblock:
+                pb = re.search(r'<section class="bp-parts-block".*?</section>', new_body, re.S)
+                if pb:
+                    new_body = new_body[:pb.start()] + rblock + new_body[pb.start():]
+                else:
+                    new_body = new_body + rblock
+                changed = True
+                n_rel += 1
+
+        if not changed:
             n_skip += 1
             continue
         s = s[:m.start()] + m.group(1) + new_body + m.group(3) + s[m.end():]
-        s = s.replace('<article>', '<article>\n' + SENTINEL, 1)
+        if block and SENTINEL not in s:
+            s = s.replace('<article>', '<article>\n' + SENTINEL, 1)
         if not args.dry_run:
             open(f, 'w', encoding='utf-8').write(s)
         n_inj += 1
         n_inline += hits
         n_block += 1 if block else 0
-    print('处理：注入 %d 篇 / 跳过 %d 篇；行内锚 %d 个；文末模块 %d 个'
-          % (n_inj, n_skip, n_inline, n_block))
+    print('处理：注入 %d 篇 / 跳过 %d 篇；行内锚 %d 个；文末模块 %d 个；Related Articles %d 个'
+          % (n_inj, n_skip, n_inline, n_block, n_rel))
     if args.dry_run:
         print('[dry-run] 未写盘')
 

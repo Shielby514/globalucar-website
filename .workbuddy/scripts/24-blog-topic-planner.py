@@ -50,7 +50,8 @@ OE_DIR = os.path.join(BASE, "oe")
 GSC_LEDGER = os.path.join(DATA, "gsc-ledger.json")
 OUT = os.path.join(DATA, "blog-topics.json")
 
-TODAY = "2026-11-04"
+from datetime import datetime, timezone, timedelta
+TODAY = datetime.now(timezone(timedelta(hours=8))).date().isoformat()
 
 # ── 品牌族 ──────────────────────────────────────────────
 BRAND_FAMILY = {
@@ -311,13 +312,14 @@ def load_master():
 
 
 def load_oe_index():
-    idx = set()
+    candidates = defaultdict(list)
     if not os.path.isdir(OE_DIR):
-        return idx
-    for f in os.listdir(OE_DIR):
-        if f.endswith(".html"):
-            idx.add(f[:-5].lower())
-    return idx
+        return {}
+    for filename in os.listdir(OE_DIR):
+        if filename.endswith('.html'):
+            key = re.sub(r'[^a-z0-9]', '', filename[:-5].lower())
+            candidates[key].append(filename[:-5])
+    return {key: names[0] for key, names in candidates.items() if len(names) == 1}
 
 
 def load_posts():
@@ -349,10 +351,26 @@ def load_demand():
 
 
 def find_oe_url(oe, oe_index):
-    for cand in (oe, oe.replace("-", ""), oe.lower(), oe.replace("-", "").lower()):
-        if cand.lower() in oe_index:
-            return "/oe/%s.html" % cand.lower()
-    return ""
+    key = re.sub(r'[^a-z0-9]', '', str(oe).lower())
+    slug = oe_index.get(key)
+    return '/oe/%s.html' % slug if slug else ''
+
+
+def load_intent_slots():
+    """意图槽位统一从 blog-contract.json 读（生成器 / 评分卡 / 改写脚本同一份）。"""
+    try:
+        with open(CONTRACT, encoding="utf-8") as f:
+            c = json.load(f)
+    except Exception:
+        return {}
+    slots = ((c.get("title_intents") or {}).get("slots") or {})
+    out = {}
+    for kind, lst in slots.items():
+        for s in lst:
+            s = dict(s)
+            s["kind"] = kind
+            out[s["id"]] = s
+    return out
 
 
 def main():
@@ -372,6 +390,18 @@ def main():
     contract = json.load(open(CONTRACT, encoding="utf-8"))
 
     catalog = load_catalog()
+    # Do not turn placeholder fitment or decoding corruption into published claims.
+    rejected = []
+    usable = []
+    for product in catalog:
+        evidence = json.dumps({k: product.get(k) for k in ('name', 'fitment', 'specs')}, ensure_ascii=False)
+        fitment = [str(v).strip() for v in product.get('fitment', [])]
+        if '\ufffd' in evidence or not any(v.lower() not in ('other', 'unknown', 'universal', '', 'n/a') for v in fitment):
+            rejected.append(product.get('slug', product.get('name')))
+        else:
+            usable.append(product)
+    print('Fact-source filter: kept=%d withheld=%d' % (len(usable), len(rejected)))
+    catalog = usable
     master = load_master()
     oe_index = load_oe_index()
     posts = load_posts()
@@ -490,6 +520,33 @@ def main():
                     break
 
     topics = []
+    intent_slots = load_intent_slots()
+    used_slots = defaultdict(list)
+
+    def pick_slot(r, used):
+        """标题意图槽位：同一品系内不重复占用同一个槽位。
+
+        标题按「意图矩阵 × 主体」铺开（兄弟站点 kingmay 的做法）：
+        同一个零件家族下的不同文章落在不同买家意图上，而不是共用一条标题模板。
+        """
+        kind = "export" if r.get("family") in ("vehicle", "export") else "parts"
+        pool = [s for s in intent_slots.values() if s.get("kind") == kind]
+        if not pool:
+            pool = list(intent_slots.values())
+        if not pool:
+            return {"id": "", "desc": "", "title_template": ""}
+        ctx = ("%s %s %s" % (r.get("family", ""), r.get("system", ""),
+                              r.get("subcat", "") or "")).lower()
+        used_ids = set(used.get("__all__", []))
+
+        def key(s):
+            hits = sum(1 for kw in (s.get("body_kws") or []) if kw in ctx)
+            return (0 if s["id"] in used_ids else 1, hits)
+
+        s = sorted(pool, key=lambda x: (-key(x)[0], -key(x)[1]))[0]
+        used.setdefault("__all__", []).append(s["id"])
+        return s
+
     for r in picked:
         key = (r["family"], r["system"], r["subcat"])
         c = clusters[key]
@@ -539,9 +596,17 @@ def main():
 
         label = FAMILY_LABEL.get(r["family"], r["family"])
         sub = r["subcat"] or SYSTEM_LABEL[r["system"]]
-        title = "%s %s: OE Number Cross-Reference and Sourcing Guide" % (label, sub)
+        slot = pick_slot(r, used_slots)
+        tpl = slot.get("title_template") or "OE Number Cross-Reference and Sourcing Guide"
+        head = "%s %s: " % (label, sub)
+        title = head + tpl
         if len(title) > 70:
-            title = title[:70].rsplit(" ", 1)[0]
+            # 先砍模板的副标题，再砍模板尾巴，最后才砍主体
+            short = tpl.split(":")[0].strip()
+            if len(head + short) <= 70:
+                title = head + short
+            else:
+                title = (head + short)[:70].rsplit(" ", 1)[0]
         topic_id = "t-%s-%s-%s" % (TODAY, FAMILY_SLUG.get(r["family"], r["family"])[:16],
                                    slugify(sub)[:22])
         cat = "OEM Parts Reference" if r["article_type"] == "oem_cross_reference" else "Auto Parts Sourcing"
@@ -557,6 +622,8 @@ def main():
                 "intent": "commercial",
                 "category": cat,
                 "article_type": r["article_type"],
+                "title_intent": slot.get("id", ""),
+                "title_intent_desc": slot.get("desc", ""),
                 "why_now": ("%d catalog product pages and %d cross-referenced OE numbers already "
                             "published for %s %s; %d of them have live OE detail pages; demand "
                             "signal %d impressions; existing coverage %d articles."

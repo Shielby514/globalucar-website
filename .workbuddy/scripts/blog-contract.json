@@ -1,8 +1,7 @@
 {
-  "version": "2.0",
-  "updated": "2026-11-04",
+  "version": "2.1",
+  "updated": "2026-11-06",
   "purpose": "OE 站博客文章生成契约（v2）。选题/生成/评分/发布四个环节共用此文件，改规范只改这里。",
-
   "structure": {
     "min_words": 1400,
     "max_words": 4200,
@@ -17,9 +16,20 @@
     "min_image_alt_len": 12,
     "require_quick_answer": true,
     "require_h1_unique": true,
-    "forbid_empty_h2": true
+    "forbid_empty_h2": true,
+    "h2_style": "buyer_question",
+    "min_h2_question_ratio": 0.55,
+    "h2_question_markers": [
+      "what",
+      "which",
+      "how",
+      "why",
+      "when",
+      "who",
+      "where"
+    ],
+    "h2_style_note": "H2 写成买家会问的问句（如 What identification must the buyer send?），不用陈述式小标题。这是兄弟站点 kingmay 最值得学的一条。"
   },
-
   "metadata": {
     "title_max": 70,
     "title_min": 25,
@@ -33,7 +43,6 @@
     "readtime_max": 20,
     "date_format": "YYYY-MM-DD"
   },
-
   "categories": [
     "Auto Parts Sourcing",
     "Auto Parts Technical Guide",
@@ -86,7 +95,6 @@
     "max_offset_days": 0,
     "note": "发布日由发布器强制写入；模型给的日期不可信"
   },
-
   "banned_phrases": [
     "cheapest price in the world",
     "lowest price",
@@ -108,22 +116,33 @@
     "\\bAs an AI\\b",
     "\\bthe market is (?:very )?(?:competitive|dynamic)\\b"
   ],
-  "banned_self_reference": ["we", "our", "us", "i", "my"],
-
+  "banned_self_reference": [
+    "we",
+    "our",
+    "us",
+    "i",
+    "my"
+  ],
   "anchor_rules": {
     "min_len": 5,
     "max_occurrences_per_term": 3,
-    "forbid_generic_anchors": ["read more", "click here", "here", "this", "more", "link", "source"],
+    "forbid_generic_anchors": [
+      "read more",
+      "click here",
+      "here",
+      "this",
+      "more",
+      "link",
+      "source"
+    ],
     "forbid_truncated_terms": true
   },
-
   "uniqueness": {
     "max_title_jaccard": 0.6,
     "max_keyword_jaccard": 0.55,
     "max_paragraph_overlap": 0.15,
     "min_shared_title_headword_gap": 1
   },
-
   "facts": {
     "require_oe_number_in_factpack": true,
     "forbid_fabricated_oe_number": true,
@@ -134,7 +153,6 @@
     "moq_default": 10,
     "lead_time_default": "1 business day for quotation"
   },
-
   "scoring": {
     "weights": {
       "structure": 30,
@@ -146,9 +164,11 @@
     },
     "publish_threshold": 85,
     "draft_threshold": 70,
-    "hard_fail_zero_out": ["facts", "uniqueness"]
+    "hard_fail_zero_out": [
+      "facts",
+      "uniqueness"
+    ]
   },
-
   "required_sections": [
     "What This Guide Covers",
     "How to Identify the Right Part",
@@ -160,10 +180,8 @@
     "FAQ"
   ],
   "required_sections_mode": "recommended",
-
   "faq_min": 4,
   "faq_schema_type": "FAQPage",
-
   "content_policy": {
     "reader": "overseas B2B parts buyer / importer, not a retail shopper",
     "tone": "practical, specific, supplier-side but buyer-facing; no hype",
@@ -180,15 +198,17 @@
       "internal company names"
     ]
   },
-
   "internal_link_targets": {
     "parts_pages": "/parts/<slug>.html",
     "oe_pages": "/oe/<slug>.html",
-    "category_pages": ["/parts/index.html", "/oe/", "/blog.html"],
+    "category_pages": [
+      "/parts/index.html",
+      "/oe/",
+      "/blog.html"
+    ],
     "min_parts_links": 2,
     "min_oe_links": 2
   },
-
   "article_types": {
     "oem_cross_reference": {
       "description": "簇内已有已发布 OE 页：正文交叉号主体就是可链接的 OE 页",
@@ -207,18 +227,355 @@
   },
   "article_type_field": "draft.article_type",
   "article_type_default": "product_guide",
-
   "crossref_table": {
     "min_rows": 4,
-    "required_columns": ["OE Number", "Part Name"],
+    "required_columns": [
+      "OE Number",
+      "Part Name"
+    ],
     "note": "交叉号表里的 OE 号必须来自 factpack.oe_numbers；实际行数下限以 article_types[type].min_crossref_rows 为准（oem_cross_reference=4, product_guide=6），本键仅作兜底。"
   },
-
   "image_rules": {
     "prefer_own": true,
-    "own_roots": ["assets/parts/", "assets/blog/", "assets/gallery/"],
+    "own_roots": [
+      "assets/parts/",
+      "assets/blog/",
+      "assets/gallery/"
+    ],
     "forbid_competitor_hotlink": true,
     "require_file_exists": true,
-    "alt_must_contain": ["part name or OE number"]
+    "alt_must_contain": [
+      "part name or OE number"
+    ]
+  },
+  "title_intents": {
+    "note": "标题必须落在买家意图槽位上。同一主题簇内不得两篇占用同一槽位；槽位决定标题切入角度，正文 H2 必须覆盖该角度。簇内撞题时改写成长尾问句，问句必须与正文 H2 对得上。",
+    "rewrite_to_question": true,
+    "question_markers": [
+      "what",
+      "which",
+      "how",
+      "why",
+      "when",
+      "who",
+      "where"
+    ],
+    "slots": {
+      "parts": [
+        {
+          "id": "oe_fitment",
+          "desc": "OE number, vehicle fitment and bulk ordering",
+          "task": "the buyer needs the exact OE cross reference and the vehicle application",
+          "body_h2_hint": [
+            "OE Number Cross-Reference",
+            "Vehicle Fitment"
+          ],
+          "example": "Which Hyundai Kia Brake Pad OE Numbers Fit the 2026 Tucson?",
+          "body_kws": [
+            "oe number",
+            "oe part",
+            "part number",
+            "oe cross",
+            "fitment",
+            "by model",
+            "number map",
+            "oe library",
+            "reference",
+            "application"
+          ],
+          "title_template": "OE Number Cross-Reference and Fitment Guide"
+        },
+        {
+          "id": "quality_checklist",
+          "desc": "quality checklist, dimensions, connectors and packaging",
+          "task": "the buyer wants to know what to physically inspect and what the packing must look like",
+          "body_h2_hint": [
+            "Quality Checklist",
+            "How to Verify"
+          ],
+          "example": "How Do You Verify Hyundai Kia Brake Pad Quality Before a Bulk Order?",
+          "body_kws": [
+            "quality",
+            "inspection",
+            "checklist",
+            "ece r90",
+            "iatf",
+            "verify",
+            "dimension",
+            "connector",
+            "material",
+            "packaging",
+            "standard",
+            "checks"
+          ],
+          "title_template": "Quality Checklist: Dimensions, Materials and Packaging"
+        },
+        {
+          "id": "failure_symptoms",
+          "desc": "failure symptoms and which replacement parts to verify",
+          "task": "the buyer is troubleshooting a symptom and needs to know which parts to check together",
+          "body_h2_hint": [
+            "Common Failure Signs",
+            "What Fails"
+          ],
+          "example": "Why Do Hyundai Kia Ignition System Parts Fail on GDI Engines?",
+          "body_kws": [
+            "fail",
+            "failure",
+            "symptom",
+            "culprit",
+            "no-start",
+            "diagnos",
+            "wear",
+            "break"
+          ],
+          "title_template": "Common Failure Signs and Which Parts to Replace"
+        },
+        {
+          "id": "replacement_match",
+          "desc": "replacement guide, what must match before ordering",
+          "task": "the buyer has a failed part in hand and needs to know what must be matched to order a replacement",
+          "body_h2_hint": [
+            "How to Identify the Right Part",
+            "Replacement"
+          ],
+          "example": "What Must Match Before You Order a Replacement Toyota Brake Rotor?",
+          "body_kws": [
+            "replacement",
+            "replace",
+            "must match",
+            "matching",
+            "upgrade",
+            "swap",
+            "substitut"
+          ],
+          "title_template": "Replacement Guide: What Must Match Before Ordering"
+        },
+        {
+          "id": "sourcing_checklist",
+          "desc": "sourcing checklist for aftermarket programmes",
+          "task": "the buyer is building an aftermarket programme and wants a step-by-step sourcing checklist",
+          "body_h2_hint": [
+            "What This Guide Covers",
+            "Ordering Process"
+          ],
+          "example": "What Should a Buyer Check Before Ordering Toyota Brake Parts in Bulk?",
+          "body_kws": [
+            "sourcing",
+            "source",
+            "checklist",
+            "buyer",
+            "ordering process",
+            "lead time",
+            "mixed sku",
+            "container mix",
+            "program",
+            "vendor",
+            "how to order"
+          ],
+          "title_template": "Bulk Sourcing Checklist for Importers"
+        },
+        {
+          "id": "oem_vs_aftermarket",
+          "desc": "OEM vs aftermarket and how distributors choose a grade",
+          "task": "the distributor compares an OEM-labelled offer with an independent aftermarket offer",
+          "body_h2_hint": [
+            "OEM vs Aftermarket",
+            "Quality Tiers"
+          ],
+          "example": "OEM-Grade or Budget Aftermarket: Which Toyota Brake Pads Should You Stock?",
+          "body_kws": [
+            "oem-grade",
+            "oem vs",
+            "vs aftermarket",
+            "genuine",
+            "mobis",
+            "tier",
+            "budget",
+            "aftermarket segment",
+            "oem grade"
+          ],
+          "title_template": "OEM-Grade vs Aftermarket: How Distributors Choose"
+        },
+        {
+          "id": "import_compliance",
+          "desc": "import compliance, documents and customs requirements",
+          "task": "the buyer needs to know which documents customs and inspection actually require",
+          "body_h2_hint": [
+            "Pricing, MOQ and Lead Time",
+            "Shipping"
+          ],
+          "example": "Which HS Code and Documents Are Needed to Import Toyota Brake Pads?",
+          "body_kws": [
+            "hs code",
+            "customs",
+            "clearance",
+            "certificate",
+            "certification",
+            "document",
+            "compliance",
+            "import",
+            "logistics",
+            "shipping",
+            "container optim"
+          ],
+          "title_template": "Import Documents, HS Code and Compliance Guide"
+        },
+        {
+          "id": "margin_landed_cost",
+          "desc": "landed cost and how to compare quotes beyond FOB",
+          "task": "the importer compares quotes and needs to know what sits beyond the FOB price",
+          "body_h2_hint": [
+            "Pricing, MOQ and Lead Time"
+          ],
+          "example": "What Really Sits Between the FOB Price and Landed Cost for Brake Pads?",
+          "body_kws": [
+            "landed cost",
+            "fob",
+            "pricing",
+            "price",
+            "quotation",
+            "quote",
+            "margin",
+            "duty",
+            "freight",
+            "ladder"
+          ],
+          "title_template": "FOB and Landed Cost Breakdown for Buyers"
+        }
+      ],
+      "export": [
+        {
+          "id": "export_landed_cost",
+          "desc": "landed cost beyond the FOB price",
+          "task": "the importer wants to know what the total landed cost is beyond the quoted FOB price",
+          "body_h2_hint": [
+            "FOB Pricing and Container Loading",
+            "Landing Cost"
+          ],
+          "example": "What Is the Real Landed Cost of Exporting a Mazda EZ6 EREV?",
+          "body_kws": [
+            "landed cost",
+            "landing cost",
+            "fob pricing",
+            "freight",
+            "duty",
+            "tariff",
+            "container loading",
+            "packing"
+          ],
+          "title_template": "Export Guide: FOB Pricing and Landed Cost"
+        },
+        {
+          "id": "export_target_market",
+          "desc": "which markets actually buy this model",
+          "task": "the exporter wants to know which destination markets absorb this model",
+          "body_h2_hint": [
+            "Target Markets",
+            "Market Analysis"
+          ],
+          "example": "Which Markets Should Importers Target for the Mazda EZ6 EREV?",
+          "body_kws": [
+            "target market",
+            "where the",
+            "emerging",
+            "region",
+            "wins",
+            "buys",
+            "market analysis"
+          ],
+          "title_template": "Export Guide: Target Markets and Demand"
+        },
+        {
+          "id": "export_document",
+          "desc": "documents, customs and clearance requirements",
+          "task": "the buyer needs to know what paperwork and clearance steps this model needs",
+          "body_h2_hint": [
+            "Certification and Import Documentation"
+          ],
+          "example": "Which Documents Does a JETTA VS5 Export Need for Customs Clearance?",
+          "body_kws": [
+            "document",
+            "certification",
+            "customs",
+            "clearance",
+            "homologation",
+            "compliance",
+            "import documentation"
+          ],
+          "title_template": "Export Guide: Documents and Customs Clearance"
+        },
+        {
+          "id": "export_supply_lead_time",
+          "desc": "availability, production window and supply lead time",
+          "task": "the buyer wants to know how quickly this model can be supplied and shipped",
+          "body_h2_hint": [
+            "What Importers Need to Know",
+            "Lead Time"
+          ],
+          "example": "How Long Does It Take to Supply and Ship a JETTA VS5?",
+          "body_kws": [
+            "availability",
+            "lead time",
+            "production",
+            "supply",
+            "capacity",
+            "window",
+            "importer"
+          ],
+          "title_template": "Export Guide: Availability and Supply Lead Time"
+        },
+        {
+          "id": "export_oem_vs_local",
+          "desc": "imported versus locally assembled version",
+          "task": "the distributor compares the imported vehicle with a locally assembled version",
+          "body_h2_hint": [
+            "Versus Competitors",
+            "Comparison"
+          ],
+          "example": "Should Buyers Choose a JETTA VS5 or a Locally Assembled Alternative?",
+          "body_kws": [
+            "vs competitors",
+            "competitor",
+            "local",
+            "assembled",
+            "alternative",
+            "vs byd",
+            "vs toyota",
+            "comparison"
+          ],
+          "title_template": "Export Guide: Imported vs Locally Assembled"
+        },
+        {
+          "id": "export_spec_choice",
+          "desc": "which trim and configuration to order",
+          "task": "the buyer wants to know which variant or configuration of this model to order",
+          "body_h2_hint": [
+            "Technical Specifications",
+            "Powertrain"
+          ],
+          "example": "Which JETTA VS5 Trim and Configuration Should Exporters Order?",
+          "body_kws": [
+            "specification",
+            "specs",
+            "trim",
+            "configuration",
+            "variant",
+            "charging",
+            "ownership",
+            "powertrain",
+            "how it actually works"
+          ],
+          "title_template": "Export Guide: Specifications and Trim Choice"
+        }
+      ]
+    }
+  },
+  "related_articles": {
+    "min": 4,
+    "max": 6,
+    "heading": "Related Articles",
+    "require_section": true,
+    "note": "文章间互链：每篇文末列出同簇相关文章，锚文本用文章标题本身；兄弟站点 kingmay 做到 28/28 篇每篇 4 条，我们目前 141/157 篇没有。"
   }
 }

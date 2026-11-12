@@ -657,6 +657,17 @@ def apply_rules(rules, max_score):
 
 # ---------------------------------------------------------------- 六个维度
 
+def is_question_heading(head, markers):
+    """H2 是否写成买家问句：句尾问号，或以疑问词开头。"""
+    h = (head or '').strip().lower()
+    if not h:
+        return False
+    if h.endswith('?'):
+        return True
+    first = re.split(r'[\s:—\-]+', h, 1)[0].strip()
+    return first in markers
+
+
 def score_structure(draft, contract):
     st = contract.get('structure') or {}
     content = pick(draft, 'content') or ''
@@ -673,6 +684,21 @@ def score_structure(draft, contract):
     sections = h2_sections(content)
     rules.append(rule('h2_count', 5, min_h2 <= len(sections) <= max_h2,
                       'found %d H2 sections, required %d-%d' % (len(sections), min_h2, max_h2)))
+
+    # H2 写成买家问句（兄弟站点 kingmay 最值得学的一条）
+    if st.get('h2_style') == 'buyer_question':
+        markers = [m.lower() for m in (st.get('h2_question_markers') or [])]
+        min_ratio = float(st.get('min_h2_question_ratio', 0) or 0)
+        if markers and sections:
+            heads = [h for h, _b in sections]
+            qs = [h for h in heads if is_question_heading(h, markers)]
+            ratio = len(qs) / float(len(heads))
+            flat = [h[:48] for h in heads if h not in qs]
+            detail = ('%d/%d H2 are buyer questions (%.0f%%, required >= %.0f%%); '
+                      'non-question headings: %s'
+                      % (len(qs), len(heads), ratio * 100, min_ratio * 100,
+                         '; '.join(flat[:6]) or 'none'))
+            rules.append(rule('h2_buyer_question', 6, ratio >= min_ratio, detail))
 
     min_p = int(st.get('min_paragraphs_per_h2', 1))
     thin = ['%s (%d)' % (head[:45] or '(untitled section)', para_count(body))
@@ -916,11 +942,11 @@ def score_links(draft, contract):
     for href, _text in links:
         rel = site_path(href)
         low = rel.lower()
-        if low.startswith('parts/') or low.startswith('oe/'):
+        if low.startswith('parts/') or low.startswith('oe/') or low.startswith('blog/'):
             if not os.path.isfile(local_file(rel, SITE_ROOT[0])):
                 missing.append('/' + rel)
     rules.append(rule('link_target_exists', 2, not missing,
-                      'every /parts/ and /oe/ link resolves to a local file' if not missing
+                      'every /parts/, /oe/ and /blog/ link resolves to a local file' if not missing
                       else 'link target(s) not found on disk: %s' % ', '.join(sorted(set(missing))[:8])))
 
     external = []
