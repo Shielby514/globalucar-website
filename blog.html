@@ -250,8 +250,9 @@
       .posts-grid-inner { grid-template-columns: 1fr; gap: 16px; }
     }
   </style>
+<style id="blog-layout-fix">.blog-layout{padding-top:var(--blog-nav-height,94px)}.post-card[data-release="oe-rfq-20261112"] .post-card-img img{object-fit:contain;background:#f4f6f8}@media(max-width:768px){.blog-layout{padding-top:var(--blog-nav-height,80px)}}</style>
 </head>
-<body>
+<body class="blog-layout">
 
   <!-- NAVBAR -->
   <nav class="navbar" role="navigation" aria-label="Main navigation">
@@ -334,7 +335,7 @@
       <span class="result-count" id="all-count">154 articles</span>
     </div>
     <main>
-      <div class="posts-grid" id="posts-grid">
+      <div class="posts-grid posts-grid-inner" id="posts-grid">
 <article class="post-card featured" data-cat="parts" data-release="oe-rfq-20261112"><div class="post-card-img"><img src="/assets/blog/oxygen-enquiry-reference-record.svg" alt="Parts reference and RFQ checklist illustration" loading="lazy"><span class="post-cat-label">Auto Parts Sourcing</span></div><div class="post-card-body"><p class="post-meta">November 12, 2026</p><h2 class="post-title"><a href="/blog/complete-oe-reference-suffix-rfq.html">How to Keep OE Suffixes and Multiple References Clear in a Parts RFQ</a></h2><p class="post-excerpt">A practical checklist for complete part identification and clearer purchasing enquiries.</p><a href="/blog/complete-oe-reference-suffix-rfq.html" class="post-read-more">Read Full Article →</a></div></article>
 
 <article class="post-card featured" data-cat="parts"><div class="post-card-img"><img src="/assets/blog/oxygen-enquiry-reference-record.svg" alt="Oxygen sensor purchasing evidence checklist" loading="lazy"><span class="post-cat-label">Auto Parts Sourcing</span></div><div class="post-card-body"><p class="post-meta">November 10, 2026 · 8 min read</p><h2 class="post-title"><a href="/blog/gm-chevrolet-oxygen-sensor-ordering-checklist.html">GM and Chevrolet Oxygen Sensor Ordering Checklist for Buyers</a></h2><p class="post-excerpt">Prepare GM and Chevrolet oxygen sensor enquiries with complete references, vehicle details and connector evidence before approving a wholesale order.</p><a href="/blog/gm-chevrolet-oxygen-sensor-ordering-checklist.html" class="post-read-more">Read Full Article →</a></div></article>
@@ -3508,5 +3509,6 @@
       buildGrid();
     });
   </script>
-<script src="/assets/js/lead-attribution.js"></script></body>
+<script src="/assets/js/lead-attribution.js"></script><script>(()=>{const nav=document.querySelector('.navbar');if(!nav)return;const sync=()=>document.body.style.setProperty('--blog-nav-height',nav.getBoundingClientRect().height+'px');sync();if(window.ResizeObserver)new ResizeObserver(sync).observe(nav);else window.addEventListener('resize',sync);})();</script>
+</body>
 </html>
