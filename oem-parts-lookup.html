@@ -494,7 +494,7 @@
       Free OEM Parts Lookup Tool
     </div>
     <h1>Search Any OE Number Instantly</h1>
-    <p>Enter an OEM part number to identify the part, see vehicle compatibility, and check if we have it in stock at wholesale price.</p>
+    <p>Enter a complete OE reference for an exact catalogue lookup. Product photo, fitment and availability are checked separately; request confirmation with your quotation.</p>
 
     <div class="search-box">
       <div class="search-tabs">
@@ -540,16 +540,16 @@
         <div class="stat-label">OE Numbers in DB</div>
       </div>
       <div class="stat-item">
-        <div class="stat-number">100+</div>
-        <div class="stat-label">Parts in Stock</div>
+        <div class="stat-number">On request</div>
+        <div class="stat-label">Wholesale quotation</div>
       </div>
       <div class="stat-item">
-        <div class="stat-number">25</div>
-        <div class="stat-label">Car Brands</div>
+        <div class="stat-number">Confirm</div>
+        <div class="stat-label">Vehicle fitment</div>
       </div>
       <div class="stat-item">
-        <div class="stat-number">+Google</div>
-        <div class="stat-label">Images Fallback</div>
+        <div class="stat-number">Reviewed</div>
+        <div class="stat-label">Product images</div>
       </div>
     </div>
 
@@ -579,7 +579,7 @@
     <div id="extResultsList"></div>
   </div>
 
-  <!-- Empty State + Google Images Fallback -->
+  <!-- Empty State + Google Product images -->
   <div class="empty-state" id="emptyState" style="display:none">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M8 11h6"/></svg>
     <h3>No matching parts found in our catalog</h3>
@@ -804,22 +804,10 @@ function quickSearch(brand) {
 }
 
 function performSearch() {
-  const query = document.getElementById('searchInput').value.trim().toUpperCase();
-  if (!query) { showToast('Please enter a part number or VIN'); return; }
-
-  const loading = document.getElementById('loadingOverlay');
-  const loadingText = document.getElementById('loadingText');
-  loading.classList.add('active');
-  loadingText.textContent = 'Searching OEM database...';
-
-  // Simulate search delay
-  setTimeout(() => {
-    loadingText.textContent = 'Matching with KingMay catalog...';
-    setTimeout(() => {
-      loading.classList.remove('active');
-      displayResults(query);
-    }, 600);
-  }, 800);
+  const query = document.getElementById('searchInput').value.trim();
+  if (!query) { showToast('Please enter a complete OE reference or VIN'); return; }
+  if (!/^[A-Za-z0-9 -]{3,80}$/.test(query)) { showToast('Use a single complete reference with letters, numbers, spaces and hyphens.'); return; }
+  location.assign('/oe/?q=' + encodeURIComponent(query) + (currentTab === 'vin' ? '&mode=vin' : '') + '#hub-oe-search');
 }
 
 function displayResults(query) {
