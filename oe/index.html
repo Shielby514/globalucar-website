@@ -63,6 +63,7 @@ footer{border-top:1px solid var(--bd);margin-top:60px;background:#070b12}
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","@id":"https://www.global-ucars.com/#website","name":"Globalucar & KingMay Auto Parts","url":"https://www.global-ucars.com/","publisher":{"@id":"https://www.global-ucars.com/#organization"},"potentialAction":{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://www.global-ucars.com/oem-parts-lookup.html?q={search_term_string}"},"query-input":"required name=search_term_string"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://www.global-ucars.com/#organization","name":"KingMay Auto Parts","legalName":"Guangzhou Globalucar Vehicle Trading Co., Ltd.","url":"https://www.global-ucars.com/","logo":"https://www.global-ucars.com/assets/VEHICLE-logo-nav.jpg","address":{"@type":"PostalAddress","addressLocality":"Guangzhou","addressRegion":"Guangdong","addressCountry":"CN"},"contactPoint":{"@type":"ContactPoint","contactType":"sales","email":"ku@kingmay-autoparts.com","telephone":"+86-133-0240-8528","availableLanguage":["en","zh"]}}</script>
 <link rel="stylesheet" href="/assets/column-banners.css?v=20261112">
+<link rel="stylesheet" href="/assets/oe-hub-search.css?v=20261114">
 </head>
 <body>
 <nav class="navbar"><div class="nav-inner">
@@ -79,13 +80,8 @@ footer{border-top:1px solid var(--bd);margin-top:60px;background:#070b12}
   <section class="uc-column-banner uc-oe-hub-banner" data-column-banner-v1="true" style="--column-photo:url('/assets/gallery/parts-warehouse02.jpg')"><h1>OE Number Reference Library — <span class="oe-n">16,572 verified references</span></h1>
   <p class="lead">KingMay&#x27;s OE reference library indexes 16,572 original-equipment part numbers in circulation across Hyundai, Kia and other major makes. Each reference has its own page listing vehicle applications, interchangeable numbers, component family decoding and wholesale terms. Browse by system below, or look up a number directly with the OE lookup tool.</p></section>
 
-  <section class="ans-blk">
-    <p><strong>Quick answer:</strong> KingMay publishes 16,572 OE reference pages covering
-    8 component systems. Every page states the OE number, the
-    component, brand coverage, interchangeable references and wholesale terms (MOQ from 10 pieces,
-    quotes within one business day). Use the <a class="lk" href="../oem-parts-lookup.html">OE lookup tool</a>
-    to check a specific number, or browse a system below.</p>
-  </section>
+  <section class="hub-search" id="hub-oe-search" aria-labelledby="hub-search-title"><h2 id="hub-search-title">Search an OE Number</h2><p>Enter a complete part reference to find its catalogue page. Vehicle application, supply and wholesale terms require confirmation.</p><div class="hub-search-tabs" role="group" aria-label="Search type"><button type="button" data-mode="oe" aria-pressed="true">Part Number</button><button type="button" data-mode="vin" aria-pressed="false">VIN / Frame No.</button></div><form id="hub-search-form" action="/oem-parts-lookup.html" method="get"><label class="hub-search-label" for="hub-search-input">OE part number</label><div class="hub-search-row"><input id="hub-search-input" name="q" required maxlength="80" placeholder="e.g. 22311-2E100 or 54501-2H000" autocomplete="off" spellcheck="false"><button type="submit">⌕ Search</button></div></form><div class="hub-search-brands"><span>Popular:</span><a href="/oem-parts-lookup.html?q=Hyundai">Hyundai</a><a href="/oem-parts-lookup.html?q=KIA">KIA</a><a href="/oem-parts-lookup.html?q=Toyota">Toyota</a><a href="/oem-parts-lookup.html?q=Nissan">Nissan</a><a href="/oem-parts-lookup.html?q=Honda">Honda</a><a href="/oem-parts-lookup.html?q=VW">VW</a><a href="/oem-parts-lookup.html?q=Mazda">Mazda</a><a href="/oem-parts-lookup.html?q=Mitsubishi">Mitsubishi</a><a href="/oem-parts-lookup.html?q=Subaru">Subaru</a><a href="/oem-parts-lookup.html?q=BMW">BMW</a><a href="/oem-parts-lookup.html?q=Mercedes">Mercedes</a></div><div id="hub-search-result" role="status" aria-live="polite"></div><div class="hub-search-stats"><div><strong id="hub-oe-count">16,572</strong><span>OE reference pages</span></div><div><strong>8</strong><span>Component systems</span></div><div><strong>On request</strong><span>Wholesale quotation</span></div></div></section>
+<section class="ans-blk"><p><strong>Quick answer:</strong> Globalucar provides an OE reference library organized by component system. Search above or browse a system below. Catalogue information is an identification lead; fitment, interchangeability, availability and commercial terms need confirmation for the proposed item.</p></section>
 
   <h2>Browse by System</h2>
   <div class="grid">
@@ -138,5 +134,6 @@ footer{border-top:1px solid var(--bd);margin-top:60px;background:#070b12}
   <div><h4>OE Reference</h4><a href="index.html">OE Number Hub</a><a href="engine.html">Engine &amp; Fuel</a><a href="suspension-steering.html">Suspension &amp; Steering</a><a href="electrical.html">Electrical &amp; Sensors</a></div>
   <div><h4>Contact</h4>Miss UU (Auto Parts)<br><a href="mailto:ku@kingmay-autoparts.com">ku@kingmay-autoparts.com</a><br>+86 133 0240 8528</div>
 </div><div class="f-bot">&copy; 2013-2026 Guangzhou Globalucar Vehicle Trading Co., Ltd. All rights reserved.</div></footer>
+<script src="/assets/oe-hub-search.js?v=20261114" defer></script>
 </body>
 </html>
