@@ -168,21 +168,22 @@ BUCKET_IMG = {
     'sensors-na': 'assets/parts/part_039_oxygen_sensor.jpg',
 }
 def find_image(e, bucket=None):
-    # A级: SKU 自带图
-    if e.get('images'):
-        for im in e['images']:
-            if os.path.exists(os.path.join(BASE, im)):
-                return im
-    nm = (e.get('part_name') or '') + ' ' + (e.get('part_name_cn') or '')
-    for pat, img in IMG_RULES:
-        if re.search(pat, nm, re.I):
-            p = os.path.join(BASE, img)
-            if os.path.exists(p):
-                return img
-    # 系统级兜底
-    fb = BUCKET_IMG.get(bucket)
-    if fb and os.path.exists(os.path.join(BASE, fb)):
-        return fb
+    """Only explicitly reviewed exact-reference image mappings; never category fallback."""
+    registry_path = os.path.join(BASE, '.workbuddy', 'data', 'oe-reviewed-images.json')
+    try:
+        with open(registry_path, encoding='utf-8') as source:
+            mappings = json.load(source)
+        key = re.sub(r'[ -]', '', str(e.get('oe', '')).upper())
+        record = mappings.get(key, {})
+        image = record.get('path', '')
+        root = os.path.realpath(BASE)
+        target = os.path.realpath(os.path.join(BASE, image))
+        if (record.get('match_reviewed') is True and record.get('rights_reviewed') is True
+                and os.path.commonpath([root, target]) == root
+                and os.path.isfile(target)):
+            return image
+    except (OSError, ValueError, TypeError):
+        pass
     return None
 
 # ── 文案库(自有措辞,10变体轮转防重复) ──
@@ -427,6 +428,24 @@ def page_html(e, related, bucket):
         + [f'{t} parts' for t in paa_bucket_tags]))
     cta = CTAS[h(oe, 'c') % len(CTAS)].format(oe=oe)
     img = find_image(e, bucket)
+    # --- P0 fix 2026-11-23: no unrelated fallback image on meta tags or body ---
+    if img:
+        og_image_meta = f'<meta property="og:image" content="{SITE}/{esc(img)}">'
+        tw_card_meta = '<meta name="twitter:card" content="summary_large_image">'
+        tw_image_meta = f'<meta name="twitter:image" content="{SITE}/{esc(img)}">'
+        image_status_html = ''
+    else:
+        og_image_meta = '<!-- og:image omitted: no rights-cleared exact image -->'
+        tw_card_meta = '<meta name="twitter:card" content="summary">'
+        tw_image_meta = '<!-- twitter:image omitted: no rights-cleared exact image -->'
+        image_status_html = (
+            '<section class="oe-sec" id="image-status">\n'
+            '  <h2>Product Reference Image</h2>\n'
+            '  <p>No rights-cleared, exact-match product photograph is currently available for OE ' + esc(oe) + '. '
+            'A generic illustration is deliberately not used as a substitute. Send your required quantity '
+            'and any stamped markings through the RFQ form to request the current photo for this exact reference.</p>\n'
+            '</section>\n'
+        )
     url = f"{SITE}/oe/{slug_oe(oe)}.html"
     if TDK is not None:
         # 与存量页改写共用同一套模板（oe_seo_tdk.build_title/build_desc）
@@ -469,6 +488,8 @@ def page_html(e, related, bucket):
       <figcaption>Reference photo for OE {esc(oe)} — {esc(part)}. Final goods are inspected and photographed per shipment.</figcaption>
     </figure>
   </section>'''
+
+    img_html = img_html + image_status_html
 
     fit_html = ''
     if fit_rows:
@@ -578,11 +599,11 @@ def page_html(e, related, bucket):
 <meta property="og:type" content="product">
 <meta property="og:url" content="{url}">
 <meta property="og:site_name" content="KingMay Auto Parts">
-<meta property="og:image" content="{SITE}/{esc(img or 'assets/parts/part_044_engine_piston.jpg')}">
-<meta name="twitter:card" content="summary_large_image">
+{og_image_meta}
+{tw_card_meta}
 <meta name="twitter:title" content="{esc(title)}">
 <meta name="twitter:description" content="{esc(desc)}">
-<meta name="twitter:image" content="{SITE}/{esc(img or 'assets/parts/part_044_engine_piston.jpg')}">
+{tw_image_meta}
 <style>
 *{{box-sizing:border-box;margin:0;padding:0}}
 :root{{--bg:#0a0e17;--card:#1a2234;--bd:#2a3550;--tx:#f1f5f9;--tx2:#94a3b8;--ac:#c8102e;--gold:#f59e0b;--r:12px}}
@@ -875,6 +896,7 @@ def main():
         by_bucket[b].sort(key=lambda x: (x.get('oe') or '').lower())
     # 生成单页
     n = 0
+    preserved_reviewed = 0
     skipped = 0
     for b, items in by_bucket.items():
         for i, e in enumerate(items):
@@ -887,14 +909,31 @@ def main():
             if len(related) < 3:
                 same_sys = [r for j, r in enumerate(items) if j != i]
                 related = (related + same_sys)[:8]
+            target = os.path.join(OE_DIR, slug_oe(e['oe']) + '.html')
+            if os.path.exists(target):
+                with open(target, encoding='utf-8') as reviewed_page:
+                    if '<!-- PRESERVE-REVIEWED-OE:' in reviewed_page.read():
+                        preserved_reviewed += 1
+                        continue
             html = page_html(e, related[:8], b)
             open(os.path.join(OE_DIR, slug_oe(e['oe']) + '.html'), 'w', encoding='utf-8').write(html)
             n += 1
+    if preserved_reviewed:
+        print(f'Preserved reviewed pages: {preserved_reviewed}')
     if skipped:
         print(f'跳过非法 OE 条目: {skipped}')
     # hub + L2
     counts = {b: len(items) for b, items in by_bucket.items()}
-    open(os.path.join(OE_DIR, 'index.html'), 'w', encoding='utf-8').write(hub_html(counts))
+    # Preserve the reviewed exact-search hub and its image preview contract.
+    hub_path = os.path.join(OE_DIR, 'index.html')
+    reviewed_hub = ''
+    if os.path.exists(hub_path):
+        with open(hub_path, encoding='utf-8-sig') as existing_hub:
+            reviewed_hub = existing_hub.read()
+    if all(marker in reviewed_hub for marker in ('hub-search-input', 'hub-search-result', 'oe-hub-search.js')):
+        print('Preserving reviewed exact-search OE hub; update its counts/navigation separately after review.')
+    else:
+        open(hub_path, 'w', encoding='utf-8').write(hub_html(counts))
     for b, items in by_bucket.items():
         open(os.path.join(OE_DIR, b + '.html'), 'w', encoding='utf-8').write(bucket_html(b, items))
     # sitemap ── 以磁盘实际存在的 OE 页为准

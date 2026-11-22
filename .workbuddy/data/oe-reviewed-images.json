@@ -1,0 +1,74 @@
+{
+  "256002GGA0": {
+    "path": "assets/parts/own-stock/256002GGA0_main.jpg",
+    "sha256": "74d7991893ac89b28d45f85587d3d76a0c25b5ee571319253a3f3bdb28dcc98b",
+    "match_reviewed": true,
+    "rights_reviewed": true,
+    "image_kind": "packaging-reference",
+    "scope": "Selected photograph only; no vehicle application, authenticity or stock confirmation",
+    "alternate_main_not_approved": false
+  },
+  "256202B003": {
+    "path": "assets/parts/own-stock/256202B003_label.jpg",
+    "sha256": "4538425cd36260714205c5d005fdbebae9e06b0aa8db6df822e35d91321d3a34",
+    "match_reviewed": true,
+    "rights_reviewed": true,
+    "image_kind": "packaging-reference",
+    "scope": "Selected photograph only; no vehicle application, authenticity or stock confirmation",
+    "alternate_main_not_approved": true
+  },
+  "273013C000": {
+    "path": "assets/parts/own-stock/273013C000_label.jpg",
+    "sha256": "9476207ae2fc52625348f4bc40fd83c37f3ad894f819be0e727f11aa429ee424",
+    "match_reviewed": true,
+    "rights_reviewed": true,
+    "image_kind": "packaging-reference",
+    "scope": "Selected photograph only; no vehicle application, authenticity or stock confirmation",
+    "alternate_main_not_approved": true
+  },
+  "351002E000": {
+    "path": "assets/parts/own-stock/351002E000_label.jpg",
+    "sha256": "cb44efba096687ed33b4df78459e29cd2c3ad7d348a583b703dd74496255a29b",
+    "match_reviewed": true,
+    "rights_reviewed": true,
+    "image_kind": "packaging-reference",
+    "scope": "Selected photograph only; no vehicle application, authenticity or stock confirmation",
+    "alternate_main_not_approved": true
+  },
+  "3517022600": {
+    "path": "assets/parts/own-stock/3517022600_label.jpg",
+    "sha256": "90bed1e7fb1e98d7e3c9731755d585e5ddfca164aaef1360e676237112e0df53",
+    "match_reviewed": true,
+    "rights_reviewed": true,
+    "image_kind": "marked-item-reference",
+    "scope": "Selected photograph only; no vehicle application, authenticity or stock confirmation",
+    "alternate_main_not_approved": true
+  },
+  "353102B130": {
+    "path": "assets/parts/own-stock/353102B130_label.jpg",
+    "sha256": "3be55cb78805ca541cf1814a1a1988fe8cee49caae358e9ad06fbed3b5ecfe38",
+    "match_reviewed": true,
+    "rights_reviewed": true,
+    "image_kind": "packaging-reference",
+    "scope": "Selected photograph only; no vehicle application, authenticity or stock confirmation",
+    "alternate_main_not_approved": true
+  },
+  "3918025300": {
+    "path": "assets/parts/own-stock/3918025300_label.jpg",
+    "sha256": "9aa007bdd00990ebf432cbc4fdfa7b587baa01ec41564a676f3323dda41b97ce",
+    "match_reviewed": true,
+    "rights_reviewed": true,
+    "image_kind": "packaging-reference",
+    "scope": "Selected photograph only; no vehicle application, authenticity or stock confirmation",
+    "alternate_main_not_approved": true
+  },
+  "391802B000": {
+    "path": "assets/parts/own-stock/391802B000_label.jpg",
+    "sha256": "125afc23cb2e90d42e8f26f52e58c72bfdeeaebe1a82d4d52c0a0008997e2402",
+    "match_reviewed": true,
+    "rights_reviewed": true,
+    "image_kind": "packaging-reference",
+    "scope": "Selected photograph only; no vehicle application, authenticity or stock confirmation",
+    "alternate_main_not_approved": true
+  }
+}
