@@ -70,5 +70,59 @@
     "image_kind": "packaging-reference",
     "scope": "Selected photograph only; no vehicle application, authenticity or stock confirmation",
     "alternate_main_not_approved": true
+  },
+  "391802B030": {
+    "path": "assets/parts/own-stock/391802B030_main.jpg",
+    "sha256": "0bb3948e9b611ff8e1e8d106242d231e820c9209cb3d35f0e68d6d2ebe8cba0f",
+    "match_reviewed": true,
+    "rights_reviewed": true,
+    "image_kind": "packaging-reference",
+    "scope": "Selected packaging-reference photo only; no authenticity, fitment or supply confirmation",
+    "alternate_main_not_approved": false
+  },
+  "391802F600": {
+    "path": "assets/parts/own-stock/391802F600_label.jpg",
+    "sha256": "edc9bc1977c0044c356d6a7232fb8f8f8cbaec642211450538f388bf5c8c5b55",
+    "match_reviewed": true,
+    "rights_reviewed": true,
+    "image_kind": "packaging-reference",
+    "scope": "Selected packaging-reference photo only; no authenticity, fitment or supply confirmation",
+    "alternate_main_not_approved": true
+  },
+  "4528026100": {
+    "path": "assets/parts/own-stock/4528026100_label.jpg",
+    "sha256": "49f22c124d80a23f15fc624b2f46e2d9e2b9222ad4a82a15bcac324a6b3303bb",
+    "match_reviewed": true,
+    "rights_reviewed": true,
+    "image_kind": "marked-item-reference",
+    "scope": "Selected visibly marked component only; no authenticity, fitment, function or supply confirmation",
+    "alternate_main_not_approved": true
+  },
+  "452804G150": {
+    "path": "assets/parts/own-stock/452804G150_main.jpg",
+    "sha256": "93830aa852fd4d51ea3d0a70ff8df90cd605876032b4cf72ada0760511c23357",
+    "match_reviewed": true,
+    "rights_reviewed": true,
+    "image_kind": "packaging-reference",
+    "scope": "Selected same-frame label photograph only; no authenticity, fitment or supply confirmation",
+    "alternate_main_not_approved": false
+  },
+  "454253B001": {
+    "path": "assets/parts/own-stock/454253B001_label.jpg",
+    "sha256": "677cf200d1779aebdf2084641101af99d4f81e67f87623788d4efedfb127ef1a",
+    "match_reviewed": true,
+    "rights_reviewed": true,
+    "image_kind": "packaging-reference",
+    "scope": "Selected same-frame label photograph only; no authenticity, fitment or supply confirmation",
+    "alternate_main_not_approved": true
+  },
+  "454253B610": {
+    "path": "assets/parts/own-stock/454253B610_label.jpg",
+    "sha256": "1ddc07d6d7057e2d498a5681c8fa52dc190c72599931d75f8acfef9ccbff2166",
+    "match_reviewed": true,
+    "rights_reviewed": true,
+    "image_kind": "packaging-reference",
+    "scope": "Selected same-frame label photograph only; no authenticity, fitment or supply confirmation",
+    "alternate_main_not_approved": true
   }
 }
