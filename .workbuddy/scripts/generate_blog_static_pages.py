@@ -215,6 +215,15 @@ def build_skeleton():
     cta_old = '<a href="products.html">Browse Products →</a>'
     cta_new = cta_old + '\n        <a href="/oe/" style="display:block;margin-top:8px;">Search 236,000+ OE Numbers →</a>'
     skel = skel.replace(cta_old, cta_new, 1)
+
+    # 5. [REGRESSION GUARD 2026-11-24] 强制注入主站样式表（绝对路径）
+    #    背景：bak 的 <link rel="stylesheet" href="styles.css"> 是相对路径，且位于
+    #    schema-article <script> 之后；build_skeleton 的 c[:sm] 截断会把该 link 切掉，
+    #    导致生成的 /blog/*.html 缺样式 → 导航栏退化成浏览器默认项目符号列表。
+    #    这里在 </head> 前无条件幂等注入绝对路径 /styles.css，杜绝复发。
+    if 'href="/styles.css"' not in skel:
+        skel = skel.replace('</head>',
+                            '  <link rel="stylesheet" href="/styles.css" />\n</head>', 1)
     return skel
 
 SKELETON = build_skeleton()
