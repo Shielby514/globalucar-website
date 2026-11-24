@@ -224,6 +224,14 @@ def build_skeleton():
     if 'href="/styles.css"' not in skel:
         skel = skel.replace('</head>',
                             '  <link rel="stylesheet" href="/styles.css" />\n</head>', 1)
+
+    # 6. [E-E-A-T BYLINE 2026-11-24] 具名作者署名（幂等）
+    #    Google E-E-A-T：可见 byline + Person schema（姓名+资质）。
+    #    骨架里的 "✍️ Globalucar Editorial" 是无资质的编辑部落款，替换为具名作者。
+    AUTHOR_BYLINE = 'Author: Shirley | Senior Autoparts Procurement Specialist'
+    if AUTHOR_BYLINE not in skel:
+        skel = skel.replace('✍️ Globalucar Editorial',
+                            '✍️ ' + AUTHOR_BYLINE)
     return skel
 
 SKELETON = build_skeleton()
@@ -443,7 +451,7 @@ def render_post(p):
         "@context": "https://schema.org", "@type": "Article",
         "headline": title[:110], "description": desc,
         "image": SITE + "/" + img, "datePublished": date_iso, "dateModified": date_iso,
-        "author": {"@type": "Organization", "name": "Globalucar"},
+        "author": {"@type": "Person", "name": "Shirley", "jobTitle": "Senior Autoparts Procurement Specialist"},
         "publisher": {"@type": "Organization", "name": "Guangzhou Vehicle External Trade Co., Ltd.",
                       "logo": {"@type": "ImageObject", "url": SITE + "/assets/VEHICLE-logo.jpg"}},
         "mainEntityOfPage": {"@type": "WebPage", "@id": url},
