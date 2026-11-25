@@ -16,7 +16,7 @@
 所以闸门不能写成"低于 50% 就停"，必须是**相对基线的回归检测**：
   · 只抽样"已发布 ≥ min_age_days 天"的页（排除未被抓取的新页）
   · PASS 率 < max(基线 × 0.6, 25%) → HOLD（暂停出页，只做 B 层补强）
-  · 指标缺失 / 过期 / 抽样本身失败 → ALLOW（不能因为测不到就把站点锁死）
+  · 指标缺失 / 过期 / 抽样本身失败 → HOLD（暂停自动发布，不影响既有页面）
 
 用法
   python 16-release-gate.py --measure [--sample 20] [--min-age-days 7]   # 抽样测量
@@ -49,7 +49,7 @@ REGRESSION_FACTOR = 0.6
 ABS_FLOOR = 25.0
 # 首次测量不可信时使用的保守基线（2026-11-04 实测老页稳态 PASS 率约 53%）
 DEFAULT_BASELINE = 50.0
-# 指标最长有效期（天）；过期 → 放行，不锁站点
+# 指标最长有效期（天）；过期 → HOLD，等待有效重测
 MAX_AGE_DAYS = 8
 
 
@@ -191,28 +191,39 @@ def measure(sample, min_age_days, seed=None):
 
 
 def decide():
+    # Unknown/invalid measurements pause automatic publication; existing pages remain live.
     if not os.path.exists(GATE_FILE):
-        return 'ALLOW', '无索引指标（首次运行或测量失败）—— 不因测不到而锁死站点'
+        return 'HOLD', 'NO_DATA: index measurement missing; remeasure before publication'
     try:
-        g = json.load(open(GATE_FILE, encoding='utf-8'))
-    except Exception as e:
-        return 'ALLOW', '索引指标文件损坏（%s）' % e
-    try:
+        with open(GATE_FILE, encoding='utf-8') as handle:
+            g = json.load(handle)
+        if not isinstance(g, dict):
+            raise ValueError('measurement must be an object')
         t = datetime.datetime.fromisoformat(g.get('sampled_at', ''))
-        age_days = (datetime.datetime.now() - t).total_seconds() / 86400.0
+        age_days = (datetime.datetime.now(t.tzinfo) - t).total_seconds() / 86400.0
     except Exception:
-        age_days = 999
+        return 'HOLD', 'NO_DATA: invalid measurement or timestamp; remeasure before publication'
+    if age_days < -5.0 / 1440:
+        return 'HOLD', 'NO_DATA: measurement timestamp is in the future'
     if age_days > MAX_AGE_DAYS:
-        return 'ALLOW', '索引指标已过期 %.1f 天（> %d）—— 放行并建议重测' % (age_days, MAX_AGE_DAYS)
-    if not g.get('valid_measurement'):
-        return 'ALLOW', '上次抽样无效（有效样本 %s/%s）—— 不据此停发' % (g.get('valid'), g.get('sample_size'))
-    rate = float(g.get('pass_rate', 0))
-    thr = float(g.get('threshold', ABS_FLOOR))
-    if rate < thr:
-        return 'HOLD', ('收录率塌陷：实测 %.1f%% < 触发线 %.1f%%（基线 %.1f%%，样本 %s，测量于 %s）'
-                        % (rate, thr, g.get('baseline', 0), g.get('sample_size'), g.get('sampled_at')))
-    return 'ALLOW', ('收录率正常：实测 %.1f%% ≥ 触发线 %.1f%%（基线 %.1f%%）'
-                     % (rate, thr, g.get('baseline', 0)))
+        return 'HOLD', 'NO_DATA: index measurement expired; remeasure before publication'
+    if g.get('valid_measurement') is not True:
+        return 'HOLD', 'NO_DATA: previous sample was not a valid measurement'
+    n, valid = g.get('sample_size'), g.get('valid')
+    if type(n) is not int or type(valid) is not int or n < 5 or valid > n or valid < max(5, int(n * 0.5)):
+        return 'HOLD', 'NO_DATA: insufficient or inconsistent valid sample counts'
+    try:
+        rate = float(g['pass_rate'])
+        baseline = float(g['baseline'])
+        threshold = max(float(g['threshold']), ABS_FLOOR, baseline * REGRESSION_FACTOR)
+        if not all(0 <= value <= 100 for value in (rate, baseline, threshold)):
+            raise ValueError('invalid percentages')
+    except (KeyError, TypeError, ValueError):
+        return 'HOLD', 'NO_DATA: missing or invalid measurement percentages'
+    if rate < threshold:
+        return 'HOLD', 'Measured pass rate %.1f%% below release threshold %.1f%%' % (rate, threshold)
+    return 'ALLOW', 'Fresh valid measurement: pass rate %.1f%% meets threshold %.1f%%' % (rate, threshold)
+
 
 
 def main():
